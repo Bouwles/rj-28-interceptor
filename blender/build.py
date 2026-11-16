@@ -5,6 +5,7 @@
 Targets:
     testboard   toolkit test board (Phase 0)
     blockout    proportional blockout, both mount states, G1 sheets (Phase 2)
+    model       detailed model. Options: only=leg,foot  noctx  sheets  robot  sweep  save
 """
 import sys
 import time
@@ -33,6 +34,9 @@ def main():
     elif target == "blockout":
         from rj28.assemblies import blockout
         blockout.run(opts)
+    elif target == "model":
+        from rj28 import modelrun
+        modelrun.run(opts)
     else:
         raise SystemExit(f"unknown target {target!r}")
     print(f"BUILD {target} done in {time.time() - t0:.1f} s")

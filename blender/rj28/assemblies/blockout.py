@@ -10,7 +10,7 @@ import math
 import bpy
 from mathutils import Vector
 
-from .. import materials as M, params as PR, poses, render as RD
+from .. import frames as FR, materials as M, params as PR, poses, render as RD
 from ..lib import core as C, fittings as F, prims as P
 from ..lib.core import T, R
 
@@ -68,12 +68,7 @@ def legs(b):
     for s in (1, -1):
         n = side(s)
         zl, zf = f"leg_{n}", f"foot_{n}"
-        Lg = T(s * PR.HX, 0, PR.Z_HIP) @ R("Z", s * PR.TOE_OUT)
-        Th = Lg @ R("X", -PR.KNEE_FLEX / 2)
-        Kn = Th @ T(0, 0, -PR.THIGH)
-        Sh = Kn @ R("X", PR.KNEE_FLEX)
-        An = Sh @ T(0, 0, -PR.SHIN)
-        Ft = An @ R("X", -PR.KNEE_FLEX / 2)
+        Lg, Th, Kn, Sh, An, Ft = FR.leg(s)
 
         # hip pitch drum: the top of the thigh is the actuator housing
         b.add(f"Hip_Pitch_{n}", P.cyl(174, 150, 64), Lg @ T(s * 8, 0, 0) @ R("Y", 90), "alu", 3, zl)
@@ -93,45 +88,48 @@ def legs(b):
         kg = P.plate(P.chamfer_poly(P.rrect(126, 152), 26), 13, crown=9, slices=8)
         b.add(f"Knee_Guard_{n}", kg, Kn @ T(0, -92, 4) @ R("X", 86), "armour", 3, zl, 3)
 
-        sh = P.loft([sec(-40, 168, 164, 0, -8), sec(-112, 190, 196, 0, -2), sec(-236, 168, 160, 0, -12),
-                     sec(-336, 150, 140, 0, -12), sec(-366, 158, 150, 0, -10)])
+        sh = P.loft([sec(-40, 168, 164, 0, -8), sec(-112, 190, 196, 0, -2), sec(-236, 170, 160, 0, -12),
+                     sec(-336, 158, 142, 0, -12), sec(-366, 168, 152, 0, -10)])
         b.add(f"Shin_Armour_{n}", sh, Sh, "armour", 6, zl, 3)
         b.add(f"Shin_Crank_{n}", P.loft([sec(-36, 124, 40, 0, 74), sec(8, 116, 34, 0, 84)]), Sh, "ti", 2.5, zl)
         for o in (1, -1):
-            b.strut(f"Ankle_Act_{n}{'O' if o * s > 0 else 'I'}", Sh @ Vector((o * 36, 92, -170)),
-                    Ft @ Vector((o * 36, 100, -12)), 34, 20, zl)
+            b.strut(f"Ankle_Act_{n}{'O' if o * s > 0 else 'I'}", Sh @ Vector((o * 40, 92, -170)),
+                    Ft @ Vector((o * 40, 100, -12)), 34, 20, zl)
 
-        b.add(f"Ankle_Joint_{n}", P.cyl(86, 124, 40), An @ R("Y", 90), "ti", 2, zf)
-        sole = P.round_poly([(-52, 95), (-66, -40), (-67.5, -150), (-52, -215), (52, -215), (67.5, -150),
-                             (66, -40), (52, 95)], [28, 70, 70, 34, 34, 70, 70, 28], 5)
-        Fo = Ft @ T(0, PR.FOOT_SHIFT, 0)
-        b.add(f"Sole_{n}", P.prism(sole, -PR.Z_ANKLE, -PR.Z_ANKLE + 22), Fo, "rubber", 2, zf)
-        b.add(f"Foot_Frame_{n}", P.prism([(x * 0.94, y * 0.96 - 2) for x, y in sole], -PR.Z_ANKLE + 22,
-                                         -PR.Z_ANKLE + 42), Fo, "alu", 2, zf)
-        b.add(f"Foot_Upper_{n}", P.loft([sec(-53, 130, 204, 0, -22, 0.16), sec(-6, 122, 160, 0, -6, 0.2),
-                                         sec(42, 114, 122, 0, -4, 0.24)]), Fo, "armour", 4, zf, 3)
-        b.add(f"Foot_Toe_{n}", P.loft([sec(-53, 128, 92, 0, -168, 0.2), sec(-12, 110, 68, 0, -158, 0.26)]),
-              Fo, "armour", 4, zf, 3)
-        b.add(f"Foot_Heel_{n}", P.loft([sec(-53, 106, 40, 0, 86, 0.2), sec(-2, 96, 34, 0, 92, 0.24)]), Fo,
-              "alu", 3, zf)
+        b.add(f"Ankle_Joint_{n}", P.cyl(88, 150, 40), An @ R("Y", 90), "ti", 2, zf)
+        hw = PR.FOOT_W / 2
+        y0, y1 = PR.FOOT_L / 3, PR.FOOT_L / 3 - PR.FOOT_L          # heel, toe
+        sole = P.round_poly([(-hw * 0.78, y0), (-hw * 0.97, -30), (-hw, -150), (-hw * 0.8, y1), (hw * 0.8, y1),
+                             (hw, -150), (hw * 0.97, -30), (hw * 0.78, y0)], [34, 80, 80, 44, 44, 80, 80, 34], 5)
+        b.add(f"Sole_{n}", P.prism(sole, -PR.Z_ANKLE, -PR.Z_ANKLE + 22), Ft, "rubber", 2, zf)
+        b.add(f"Foot_Frame_{n}", P.prism([(x * 0.95, y * 0.96 - 2) for x, y in sole], -PR.Z_ANKLE + 22,
+                                         -PR.Z_ANKLE + 42), Ft, "alu", 2, zf)
+        w = PR.FOOT_W
+        b.add(f"Foot_Upper_{n}", P.loft([sec(-53, w - 8, 214, 0, -22, 0.16), sec(-6, w - 22, 168, 0, -6, 0.2),
+                                         sec(42, w - 44, 128, 0, -4, 0.24)]), Ft, "armour", 4, zf, 3)
+        b.add(f"Foot_Toe_{n}", P.loft([sec(-53, w - 10, 96, 0, y1 + 50, 0.2), sec(-12, w - 34, 70, 0, y1 + 60, 0.26)]),
+              Ft, "armour", 4, zf, 3)
+        b.add(f"Foot_Heel_{n}", P.loft([sec(-53, w - 44, 42, 0, y0 - 22, 0.2), sec(-2, w - 58, 36, 0, y0 - 18, 0.24)]),
+              Ft, "alu", 3, zf)
 
 
 # ── pelvis, abdomen ──────────────────────────────────────────────────────────
 def pelvis(b):
     z = "pelvis"
-    b.add("Pelvis_Keel", P.loft([sec(858, 92, 176), sec(990, 98, 188)]), None, "alu", 4, z)
-    b.add("Pelvis_Block", P.loft([sec(984, 252, 204, 0, PR.TORSO_Y * 0.4), sec(1040, 236, 190, 0, PR.TORSO_Y * 0.8)]),
-          None, "alu", 4, z)
-    groin = P.chamfer_poly([(-40, 0), (40, 0), (46, 96), (104, 132), (104, 176), (-104, 176), (-104, 132), (-46, 96)],
-                           [8, 8, 6, 10, 12, 12, 10, 6])
+    hx = PR.HX
+    b.add("Pelvis_Keel", P.loft([sec(858, 2 * hx - 150, 176), sec(990, 2 * hx - 144, 188)]), None, "alu", 4, z)
+    b.add("Pelvis_Block", P.loft([sec(984, 2 * hx + 12, 204, 0, PR.TORSO_Y * 0.4),
+                                  sec(1040, 2 * hx - 4, 190, 0, PR.TORSO_Y * 0.8)]), None, "alu", 4, z)
+    groin = P.chamfer_poly([(-46, 0), (46, 0), (54, 96), (hx - 14, 132), (hx - 14, 176), (-hx + 14, 176),
+                            (-hx + 14, 132), (-54, 96)], [8, 8, 6, 10, 12, 12, 10, 6])
     b.add("Groin_Plate", P.plate(groin, 12, crown=7, slices=8), T(0, -100, 862) @ R("X", 90), "armour", 3, z, 3)
     for s in (1, -1):
         n = side(s)
-        b.add(f"Hip_Yaw_{n}", P.cyl(134, 62, 48), T(s * PR.HX, 0, 1008), "alu", 2.5, z)
+        b.add(f"Hip_Yaw_{n}", P.cyl(134, 62, 48), T(s * hx, 0, 1008), "alu", 2.5, z)
         b.add(f"Pelvis_Side_{n}", P.plate(P.chamfer_poly(P.rrect(168, 60), 14), 10),
-              T(s * 127, 0, 1010) @ R("Y", s * 90) @ R("Z", 90), "armour", 3, z)
-    b.add("Hip_Roll_Housing", P.loft([sec(880, 150, 56, 0, 112), sec(960, 196, 64, 0, 108), sec(1000, 180, 50, 0, 104)]),
-          None, "alu", 4, z)
+              T(s * (hx + 7), 0, 1010) @ R("Y", s * 90) @ R("Z", 90), "armour", 3, z)
+    b.add("Hip_Roll_Housing", P.loft([sec(880, 2 * hx - 90, 56, 0, 112), sec(960, 2 * hx - 44, 64, 0, 108),
+                                      sec(1000, 2 * hx - 60, 50, 0, 104)]), None, "alu", 4, z)
     b.add("Waist_Slew", P.cyl(200, 26, 64), T(0, PR.TORSO_Y, PR.Z_WAIST - 7), "ti", 2.5, z)
 
 
@@ -153,21 +151,24 @@ def abdomen(b):
 # ── thorax, backpack ─────────────────────────────────────────────────────────
 def thorax(b):
     z = "thorax"
-    core = P.loft([sec(1206, 250, 214, 0, -8), sec(1292, 316, 300, 0, -18), sec(1400, 320, 316, 0, -18),
-                   sec(1468, 316, 300, 0, -22), sec(1492, 276, 232, 0, -24)])
+    sx = PR.SX
+    wc = 2 * sx - 164                                            # frame width between the shoulder joints
+    core = P.loft([sec(1206, 258, 214, 0, -8), sec(1292, wc - 8, 300, 0, -18), sec(1400, wc, 316, 0, -18),
+                   sec(1468, wc - 4, 300, 0, -22), sec(1492, wc - 50, 232, 0, -24)])
     b.add("Thorax_Core", core, None, "alu", 5, z, 3)
     yf = PR.CHEST_FRONT_Y + 15 + 9
     for s in (1, -1):
         n = side(s)
-        pec = [(10, 0), (150, 0), (212, 64), (212, 206), (176, 240), (10, 240)]
+        px = sx - 30
+        pec = [(10, 0), (px - 66, 0), (px, 66), (px, 206), (px - 38, 240), (10, 240)]
         pec = P.chamfer_poly([(x * s, y) for x, y in pec], 9)
         b.add(f"Pectoral_{n}", P.plate(pec, 15, crown=9, slices=10), T(0, yf + 1, 1262) @ R("X", 90), "armour", 4, z, 3)
         b.add(f"Flank_{n}", P.plate(P.chamfer_poly(P.rrect(196, 150), 22), 10),
-              T(s * 160, -20, 1330) @ R("Y", s * 90) @ R("Z", 90), "armour", 3, z)
-        b.add(f"Shoulder_Yoke_{n}", P.loft([sec(1438, 92, 190, s * 112, -6), sec(1500, 70, 150, s * 106, -8)]),
+              T(s * wc / 2, -20, 1330) @ R("Y", s * 90) @ R("Z", 90), "armour", 3, z)
+        b.add(f"Shoulder_Yoke_{n}", P.loft([sec(1438, 92, 190, s * (sx - 128), -6), sec(1500, 70, 150, s * (sx - 134), -8)]),
               None, "alu", 4, z)
-        b.add(f"Shoulder_Pitch_{n}", P.cyl(176, 62, 64), T(s * 132, 0, PR.Z_SHOULDER) @ R("Y", 90), "alu", 2.5, z)
-        b.add(f"Lift_Eye_{n}", F.lifting_eye_bm(34), T(s * 108, 34, 1500), "ti", 0, z)
+        b.add(f"Shoulder_Pitch_{n}", P.cyl(176, 62, 64), T(s * (sx - 108), 0, PR.Z_SHOULDER) @ R("Y", 90), "alu", 2.5, z)
+        b.add(f"Lift_Eye_{n}", F.lifting_eye_bm(34), T(s * (sx - 132), 34, 1500), "ti", 0, z)
     stern = P.chamfer_poly([(-38, 0), (38, 0), (44, 40), (44, 264), (-44, 264), (-44, 40)], [10, 10, 4, 8, 8, 4])
     b.add("Sternum", P.plate(stern, 20, crown=4, slices=6), T(0, yf - 1, 1238) @ R("X", 90), "armour", 3.5, z, 3)
     collar = [(-108, 70), (-108, -62), (-70, -100), (70, -100), (108, -62), (108, 70), (86, 70), (86, -52),
@@ -284,35 +285,34 @@ def head(b):
 
 # ── arms and hands ───────────────────────────────────────────────────────────
 def pauldron_outline(out, skirt, t, drop=0.0):
+    """C-section of the shoulder armour in (x, z): top slab and outer wall around the roll actuator."""
     d = drop
-    return [(186, 1502 - d), (204, 1492 - d * 0.6), (240, 1528 - d), (out - 64, 1528 - d), (out - t - 6, 1490 - d),
-            (out - t, 1410), (out - t - 14, skirt), (out - 12, skirt), (out, 1410), (out - 6, 1502 - d),
-            (out - 60, 1552 - d), (230, 1552 - d)]
+    sx = PR.SX
+    return [(sx - 58, 1506 - d), (sx - 38, 1494 - d * 0.6), (sx - 2, 1530 - d), (out - 70, 1530 - d),
+            (out - t - 6, 1488 - d), (out - t, 1400), (out - t - 16, skirt), (out - 12, skirt), (out, 1400),
+            (out - 6, 1506 - d), (out - 66, 1560 - d), (sx - 14, 1560 - d)]
 
 
 def arms(b):
     for s in (1, -1):
         n = side(s)
         za, zh = f"arm_{n}", f"hand_{n}"
-        d_u = Vector((s * math.sin(math.radians(PR.ARM_ABDUCT)), 0, -math.cos(math.radians(PR.ARM_ABDUCT))))
-        Sv = Vector((s * PR.SX, 0, PR.Z_SHOULDER))
-        Au = C.frame(Sv, -d_u, (1, 0, 0))                        # +Z up the arm, X lateral, Y back
-        Af = Au @ T(0, 0, -PR.UPPER_ARM) @ R("X", -PR.ELBOW_FLEX)
-        Ah = Af @ T(0, 0, -PR.FOREARM)
+        Sv, Au, Af, Ah = FR.arm(s)
 
         b.add(f"Shoulder_Roll_{n}", P.cyl(150, 122, 64), T(*Sv) @ R("X", 90), "alu", 2.5, za)
         out = PR.PAULDRON_L_OUT if s > 0 else PR.PAULDRON_R_OUT
-        skirt, t, drop = (1310, 20, 0) if s > 0 else (1346, 16, 12)
-        yf, yr = (-122, 110) if s > 0 else (-114, 20)            # right is cut back to clear the trunnion
-        pl = ends([(x * s, zz) for x, zz in pauldron_outline(out, skirt, t, drop)], -yr, -yf, 16, 0.9)
-        b.add(f"Pauldron_{n}", pl, R("X", 90), "armour", 4, f"pauldron_{n}", 3)
-        chk = P.chamfer_poly([(x * s, zz) for x, zz in ((196, 1450), (out - 12, 1438), (out - 5, 1500 - drop),
-                                                         (out - 58, 1544 - drop), (234, 1544 - drop),
-                                                         (194, 1504 - drop))], 6)
-        for tag, y0 in (("F", yf + 3), ("R", yr - 17)):
+        skirt, t, drop = (1296, 24, 0) if s > 0 else (1326, 20, PR.PAULDRON_R_DROP)
+        yf, yr = (-132, 118) if s > 0 else (-124, 20)            # right is cut back to clear the mount
+        pl = ends([(x * s, zz) for x, zz in pauldron_outline(out, skirt, t, drop)], -yr, -yf, 20, 0.88)
+        b.add(f"Pauldron_{n}", pl, R("X", 90), "armour", 5, f"pauldron_{n}", 3)
+        sx = PR.SX
+        chk = P.chamfer_poly([(x * s, zz) for x, zz in ((sx - 46, 1420), (out - 14, 1404), (out - 5, 1504 - drop),
+                                                         (out - 64, 1552 - drop), (sx - 10, 1552 - drop),
+                                                         (sx - 48, 1508 - drop))], 8)
+        for tag, y0 in (("F", yf + 4), ("R", yr - 20)):
             if s < 0 and tag == "R":
                 continue                                         # right rear stays open for the mount
-            b.add(f"Pauldron_Cheek_{n}{tag}", P.prism(chk, -(y0 + 14), -y0), R("X", 90), "armour", 3,
+            b.add(f"Pauldron_Cheek_{n}{tag}", P.prism(chk, -(y0 + 16), -y0), R("X", 90), "armour", 3,
                   f"pauldron_{n}", 3)
 
         b.add(f"Shoulder_Yaw_{n}", P.cyl(164, 88, 64), Au @ T(0, 0, -124), "alu", 2.5, za)
@@ -423,6 +423,11 @@ def build(barrel_l=None):
     M.reset()
     F.DECALS.clear()
     b = Blk()
+    return build_into(b, barrel_l)
+
+
+def build_into(b, barrel_l=None):
+    """Add the blockout volumes to the current scene (used as stand-ins by model.build)."""
     legs(b)
     pelvis(b)
     b.O = T(0, PR.TORSO_Y, 0)           # everything above the waist sits forward of the hips
@@ -552,13 +557,13 @@ def run(opts):
     tag = arg.get("tag", "")
     if "variants" in opts:
         paths = []
-        for L in (440, 500, 600, 750):
+        for L in (400, 455, 520):
             build(float(L))
             m = measure()
             print("VARIANT", L, json.dumps(dict(stowed_height=m["stowed"]["height"],
                                                 muzzle_y=m["deployed"]["min"][1])))
             paths += render_variant(str(L), f"barrel {L} mm  overall {m['stowed']['height']:.0f} mm")
-        RD.sheet(paths, RD.REVIEW / "phase2" / "G1_barrel_variants.jpg", cols=6)
+        RD.sheet(paths, RD.REVIEW / "phase2" / "wip" / "barrel_variants_post_g1.jpg", cols=3)
         return
     build(float(arg["barrel"]) if "barrel" in arg else None)
     m = measure()

@@ -401,10 +401,12 @@ def rotary_actuator(name, od=160.0, length=90.0, matrix=None, collection=None, b
              (r * 0.34, L + 3.0), (r * 0.30, L + 1.0)]
     flange = obj_from_bm(name + "_Output_Flange", P.revolve(fprof, segs), matrix, collection,
                          M.get("ti"), bevel=0.4)
-    seats = ring((0, 0, L + 3.0), (0, 0, 1), r * 0.60, bolts)
-    b = fasteners(name + "_Flange_Bolts", seats, "M6", target=flange, collection=collection,
-                  matrix=matrix)
+    out = dict(housing=housing, flange=flange)
+    if bolts:                                    # bolts=0 when the driven part brings its own screws
+        seats = ring((0, 0, L + 3.0), (0, 0, 1), r * 0.60, bolts)
+        out["bolts"] = fasteners(name + "_Flange_Bolts", seats, "M6", target=flange, collection=collection,
+                                 matrix=matrix)
     cm = matrix @ R("Z", connector_angle) @ T(r - 3.5, 0, L * 0.07 + 5) @ R("Y", 90)
-    conn = obj_from_bm(name + "_Connector", connector_bm(14.0), cm, collection,
-                       [M.get("fastener"), M.get("rubber")], bevel=0.0)
-    return dict(housing=housing, flange=flange, bolts=b, connector=conn)
+    out["connector"] = obj_from_bm(name + "_Connector", connector_bm(14.0), cm, collection,
+                                   [M.get("fastener"), M.get("rubber")], bevel=0.0)
+    return out

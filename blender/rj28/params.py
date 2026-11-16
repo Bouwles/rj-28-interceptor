@@ -17,31 +17,34 @@ Z_SLIT = 1620.0
 Z_CROWN = 1730.0
 
 # ── widths and lengths ───────────────────────────────────────────────────────
-SHOULDER_SPAN = 480.0            # axis to axis
-ARMOUR_SPAN = 700.0              # over shoulder armour
-PAULDRON_L_OUT = 356.0           # left armour is the larger one
+SHOULDER_SPAN = 520.0            # axis to axis (G1: matched to the concept art; brief 480)
+ARMOUR_SPAN = 780.0              # over shoulder armour (G1: concept art; brief 700)
+PAULDRON_L_OUT = 398.0           # left armour is the larger one
 PAULDRON_R_OUT = ARMOUR_SPAN - PAULDRON_L_OUT
-HIP_SPAN = 240.0
+PAULDRON_TOP_Z = 1560.0          # top of the left shoulder armour
+PAULDRON_R_DROP = 18.0           # right armour sits lower, under the barrel
+HIP_SPAN = 270.0                 # G1: concept art stance; brief 240
 CHEST_DEPTH = 330.0
 CHEST_TO_PACK = 460.0
 UPPER_ARM = 310.0
 FOREARM = 280.0
 HAND = 195.0
-FOOT_L, FOOT_W = 310.0, 135.0
+FOOT_L, FOOT_W = 330.0, 195.0    # G1: concept art; brief 310 x 135
 
 # ── pose (section 2.5) ───────────────────────────────────────────────────────
 TOE_OUT = 6.0
+LEG_ABDUCT = 5.5                 # G1: hip roll that puts the feet about 425 mm apart, as in the concept art
 KNEE_FLEX = 4.0
 ARM_ABDUCT = 12.0
 ELBOW_FLEX = 10.0
 
 TORSO_Y = -30.0                  # waist and everything above it sit forward of the hip axes
-FOOT_SHIFT = 10.0                # ankle sits this much further forward in the foot
 
 SX = SHOULDER_SPAN / 2
 HX = HIP_SPAN / 2
-THIGH = (Z_HIP - Z_KNEE) / math.cos(math.radians(KNEE_FLEX / 2))
-SHIN = (Z_KNEE - Z_ANKLE) / math.cos(math.radians(KNEE_FLEX / 2))
+_LEG_COS = math.cos(math.radians(KNEE_FLEX / 2)) * math.cos(math.radians(LEG_ABDUCT))
+THIGH = (Z_HIP - Z_KNEE) / _LEG_COS
+SHIN = (Z_KNEE - Z_ANKLE) / _LEG_COS
 
 # ── torso envelope ───────────────────────────────────────────────────────────
 CHEST_FRONT_Y = -190.0           # outer face of the pectoral armour
@@ -72,9 +75,9 @@ BORE_RISE = 125.0                # bore axis above the trunnion axis when level
 ELEV_MIN, ELEV_MAX = -5.0, 90.0
 TRAVERSE = 25.0
 BARREL_OD = 110.0
-BARREL_L = 500.0                 # see docs/DECISIONS.md D-015 (brief says 750 and ~2,050 overall; they conflict)
-BREECH_W, BREECH_H = 170.0, 190.0
-BREECH_FWD, BREECH_AFT = 100.0, 130.0            # breech extent either side of the trunnion
+BARREL_L = 455.0                 # see docs/DECISIONS.md D-015/D-021 (G1: short barrel as in the concept art, 2,050 overall)
+BREECH_W, BREECH_H = 164.0, 176.0
+BREECH_FWD, BREECH_AFT = 80.0, 110.0            # breech extent either side of the trunnion
 CLEARANCE_MIN = 15.0
 SLEW_OD = 170.0
 YOKE_DROP = 121.0                # trunnion axis down to the top of the yoke base

@@ -253,6 +253,10 @@ def thicken(bm, t):
     """Turn an open surface into a solid shell by offsetting inward by t."""
     bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
     bm.normal_update()
+    c = sum((v.co for v in bm.verts), Vector()) / max(1, len(bm.verts))
+    if sum((f.calc_center_median() - c).dot(f.normal) * f.calc_area() for f in bm.faces) < 0:
+        bmesh.ops.reverse_faces(bm, faces=bm.faces)      # make "outward" deterministic for open shells
+        bm.normal_update()
     verts, faces = bm.verts[:], bm.faces[:]
     bound = [e for e in bm.edges if e.is_boundary]
     new = {v: bm.verts.new(v.co - v.normal * t * v.calc_shell_factor()) for v in verts}
