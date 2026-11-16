@@ -1,0 +1,40 @@
+{
+  "deployed": {
+    "height": 1771.0,
+    "width": 901.7,
+    "depth": 730.0,
+    "min": [
+      -456.0,
+      -440.0,
+      0.0
+    ],
+    "max": [
+      445.7,
+      290.0,
+      1771.0
+    ]
+  },
+  "stowed": {
+    "height": 2115.0,
+    "width": 901.7,
+    "depth": 637.0,
+    "min": [
+      -456.0,
+      -221.0,
+      0.0
+    ],
+    "max": [
+      445.7,
+      416.0,
+      2115.0
+    ]
+  },
+  "body": {
+    "height_to_crown": 1731.7,
+    "width": 891.4,
+    "depth": 467.0
+  },
+  "armour_span": 700.0,
+  "chest_front_to_pack_rear": 467.0,
+  "foot_length": 327.3
+}

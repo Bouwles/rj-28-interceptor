@@ -1,0 +1,154 @@
+{
+  "required_mm": 15.0,
+  "min_clearance_mm": 15.0,
+  "passed": true,
+  "poses": 79,
+  "sample_spacing_mm": 10.0,
+  "zones": [
+    {
+      "zone": "yoke",
+      "group": "elev",
+      "clearance_mm": 5.0,
+      "elev": -5.0,
+      "trav": 0.0,
+      "at_mm": [
+        -404,
+        177,
+        1479
+      ]
+    },
+    {
+      "zone": "mount_fix",
+      "group": "elev",
+      "clearance_mm": 15.0,
+      "elev": 90.0,
+      "trav": 0.0,
+      "at_mm": [
+        -282,
+        213,
+        1370
+      ]
+    },
+    {
+      "zone": "head",
+      "group": "elev",
+      "clearance_mm": 15.5,
+      "elev": -5.0,
+      "trav": 25.0,
+      "at_mm": [
+        -72,
+        -143,
+        1630
+      ]
+    },
+    {
+      "zone": "pauldron_R",
+      "group": "elev",
+      "clearance_mm": 18.7,
+      "elev": -5.0,
+      "trav": 5.0,
+      "at_mm": [
+        -276,
+        -28,
+        1559
+      ]
+    },
+    {
+      "zone": "cap",
+      "group": "elev",
+      "clearance_mm": 24.0,
+      "elev": 0.0,
+      "trav": 25.0,
+      "at_mm": [
+        -90,
+        -88,
+        1631
+      ]
+    },
+    {
+      "zone": "arm_R",
+      "group": "trav",
+      "clearance_mm": 27.2,
+      "elev": 0.0,
+      "trav": 25.0,
+      "at_mm": [
+        -314,
+        30,
+        1430
+      ]
+    },
+    {
+      "zone": "thorax",
+      "group": "elev",
+      "clearance_mm": 37.6,
+      "elev": -5.0,
+      "trav": 25.0,
+      "at_mm": [
+        -107,
+        -103,
+        1539
+      ]
+    },
+    {
+      "zone": "backpack",
+      "group": "trav",
+      "clearance_mm": 39.0,
+      "elev": 0.0,
+      "trav": -2.5,
+      "at_mm": [
+        -165,
+        160,
+        1376
+      ]
+    },
+    {
+      "zone": "backpack",
+      "group": "elev",
+      "clearance_mm": 42.0,
+      "elev": 90.0,
+      "trav": 0.0,
+      "at_mm": [
+        -165,
+        220,
+        1413
+      ]
+    },
+    {
+      "zone": "arm_R",
+      "group": "elev",
+      "clearance_mm": 49.0,
+      "elev": -5.0,
+      "trav": -12.5,
+      "at_mm": [
+        -254,
+        30,
+        1503
+      ]
+    },
+    {
+      "zone": "pauldron_R",
+      "group": "trav",
+      "clearance_mm": 57.8,
+      "elev": 0.0,
+      "trav": 25.0,
+      "at_mm": [
+        -331,
+        -11,
+        1487
+      ]
+    },
+    {
+      "zone": "thorax",
+      "group": "trav",
+      "clearance_mm": 78.9,
+      "elev": 0.0,
+      "trav": 22.5,
+      "at_mm": [
+        -169,
+        47,
+        1381
+      ]
+    }
+  ],
+  "note": "zones not listed never came within 80 mm of the mount"
+}
