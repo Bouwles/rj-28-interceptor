@@ -10,11 +10,13 @@ Routes are written against the frames of the assembly they run on, so they
 follow if a dimension changes.
 """
 import bmesh
+import numpy as np
 from mathutils import Vector
+from mathutils.bvhtree import BVHTree
 
-from .. import frames as FR, params as PR
+from .. import frames as FR, params as PR, parts, poses
 from ..lib import core as C, harness as H, mech, prims as P
-from ..lib.core import T, R, frame
+from ..lib.core import MM, T, R, frame
 from ..parts import Asm
 from . import leg as LEG
 
@@ -23,17 +25,67 @@ def _dir(m, v):
     return (m.to_3x3() @ Vector(v)).normalized()
 
 
+class Surface:
+    """The outside of one or more assemblies, for laying a run on it."""
+
+    def __init__(self, *aas):
+        verts, tris = [], []
+        for ob in parts.all_parts():
+            if ob.type == "MESH" and ob.get("rj28_assembly") in aas and len(ob.data.vertices):
+                v, t = poses._tris(ob)
+                off = len(verts)
+                verts += v
+                tris += [(a + off, b + off, c + off) for a, b, c in t]
+        self.bvh = BVHTree.FromPolygons(verts, tris) if tris else None
+
+    def hug(self, p, toward, r):
+        """Point on the run's centreline where a run of radius r, coming from p and
+        pressed towards `toward`, lies on the surface; and the direction into the surface."""
+        p, toward = Vector(p), Vector(toward)
+        d = (toward - p).normalized()
+        hit = self.bvh.ray_cast(p * MM, d, 0.6) if self.bvh else (None,)
+        if hit[0] is None:
+            return p, d
+        return hit[0] / MM - d * (r + 1.5), d
+
+
+def tail_of(ob):
+    """Where a cable leaves a lib connector: (point, direction), found from its mesh
+    (the thin boot end of its long axis)."""
+    v = np.array([tuple(q.co) for q in ob.data.vertices]) / MM
+    c = v.mean(axis=0)
+    ax = np.linalg.eigh(np.cov((v - c).T))[1][:, -1]
+    t = (v - c) @ ax
+
+    def radius(sel):
+        w = v[sel] - c
+        return np.linalg.norm(w - np.outer(w @ ax, ax), axis=1).max()
+
+    lo_thin = radius(t < np.percentile(t, 15)) < radius(t > np.percentile(t, 85))
+    tip = v[t.argmin()] if lo_thin else v[t.argmax()]
+    d = -ax if lo_thin else ax
+    axis_pt = c + ax * ((tip - c) @ ax)
+    return Vector(axis_pt.tolist()), Vector(d.tolist())
+
+
+def connector(aa, short):
+    for o in parts.all_parts():
+        if o.get("rj28_assembly") == aa and o["rj28_name"].replace(" ", "_") == short:
+            return o
+    return None
+
+
 class Runs:
     """Small helper that keeps the part naming and function sentences uniform."""
 
     def __init__(self, a):
         self.a = a
 
-    def cable(self, name, pts, what, r=3.6, sag=0.0, clips=None, clip_dir=None, spacing=100.0):
-        self.a.take(H.cable("_c", pts, r, sag=sag), name, f"Braided cable: {what}.")
+    def cable(self, name, pts, what, r=3.6, sag=0.0, clips=None, clip_dir=None, spacing=100.0, group=None, zone=None):
+        self.a.take(H.cable("_c", pts, r, sag=sag), name, f"Braided cable: {what}.", group=group, zone=zone)
         if clips:
             self.a.take(H.p_clips("_p", clips, r, clip_dir, spacing=spacing), name + "_Clips",
-                        f"P-clips holding the {what} cable to the structure.")
+                        f"P-clips holding the {what} cable to the structure.", group=group, zone=zone)
 
     def hose(self, name, pts, what, r=6.0, sag=0.0, clips=None, clip_dir=None, spacing=110.0):
         d = H.hose("_h", pts, r, sag=sag)
@@ -43,10 +95,10 @@ class Runs:
             self.a.take(H.p_clips("_p", clips, r, clip_dir, spacing=spacing), name + "_Clips",
                         f"P-clips holding the {what} hose to the structure.")
 
-    def plug(self, name, point, direction, what, d=11.0):
+    def plug(self, name, point, direction, what, d=11.0, group=None, zone=None):
         """Connector with its flange at `point`; returns where its cable leaves."""
         ob, tail = H.connector("_k", point, direction, d)
-        self.a.take(ob, name, f"Connector: {what}.")
+        self.a.take(ob, name, f"Connector: {what}.", group=group, zone=zone)
         return tail
 
     def box(self, name, matrix, size, what):
@@ -127,12 +179,104 @@ def neck(rn):
     rn.hose("Neck_Coolant_Line", pts, "coolant to the head heat spreader", r=4.2)
 
 
+def arm(rn, s):
+    """One arm: a trunk from the thorax flank across the shoulder to a junction on the
+    upper arm, leads to the roll, yaw and elbow actuators, a jumper to the forearm roll
+    actuator, and a coolant hose to the hand-drive controller in the forearm."""
+    n = "L" if s > 0 else "R"
+    aa = "07" if s > 0 else "08"
+    side = ("left", "right")[s < 0]
+    W = FR.torso()
+    sv, upper, fore, hand = [W @ m for m in FR.arm(s)]
+    surf = Surface(aa)
+
+    def up_pt(x, y, z):
+        return upper @ Vector((x, y, z))
+
+    # junction box on the back of the upper arm
+    jc, jd = surf.hug(up_pt(-s * 10, 260, -196), up_pt(-s * 10, 0, -196), 0.0)
+    back = _dir(upper, (0, 1, 0))
+    rn.box(f"Arm_Junction_{n}", frame(jc - jd * 1.5, -jd, _dir(upper, (0, 0, 1))) @ T(0, 0, 0), (44, 26, 15),
+           f"splits the {side} arm trunk to the shoulder and elbow actuators")
+    j_top = jc - jd * 9 + _dir(upper, (0, 0, 1)) * 24
+    j_bot = jc - jd * 9 - _dir(upper, (0, 0, 1)) * 24
+
+    # trunk: plug on the thorax flank, slack across the shoulder, clipped down the upper arm
+    t0 = rn.plug(f"Arm_Trunk_Plug_{n}", W @ Vector((s * (PR.SX - 82), 86, 1388)), (s, 0, 0),
+                 f"{side} arm power and signal leaving the thorax", d=14.0)
+    c1, d1 = surf.hug(up_pt(-s * 10, 260, -146), up_pt(-s * 10, 0, -146), 5.0)
+    pts = [t0, t0 + Vector((s * 26, 16, -6)), W @ Vector((s * (PR.SX + 6), 120, 1372)), up_pt(-s * 16, 118, -112), c1, j_top]
+    rn.cable(f"Arm_Trunk_{n}", pts, f"{side} arm trunk from the thorax to the upper-arm junction", r=5.0, clips=[c1, c1 + (j_top - c1) * 0.6],
+             clip_dir=d1, spacing=60.0)
+
+    # leads to the three actuators whose connectors are on the back of the arm
+    for short, tag, bend in (("Shoulder_Roll_Connector", "Shoulder_Roll", (s * 0.1, 0.6, -0.8)),
+                             ("Shoulder_Yaw_Connector", "Shoulder_Yaw", (0.0, 0.7, -0.7)),
+                             ("Elbow_Connector", "Elbow", (0.0, 0.8, 0.6))):
+        ob = connector(aa, short)
+        if ob is None:
+            print("HARNESS SKIP", aa, short)
+            continue
+        tip, out = tail_of(ob)
+        b = Vector(bend).normalized()
+        end = j_top if tag != "Elbow" else j_bot
+        pts = [tip, tip + out * 16 + b * 14, (tip + end) / 2 + back * 34, end + back * 10, end]
+        rn.cable(f"{tag}_Lead_{n}", pts, f"junction to the {side} {tag.lower().replace('_', ' ')} actuator", r=3.0)
+
+    # forearm: jumper from the roll actuator into a grommet in the armour; coolant to the controller
+    ob = connector(aa, "Forearm_Roll_Connector")
+    fsurf_pt, fd = surf.hug(fore @ Vector((0, 260, -150)), fore @ Vector((0, 0, -150)), 0.0)
+    rn.a.add(f"Forearm_Grommet_{n}", P.torus(15, 5, 24, 10), "Rubber grommet where the forearm loom passes through the armour.",
+             "rubber", frame(fsurf_pt, -fd), bevel=0)
+    if ob is not None:
+        tip, out = tail_of(ob)
+        pts = [tip, tip + out * 20 + _dir(fore, (0, 0, 1)) * 14, fsurf_pt - fd * 30 + _dir(fore, (0, 0, -1)) * 22,
+               fsurf_pt - fd * 12, fsurf_pt + fd * 6]
+        rn.cable(f"Forearm_Roll_Lead_{n}", pts, f"{side} forearm roll actuator into the forearm loom", r=3.0)
+    pts = [j_bot, j_bot + back * 22 - _dir(upper, (0, 0, 1)) * 30, up_pt(0, 132, -PR.UPPER_ARM - 30),
+           fsurf_pt - fd * 46 + _dir(fore, (0, 0, 1)) * 70, fsurf_pt - fd * 14 + _dir(fore, (0, 0, 1)) * 16, fsurf_pt + fd * 6]
+    rn.cable(f"Elbow_Loop_{n}", pts, f"service loop carrying the {side} forearm loom across the elbow", r=4.4)
+    h0 = W @ Vector((s * (PR.SX - 84), 94, 1356))
+    hc, hd = surf.hug(up_pt(s * 26, 260, -200), up_pt(s * 26, 0, -200), 6.0)
+    g2, gd = surf.hug(fore @ Vector((s * 30, 260, -120)), fore @ Vector((s * 30, 0, -120)), 0.0)
+    pts = [h0, h0 + Vector((s * 30, 22, -14)), up_pt(s * 20, 124, -120), hc, up_pt(s * 22, 128, -PR.UPPER_ARM - 10),
+           g2 - gd * 40 + _dir(fore, (0, 0, 1)) * 50, g2 - gd * 4]
+    along = _dir(upper, (0, 0, 1))
+    rn.hose(f"Arm_Coolant_Line_{n}", pts, f"coolant to the {side} hand-drive controller", r=5.5,
+            clips=[hc + along * 24, hc - along * 24], clip_dir=hd, spacing=60.0)
+
+
+def mount(rn):
+    """Mount: the elevation drive lead with slack for traverse, and the tracker's jumper to the breech."""
+    ob = connector("15", "Elevation_Drive_Connector")
+    if ob is None:
+        print("HARNESS SKIP mount")
+        return
+    tip, out = tail_of(ob)
+    zb = PR.TRUNNION_Z - PR.YOKE_DROP
+    plug = Vector((PR.BORE_X + 78, PR.TRUNNION_Y - 66, zb - 54))            # on the hardpoint, clear of the ring
+    tail = rn.plug("Mount_Drive_Plug", plug, (0, 0, 1), "elevation drive power from the hardpoint", d=13.0, zone="mount_fix")
+    pts = [tip, tip + out * 22 + Vector((30, -10, 6)), Vector((plug.x - 16, plug.y - 24, tip.z - 10)),
+           tail + Vector((6, -16, 42)), tail]
+    rn.cable("Mount_Drive_Lead", pts, "hardpoint to the elevation drive, with slack for traverse", r=4.0, zone="mount_chain")
+    cn = FR.cannon()
+    xo = -(PR.BARREL_OD / 2 + 63)
+    t2 = rn.plug("Tracker_Plug", cn @ Vector((-58, PR.BREECH_H / 2, 34)), (cn.to_3x3() @ Vector((0, 1, 0))),
+                 "tracking head signal into the breech", d=10.0, group="elev", zone="mount_elev")
+    pts = [cn @ Vector((xo, 30, PR.BREECH_FWD + 20)), cn @ Vector((xo + 8, 72, PR.BREECH_FWD + 8)),
+           cn @ Vector((-70, PR.BREECH_H / 2 + 34, 44)), t2]
+    rn.cable("Tracker_Lead", pts, "tracking head to the breech", r=2.8, group="elev", zone="mount_elev")
+
+
 def build():
     a = Asm("16")
     rn = Runs(a)
     neck(rn)
     for s in (1, -1):
         leg(rn, s)
+        if connector("07" if s > 0 else "08", "Shoulder_Roll_Connector") is not None:
+            arm(rn, s)
+    mount(rn)
     return a
 
 

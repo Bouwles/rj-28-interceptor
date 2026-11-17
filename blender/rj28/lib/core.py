@@ -177,6 +177,18 @@ def boolean(target, cutters, op="DIFFERENCE", lip=None, keep=False):
         target.modifiers.remove(b)
     for m, vis in saved:
         m.show_viewport = vis
+    if len(new.vertices) == 0 and len(target.data.vertices) > 0 and op != "INTERSECT":
+        # the exact solver gives up on cutters that are tangent to an edge or that
+        # overlap themselves; keep the part and say so rather than emptying it
+        print("BOOLEAN EMPTY", target.name, "- cut skipped")
+        bpy.data.meshes.remove(new)
+        if not keep:
+            for c in cutters:
+                me = c.data
+                bpy.data.objects.remove(c)
+                if me.users == 0:
+                    bpy.data.meshes.remove(me)
+        return target
     old = target.data
     new.name = old.name
     target.data = new

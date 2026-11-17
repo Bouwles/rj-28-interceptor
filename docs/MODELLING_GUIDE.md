@@ -82,6 +82,16 @@ Built by one function looped over `s`. They are separate parts with their own nu
 | Thorax and backpack | Backpack bolts to the thorax back plane, y = THORAX_BACK_Y before the torso offset. |
 | Backpack and mount | Mount hardpoint bolts to the right side of the backpack (x = −PACK_HALF_W). Travel lock sits on the backpack's top right rear corner. |
 
+## Things that bite
+
+- `core.boolean` uses the exact solver. A cutter that overlaps itself (two cylinders touching in one cutter mesh), or that is tangent to an edge of the target, returns nothing; the guard prints `BOOLEAN EMPTY` and skips the cut. Keep holes at least a few millimetres apart and away from edges. Union overlapping solids before cutting them.
+- `mech.fasteners(target=...)`: two seats closer than a head diameter make overlapping counterbore cutters. Same failure.
+- `D.seats_on` casts from 60 mm outside the point you give, up to 600 mm. Give a point outside the surface on the side the screw goes in.
+- `P.thicken` thickens towards the surface's own centroid. For a patch that does not wrap its centroid pass `center=`.
+- `model.build` prints `EMPTY PART` for anything with no vertices. Treat it as an error.
+- A lib helper that returns a dict of objects: adopt every one, or delete the ones you do not use (see the knee actuator's rod-end fork in `leg.py`).
+- Labels: `F.label` registers the object itself, and `markings.build_atlas` gives it its material at the end of `marks.build`. A label with no material renders as a white block.
+
 ## Before calling an assembly done
 
 - Builds with no error; part count printed.
