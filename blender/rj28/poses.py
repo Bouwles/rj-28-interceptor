@@ -54,6 +54,12 @@ def set_mount(state="deployed", elev=None, trav=None):
         g = ob.get("mount_group")
         if g in mats:
             ob.matrix_world = _m(mats[g])
+        # flexible parts (the energy chain) carry a shape key per end state instead of a rigid pose
+        morph = ob.get("mount_morph")
+        if morph and ob.type == "MESH" and ob.data.shape_keys:
+            kb = ob.data.shape_keys.key_blocks.get(morph)
+            if kb is not None:
+                kb.value = min(1.0, max(0.0, e / 90.0))
     bpy.context.scene["rj28_mount"] = [e, t]
     bpy.context.view_layer.update()
     return e, t
