@@ -100,6 +100,111 @@ def _math(nt, op, a, b=None, clamp=False):
     return n.outputs[0]
 
 
+# key -> (roughness drop on worn edges, colour showing through on worn edges or None, dust amount)
+WEAR = {
+    "armour": (0.24, (0.062, 0.062, 0.064), 0.40),     # coating burnished smooth where hands and tools touch
+    "cap": (0.16, (0.040, 0.040, 0.042), 0.25),
+    "alu": (0.10, (0.36, 0.36, 0.37), 0.22),           # anodising rubbed through to bare metal
+    "ti": (0.10, (0.20, 0.19, 0.18), 0.18),
+    "fastener": (0.14, (0.20, 0.20, 0.21), 0.0),       # black oxide gone from the head edge
+    "rubber": (0.0, None, 0.55),                       # dust sits in the folds
+    "cfrp": (0.0, None, 0.18),
+}
+DUST = (0.105, 0.098, 0.088)
+
+
+def _mix_rgb(nt, fac, a, b):
+    n = nt.nodes.new("ShaderNodeMix")
+    n.data_type = "RGBA"
+    for sock, v in ((n.inputs[0], fac), (n.inputs[6], a), (n.inputs[7], b)):
+        if hasattr(v, "is_output"):
+            nt.links.new(v, sock)
+        elif isinstance(v, tuple):
+            sock.default_value = (*v[:3], 1.0)
+        else:
+            sock.default_value = v
+    return n.outputs[2]
+
+
+def _mix_val(nt, fac, a, b):
+    n = nt.nodes.new("ShaderNodeMix")
+    n.data_type = "FLOAT"
+    for sock, v in ((n.inputs[0], fac), (n.inputs[2], a), (n.inputs[3], b)):
+        if hasattr(v, "is_output"):
+            nt.links.new(v, sock)
+        else:
+            sock.default_value = v
+    return n.outputs[0]
+
+
+def _range(nt, src, lo, hi):
+    n = nt.nodes.new("ShaderNodeMapRange")
+    n.clamp = True
+    n.inputs["From Min"].default_value = lo
+    n.inputs["From Max"].default_value = hi
+    nt.links.new(src, n.inputs["Value"])
+    return n.outputs[0]
+
+
+def _source(sock):
+    """Whatever currently feeds a socket: the linked output, or its constant value."""
+    if sock.is_linked:
+        return sock.links[0].from_socket
+    v = sock.default_value
+    return tuple(v[:3]) if hasattr(v, "__len__") else float(v)
+
+
+def _wear(nt, b, edge_rough, edge_col, dust):
+    """Logical, light wear from two masks.
+
+    Edge mask: where the true normal and a 1.5 mm bevel-rounded normal disagree there
+    is a hard edge within 1.5 mm; pointiness keeps only the convex ones. This finds
+    real edges whatever the mesh density, and leaves smoothly curved armour alone.
+    Dust mask: occluded places that face upwards."""
+    geo = nt.nodes.new("ShaderNodeNewGeometry")
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    col, rough = _source(b.inputs["Base Color"]), _source(b.inputs["Roughness"])
+    for l in list(b.inputs["Base Color"].links) + list(b.inputs["Roughness"].links):
+        nt.links.remove(l)
+    if edge_rough or edge_col:
+        nz = nt.nodes.new("ShaderNodeTexNoise")
+        nz.inputs["Scale"].default_value = 140.0
+        nz.inputs["Detail"].default_value = 6.0
+        nt.links.new(tc.outputs["Object"], nz.inputs["Vector"])
+        bev = nt.nodes.new("ShaderNodeBevel")
+        bev.samples = 6
+        bev.inputs["Radius"].default_value = 0.0015
+        dot = nt.nodes.new("ShaderNodeVectorMath")
+        dot.operation = "DOT_PRODUCT"
+        nt.links.new(geo.outputs["Normal"], dot.inputs[0])
+        nt.links.new(bev.outputs["Normal"], dot.inputs[1])
+        sharp = _range(nt, _math(nt, "SUBTRACT", 1.0, dot.outputs["Value"]), 0.004, 0.05)
+        convex = _range(nt, geo.outputs["Pointiness"], 0.50, 0.53)
+        edge = _math(nt, "MULTIPLY", _math(nt, "MULTIPLY", sharp, convex), _range(nt, nz.outputs[0], 0.36, 0.60))
+        if edge_col:
+            col = _mix_rgb(nt, _math(nt, "MULTIPLY", edge, 0.85), col, edge_col)
+        rough = _math(nt, "SUBTRACT", rough, _math(nt, "MULTIPLY", edge, edge_rough), clamp=True)
+    if dust:
+        ao = nt.nodes.new("ShaderNodeAmbientOcclusion")
+        ao.samples = 8
+        ao.inputs["Distance"].default_value = 0.035
+        cav = _range(nt, _math(nt, "SUBTRACT", 1.0, ao.outputs["AO"]), 0.18, 0.62)
+        sep = nt.nodes.new("ShaderNodeSeparateXYZ")
+        nt.links.new(geo.outputs["Normal"], sep.inputs[0])
+        up = _math(nt, "ADD", 0.3, _math(nt, "MULTIPLY", _range(nt, sep.outputs[2], 0.1, 0.9), 0.7))
+        nz2 = nt.nodes.new("ShaderNodeTexNoise")
+        nz2.inputs["Scale"].default_value = 35.0
+        nz2.inputs["Detail"].default_value = 5.0
+        nt.links.new(tc.outputs["Object"], nz2.inputs["Vector"])
+        d = _math(nt, "MULTIPLY", _math(nt, "MULTIPLY", cav, up),
+                  _math(nt, "MULTIPLY", _range(nt, nz2.outputs[0], 0.3, 0.75), dust), clamp=True)
+        col = _mix_rgb(nt, d, col, DUST)
+        rough = _mix_val(nt, d, rough, 0.92)
+    for sock, v in ((b.inputs["Base Color"], col), (b.inputs["Roughness"], rough)):
+        if hasattr(v, "is_output"):
+            nt.links.new(v, sock)
+
+
 def _build(key):
     m, nt, b = _new("RJ28_" + key)
     if key == "armour":
@@ -149,7 +254,7 @@ def _build(key):
         nt.links.new(ck.outputs["Color"], b.inputs["Roughness"])
     elif key == "glass":
         # smoked, coated glass: dark at a glance, but emitters and optics behind it show through
-        _set(b, Base_Color=(0.10, 0.13, 0.16), Roughness=0.03, Metallic=0.0,
+        _set(b, Base_Color=(0.30, 0.32, 0.33), Roughness=0.03, Metallic=0.0,
              Coat_Weight=1.0, Coat_Roughness=0.02, IOR=1.52)
         b.inputs["Transmission Weight"].default_value = 0.94
         b.inputs["Coat Tint"].default_value = (0.55, 0.75, 1.0, 1.0)
@@ -165,7 +270,8 @@ def _build(key):
     elif key == "emissive":
         _set(b, Base_Color=(0.0, 0.0, 0.0), Roughness=0.3)
         b.inputs["Emission Color"].default_value = (*CYAN, 1.0)
-        b.inputs["Emission Strength"].default_value = 6.0
+        b.inputs["Base Color"].default_value = (*CYAN, 1.0)
+        b.inputs["Emission Strength"].default_value = 3.5
     elif key == "clay":
         _set(b, Base_Color=_grey(0.42), Roughness=0.55, Metallic=0.0)
     elif key == "cavity":
@@ -175,6 +281,8 @@ def _build(key):
         b.inputs["Specular IOR Level"].default_value = 0.0
     else:
         raise KeyError(key)
+    if key in WEAR:
+        _wear(nt, b, *WEAR[key])
     m["rj28_key"] = key
     return m
 
