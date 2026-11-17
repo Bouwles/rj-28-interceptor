@@ -8,6 +8,7 @@ occlusion, dust) are layered on in Phase 7.
 import bpy
 
 CYAN = (0.1144, 0.6867, 0.8879)          # #5FD8F2, linear
+EMIT = (0.30, 0.74, 0.90)                # emitter colour that displays as #5FD8F2 in the hero renders
 WHITE = (0.80, 0.80, 0.80)
 
 # key -> (display name, material class for mass/x-ray, density kg/m3)
@@ -217,7 +218,7 @@ def _build(key):
     elif key == "alu":
         _set(b, Base_Color=_grey(0.036), Roughness=0.35, Metallic=1.0)
         _noise_bump(nt, b, 900, 0.10, distance=0.00004, detail=1.0,
-                    stretch=(1.0, 1.0, 60.0), rough_var=0.04, rough_base=0.35)
+                    stretch=(1.0, 1.0, 60.0), rough_var=0.02, rough_base=0.35)
     elif key == "ti":
         _set(b, Base_Color=(0.105, 0.097, 0.088), Roughness=0.40, Metallic=1.0)
         _noise_bump(nt, b, 2600, 0.08, distance=0.00003, rough_var=0.04, rough_base=0.40)
@@ -269,9 +270,11 @@ def _build(key):
         nt.links.new(alpha, b.inputs["Alpha"])
     elif key == "emissive":
         _set(b, Base_Color=(0.0, 0.0, 0.0), Roughness=0.3)
-        b.inputs["Emission Color"].default_value = (*CYAN, 1.0)
-        b.inputs["Base Color"].default_value = (*CYAN, 1.0)
-        b.inputs["Emission Strength"].default_value = 3.5
+        # a little red added in scene-linear: behind smoked glass and through the AgX curve the
+        # pure #5FD8F2 primaries display as azure; this lands on ice cyan
+        b.inputs["Emission Color"].default_value = (*EMIT, 1.0)
+        b.inputs["Base Color"].default_value = (*EMIT, 1.0)
+        b.inputs["Emission Strength"].default_value = 5.0
     elif key == "clay":
         _set(b, Base_Color=_grey(0.42), Roughness=0.55, Metallic=0.0)
     elif key == "cavity":
