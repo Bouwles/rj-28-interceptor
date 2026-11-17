@@ -244,5 +244,5 @@ def label(name, text, height=8.0, matrix=None, color="white", target=None, colle
     for m in list(ob.modifiers):
         ob.modifiers.remove(m)
     ob["rj28_decal"] = True
-    DECALS.append(dict(obj=ob.name, text=text, color=color, w=w, h=h, pad=pad, cap=height))
+    DECALS.append(dict(obj=ob, text=text, color=color, w=w, h=h, pad=pad, cap=height))   # the object itself: it gets renamed on registration
     return ob

@@ -53,7 +53,7 @@ def build_atlas(path, size=2048):
     sc.collection.objects.link(cam)
     sc.camera = cam
     mats = {}
-    for name, col in (("white", SRGB_WHITE), ("cyan", M.CYAN)):
+    for name, col in (("white", SRGB_WHITE), ("cyan", M.CYAN), ("dark", (0.012, 0.012, 0.013))):
         m = bpy.data.materials.new("_atlas_" + name)
         m.use_nodes = True
         nt = m.node_tree
@@ -113,8 +113,11 @@ def build_atlas(path, size=2048):
     b.inputs["Roughness"].default_value = 0.55
     mat["rj28_key"] = "decal"
     for d in decs:
-        ob = bpy.data.objects.get(d["obj"])
-        if ob is None:
+        ob = d["obj"] if not isinstance(d["obj"], str) else bpy.data.objects.get(d["obj"])
+        try:
+            if ob is None or ob.name is None:
+                continue
+        except ReferenceError:
             continue
         x, y, w, h = rects[(d["text"], d["color"], round(d["cap"], 3))]
         ob.data.materials.clear()

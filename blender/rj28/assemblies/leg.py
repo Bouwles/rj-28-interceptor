@@ -137,7 +137,7 @@ def build(s):
     a.add("Knee_Bearing_Retainer", P.tube(104, 78, 5, 0.8), "Polished ring retaining the knee bearing in its housing.",
           "steel", Ko @ T(0, 0, 23 + 2.5), bevel=0)
     a.add("Knee_Encoder", D.encoder_bm(58), "Absolute encoder reading knee angle at the shaft end.",
-          ["alu", "fastener"], Ko @ T(0, 0, 23) @ R("Z", 90 * s), bevel=0.4)
+          ["alu", "fastener"], Ko @ T(0, 0, 23) @ R("Z", 90), bevel=0.4)        # gland to the rear on both legs
     Ki = Kn @ T(-s * xe, 0, 0) @ R("Y", -s * 90)
     hi = a.add("Knee_Bearing_Housing_Inner",
                P.revolve([(31, 0), (66, 0), (66, 14), (62, 18), (26, 18), (22, 21), (0, 21), (0, 15), (31, 15)], 64),

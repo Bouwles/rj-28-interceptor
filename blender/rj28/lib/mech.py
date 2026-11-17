@@ -294,6 +294,20 @@ def pin_bm(d, length, head=True):
     return bm
 
 
+def actuator_port(p0, p1, body_d=44.0, rod_d=30.0, stroke=80.0, pin_axis=(1, 0, 0), body_len=None):
+    """Where the power port of a linear_actuator built with the same arguments ends up:
+    (tip point, outward direction), in mm. The harness plugs in here."""
+    p0, p1 = Vector(p0), Vector(p1)
+    axis = (p1 - p0).normalized()
+    pin = Vector(pin_axis) - axis * axis.dot(Vector(pin_axis))
+    pin.normalize()
+    side = axis.cross(pin)
+    neck = rod_d * 0.95 * 1.25
+    body_len = body_len or (stroke + body_d * 1.6)
+    rb = body_d / 2
+    return p0 + axis * (neck + body_len * 0.18) + side * (rb * 1.57), side
+
+
 def linear_actuator(name, p0, p1, body_d=44.0, rod_d=30.0, stroke=80.0, bellows=True,
                     pin_axis=(1, 0, 0), collection=None, base_dir0=None, base_dir1=None,
                     body_len=None):
