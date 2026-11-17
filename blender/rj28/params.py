@@ -49,6 +49,7 @@ SHIN = (Z_KNEE - Z_ANKLE) / _LEG_COS
 # ── knee crank (see assemblies/leg.py) ───────────────────────────────────────
 KNEE_RANGE = 110.0               # flexion, degrees
 KNEE_CRANK = 70.0                # crank pin radius about the knee axis
+KNEE_PHASE = 13.0                # extra lead of the crank pin: the actuator leans back, so the lever peaks later
 
 # ── torso envelope ───────────────────────────────────────────────────────────
 CHEST_FRONT_Y = -190.0           # outer face of the pectoral armour

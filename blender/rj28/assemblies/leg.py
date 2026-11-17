@@ -10,11 +10,12 @@ Frames (rj28.frames.leg): thigh and shin frames have +X along the joint axes,
 Knee kinematics. The thigh ends in a fork: two long cheeks either side of an
 open corridor. The shin's tang sits in the middle of the fork on the knee
 shaft, and carries a crank pin KNEE_CRANK from the axis on each side. The two
-actuators run down the corridor from the top of the thigh to those pins. The
-pin sits half the knee's range below "straight back" when the leg is straight,
-so the lever arm is KNEE_CRANK * cos(flexion - range / 2): it peaks in
-mid-range and never falls below 57% of the crank radius, and the rod always
-passes the slim knee shaft with room to spare.
+actuators run down the corridor from the top of the thigh to those pins. With
+the leg straight the pin sits half the knee's range (plus KNEE_PHASE, because
+the actuator leans back) below "straight back". The lever arm then peaks at
+the crank radius in mid-range and is the same at both ends of travel, about
+57% of the crank radius, so the rod always passes the slim knee shaft.
+measure.py prints the lever arm across the range from these pivots.
 """
 import math
 
@@ -28,8 +29,9 @@ from ..parts import ACTUATOR_FN, Asm, raw
 
 ACT_X = 42.0                                         # knee actuators sit this far either side of the leg centre
 _H = math.radians(PR.KNEE_RANGE / 2)
+_A = math.radians(PR.KNEE_RANGE / 2 + PR.KNEE_PHASE)
 KNEE_P0 = (ACT_X, 120.0, -62.0)                      # body-end pivot, thigh frame
-KNEE_P1 = (ACT_X, PR.KNEE_CRANK * math.cos(_H), -PR.KNEE_CRANK * math.sin(_H))   # crank pin, shin frame
+KNEE_P1 = (ACT_X, PR.KNEE_CRANK * math.cos(_A), -PR.KNEE_CRANK * math.sin(_A))   # crank pin, shin frame
 KNEE_STROKE = 2 * PR.KNEE_CRANK * math.sin(_H)
 CHEEK_X = 74.0                                       # knee fork cheeks (14 thick) centred here
 ANKLE_P0 = (40.0, 86.0, -150.0)                      # shin frame
@@ -121,7 +123,7 @@ def build(s):
 
     # ── knee: slim shaft through the fork, bearing housings outside the cheeks ──
     xe = CHEEK_X + 7.0                               # outer face of a cheek
-    shaft = [(0, -xe - 14), (30, -xe - 14), (30, -xe + 14.5), (22, -xe + 16.5), (22, xe - 16.5), (30, xe - 14.5),
+    shaft = [(0, -xe - 14), (30, -xe - 14), (30, -xe + 14.5), (20, -xe + 17.5), (20, xe - 17.5), (30, xe - 14.5),
              (30, xe + 14), (0, xe + 14)]
     a.add("Knee_Shaft", P.revolve(shaft, 48), "Knee shaft: runs in the fork's bearings and carries the shin tang.", "ti",
           Kn @ R("Y", 90), bevel=0.6)
@@ -182,7 +184,7 @@ def build(s):
     py, pz = KNEE_P1[1], KNEE_P1[2]
     root = Vector((0, -(py - 6), -(pz + 112))).normalized()          # from the crank pin down into the beam
     bm = bmesh.new()
-    P.merge(bm, P.lug(50, 22.3, 96, 44, 40), frame((0, 0, 0), (1, 0, 0), (0, 0, 1)))            # tang on the shaft
+    P.merge(bm, P.lug(50, 20.3, 96, 44, 40), frame((0, 0, 0), (1, 0, 0), (0, 0, 1)))            # tang on the shaft
     P.merge(bm, P.lug(24, 8.4, 60, 44, 24), frame((0, py, pz), (1, 0, 0), tuple(-root)))        # centre crank lobe
     plate = P.chamfer_poly([(py + 22, pz + 2), (py + 12, pz + 20), (py - 12, pz + 22), (-36, -62), (-52, -76), (-40, -90),
                             (0, -128), (40, -128), (py + 20, pz - 24)], 5)
