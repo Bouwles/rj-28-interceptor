@@ -46,6 +46,10 @@ _LEG_COS = math.cos(math.radians(KNEE_FLEX / 2)) * math.cos(math.radians(LEG_ABD
 THIGH = (Z_HIP - Z_KNEE) / _LEG_COS
 SHIN = (Z_KNEE - Z_ANKLE) / _LEG_COS
 
+# ── knee crank (see assemblies/leg.py) ───────────────────────────────────────
+KNEE_RANGE = 110.0               # flexion, degrees
+KNEE_CRANK = 70.0                # crank pin radius about the knee axis
+
 # ── torso envelope ───────────────────────────────────────────────────────────
 CHEST_FRONT_Y = -190.0           # outer face of the pectoral armour
 THORAX_BACK_Y = 140.0
