@@ -234,7 +234,7 @@ def bounds_mm(objs):
     lo = Vector((1e9,) * 3)
     hi = Vector((-1e9,) * 3)
     for ob in objs:
-        if ob.type != "MESH":
+        if ob.type != "MESH" or len(ob.data.vertices) == 0:
             continue
         ev = ob.evaluated_get(dg)
         for c in ev.bound_box:

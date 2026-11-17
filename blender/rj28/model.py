@@ -68,5 +68,8 @@ def build(only=None, context=True):
         built[aa] = a
         print(f"ASM {aa} {a.title}: {len(a.parts)} parts")
     poses.set_mount("stowed")
+    for ob in parts.all_parts():
+        if ob.type == "MESH" and len(ob.data.vertices) == 0:
+            print("EMPTY PART", ob.name)
     print(f"PARTS {len(parts.all_parts())}")
     return built

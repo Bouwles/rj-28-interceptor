@@ -21,7 +21,7 @@ def seats_on(target, points, direction, x_hint=(0, 0, 1)):
     d = Vector(direction).normalized()
     out = []
     for p in points:
-        hit = bvh.ray_cast((Vector(p) + d * 60.0) * MM, -d, 0.2)
+        hit = bvh.ray_cast((Vector(p) + d * 60.0) * MM, -d, 0.6)
         if hit[0] is None:
             continue
         n = hit[1].normalized()

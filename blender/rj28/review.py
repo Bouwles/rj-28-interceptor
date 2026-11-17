@@ -63,7 +63,7 @@ def closeup(objs, out, title, direction, mode="clay", res=(1400, 1000), samples=
     """One perspective close-up of a group of parts from a given direction."""
     lo, hi = C.bounds_mm(objs)
     c = Vector(target) if target is not None else (lo + hi) / 2
-    extent = max(hi - lo) * 1.15
+    extent = (hi - lo).length * 0.62
     hidden = _isolate(objs) if isolate else []
     d = Vector(direction).normalized()
     RD.setup(samples, *res)

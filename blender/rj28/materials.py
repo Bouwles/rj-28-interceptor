@@ -148,8 +148,10 @@ def _build(key):
         nt.links.new(tc.outputs["Object"], ck.inputs["Vector"])
         nt.links.new(ck.outputs["Color"], b.inputs["Roughness"])
     elif key == "glass":
-        _set(b, Base_Color=(0.008, 0.010, 0.014), Roughness=0.04, Metallic=0.0,
+        # smoked, coated glass: dark at a glance, but emitters and optics behind it show through
+        _set(b, Base_Color=(0.10, 0.13, 0.16), Roughness=0.03, Metallic=0.0,
              Coat_Weight=1.0, Coat_Roughness=0.02, IOR=1.52)
+        b.inputs["Transmission Weight"].default_value = 0.94
         b.inputs["Coat Tint"].default_value = (0.55, 0.75, 1.0, 1.0)
     elif key == "mesh":
         _set(b, Base_Color=_grey(0.03), Roughness=0.55, Metallic=1.0)

@@ -249,11 +249,13 @@ def dome(w, l, h, segs=48, rings=10, exp_plan=2.2, exp_side=2.4, z_base=0.0):
 
 
 # ── operations ───────────────────────────────────────────────────────────────
-def thicken(bm, t):
-    """Turn an open surface into a solid shell by offsetting inward by t."""
+def thicken(bm, t, center=None):
+    """Turn an open surface into a solid shell by offsetting inward by t.
+    "Inward" is towards the surface's own centroid; for a patch that does not
+    wrap around its centroid, pass center = a point on the inside."""
     bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
     bm.normal_update()
-    c = sum((v.co for v in bm.verts), Vector()) / max(1, len(bm.verts))
+    c = Vector(center) if center is not None else sum((v.co for v in bm.verts), Vector()) / max(1, len(bm.verts))
     if sum((f.calc_center_median() - c).dot(f.normal) * f.calc_area() for f in bm.faces) < 0:
         bmesh.ops.reverse_faces(bm, faces=bm.faces)      # make "outward" deterministic for open shells
         bm.normal_update()
