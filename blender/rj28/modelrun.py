@@ -75,6 +75,14 @@ def run(opts):
                 RD.world(0.55, (0.62, 0.64, 0.66))
                 RD.render(out / f"explode_{name}_{v}{tag}.jpg", arg.get("mode", "clay"), f"exploded {name} {v}")
         explode.pose(0.0)
+    if "hero" in arg or "hero" in opts:
+        from . import hero
+        names = arg["hero"].split(",") if "hero" in arg else list(hero.SHOTS)
+        for n in names:
+            hero.render(n, float(arg.get("scale", 0.25)), int(arg.get("samples", 128)), out if "proof" in opts else None, tag)
+    if "hdri" in opts:
+        from . import hero
+        hero.hdri()
     if "save" in opts:
         bpy.ops.wm.save_as_mainfile(filepath=str(RD.ROOT / "blender" / "out" / f"model{tag}.blend"))
     counts = {aa: len(a.parts) for aa, a in built.items()}
