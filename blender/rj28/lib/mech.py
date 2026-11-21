@@ -290,7 +290,17 @@ def clevis_bm(eye_r, pin_r, gap, ear_t, reach, base_t=None):
         P.merge(bm, P.lug(eye_r, pin_r, reach + 0.01, ear_t), T(0, 0, sgn * (gap / 2 + ear_t / 2)))
     base = P.box(base_t, eye_r * 2, gap + 2 * ear_t)
     P.merge(bm, base, T(-(reach + base_t / 2), 0, 0))
+    if eye_r > 12:                                       # cap screws through the base, between the ears
+        for sgn in (1, -1):
+            P.merge(bm, screw_bm("M6" if eye_r > 24 else "M4"), T(-reach, sgn * eye_r * 0.66, 0) @ R("Y", 90))
     return bm
+
+
+def clevis_seat(rod_d):
+    """Where the clevis of a linear_actuator with this rod wants its pad: (distance from the pin to the
+    mounting face, pad width across the pin, pad length along the pin)."""
+    eye_r, ear_t = rod_d * 0.95, rod_d * 0.32
+    return eye_r * 1.35 + ear_t * 1.3, eye_r * 2.04, rod_d * 0.9 + 1.0 + 2 * ear_t
 
 
 def pin_bm(d, length, head=True):
@@ -309,7 +319,11 @@ def pin_bm(d, length, head=True):
     return bm
 
 
-def actuator_port(p0, p1, body_d=44.0, rod_d=30.0, stroke=80.0, pin_axis=(1, 0, 0), body_len=None):
+PORT = (0.18, 0.0, None)     # power port: fraction of the body length from its rear end, turn about the
+                             # actuator axis from `side` towards the pin (degrees), stand-off (None: 0.45 body radii)
+
+
+def actuator_port(p0, p1, body_d=44.0, rod_d=30.0, stroke=80.0, pin_axis=(1, 0, 0), body_len=None, port=PORT):
     """Where the power port of a linear_actuator built with the same arguments ends up:
     (tip point, outward direction), in mm. The harness plugs in here."""
     p0, p1 = Vector(p0), Vector(p1)
@@ -320,12 +334,15 @@ def actuator_port(p0, p1, body_d=44.0, rod_d=30.0, stroke=80.0, pin_axis=(1, 0, 
     neck = rod_d * 0.95 * 1.25
     body_len = body_len or (stroke + body_d * 1.6)
     rb = body_d / 2
-    return p0 + axis * (neck + body_len * 0.18) + side * (rb * 1.57), side
+    a = math.radians(port[1])
+    out = side * math.cos(a) + pin * math.sin(a)
+    proud = rb * 0.45 if port[2] is None else port[2]
+    return p0 + axis * (neck + body_len * port[0]) + out * (rb * 1.12 + proud), out
 
 
 def linear_actuator(name, p0, p1, body_d=44.0, rod_d=30.0, stroke=80.0, bellows=True,
                     pin_axis=(1, 0, 0), collection=None, base_dir0=None, base_dir1=None,
-                    body_len=None):
+                    body_len=None, port=PORT):
     """Planetary roller-screw actuator posed between pivot p0 (body end) and pivot
     p1 (rod end). Returns dict: body, rod, bellows, clevis_a, clevis_b, pin_a, pin_b.
 
@@ -365,8 +382,9 @@ def linear_actuator(name, p0, p1, body_d=44.0, rod_d=30.0, stroke=80.0, bellows=
     rear = P.lug(eye_r, pin_d / 2, neck + 2.0, eye_t)
     rear.transform(R("Y", 90))
     P.merge(bm, rear)
-    port = P.cyl(rb * 0.55, rb * 0.5, 16)
-    P.merge(bm, port, T(0, rb * 1.12 + rb * 0.2, z_body0 + body_len * 0.18) @ R("X", -90))
+    proud = rb * 0.45 if port[2] is None else port[2]
+    P.merge(bm, P.cyl(rb * 0.55, proud + rb * 0.05, 16),
+            R("Z", -port[1]) @ T(0, rb * 1.095 + proud / 2, z_body0 + body_len * port[0]) @ R("X", -90))
     body = obj_from_bm(name + "_Body", bm, F, collection, M.get("alu"), bevel=0.6)
 
     # rod with rod-end eye

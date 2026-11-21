@@ -27,7 +27,7 @@ SHOTS = {
     "knee": dict(gain=1.25, state="stowed", loc=(1150, 840, 640), target=(176, 30, 505), lens=105, res=(3840, 2880)),
     "exploded": dict(state="stowed", loc=(-4500, -6400, 1900), target=(-150, 100, 660), lens=85, res=(3840, 3840),
                      explode=1.0, extent=3800.0, gain=1.7),
-    "social_card": dict(state="deployed", loc=(-2700, -3600, 1250), target=(-520, -80, 1120), lens=70, res=(3840, 2016)),
+    "social_card": dict(state="deployed", loc=(-2715, -3760, 1380), target=(-280, 174, 1330), lens=70, res=(3840, 2016)),
 }
 
 

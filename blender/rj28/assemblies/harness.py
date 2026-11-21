@@ -15,7 +15,7 @@ from mathutils import Vector
 from mathutils.bvhtree import BVHTree
 
 from .. import frames as FR, params as PR, parts, poses
-from ..lib import core as C, harness as H, mech, prims as P
+from ..lib import core as C, detail as D, harness as H, mech, prims as P
 from ..lib.core import MM, T, R, frame
 from ..parts import Asm
 from . import leg as LEG
@@ -87,6 +87,12 @@ class Runs:
             self.a.take(H.p_clips("_p", clips, r, clip_dir, spacing=spacing), name + "_Clips",
                         f"P-clips holding the {what} cable to the structure.", group=group, zone=zone)
 
+    def loom(self, name, pts, what, strands=4, r=2.1, clips=None, clip_dir=None, spacing=100.0, flip=False):
+        self.a.take(H.loom("_l", pts, strands, r), name, f"Loom of {strands} braided cables bound with ties: {what}.")
+        if clips:
+            self.a.take(H.p_clips("_p", clips, H.loom_radius(strands, r), clip_dir, spacing=spacing, flip=flip), name + "_Clips",
+                        f"P-clips holding the {what} loom to the structure.")
+
     def hose(self, name, pts, what, r=6.0, sag=0.0, clips=None, clip_dir=None, spacing=110.0):
         d = H.hose("_h", pts, r, sag=sag)
         self.a.take(d["hose"], name, f"Coolant hose: {what}.")
@@ -127,44 +133,58 @@ def leg(rn, s):
     pts = [start, Vector((s * 62, 116, 962)), Lg @ Vector((i * 76, 104, 4)), Th @ Vector((i * 77, 100, -70)),
            Th @ Vector((cx, 74, -150)),
            Th @ Vector((cx, 70, -230)), j_top]
-    rn.cable(f"Thigh_Loom_{n}", pts, f"{('left', 'right')[s < 0]} leg power and signal from the pelvis to the knee junction",
-             r=5.0, clips=[Th @ Vector((cx, 74, -150)), Th @ Vector((cx, 70, -230)), Th @ Vector((cx, 70, -296))],
-             clip_dir=_dir(Th, (0, -1, 0)), spacing=75.0)
+    rn.loom(f"Thigh_Loom_{n}", pts, f"{('left', 'right')[s < 0]} leg power and signal from the pelvis to the knee junction",
+            4, 2.1, clips=[Th @ Vector((cx, 74, -150)), Th @ Vector((cx, 70, -230)), Th @ Vector((cx, 70, -296))],
+            clip_dir=_dir(Th, (0, -1, 0)), spacing=75.0, flip=s < 0)      # tabs away from the actuators on both legs
 
-    # leads up to the two knee actuator ports (under the anchor block)
-    for o, tag in ((s, "Outer"), (-s, "Inner")):
+    # leads from the two knee actuator ports: down the valley behind and between the bodies, round the back of
+    # the inner body below the hamstring guard, into the junction either side of the loom
+    Ti = Th.inverted()
+    for k, (o, tag) in enumerate(((-s, "Inner"), (s, "Outer"))):
         p0 = Th @ Vector((o * LEG.KNEE_P0[0], LEG.KNEE_P0[1], LEG.KNEE_P0[2]))
         p1 = Sh @ Vector((o * LEG.KNEE_P1[0], LEG.KNEE_P1[1], LEG.KNEE_P1[2]))
-        tip, out = mech.actuator_port(p0, p1, 46, 30, LEG.KNEE_STROKE, xk, 200)
-        tail = rn.plug(f"Knee_{tag}_Plug_{n}", tip, out, f"power to the {tag.lower()} knee actuator")
-        mid = tail + out * 14 + _dir(Th, (i * (1 if o == s else 0.2), 0, -0.4)) * 30
-        pts = [tail, mid, Th @ Vector((i * 60, 62, -200)), Th @ Vector((cx, 72, -262)), j_top + _dir(Th, (0, 1, 0)) * 3]
+        tip, out = mech.actuator_port(p0, p1, 46, 30, LEG.KNEE_STROKE, xk, 200, port=LEG.knee_port(o, tag))
+        tail = rn.plug(f"Knee_{tag}_Plug_{n}", tip, out, f"power to the {tag.lower()} knee actuator", d=8.0)
+        q = Ti @ p1
+        slope = (q.y - LEG.KNEE_P0[1]) / (q.z - LEG.KNEE_P0[2])
+
+        def ay(z):                                   # y of the actuator axes at thigh height z
+            return LEG.KNEE_P0[1] + (z - LEG.KNEE_P0[2]) * slope
+
+        zt = (Ti @ tail).z
+        end = Th @ Vector((cx + (1 - 2 * k) * i * 9, 70, -306))
+        pts = [tail, tail + out * 6 + _dir(Th, (0, 0, -1)) * 13, Th @ Vector((o * 5, ay(zt - 46) + 16 + 5 * k, zt - 46)),
+               Th @ Vector((o * 5, ay(-218) + 16 + 5 * k, -218)), Th @ Vector((i * 30, ay(-250) + 33 + 7 * k, -250 + 6 * k)),
+               Th @ Vector((i * 71, ay(-276) + 24 + 6 * k, -274 + 6 * k)), end + _dir(Th, (0, 0.25, 1)) * 16, end]
         rn.cable(f"Knee_{tag}_Lead_{n}", pts, f"junction to the {tag.lower()} knee actuator", r=3.2)
 
     # knee encoder cable: from the gland on the outer housing, over the fork crosshead, to the junction
     xe = LEG.CHEEK_X + 7.0
     Ko = Kn @ T(s * xe, 0, 0) @ R("Y", s * 90)
     gland = Ko @ Vector((0, 43.5, 27.2))
-    pts = [gland, gland + _dir(Kn, (0, 1, 0.5)) * 26, Th @ Vector((s * 84, 64, -330)), Th @ Vector((s * 80, 56, -210)),
-           Th @ Vector((s * 30, 54, -186)), Th @ Vector((i * 40, 56, -196)), Th @ Vector((cx, 74, -250)), j_top]
+    pts = [gland, gland + _dir(Kn, (0, 1, 0.5)) * 26, Th @ Vector((s * 84.5, 64, -330)), Th @ Vector((s * 84.5, 65, -214)),
+           Th @ Vector((s * 62, 64, -201)), Th @ Vector((s * 30, 61.5, -189)), Th @ Vector((i * 40, 61.5, -195)),
+           Th @ Vector((cx, 74, -250)), j_top]
     rn.cable(f"Knee_Encoder_Cable_{n}", pts, "knee encoder to the junction", r=2.4)
 
     # shin loom: junction, service loop behind the knee, into the covered channel, out to the foot
     pts = [j_bot, Th @ Vector((cx + i * 8, 86, -PR.THIGH + 10)), Sh @ Vector((i * 62, 96, -60)),
-           Sh @ Vector((i * 26, 64, -150)), Sh @ Vector((0, 52, -192))]
-    rn.cable(f"Knee_Loop_{n}", pts, "service loop carrying the shin loom across the knee", r=4.4)
+           Sh @ Vector((i * 26, 64, -150)), Sh @ Vector((0, 50, -184)), Sh @ Vector((0, 38, -208))]      # into the channel mouth
+    rn.loom(f"Knee_Loop_{n}", pts, "service loop carrying the shin loom across the knee", 3, 2.05)
     foot_in = rn.plug(f"Foot_Plug_{n}", Ft @ Vector((0, 86, -36)), (0, 0, 1), "sensors and toe drive in the foot", d=12.0)
-    pts = [Sh @ Vector((0, 52, -338)), Sh @ Vector((0, 66, -372)), Ft @ Vector((0, 84, 30)), foot_in + Vector((0, 0, 6)), foot_in]
-    rn.cable(f"Ankle_Loop_{n}", pts, "service loop carrying the foot cable across the ankle", r=4.0)
+    pts = [Sh @ Vector((0, 38, -322)), Sh @ Vector((0, 49, -344)), Sh @ Vector((0, 66, -372)), Ft @ Vector((0, 84, 30)),
+           foot_in + Vector((0, 0, 6)), foot_in]
+    rn.loom(f"Ankle_Loop_{n}", pts, "service loop carrying the foot cables across the ankle", 2, 2.0)
 
     # leads to the two ankle actuator ports
     for o, tag in ((s, "Outer"), (-s, "Inner")):
         p0 = Sh @ Vector((o * LEG.ANKLE_P0[0], LEG.ANKLE_P0[1], LEG.ANKLE_P0[2]))
         p1 = Ft @ Vector((o * LEG.ANKLE_P1[0], LEG.ANKLE_P1[1], LEG.ANKLE_P1[2]))
-        tip, out = mech.actuator_port(p0, p1, 34, 20, 60, xk, 112)
-        tail = rn.plug(f"Ankle_{tag}_Plug_{n}", tip, out, f"power to the {tag.lower()} ankle actuator", d=9.0)
-        pts = [tail, tail + out * 10 + _dir(Sh, (-o * 0.5, 0, 0.6)) * 16, Sh @ Vector((o * 14, 58, -186)),
-               Sh @ Vector((0, 53, -196))]
+        tip, out = mech.actuator_port(p0, p1, 34, 20, 60, xk, 112, port=LEG.ankle_port(o, tag))
+        tail = rn.plug(f"Ankle_{tag}_Plug_{n}", tip, out, f"power to the {tag.lower()} ankle actuator", d=8.0)
+        zt = (Sh.inverted() @ tail).z                # each stays at its own height until it turns into the channel mouth
+        pts = [tail, tail + out * 5 + _dir(Sh, (0, -1, 0)) * 5, Sh @ Vector((-o * 9, 62, zt + 1)), Sh @ Vector((-o * 9, 49, -195)),
+               Sh @ Vector((-o * 9, 38, -207))]
         rn.cable(f"Ankle_{tag}_Lead_{n}", pts, f"shin channel to the {tag.lower()} ankle actuator", r=3.0)
 
 
@@ -211,21 +231,24 @@ def arm(rn, s):
     ty = 118 if s > 0 else 93
     pts = [t0, t0 + Vector((s * 26, 16 if s > 0 else 6, -6)), W @ Vector((s * (PR.SX + 6), ty + 2, 1372)),
            up_pt(-s * 16, ty, -112), c1, j_top]
-    rn.cable(f"Arm_Trunk_{n}", pts, f"{side} arm trunk from the thorax to the upper-arm junction", r=5.0, clips=[c1, c1 + (j_top - c1) * 0.6],
-             clip_dir=d1, spacing=60.0)
+    rn.loom(f"Arm_Trunk_{n}", pts, f"{side} arm trunk from the thorax to the upper-arm junction", 4, 2.1,
+            clips=[c1, c1 + (j_top - c1) * 0.6], clip_dir=d1, spacing=60.0)
 
     # leads to the three actuators whose connectors are on the back of the arm
-    for short, tag, bend in (("Shoulder_Roll_Connector", "Shoulder_Roll", (s * 0.1, 0.6, -0.8)),
-                             ("Shoulder_Yaw_Connector", "Shoulder_Yaw", (0.0, 0.7, -0.7)),
-                             ("Elbow_Connector", "Elbow", (0.0, 0.8, 0.6))):
+    # each enters the box end-on, beside the trunk, instead of folding into the end face from behind
+    up, lat = _dir(upper, (0, 0, 1)), _dir(upper, (0, 0, 1)).cross(jd)
+    for short, tag, bend, off in (("Shoulder_Roll_Connector", "Shoulder_Roll", (s * 0.1, 0.6, -0.8), -8.0),
+                                  ("Shoulder_Yaw_Connector", "Shoulder_Yaw", (0.0, 0.7, -0.7), 8.0),
+                                  ("Elbow_Connector", "Elbow", (0.0, 0.8, 0.6), 7.0)):
         ob = connector(aa, short)
         if ob is None:
             print("HARNESS SKIP", aa, short)
             continue
         tip, out = tail_of(ob)
         b = Vector(bend).normalized()
-        end = j_top if tag != "Elbow" else j_bot
-        pts = [tip, tip + out * 16 + b * 14, (tip + end) / 2 + back * 34, end + back * 10, end]
+        ax = up if tag != "Elbow" else -up
+        end = (j_top if tag != "Elbow" else j_bot) + lat * off
+        pts = [tip, tip + out * 16 + b * 14, (tip + end) / 2 + back * 34, end + ax * 22 + back * 9, end + ax * 7, end]
         rn.cable(f"{tag}_Lead_{n}", pts, f"junction to the {side} {tag.lower().replace('_', ' ')} actuator", r=3.0)
 
     # forearm: jumper from the roll actuator into a grommet in the armour; coolant to the controller
@@ -238,13 +261,14 @@ def arm(rn, s):
         pts = [tip, tip + out * 20 + _dir(fore, (0, 0, 1)) * 14, fsurf_pt - fd * 30 + _dir(fore, (0, 0, -1)) * 22,
                fsurf_pt - fd * 12, fsurf_pt + fd * 6]
         rn.cable(f"Forearm_Roll_Lead_{n}", pts, f"{side} forearm roll actuator into the forearm loom", r=3.0)
-    pts = [j_bot, j_bot + back * 22 - _dir(upper, (0, 0, 1)) * 30, up_pt(0, 132, -PR.UPPER_ARM - 30),
+    j_bot = j_bot - lat * 5
+    pts = [j_bot, j_bot - up * 8, j_bot + back * 20 - up * 36, up_pt(0, 132, -PR.UPPER_ARM - 30),
            fsurf_pt - fd * 46 + _dir(fore, (0, 0, 1)) * 70, fsurf_pt - fd * 14 + _dir(fore, (0, 0, 1)) * 16, fsurf_pt + fd * 6]
-    rn.cable(f"Elbow_Loop_{n}", pts, f"service loop carrying the {side} forearm loom across the elbow", r=4.4)
+    rn.loom(f"Elbow_Loop_{n}", pts, f"service loop carrying the {side} forearm loom across the elbow", 3, 2.05)
     h0 = W @ Vector((s * (PR.SX - 84), 94, 1356))
     hc, hd = surf.hug(up_pt(s * 26, 260, -200), up_pt(s * 26, 0, -200), 6.0)
     g2, gd = surf.hug(fore @ Vector((s * 30, 260, -120)), fore @ Vector((s * 30, 0, -120)), 0.0)
-    pts = [h0, h0 + Vector((s * 30, 22, -14)), up_pt(s * 20, 124, -120), hc, up_pt(s * 22, 128, -PR.UPPER_ARM - 10),
+    pts = [h0, h0 + Vector((s * 30, 22 if s > 0 else 6, -14)), up_pt(s * 20, ty + 6, -120), hc, up_pt(s * 22, 128, -PR.UPPER_ARM - 10),
            g2 - gd * 40 + _dir(fore, (0, 0, 1)) * 50, g2 - gd * 4]
     along = _dir(upper, (0, 0, 1))
     rn.hose(f"Arm_Coolant_Line_{n}", pts, f"coolant to the {side} hand-drive controller", r=5.5,
@@ -266,10 +290,12 @@ def mount(rn):
     rn.cable("Mount_Drive_Lead", pts, "hardpoint to the elevation drive, with slack for traverse", r=4.0, zone="mount_chain")
     cn = FR.cannon()
     xo = -(PR.BARREL_OD / 2 + 63)
-    t2 = rn.plug("Tracker_Plug", cn @ Vector((-58, PR.BREECH_H / 2, 34)), (cn.to_3x3() @ Vector((0, 1, 0))),
+    up = cn.to_3x3() @ Vector((0, 1, 0))
+    seat = D.seats_on(connector("15", "Breech_Housing"), [cn @ Vector((-58, PR.BREECH_H / 2 + 30, 34))], up)
+    t2 = rn.plug("Tracker_Plug", seat[0].translation if seat else cn @ Vector((-58, PR.BREECH_H / 2, 34)), up,
                  "tracking head signal into the breech", d=10.0, group="elev", zone="mount_elev")
     pts = [cn @ Vector((xo, 30, PR.BREECH_FWD + 20)), cn @ Vector((xo + 8, 72, PR.BREECH_FWD + 8)),
-           cn @ Vector((-70, PR.BREECH_H / 2 + 34, 44)), t2]
+           t2 + up * 14 + Vector((-10, 0, 0)), t2]
     rn.cable("Tracker_Lead", pts, "tracking head to the breech", r=2.8, group="elev", zone="mount_elev")
 
 
@@ -313,7 +339,8 @@ def pelvis(rn):
 def build():
     a = Asm("16")
     rn = Runs(a)
-    neck(rn)
+    if connector("01", "Neck_Connector") is not None:
+        neck(rn)
     for s in (1, -1):
         leg(rn, s)
         if connector("07" if s > 0 else "08", "Shoulder_Roll_Connector") is not None:
@@ -332,3 +359,10 @@ def review(a, out, tag=""):
                target=kc + Vector((0, 20, 60)), dist=1.9, isolate=True, res=(1100, 1500))
     RV.closeup(legs, out / f"16_harness_leg_rear_final{tag}.jpg", "16 harness, left leg rear", (0.35, 1.0, 0.12), "final",
                target=kc + Vector((0, 20, 60)), dist=1.9, isolate=True, res=(1100, 1500))
+    RV.closeup(legs, out / f"16_harness_thigh_loom{tag}.jpg", "16 harness, thigh loom and knee junction", (-0.8, 0.9, 0.1), "final",
+               target=kc + Vector((-60, 60, 130)), dist=0.5, isolate=True)
+    arms = [o for o in parts.all_parts() if o.get("rj28_assembly") in ("07", "16") and o.type == "MESH"]
+    if any(o.get("rj28_assembly") == "07" for o in arms):
+        ec = (FR.torso() @ FR.arm(1)[1]) @ Vector((0, 60, -200))
+        RV.closeup(arms, out / f"16_harness_arm_rear{tag}.jpg", "16 harness, left arm rear", (0.25, 1.0, 0.2), "final",
+                   target=ec, dist=0.55, isolate=True, res=(1100, 1400))

@@ -44,6 +44,29 @@ KNEE_P0 = (ACT_X, 120.0, -62.0)                      # body-end pivot, thigh fra
 KNEE_P1 = (ACT_X, PR.KNEE_CRANK * math.cos(_A), -PR.KNEE_CRANK * math.sin(_A))   # crank pin, shin frame
 KNEE_STROKE = 2 * PR.KNEE_CRANK * math.sin(_H)
 CHEEK_X = 74.0                                       # knee fork cheeks (14 thick) centred here
+# Knee actuator anchor, drawn in the thigh's (y, z). The block stands on the top crosshead in the gap between
+# the hip pitch housing (r 87 about the hip axis) and the sweep of the actuator bodies; the fork ears reach
+# back from it to the pivot and stay above the plane where the bodies begin (35.6 mm down the actuator).
+KNEE_ANCHOR = [(40, -116), (76, -116), (76, -94), (72, -74), (60, -71), (46, -84), (40, -96)]
+KNEE_EAR_ROOT = [(62, -72), (74, -94), (58, -90)]
+KNEE_EAR = (29.0, 9.6, 18.8)                         # ear radius, thickness, offset either side of the actuator
+# Knee actuator power ports. Forward is the crosshead, outboard and rearward the hamstring guard: the only free
+# space is the valley behind and between the two bodies, so each port is turned 135 degrees into it and the
+# two are staggered along the bodies. o = +1 / -1 is the actuator's side in the thigh frame.
+KNEE_PORT = {"Outer": 0.12, "Inner": 0.27}
+
+
+def knee_port(o, tag):
+    return (KNEE_PORT[tag], -o * 135.0, 3.0)
+
+
+ANKLE_PORT = {"Outer": 0.10, "Inner": 0.30}          # the shin beam is in front: these face inwards, staggered
+
+
+def ankle_port(o, tag):
+    return (ANKLE_PORT[tag], -o * 90.0, 3.0)
+
+
 ANKLE_P0 = (40.0, 86.0, -150.0)                      # shin frame
 ANKLE_P1 = (40.0, 104.0, -6.0)                       # foot frame
 
@@ -80,6 +103,14 @@ def _bar(p0, p1, axis, r, t):
     bm = P.prism(pts, -t / 2, t / 2)
     bm.transform(m)
     return bm
+
+
+def _ear(p0, r, root, n=40):
+    """Outline of a fork ear in (y, z): a round eye of radius r about p0, drawn out to the root points."""
+    from mathutils.geometry import convex_hull_2d
+    pts = [(p0[0] + r * math.cos(2 * math.pi * k / n), p0[1] + r * math.sin(2 * math.pi * k / n)) for k in range(n)]
+    pts += list(root)
+    return [pts[i] for i in convex_hull_2d(pts)]
 
 
 def _weld(bodies, matrix, mat="alu", bevel=1.0):
@@ -121,16 +152,23 @@ def build(s):
     a.take_rotary(d, "Hip_Pitch", "hip pitch")
 
     # ── thigh frame: hangers on the actuator, beam, crosshead, knee fork ────
+    KEAR = KNEE_EAR
+    ear = _ear(KNEE_P0[1:], KEAR[0], KNEE_EAR_ROOT)
     bodies = [P.loft([A.csec(-150, 98, 84, 0, 30, 0.14), A.csec(-206, 92, 78, 0, 14, 0.14)]),                    # beam
               _at(P.prism(P.chamfer_poly(P.rrect(182, 124), 14), -152, -112), T(s * 5, 14, 0)),               # top crosshead
               _at(P.lug(78, 30, 150, 10, 40), frame((s * 91, 0, 0), (1, 0, 0), (0, 0, 1))),                   # on the output flange, inside the armour
               _at(P.lug(64, 36, 150, 12, 40), frame((-s * 74, 0, 0), (1, 0, 0), (0, 0, 1))),                  # idler side
-              _at(P.prism(P.chamfer_poly(P.rrect(132, 46), 8), -126, -82), T(0, 96, 0)),                      # knee actuator anchor
+              _at(P.prism(KNEE_ANCHOR, -66, 66), YZ),                                                         # knee actuator anchor
               _at(P.prism(P.chamfer_poly(P.rrect(2 * CHEEK_X + 14, 84), 10), -204, -164), T(0, 8, 0))]        # fork crosshead
     for o in (1, -1):
         bodies.append(_at(P.lug(60, 31, -zk - 150, 14, 40), frame((o * CHEEK_X, 0, zk), (1, 0, 0), (0, 0, -1))))   # fork cheeks
         bodies.append(_at(P.box(12, 18, 22), T(o * 61, -50, zk + 60)))                                 # knee guard link pivots
-    tf = a.take(_weld(bodies, Th), "Thigh_Frame", "Machined thigh member: hangs from the hip pitch output and ends in the knee fork.")
+        for e in (1, -1):                                                                              # knee actuator fork ears
+            x = o * KNEE_P0[0] + e * KEAR[2]
+            bodies.append(_at(P.prism(ear, x - KEAR[1] / 2, x + KEAR[1] / 2), YZ))
+    tf = a.take(_weld(bodies, Th), "Thigh_Frame",
+                "Machined thigh member: hangs from the hip pitch output, carries the knee actuator fork and ends in the knee fork.")
+    C.boolean_cut(tf, C.cutter(P.cyl(16.7, 150, 24), Th @ T(0, KNEE_P0[1], KNEE_P0[2]) @ R("Y", 90)), lip=0.4)    # pin bores
     D.pocket_grid(tf, Th @ T(0, 54.5, -178) @ R("X", -90), 1, 1, 56, 30, 0, 0, depth=8)
     D.pocket_grid(tf, Th @ T(s * 96.2, 0, -90) @ R("Y", s * 90), 1, 1, 22, 96, 0, 0, depth=6)
     for o in (1, -1):
@@ -283,10 +321,9 @@ def build(s):
     for o, tag in ((s, "Outer"), (-s, "Inner")):
         p0 = Th @ Vector((o * KNEE_P0[0], KNEE_P0[1], KNEE_P0[2]))
         p1 = Sh @ Vector((o * KNEE_P1[0], KNEE_P1[1], KNEE_P1[2]))
-        d = mech.linear_actuator("_ka", p0, p1, 46, 30, KNEE_STROKE, pin_axis=xk, body_len=200,
-                                 base_dir0=_dir(Th, (0, -0.45, -0.89)))
-        for key in ("clevis_b", "pin_b"):            # the shin's own crank plates are the rod-end fork, and the
-            spare = d.pop(key)                       # catalogue pin's head and clip would foul the fork cheek
+        d = mech.linear_actuator("_ka", p0, p1, 46, 30, KNEE_STROKE, pin_axis=xk, body_len=200, port=knee_port(o, tag))
+        for key in ("clevis_a", "clevis_b", "pin_b"):    # the thigh frame's ears and the shin's crank plates are the
+            spare = d.pop(key)                           # forks; the catalogue rod-end pin would foul the fork cheek
             me = spare.data
             C.bpy.data.objects.remove(spare)
             C.bpy.data.meshes.remove(me)
@@ -326,6 +363,7 @@ def build(s):
     root = Vector((0, -(py - 6), -(pz + 112))).normalized()          # from the crank pin down into the beam
     plate = P.chamfer_poly([(py + 22, pz + 2), (py + 12, pz + 20), (py - 12, pz + 22), (-36, -62), (-52, -76), (-40, -90),
                             (0, -128), (40, -128), (py + 20, pz - 24)], 5)
+    pad = mech.clevis_seat(20)                         # ankle actuators: rod 20
     bodies = [P.loft([A.csec(-96, 92, 76, 0, 6, 0.14), A.csec(-PR.SHIN + 56, 78, 70, 0, 8, 0.14)]),              # beam
               _at(P.prism(P.chamfer_poly(P.rrect(136, 64), 8), -130, -94), T(0, 6, 0)),                       # shoulder under the crank
               _at(P.lug(50, 20.3, 100, 44, 40), frame((0, 0, 0), (1, 0, 0), (0, 0, 1))),                      # tang on the shaft
@@ -334,15 +372,15 @@ def build(s):
     for o in (1, -1):
         bodies.append(_at(P.prism(plate, -4, 4), T(o * 61, 0, 0) @ R("Z", 90) @ R("X", 90)))            # outer crank plates
         bodies.append(_at(P.lug(42, 16, 62, 14, 32), frame((o * 72, 0, -PR.SHIN), (1, 0, 0), (0, 0, -1))))   # ankle fork
-        bodies.append(_at(P.box(50, 34, 64), T(o * ANKLE_P0[0], 54, ANKLE_P0[2])))                      # ankle actuator seats
+        bodies.append(_at(P.box(pad[2] + 10, 16, pad[1] + 14), T(o * ANKLE_P0[0], ANKLE_P0[1] - pad[0] - 8, ANKLE_P0[2])))   # ankle clevis pads
     sm = a.take(_weld(bodies, Sh), "Shin_Member", "Machined shin member: knee tang and crank at the top, ankle fork at the bottom.")
     for o in (1, -1):
         D.pocket_grid(sm, Sh @ T(o * 45.5, 7, -250) @ R("Y", o * 90), 3, 1, 44, 38, 58, 0, depth=8)
-    C.boolean_cut(sm, C.cutter(P.box(30, 24, 150), Sh @ T(0, 50, -265)), lip=0.4)
-    a.add("Shin_Cable_Channel_Cover", P.prism(P.rrect(42, 162, 5), 0, 2.5),
+    C.boolean_cut(sm, C.cutter(P.box(30, 36, 150), Sh @ T(0, 50, -265)), lip=0.4)      # 12 deep; mouths at both ends
+    a.add("Shin_Cable_Channel_Cover", P.prism(P.rrect(42, 126, 5), 0, 2.5),
           "Cover plate over the cable channel down the back of the shin.", "alu",
           Sh @ T(0, 42.6, -265) @ R("X", -90), bevel=0.4)
-    seats = [Sh @ T(o * 15, 45.1, -265 + z) @ R("X", -90) for o in (1, -1) for z in (-70, 0, 70)]
+    seats = [Sh @ T(o * 15, 45.1, -265 + z) @ R("X", -90) for o in (1, -1) for z in (-54, 0, 54)]
     a.take(mech.fasteners("_cc", seats, "M4", "csk"), "Shin_Channel_Cover_Screws",
            "Countersunk screws holding the shin cable channel cover.")
 
@@ -407,7 +445,7 @@ def build(s):
         p0 = Sh @ Vector((o * ANKLE_P0[0], ANKLE_P0[1], ANKLE_P0[2]))
         p1 = Ft @ Vector((o * ANKLE_P1[0], ANKLE_P1[1], ANKLE_P1[2]))
         d = mech.linear_actuator("_aa", p0, p1, 34, 20, 60, pin_axis=xk, body_len=112,
-                                 base_dir0=_dir(Sh, (0, -1, 0)), base_dir1=Vector((0, 0, -1)))
+                                 base_dir0=_dir(Sh, (0, -1, 0)), base_dir1=Vector((0, 0, -1)), port=ankle_port(o, tag))
         a.take_actuator(d, f"Ankle_{tag}", "ankle")
 
     # ── calf guard: a channel behind the ankle actuators, on two pylons that stand between them ──
@@ -462,6 +500,13 @@ def review(a, out, tag=""):
     for name, d in (("rear", (s * 0.55, 0.8, 0.2)), ("rear_inner", (-s * 0.6, 0.8, 0.15)), ("front", (s * 0.5, -0.85, 0.15))):
         RV.closeup(objs, out / f"{a.aa}_leg_{name}_clay{tag}.jpg", f"{a.aa} leg, {name}", d, "clay", res=(1000, 1500),
                    dist=2.6, isolate=True)
+    Th, Sh = FR.leg(s)[1], FR.leg(s)[3]
+    RV.closeup(knee + [o for o in objs if "Hip_Pitch" in o.name], out / f"{a.aa}_knee_anchor_clay{tag}.jpg",
+               f"{a.aa} knee actuator anchor", (-s * 0.55, 0.75, 0.4), "clay", target=Th @ Vector((0, 100, -80)), dist=0.75,
+               isolate=True)
+    ank = [o for o in objs if "Ankle" in o.name or "Shin_Member" in o.name]
+    RV.closeup(ank, out / f"{a.aa}_ankle_pads_clay{tag}.jpg", f"{a.aa} ankle actuator pads", (s * 0.7, 0.7, 0.3), "clay",
+               target=Sh @ Vector((0, 70, -160)), dist=0.9, isolate=True)
     hip = [o for o in objs if "Hip" in o.name or "Thigh_Frame" in o.name]
     RV.closeup(hip, out / f"{a.aa}_hip_outer_clay{tag}.jpg", f"{a.aa} hip, outer side", (s * 1.0, 0.35, 0.1), "clay",
                target=FR.leg(s)[0].translation, dist=1.2, isolate=True)

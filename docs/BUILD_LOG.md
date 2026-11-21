@@ -143,3 +143,14 @@ On seeing the first detailed parts Paul also raised the bar: the model has to ca
 **Checks added.** `blender/tools/check_contact.py` reports any part that comes within 1.5 mm of nothing (floating) and any vertex more than 6 mm inside another part. Floating parts went from 19 to 1 (the frameless traverse motor, which has an air gap by design). The same pass caught the arm trunk cable running through the mount hardpoint and the neck connector standing in the yaw motor.
 
 **Still weak, said plainly.** Clevis bases of the knee and ankle actuators are sunk into their anchor blocks, not seated on machined pads. The arm and leg looms are single runs with clips, not bundled trunks. Cables do not sag under gravity. The traverse motor is a plain ring.
+
+## Gate G2 outcome
+
+Paul asked for three fixes and then to carry on: bundle the limb looms, seat the clevis bases, reframe the social card.
+
+- *Looms.* The thigh, knee, ankle, arm and elbow runs are bundles of two to four braided cables bound with ties (D-043).
+- *Clevis bases.* Looking closely at "sunk bases" showed the knee anchor was wrong altogether: the actuator bodies passed through the block. The anchor is now a pair of fork ears per actuator machined into the thigh frame (D-041). Ankle clevises sit on raised pads and all clevis bases show their screws (D-044).
+- *What that uncovered.* With the larger clash gone the contact check reported the next layer down: knee and ankle power connectors buried in the crosshead and shin beam, the right arm coolant hose through the mount hardpoint, the tracker plug 8 mm inside the breech housing, the knee encoder cable through a fork cheek, and loom clip tabs fouling the right inner knee actuator. All are rerouted or reseated (D-042). The check now takes a `harness` argument that tests cables, hoses and plugs too; it was skipping them.
+- *Social card.* Camera pulled back and lowered: the whole cap and muzzle are in frame, the robot sits in the right half, the left 40% is clear for a title.
+
+After the fixes: 926 parts, mount sweep 18.0 mm, mass 185.01 kg. The contact check still reports every lead that enters the shoulder yaw housing region as sunk; in the renders they lie on its surface, and the housing's overlapping fin shells defeat the inside test. The elbow loom ends 6 mm inside the forearm by intent (it passes through the grommet).

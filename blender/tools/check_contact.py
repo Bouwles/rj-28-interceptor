@@ -1,10 +1,11 @@
 """Find parts that float and parts that sink into each other.
 
-    blender --background --python blender/tools/check_contact.py -- [float_mm] [sink_mm]
+    blender --background --python blender/tools/check_contact.py -- [float_mm] [sink_mm] [harness]
 
 FLOAT: no vertex of the part comes within float_mm (default 1.5) of any other part.
 SINK:  some vertex of part A lies more than sink_mm (default 6) inside part B.
-Fasteners, cables and decals are meant to sit inside their hosts and are skipped as A.
+Fasteners, cables and decals are meant to sit inside their hosts and are skipped as A
+(pass `harness` to test cables, hoses and clips as well).
 """
 import sys
 from pathlib import Path
@@ -22,8 +23,10 @@ from rj28.lib import core as C  # noqa: E402
 args = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
 FLOAT = float(args[0]) if args else 1.5
 SINK = float(args[1]) if len(args) > 1 else 6.0
-SKIP_A = ("Screw", "Bolt", "Stud", "Quarter_Turn", "Cable", "Lead", "Loom", "Hose", "Line", "Loop", "Plug", "Pin",
+SKIP_A = ("Screw", "Bolt", "Stud", "Quarter_Turn", "Cable", "Lead", "Loom", "Hose", "Line", "Loop", "Pin",
           "Label", "Mark", "Ferrule", "Clip", "Washer")
+if "harness" in args:                      # third argument: also test the runs themselves (their ends do sit in plugs and boxes)
+    SKIP_A = ("Screw", "Bolt", "Stud", "Quarter_Turn", "Pin", "Label", "Mark", "Washer")
 
 model.build(None, context=False)
 items = []

@@ -56,6 +56,43 @@ def cable(name, points, radius=4.0, sag=0.0, sleeve=True, collection=None, sides
                        bevel=0.0)
 
 
+def loom_radius(strands, radius):
+    """Outer radius of a bundle of `strands` round cables of `radius`."""
+    return radius * 2 if strands == 2 else radius * (1 + 1 / math.sin(math.pi / strands))
+
+
+def loom(name, points, strands=4, radius=2.1, sag=0.0, tie_every=55.0, lay=500.0, collection=None):
+    """Bundle of braided cables laid side by side with a slow twist (one turn per `lay` mm) and
+    bound by cable ties every `tie_every` mm. Slot 0 braid, slot 1 ties."""
+    path = P.catmull(points, step=4.0, sag=sag)
+    n = len(path)
+    tang = [(path[min(i + 1, n - 1)] - path[max(i - 1, 0)]).normalized() for i in range(n)]
+    nrm, d, fr = tang[0].orthogonal().normalized(), 0.0, []
+    for i in range(n):                                   # rotation-minimising frame, as in P.sweep
+        if i:
+            d += (path[i] - path[i - 1]).length
+            nrm = (nrm - tang[i] * nrm.dot(tang[i])).normalized()
+        fr.append((nrm.copy(), tang[i].cross(nrm), d))
+    rho = loom_radius(strands, radius) - radius
+    bm = bmesh.new()
+    for k in range(strands):
+        ph = 2 * math.pi * k / strands
+        P.merge(bm, P.sweep([p + (a * math.cos(ph + 2 * math.pi * s / lay) + b * math.sin(ph + 2 * math.pi * s / lay)) * rho
+                             for p, (a, b, s) in zip(path, fr)], radius, 8))
+    ro = rho + radius
+    ties = max(1, round(d / tie_every))
+    for j in range(ties):
+        s = (j + 0.5) / ties * d
+        i = min(range(n), key=lambda q: abs(fr[q][2] - s))
+        F = frame(path[i], tang[i], fr[i][0])
+        band = P.revolve(P.ring_profile(ro - 0.5, ro + 0.5, -1.8, 1.8, 0.2), 16)
+        P.merge(band, P.box(4.6, 3.0, 5.0), T(0, ro + 1.2, 0))       # the tie's ratchet head
+        P.merge(bm, band, F, mat_index=1)
+    ob = obj_from_bm(name, bm, None, collection, [M.get("braid"), M.get("rubber")], bevel=0.0)
+    ob["rj28_count"] = strands
+    return ob
+
+
 def ferrule_bm(radius):
     """Crimped hose ferrule + swivel nut along Z, hose enters at z=0 going -Z."""
     r = radius
@@ -100,7 +137,7 @@ def p_clip_bm(radius, width=10.0):
 
 
 def p_clips(name, run_points, radius, base_dir, spacing=100.0, collection=None,
-            sag=0.0, at=None):
+            sag=0.0, at=None, flip=False):
     """One part holding the P-clips for a run. Clips are spaced every `spacing`
     mm along the path (or at explicit path fractions `at`); base_dir points
     from the cable towards the structure the clips screw into."""
@@ -121,6 +158,8 @@ def p_clips(name, run_points, radius, base_dir, spacing=100.0, collection=None,
         up = -Vector(base_dir)
         up = (up - tan * up.dot(tan)).normalized()
         side = up.cross(tan)
+        if flip:                                         # tab on the other side of the run
+            side, tan = -side, -tan
         from mathutils import Matrix
         F = Matrix((side, up, tan)).transposed().to_4x4()
         F.translation = pos
