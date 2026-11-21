@@ -112,6 +112,9 @@ WEAR = {
     "cfrp": (0.0, None, 0.18),
 }
 DUST = (0.105, 0.098, 0.088)
+# key -> (roughness spread, value spread) from part to part: panels and housings come from
+# different batches and wear differently, so no two neighbours are quite the same black
+BATCH = {"armour": (0.10, 0.30), "alu": (0.10, 0.25), "ti": (0.08, 0.18), "cfrp": (0.06, 0.0), "rubber": (0.06, 0.20)}
 
 
 def _mix_rgb(nt, fac, a, b):
@@ -155,7 +158,7 @@ def _source(sock):
     return tuple(v[:3]) if hasattr(v, "__len__") else float(v)
 
 
-def _wear(nt, b, edge_rough, edge_col, dust):
+def _wear(nt, b, edge_rough, edge_col, dust, batch=None):
     """Logical, light wear from two masks.
 
     Edge mask: where the true normal and a 1.5 mm bevel-rounded normal disagree there
@@ -201,6 +204,20 @@ def _wear(nt, b, edge_rough, edge_col, dust):
                   _math(nt, "MULTIPLY", _range(nt, nz2.outputs[0], 0.3, 0.75), dust), clamp=True)
         col = _mix_rgb(nt, d, col, DUST)
         rough = _mix_val(nt, d, rough, 0.92)
+    if batch:
+        rnd = nt.nodes.new("ShaderNodeObjectInfo").outputs["Random"]
+        if batch[0]:
+            rough = _math(nt, "ADD", rough, _math(nt, "MULTIPLY", _math(nt, "SUBTRACT", rnd, 0.5), batch[0]), clamp=True)
+        if batch[1]:
+            k = _math(nt, "ADD", 1.0, _math(nt, "MULTIPLY", _math(nt, "SUBTRACT", rnd, 0.5), batch[1]))
+            mul = nt.nodes.new("ShaderNodeVectorMath")
+            mul.operation = "SCALE"
+            if hasattr(col, "is_output"):
+                nt.links.new(col, mul.inputs[0])
+            else:
+                mul.inputs[0].default_value = col
+            nt.links.new(k, mul.inputs["Scale"])
+            col = mul.outputs["Vector"]
     for sock, v in ((b.inputs["Base Color"], col), (b.inputs["Roughness"], rough)):
         if hasattr(v, "is_output"):
             nt.links.new(v, sock)
@@ -285,7 +302,7 @@ def _build(key):
     else:
         raise KeyError(key)
     if key in WEAR:
-        _wear(nt, b, *WEAR[key])
+        _wear(nt, b, *WEAR[key], batch=BATCH.get(key))
     m["rj28_key"] = key
     return m
 

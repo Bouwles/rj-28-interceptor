@@ -11,7 +11,7 @@ from . import materials as M
 from .lib import fittings as F
 from .lib.core import MM
 
-SRGB_WHITE = (0.82, 0.82, 0.82)
+SRGB_WHITE = (0.56, 0.56, 0.55)             # paint, not paper: bright enough to read, never the brightest thing
 
 
 def _pack(items, side, margin):
@@ -53,7 +53,7 @@ def build_atlas(path, size=2048):
     sc.collection.objects.link(cam)
     sc.camera = cam
     mats = {}
-    for name, col in (("white", SRGB_WHITE), ("cyan", M.CYAN), ("dark", (0.012, 0.012, 0.013))):
+    for name, col in (("white", SRGB_WHITE), ("cyan", tuple(c * 0.62 for c in M.CYAN)), ("dark", (0.012, 0.012, 0.013))):
         m = bpy.data.materials.new("_atlas_" + name)
         m.use_nodes = True
         nt = m.node_tree

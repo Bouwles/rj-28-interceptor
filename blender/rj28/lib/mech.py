@@ -162,20 +162,27 @@ def bearing(name, od, id_, width, matrix=None, collection=None):
                        [M.get("steel"), M.get("rubber")], bevel=0.0)
 
 
-def gear_outline(module, teeth, phase=0.0, first=0, count=None):
-    """2D spur gear outline (CCW). Involute flanks approximated by three chords."""
+def gear_outline(module, teeth, phase=0.0, first=0, count=None, flank=5):
+    """2D spur gear outline (CCW): true involute flanks at 20 degrees pressure angle,
+    radial below the base circle, with a relieved root."""
     z = teeth
     r = module * z / 2
-    ra, rf = r + module, r - 1.25 * module
+    ra, rf, rb = r + module, r - 1.25 * module, r * math.cos(math.radians(20.0))
+    inv = lambda al: math.tan(al) - al
+    half = math.pi / (2 * z) + inv(math.radians(20.0))        # half tooth angle on the base circle
+
+    def theta(rr):
+        return max(half - inv(math.acos(min(1.0, rb / rr))), 0.04 * module / ra)
+
+    r0 = max(rb, rf + 0.3 * module)
+    radii = [r0 + (ra - r0) * i / (flank - 1) for i in range(flank)]
+    root = min(theta(r0) + 0.22 * module / rf, math.pi / z - 0.06 * module / rf)
+    tooth = [(rf, -root)] + [(rr, -theta(rr)) for rr in radii] + [(rr, theta(rr)) for rr in reversed(radii)] + [(rf, root)]
     p = 2 * math.pi / z
-    tip = 0.36 * module / ra
     pts = []
     for k in range(first, first + (count or z)):
         a = phase + k * p
-        for rr, off in ((rf, -0.30 * p), (rf + 0.35 * module, -0.275 * p), (r, -0.25 * p),
-                        (ra, -tip), (ra, tip), (r, 0.25 * p),
-                        (rf + 0.35 * module, 0.275 * p), (rf, 0.30 * p)):
-            pts.append((rr * math.cos(a + off), rr * math.sin(a + off)))
+        pts += [(rr * math.cos(a + off), rr * math.sin(a + off)) for rr, off in tooth]
     return pts
 
 
@@ -254,15 +261,23 @@ def slewing_ring(name, od, id_, height, bolts=16, size="M6", matrix=None, collec
 
 # ── actuators ────────────────────────────────────────────────────────────────
 def bellows_bm(r_in, r_out, length, pitch=7.0, cuff=8.0):
-    """Rubber bellows along Z from z=0 to z=length with plain cuffs at both ends."""
+    """Rubber bellows along Z from z=0 to z=length. Convolutions have rounded crests
+    and valleys; each cuff carries a raised bead either side of the clamp seat."""
     n = max(2, round((length - 2 * cuff) / pitch))
     p = (length - 2 * cuff) / n
     bore, collar, valley = r_in + 0.4, r_in + 3.0, r_in + 2.2
-    prof = [(bore, 0.0), (collar, 0.0), (collar, cuff)]
+    bead = min(0.9, cuff * 0.12)
+    amp = r_out - valley
+    prof = [(bore, 0.0), (collar, 0.0), (collar + bead, cuff * 0.12), (collar, cuff * 0.24), (collar, cuff * 0.76),
+            (collar + bead, cuff * 0.88), (collar, cuff)]
+    steps = 8
     for i in range(n):
-        z = cuff + i * p
-        prof += [(r_out, z + p * 0.5), (valley, z + p)]
-    prof += [(collar, length - cuff + 0.01), (collar, length), (bore, length)]
+        for k in range(1, steps + 1):
+            t = k / steps
+            prof.append((valley + amp * (0.5 - 0.5 * math.cos(2 * math.pi * t)) ** 0.8, cuff + (i + t) * p))
+    prof[-1] = (collar, length - cuff)
+    prof += [(collar + bead, length - cuff * 0.88), (collar, length - cuff * 0.76), (collar, length - cuff * 0.24),
+             (collar + bead, length - cuff * 0.12), (collar, length), (bore, length)]
     return P.revolve(prof, P.auto_segs(r_out * 2))
 
 

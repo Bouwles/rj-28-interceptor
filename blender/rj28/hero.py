@@ -48,19 +48,29 @@ def _area(name, loc, target, size, power, color=(1, 1, 1), size_y=None, spread=1
     return ob
 
 
-def studio(extent=2000.0, gain=1.0):
-    """Build the hero light rig around a subject standing at the origin."""
+def studio(extent=2000.0, gain=1.0, camera=(0.0, -1.0, 0.0)):
+    """Build the hero light rig around a subject standing at the origin. The rig is laid out for a
+    camera straight in front and turned about Z to wherever the camera really is, so the rims stay
+    behind the subject and the strips stay beside the lens in every shot."""
+    import math
+    from mathutils import Matrix
+    turn = Matrix.Rotation(math.atan2(camera[0], -camera[1]), 3, "Z")
     RD.clear_lights()
     for ob in [o for o in bpy.data.objects if o.name.startswith("RJ28_Floor")]:
         bpy.data.objects.remove(ob)
     k = extent / 2000.0
     p = gain * k * k
     c = Vector((0, 0, 1050)) * k
-    _area("Hero_Key", Vector((250, -700, 3700)) * k, c, 3200 * k, 170 * p, (1.0, 0.99, 0.97), spread=140)
-    rims = [_area(name, Vector((sx * 2300, 2100, 1550)) * k, c + Vector((0, 0, 100)) * k, 380 * k, 95 * p,
+    _area("Hero_Key", turn @ Vector((250, -700, 3700)) * k, c, 3200 * k, 170 * p, (1.0, 0.99, 0.97), spread=140)
+    rims = [_area(name, turn @ Vector((sx * 2300, 2100, 1550)) * k, c + Vector((0, 0, 100)) * k, 380 * k, 95 * p,
                   (0.80, 0.90, 1.0), 2700 * k, spread=100) for name, sx in (("Hero_Rim_L", 1), ("Hero_Rim_R", -1))]
-    rims.append(_area("Hero_Fill", Vector((900, -3300, 450)) * k, c, 2200 * k, 18 * p, (1.0, 0.95, 0.90), 1300 * k,
+    rims.append(_area("Hero_Fill", turn @ Vector((900, -3300, 450)) * k, c, 2200 * k, 18 * p, (1.0, 0.95, 0.90), 1300 * k,
                       spread=150))
+    # black reads through what it reflects: two tall strip boxes at a grazing angle put a soft
+    # gradient down every panel and a highlight on every bevel that faces the front quarter
+    for name, sx, w in (("Hero_Strip_L", 1, 18), ("Hero_Strip_R", -1, 11)):
+        rims.append(_area(name, turn @ Vector((sx * 2700, -1500, 1250)) * k, c, 420 * k, w * p, (0.94, 0.97, 1.0), 2900 * k,
+                          spread=120))
     RD.world(0.012, (0.5, 0.55, 0.6))
     fl = RD.floor(0.0, base=0.008, rough=0.5)
     # the rims draw the silhouette and the fill opens the shadows; only the key lights the floor (light linking)
@@ -95,7 +105,7 @@ def render(name, scale=1.0, samples=256, out=None, tag=""):
     if amount:
         explode.apply()
         explode.pose(amount)
-    studio(shot.get("extent", 2000.0))
+    studio(shot.get("extent", 2000.0), shot.get("gain", 1.0), shot["loc"])
     setup(shot["res"], samples, scale)
     cam = RD.camera(shot["loc"], shot["target"], shot["lens"])
     cam.data.dof.use_dof = False

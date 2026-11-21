@@ -37,9 +37,9 @@ FILL = {
     "harness": 0.55,      # copper + insulation + air in the braid
     "optic": 0.60,
     "battery": 1.00,      # enclosure volume x cell-pack density
-    "electronics": 0.35,
+    "electronics": 0.90,  # potted modules in aluminium housings with copper spreaders
 }
-DENSITY_OVERRIDE = {"battery": 2700.0, "electronics": 1900.0, "actuator": 4300.0}
+DENSITY_OVERRIDE = {"battery": 2700.0, "electronics": 3200.0, "actuator": 4300.0}
 
 
 def volume_m3(ob):

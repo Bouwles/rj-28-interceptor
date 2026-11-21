@@ -30,35 +30,35 @@ Shape language taken from it:
 |---|---|---|---|
 | Cannon direction | Points to the robot's right | Level, pointing forward | Brief. Hard requirement. |
 | Cap brim | Swung to the rear-left | Straight back, raked down 12° | Brief. Hard requirement. |
-| Stance | Wide A-stance, feet about 430 mm apart | Feet at hip-axis width (240 mm) | Brief. Open question at G1. |
-| Shoulder armour | About 800 mm over the pauldrons | 700 mm | Brief. Open question at G1. |
-| Feet | About 200 mm wide | 310 × 135 mm | Brief. Open question at G1. |
+| Stance | Wide A-stance, feet about 430 mm apart | Feet at hip-axis width (240 mm) | Image, decided at G1: hip axes 270 mm apart, legs abducted 5.5°, about 425 mm between the feet (D-021). |
+| Shoulder armour | About 800 mm over the pauldrons | 700 mm | Image, decided at G1: 780 mm over 520 mm shoulder axes (D-021). |
+| Feet | About 200 mm wide | 310 × 135 mm | Image, decided at G1: 330 × 195 mm (D-021). |
 | Knee | Reads as a rotary joint | Crank driven by two linear actuators | Both: round bearing housings stay on the knee axis, the linear actuators sit behind the thigh. |
-| Barrel | About 400 mm long | About 750 mm, and about 2,050 mm overall when stowed | These two brief numbers conflict with each other. See 4.6 and D-007. |
+| Barrel | About 400 mm long | About 750 mm, and about 2,050 mm overall when stowed | These two brief numbers conflict with each other. Decided at G1: 455 mm barrel, which gives 2,050 mm stowed (D-015, D-021). |
 | Warning labels | Yellow triangles | White and ice cyan only | Brief. |
 | Setting | Bright factory | Dark studio | Brief. |
 
 ## 3. Proportion scheme
 
-Height 1,730 mm to the cap crown, about 8 heads. Legs are half the height (hip axis 905 mm). Shoulder armour 700 mm against 240 mm between the hip axes. The chest is 330 mm deep before the backpack.
+Height 1,730 mm to the cap crown, about 8 heads. Legs are half the height (hip axis 905 mm). Shoulder armour 780 mm against 270 mm between the hip axes. The chest is 330 mm deep before the backpack.
 
 Bulk comes from components, and each bulky volume is designed around what is inside it:
 
 | Volume | Outside | What fills it |
 |---|---|---|
-| Shoulder | Ø150–176 housings, 700 mm armour span | Three rotary actuators: pitch (in the thorax flank), roll (on the joint centre), yaw (top of the upper arm) |
+| Shoulder | Ø150–176 housings, 780 mm armour span | Three rotary actuators: pitch (in the thorax flank), roll (on the joint centre), yaw (top of the upper arm) |
 | Forearm | 192 × 198 mm | Hand drive: six motors with their screw drives and linkages |
-| Chest | 320 × 330 mm frame under 15 mm panels | Battery pack, two compute modules, power distribution, shoulder pitch actuators |
+| Chest | 350 × 290 mm tub under 10 mm panels | Battery pack (8.3 L, stepped round the waist beam and the shoulder actuators), two compute modules, power distribution, shoulder pitch actuators |
 | Backpack | 330 × 128 × 330 mm | Two radiator cores, two blowers, coolant reservoir, mount hardpoint |
 | Hip | Ø174 drum | Hip pitch actuator, forming the top of the thigh |
 | Thigh | 212 × 206 mm, plus actuators behind | Structural frame; two knee actuators outside the armour at the rear |
 | Shin | 190 × 196 mm | Structural member, two ankle actuators at the rear, cable channel |
 
-Stance: upright, knees flexed 4°, toes out 6°. Everything above the waist sits 30 mm forward of the hip axes so the mass of the backpack and cannon stays over the feet (D-012).
+Stance: upright, legs abducted 5.5°, knees flexed 4°, toes out 6°. Everything above the waist sits 30 mm forward of the hip axes so the mass of the backpack and cannon stays over the feet (D-012).
 
 ## 4. Assemblies
 
-Part numbers are `RJ28-AA-NNN`. Counts are intent for Phases 3 to 5 and total about 430.
+Part numbers are `RJ28-AA-NNN`. The counts below were the intent before Gate G1. After G1 the detail target was raised (D-023); the built counts are in `docs/BUILD_LOG.md`.
 
 ### 01 Head and cap (about 40 parts)
 
@@ -92,7 +92,7 @@ Shell; two radiator cores behind slatted grilles; two axial blowers with guards;
 
 Shoulder roll actuator; pauldron shell with front and rear cheeks, on a carrier; shoulder yaw actuator; upper-arm structural member; outer half-shell; elbow housing with dust cover and hard stop; forearm shell in two halves with two access panels, a vent and a wear plate; forearm roll bearing; wrist joint with bellows.
 
-Left and right are not mirror images. The left pauldron reaches 356 mm from the centreline, has a longer skirt and a rear cheek, and carries the unit number. The right reaches 344 mm, sits 12 mm lower and is cut back at the rear to clear the cannon (D-011).
+Left and right are not mirror images. The left pauldron reaches 398 mm from the centreline, has a longer skirt and a rear cheek, and carries the unit number. The right reaches 382 mm, sits 18 mm lower and is cut back at the rear to clear the cannon (D-011).
 
 ### 09 / 10 Hands (about 28 parts each)
 
@@ -114,7 +114,7 @@ See 4.6.
 
 As the brief: runs with real sag, P-clips every 80 to 120 mm, connectors with backshells at both ends, service loops at every moving joint. Markings in white and ice cyan only, set in Saira Stencil One.
 
-### 4.6 Interceptor mount — geometry as built in the blockout
+### 4.6 Interceptor mount — geometry
 
 A swing-arm mount with one main axis.
 
@@ -126,9 +126,9 @@ A swing-arm mount with one main axis.
 | Vertical (stowed, 90°) | Bore at y = +285 mm, behind the shoulder; breech between z = 1,385 and 1,615 mm |
 | Working range | −5° to +90° |
 | Traverse | ±25° on a Ø170 slewing ring directly under the trunnion |
-| Barrel | Ø110 × 500 mm, reinforce at the breech, plain muzzle ring |
-| Breech | 230 × 170 × 190 mm |
-| Overall height, stowed | 2,115 mm (blockout measurement) |
+| Barrel | Ø110 × 455 mm, reinforce at the breech, plain muzzle ring |
+| Breech | 190 × 164 × 176 mm (D-022) |
+| Overall height, stowed | 2,050 mm (measured from the mesh) |
 
 How it is carried, from the body outwards:
 
@@ -142,7 +142,7 @@ How it is carried, from the body outwards:
 
 Why a swing arm: with the trunnion through the breech, the stowed cannon stood beside the head. It hid the cap brim in side view and stood 2,300 mm tall. Lowering the trunnion and carrying the cannon above it puts the stowed barrel behind the shoulder with a visible gap to the brim, and brings the height down (D-008).
 
-Swept-volume check (`poses.sweep_check`, report in `docs/review/phase2/mount_sweep.json`): 60 poses covering elevation −5° to 90° at zero traverse, and traverse ±25° at both 0° and −5°. Minimum clearance to the body is 15.0 mm (stowed breech over the slewing ring, by design) and 15.5 mm to the head at full inboard traverse.
+Swept-volume check (`poses.sweep_check`, report in `docs/review/phase2/mount_sweep.json`): 60 poses covering elevation −5° to 90° at zero traverse, and traverse ±25° at both 0° and −5°. On the blockout the minimum clearance was 15.0 mm. On the detailed model it is 16.6 mm, and 19.1 mm to the head at full inboard traverse.
 
 ## 5. Joints
 
@@ -151,7 +151,7 @@ All 46 degrees of freedom get real hardware in Phase 4. Axes and drives:
 | Joint | Axis | Drive |
 |---|---|---|
 | Hip yaw / roll / pitch | Z / Y / X at the hip centre | Three rotary actuators |
-| Knee pitch | X | Two linear actuators behind the thigh on an 85 mm crank |
+| Knee pitch | X | Two linear actuators behind the thigh on a 70 mm crank, phased 13° so the lever arm is 40 mm at both ends of the 0 to 110° range and 70 mm in the middle (D-025) |
 | Ankle pitch, roll | X, Y | Two parallel linear actuators on a universal joint |
 | Waist yaw | Z | Slewing ring |
 | Waist pitch | X | Two linear actuators beside the spine |
