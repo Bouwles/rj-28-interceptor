@@ -9,7 +9,7 @@ y = THORAX_BACK_Y between z = 1292 and 1468, the top deck is z = 1492 with the
 neck bore at (0, 4), and the shoulder pitch output faces are at x = +/-(SX - 77).
 """
 import bmesh
-from mathutils import Vector
+from mathutils import Matrix, Vector
 
 from .. import frames as FR, params as PR
 from ..lib import armour as A, core as C, detail as D, fittings as F, harness as H, mech, prims as P
@@ -181,24 +181,29 @@ def build():
            "Screws fixing the collar guard to the top deck.")
 
     # ── inside the tub: battery, compute, power distribution, coolant manifold ──
-    # the pack is stepped: a narrower foot follows the tapered floor of the tub
-    by0, by1 = -138.0, 30.0
-    by = (by0 + by1) / 2
-    bb = P.prism(P.rrect(224, by1 - by0, 10, 4), 1292.0, 1408.0)
-    bb.transform(T(0, by, 0))
-    foot = P.prism(P.rrect(212, 138, 10, 4), 1250.0, 1296.0)
-    P.merge(bb, foot, T(0, -43, 0))
+    # The pack is sized by the energy it has to hold and shaped by what it has to miss. Side profile
+    # (y, z), one extrusion 230 mm wide: a foot down to the tapered floor, the main block, a saddle that
+    # steps over the waist reaction beam, and a rear tower up to the deck behind the compute stack.
+    # Low wings fill the tub below the shoulder actuators. About 8.4 litres; the first version was 5.7.
+    by0, by1, lid_y1 = -138.0, 100.0, 56.0
+    by = (by0 + lid_y1) / 2
+    prof = [(by0, 1288), (-112, 1288), (-112, 1246), (26, 1246), (26, 1288), (30, 1288), (30, BEAM_Z + 30),
+            (by1, BEAM_Z + 30), (by1, 1478), (lid_y1, 1478), (lid_y1, 1410), (by0, 1410)]
+    bb = P.prism(prof, -115.0, 115.0)
+    bb.transform(Matrix(((0, 0, 1, 0), (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 0, 1))))
     bat = a.add("Battery_Enclosure", bb,
                 "Sealed enclosure of the 96 V lithium-ion pack with its internal cold plates.", "alu", W, bevel=1.0)
+    for s in (1, -1):                                                     # wings stop short of the tub's corner chamfers
+        C.boolean_join(bat, C.cutter(P.box(43, 134, 47), W @ T(s * 126.5, -37, 1312.5)), lip=0.5)
     D.pocket_grid(bat, W @ T(-36, by0, 1350) @ R("X", 90), 2, 2, 62, 44, 72, 52, depth=3.0)
-    cover = P.prism(P.rrect(224, by1 - by0, 10, 4), 0.0, 6.0)
-    for k in range(6):
-        P.merge(cover, P.box(188, 8, 4), T(0, -65 + 26 * k, 7.5))
-    a.add("Battery_Cover", cover, "Ribbed lid of the battery enclosure.", "alu", W @ T(0, by, 1408), bevel=0.5)
-    a.take(mech.fasteners("_bc", [W @ T(x, by + y, 1414) for x in (-102, 0, 102) for y in (-76, 76)], "M4", "shcs",
+    cover = P.prism(P.rrect(230, lid_y1 - by0, 6, 3), 0.0, 5.0)
+    for k in range(7):
+        P.merge(cover, P.box(190, 8, 3), T(0, -78 + 26 * k, 6.0))
+    a.add("Battery_Cover", cover, "Ribbed lid of the battery enclosure.", "alu", W @ T(0, by, 1410), bevel=0.5)
+    a.take(mech.fasteners("_bc", [W @ T(x, by + y, 1415) for x in (-106, 0, 106) for y in (-91, 91)], "M4", "shcs",
                           washer=True), "Battery_Cover_Screws", "Screws sealing the battery lid.")
     bus = bmesh.new()
-    for y in (by + 12, by - 12):
+    for y in (-46, -70):                                                  # under the power distribution unit
         P.merge(bus, P.box(76, 14, 5), T(62, y, 1420.5))
         for x in (30, 94):
             P.merge(bus, P.prism(P.rrect(24, 20, 4, 3), 0, 6.0), T(x, y, 1417.6), mat_index=1)
@@ -235,7 +240,7 @@ def build():
     for x in (-66, -22, 22, 66):
         P.merge(man, P.cyl(14, 22, 12), T(x, 0, -22))
     a.add("Coolant_Manifold", man, "Manifold splitting the coolant loop to battery, compute and shoulder actuators.",
-          "alu", W @ T(0, 106, 1452), bevel=0.6)
+          "alu", W @ T(0, 117, 1452), bevel=0.6)
     return a
 
 
@@ -248,3 +253,6 @@ def review(a, out, tag=""):
     inner = [o for o in objs if not any(k in o.name for k in armour)]
     RV.closeup(inner, out / f"03_thorax_internals_clay{tag}.jpg", "03 thorax, armour removed", (0.5, -0.82, 0.3),
                "clay", res=(1300, 1100), isolate=True, dist=3.0)
+    bare = [o for o in inner if "Thorax_Frame" not in o.name and "Shoulder" not in o.name and "Lifting" not in o.name]
+    RV.closeup(bare, out / f"03_thorax_pack_clay{tag}.jpg", "03 thorax, battery and compute out of the tub",
+               (0.6, 0.7, 0.4), "clay", res=(1300, 1100), isolate=True, dist=3.0)

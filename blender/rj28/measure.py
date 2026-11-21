@@ -39,7 +39,7 @@ FILL = {
     "battery": 1.00,      # enclosure volume x cell-pack density
     "electronics": 0.35,
 }
-DENSITY_OVERRIDE = {"battery": 2050.0, "electronics": 1900.0, "actuator": 4300.0}
+DENSITY_OVERRIDE = {"battery": 2700.0, "electronics": 1900.0, "actuator": 4300.0}
 
 
 def volume_m3(ob):
@@ -59,6 +59,11 @@ def part_class(ob):
         return ob["rj28_class"]
     key = ob.get("rj28_material", "")
     name = ob.name
+    if "Battery_Enclosure" in name:
+        return "battery"
+    if any(k in name for k in ("Compute_Module", "Processor_Board", "Power_Distribution", "Controller", "Lidar_Unit",
+                               "Imager_Core", "Camera")):
+        return "electronics"
     if any(k in name for k in ("Housing", "Motor", "Act_Body", "Drive")) and key in ("alu", "ti"):
         return "actuator"
     return M.INFO.get(key, ("", "structure", 2700))[1]
@@ -177,6 +182,8 @@ def knee_note():
 def endurance_note():
     h = PR.PACK_KWH / PR.AVG_DRAW_KW
     usable = 0.9
+    enc = [o for o in parts.all_parts() if "Battery_Enclosure" in o.name]
+    vol_l = volume_m3(enc[0]) * 1000.0 if enc else float("nan")
     return dict(
         title="Endurance from pack energy and average draw",
         inputs=dict(pack_kwh=PR.PACK_KWH, average_draw_kw=PR.AVG_DRAW_KW, usable_fraction=usable,
@@ -187,10 +194,14 @@ def endurance_note():
             f"Endurance to empty: {PR.PACK_KWH:.1f} / {PR.AVG_DRAW_KW:.1f} = {h:.1f} h",
             f"Endurance to the {int((1 - usable) * 100)}% reserve: {h * usable:.2f} h",
             f"Pack specific energy: {PR.PACK_KWH * 1000 / PR.MASS_BATTERY_KG:.0f} Wh/kg at pack level",
+            f"Enclosure volume from the model: {vol_l:.1f} L, so {PR.PACK_KWH * 1000 / vol_l:.0f} Wh/L "
+            f"and {PR.MASS_BATTERY_KG / vol_l:.2f} kg/L at pack level",
         ],
         result=dict(endurance_h=round(h, 2), endurance_to_reserve_h=round(h * usable, 2),
                     pack_wh_per_kg=round(PR.PACK_KWH * 1000 / PR.MASS_BATTERY_KG, 0)),
-        verdict="2.5 h holds only if the pack is run to empty; the dossier quotes 2.5 h mixed duty and 2.25 h to reserve.",
+        verdict="2.5 h holds only if the pack is run to empty; the dossier quotes 2.5 h mixed duty and 2.25 h to reserve. "
+                "The volumetric figure needs silicon-anode cells (about 1,100 Wh/L at the cell) stacked cell-to-pack; "
+                f"with ordinary NMC cells at 430 Wh/L pack level this enclosure would hold about {vol_l * 0.43:.1f} kWh.",
     )
 
 

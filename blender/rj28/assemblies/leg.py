@@ -55,7 +55,10 @@ def build(s):
     zk = -PR.THIGH                                   # knee axis height in the thigh frame
 
     # ── hip pitch actuator: its housing is the top of the thigh ─────────────
-    d = mech.rotary_actuator("_hip", 174, 150, Lg @ T(-s * 67, 0, 0) @ R("Y", s * 90), bolts=0)
+    # connector at the rear, 25 degrees above horizontal: the only arc of the housing that neither the
+    # pelvis saddle nor the knee actuators' upper eyes ever cross
+    d = mech.rotary_actuator("_hip", 174, 150, Lg @ T(-s * 67, 0, 0) @ R("Y", s * 90), bolts=0,
+                             connector_angle=90 + 25 * s)
     a.take_rotary(d, "Hip_Pitch", "hip pitch")
 
     # ── thigh frame: hangers on the actuator, beam, crosshead, knee fork ────

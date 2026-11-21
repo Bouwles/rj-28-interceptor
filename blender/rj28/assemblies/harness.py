@@ -122,8 +122,10 @@ def leg(rn, s):
     j_bot = Th @ Vector((cx, 70, -354))
 
     # thigh loom: from the hip, behind the inner hanger, down the rear edge of the inner cheek
-    start = Lg @ Vector((i * 74, 78, 52))
-    pts = [start, Lg @ Vector((i * 76, 104, 4)), Th @ Vector((i * 77, 100, -70)), Th @ Vector((cx, 74, -150)),
+    start = rn.plug(f"Leg_Trunk_Plug_{n}", Vector((s * 44, 109, 1012)), (s, 0, 0),
+                    f"{('left', 'right')[s < 0]} leg power and signal leaving the pelvis", d=13.0)
+    pts = [start, Vector((s * 62, 116, 962)), Lg @ Vector((i * 76, 104, 4)), Th @ Vector((i * 77, 100, -70)),
+           Th @ Vector((cx, 74, -150)),
            Th @ Vector((cx, 70, -230)), j_top]
     rn.cable(f"Thigh_Loom_{n}", pts, f"{('left', 'right')[s < 0]} leg power and signal from the pelvis to the knee junction",
              r=5.0, clips=[Th @ Vector((cx, 74, -150)), Th @ Vector((cx, 70, -230)), Th @ Vector((cx, 70, -296))],
@@ -268,6 +270,27 @@ def mount(rn):
     rn.cable("Tracker_Lead", pts, "tracking head to the breech", r=2.8, group="elev", zone="mount_elev")
 
 
+def pelvis(rn):
+    """Leads from the hip and waist actuators to the connector panel at the back of the pelvis."""
+    slots = {("11", "Hip_Pitch_Connector"): (26, 1016), ("12", "Hip_Pitch_Connector"): (-26, 1016),
+             ("05", "Hip_Yaw_Connector_L"): (12, 1016), ("05", "Hip_Yaw_Connector_R"): (-12, 1016),
+             ("05", "Hip_Roll_L_Connector"): (28, 996), ("05", "Hip_Roll_R_Connector"): (-28, 996),
+             ("04", "Waist_Yaw_Drive_Connector"): (0, 998)}
+    for (aa, short), (x, z) in slots.items():
+        ob = connector(aa, short)
+        if ob is None:
+            print("HARNESS SKIP", aa, short)
+            continue
+        tip, out = tail_of(ob)
+        nm = short.replace("_Connector", "").replace("__", "_")
+        nm = f"{nm}_{'L' if aa == '11' else 'R'}" if aa in ("11", "12") else nm
+        tail = rn.plug(f"{nm}_Panel_Plug", Vector((x, 126, z)), (0, 1, 0), f"{nm.replace('_', ' ').lower()} at the pelvis panel", d=9.5)
+        mid = (tip + tail) / 2
+        mid.y = max(tip.y, tail.y) + 26
+        pts = [tip, tip + out * 16 + Vector((0, 8, 4)), mid, tail + Vector((0, 12, 0)), tail]
+        rn.cable(f"{nm}_Lead", pts, f"pelvis panel to the {nm.replace('_', ' ').lower()} actuator", r=3.0)
+
+
 def build():
     a = Asm("16")
     rn = Runs(a)
@@ -276,6 +299,8 @@ def build():
         leg(rn, s)
         if connector("07" if s > 0 else "08", "Shoulder_Roll_Connector") is not None:
             arm(rn, s)
+    if connector("05", "Pelvis_Connector_Panel") is not None:
+        pelvis(rn)
     mount(rn)
     return a
 

@@ -95,12 +95,17 @@ def build():
         yoke = find("03", f"Shoulder_Yoke_{'L' if s > 0 else 'R'}") or find("03", "Thorax_Frame")
         mk.put(yoke, "LIFT POINT", 5.0, W @ Vector((s * (PR.SX - 132), 4, 1700)), up, (1, 0, 0),
                what="Marks the lifting eye on the shoulder yoke.")
-    door = find("06", "Battery_Door") or find("06", "Battery_Service_Door")
-    mk.put(door, f"HV {PR.PACK_VOLTAGE:.0f} V", 9.0, W @ Vector((0, 500, 1172)), (0, 1, 0), (-1, 0, 0),
-           what="High-voltage warning on the battery service door.")
-    shell = find("06", "Backpack_Shell") or find("06", "Backpack_Shell_Rear")
-    mk.put(shell, "HOT SURFACE", 6.0, W @ Vector((0, 500, 1318)), (0, 1, 0), (-1, 0, 0), "cyan",
-           what="Warning under the blower exhausts.")
+    door = find("06", "Battery_Service_Door")
+    if door is not None:
+        lo, hi = C.bounds_mm([door])
+        c = (lo + hi) / 2
+        mk.put(door, f"HV {PR.PACK_VOLTAGE:.0f} V", 8.0, Vector((hi.x + 120, c.y, c.z + 30)), (1, 0, 0), (0, 1, 0),
+               what="High-voltage warning on the battery service door.")
+    rear = find("06", "Backpack_Rear_Panel")
+    if rear is not None:
+        lo, hi = C.bounds_mm([rear])
+        mk.put(rear, "HOT SURFACE", 5.5, Vector((lo.x + 62, hi.y + 120, hi.z - 15)), (0, 1, 0), (-1, 0, 0), "cyan",
+               what="Warning above the blower exhausts.")
     plate = find("03", "Data_Plate")
     if plate is not None:
         lo, hi = C.bounds_mm([plate])

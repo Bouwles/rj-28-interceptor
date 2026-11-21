@@ -19,7 +19,7 @@ RENDERS = ROOT / "site" / "public" / "renders"
 
 # name -> mount state, camera position, target (mm), lens, resolution, exposure, exploded amount
 SHOTS = {
-    "front_deployed": dict(state="deployed", loc=(-2350, -3750, 1150), target=(-40, -80, 1005), lens=75,
+    "front_deployed": dict(state="deployed", loc=(2250, -3800, 1150), target=(-20, -80, 1005), lens=75,
                            res=(3840, 4800)),
     "rear_stowed": dict(state="stowed", loc=(-2550, 3650, 1520), target=(-40, 70, 1085), lens=75, res=(3840, 5120)),
     "head_cap": dict(state="deployed", loc=(-470, -980, 1705), target=(-10, -50, 1640), lens=105, res=(3840, 2880)),
@@ -59,10 +59,11 @@ def studio(extent=2000.0, gain=1.0):
     _area("Hero_Key", Vector((250, -700, 3700)) * k, c, 3200 * k, 170 * p, (1.0, 0.99, 0.97), spread=140)
     rims = [_area(name, Vector((sx * 2300, 2100, 1550)) * k, c + Vector((0, 0, 100)) * k, 380 * k, 95 * p,
                   (0.80, 0.90, 1.0), 2700 * k, spread=100) for name, sx in (("Hero_Rim_L", 1), ("Hero_Rim_R", -1))]
-    _area("Hero_Fill", Vector((900, -3300, 450)) * k, c, 2200 * k, 18 * p, (1.0, 0.95, 0.90), 1300 * k, spread=150)
+    rims.append(_area("Hero_Fill", Vector((900, -3300, 450)) * k, c, 2200 * k, 18 * p, (1.0, 0.95, 0.90), 1300 * k,
+                      spread=150))
     RD.world(0.012, (0.5, 0.55, 0.6))
     fl = RD.floor(0.0, base=0.008, rough=0.5)
-    # the rims draw the silhouette; they must not pool light on the floor (light linking)
+    # the rims draw the silhouette and the fill opens the shadows; only the key lights the floor (light linking)
     block = bpy.data.collections.get("RJ28_RimBlock") or bpy.data.collections.new("RJ28_RimBlock")
     for ob in list(block.objects):
         block.objects.unlink(ob)
