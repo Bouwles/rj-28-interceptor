@@ -34,7 +34,7 @@
    0.0,
    -0.0147
   ],
-  "mass_kg": 0.092
+  "mass_kg": 0.093
  },
  {
   "number": "RJ28-01-002",
@@ -71,7 +71,7 @@
    -0.0791,
    -0.0131
   ],
-  "mass_kg": 0.097
+  "mass_kg": 0.098
  },
  {
   "number": "RJ28-01-003",
@@ -145,7 +145,7 @@
    0.0904,
    -0.0196
   ],
-  "mass_kg": 0.151
+  "mass_kg": 0.152
  },
  {
   "number": "RJ28-01-005",
@@ -922,7 +922,7 @@
    -0.1371,
    -0.0044
   ],
-  "mass_kg": 0.004
+  "mass_kg": 0.005
  },
  {
   "number": "RJ28-01-026",
@@ -959,7 +959,7 @@
    -0.1371,
    -0.0044
   ],
-  "mass_kg": 0.004
+  "mass_kg": 0.005
  },
  {
   "number": "RJ28-01-027",
@@ -1218,7 +1218,7 @@
    -0.123,
    -0.0131
   ],
-  "mass_kg": 0.019
+  "mass_kg": 0.02
  },
  {
   "number": "RJ28-01-034",
@@ -1255,7 +1255,7 @@
    -0.1144,
    -0.0216
   ],
-  "mass_kg": 0.005
+  "mass_kg": 0.006
  },
  {
   "number": "RJ28-01-035",
@@ -1588,7 +1588,7 @@
    0.0,
    0.012
   ],
-  "mass_kg": 0.267
+  "mass_kg": 0.269
  },
  {
   "number": "RJ28-01-044",
@@ -1921,7 +1921,7 @@
    -0.127,
    0.01
   ],
-  "mass_kg": 1.981
+  "mass_kg": 1.993
  },
  {
   "number": "RJ28-01-053",
@@ -2624,7 +2624,7 @@
    0.0,
    -0.0071
   ],
-  "mass_kg": 0.106
+  "mass_kg": 0.107
  },
  {
   "number": "RJ28-02-002",
@@ -2661,7 +2661,7 @@
    0.0,
    -0.0062
   ],
-  "mass_kg": 0.133
+  "mass_kg": 0.134
  },
  {
   "number": "RJ28-02-003",
@@ -2809,7 +2809,7 @@
    0.0424,
    0.0014
   ],
-  "mass_kg": 0.101
+  "mass_kg": 0.102
  },
  {
   "number": "RJ28-02-007",
@@ -2846,7 +2846,7 @@
    0.1131,
    0.007
   ],
-  "mass_kg": 0.046
+  "mass_kg": 0.047
  },
  {
   "number": "RJ28-02-008",
@@ -2957,7 +2957,7 @@
    0.0,
    0.0028
   ],
-  "mass_kg": 0.117
+  "mass_kg": 0.118
  },
  {
   "number": "RJ28-02-011",
@@ -2994,7 +2994,7 @@
    0.0,
    0.0046
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
   "number": "RJ28-02-012",
@@ -3623,7 +3623,7 @@
    0.0,
    -0.0003
   ],
-  "mass_kg": 15.69
+  "mass_kg": 15.784
  },
  {
   "number": "RJ28-03-002",
@@ -3697,7 +3697,7 @@
    0.0267,
    0.028
   ],
-  "mass_kg": 2.269
+  "mass_kg": 2.283
  },
  {
   "number": "RJ28-03-004",
@@ -3734,7 +3734,7 @@
    0.0261,
    0.028
   ],
-  "mass_kg": 0.145
+  "mass_kg": 0.146
  },
  {
   "number": "RJ28-03-005",
@@ -3845,7 +3845,7 @@
    0.0245,
    0.0563
   ],
-  "mass_kg": 0.119
+  "mass_kg": 0.12
  },
  {
   "number": "RJ28-03-008",
@@ -3956,7 +3956,7 @@
    0.0267,
    0.028
   ],
-  "mass_kg": 2.269
+  "mass_kg": 2.283
  },
  {
   "number": "RJ28-03-011",
@@ -3993,7 +3993,7 @@
    0.0261,
    0.028
   ],
-  "mass_kg": 0.145
+  "mass_kg": 0.146
  },
  {
   "number": "RJ28-03-012",
@@ -4104,7 +4104,7 @@
    0.0245,
    0.0563
   ],
-  "mass_kg": 0.119
+  "mass_kg": 0.12
  },
  {
   "number": "RJ28-03-015",
@@ -4215,7 +4215,7 @@
    -0.1863,
    0.0026
   ],
-  "mass_kg": 0.348
+  "mass_kg": 0.351
  },
  {
   "number": "RJ28-03-018",
@@ -4474,7 +4474,7 @@
    -0.1977,
    0.0359
   ],
-  "mass_kg": 0.131
+  "mass_kg": 0.132
  },
  {
   "number": "RJ28-03-025",
@@ -4585,7 +4585,7 @@
    -0.1968,
    0.0364
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-03-028",
@@ -4659,7 +4659,7 @@
    -0.1775,
    -0.0315
   ],
-  "mass_kg": 0.022
+  "mass_kg": 0.023
  },
  {
   "number": "RJ28-03-030",
@@ -4696,7 +4696,7 @@
    -0.2022,
    -0.0308
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-03-031",
@@ -4733,7 +4733,7 @@
    -0.0026,
    -0.0175
   ],
-  "mass_kg": 0.136
+  "mass_kg": 0.137
  },
  {
   "number": "RJ28-03-032",
@@ -4807,7 +4807,7 @@
    -0.0026,
    -0.0175
   ],
-  "mass_kg": 0.337
+  "mass_kg": 0.339
  },
  {
   "number": "RJ28-03-034",
@@ -4918,7 +4918,7 @@
    -0.1863,
    0.0026
   ],
-  "mass_kg": 0.355
+  "mass_kg": 0.357
  },
  {
   "number": "RJ28-03-037",
@@ -5177,7 +5177,7 @@
    -0.1977,
    0.0359
   ],
-  "mass_kg": 0.131
+  "mass_kg": 0.132
  },
  {
   "number": "RJ28-03-044",
@@ -5288,7 +5288,7 @@
    -0.1968,
    0.0364
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-03-047",
@@ -5362,7 +5362,7 @@
    -0.1775,
    -0.0315
   ],
-  "mass_kg": 0.022
+  "mass_kg": 0.023
  },
  {
   "number": "RJ28-03-049",
@@ -5399,7 +5399,7 @@
    -0.2022,
    -0.0308
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-03-050",
@@ -5436,7 +5436,7 @@
    -0.0026,
    -0.0175
   ],
-  "mass_kg": 0.136
+  "mass_kg": 0.137
  },
  {
   "number": "RJ28-03-051",
@@ -5510,7 +5510,7 @@
    -0.0026,
    -0.0175
   ],
-  "mass_kg": 0.337
+  "mass_kg": 0.339
  },
  {
   "number": "RJ28-03-053",
@@ -5621,7 +5621,7 @@
    -0.2097,
    0.007
   ],
-  "mass_kg": 0.496
+  "mass_kg": 0.499
  },
  {
   "number": "RJ28-03-056",
@@ -5658,7 +5658,7 @@
    -0.1942,
    0.0049
   ],
-  "mass_kg": 0.235
+  "mass_kg": 0.237
  },
  {
   "number": "RJ28-03-057",
@@ -5695,7 +5695,7 @@
    -0.2104,
    0.0049
   ],
-  "mass_kg": 0.012
+  "mass_kg": 0.013
  },
  {
   "number": "RJ28-03-058",
@@ -5806,7 +5806,7 @@
    0.0,
    0.0581
   ],
-  "mass_kg": 0.615
+  "mass_kg": 0.619
  },
  {
   "number": "RJ28-03-061",
@@ -5843,7 +5843,7 @@
    -0.0464,
    0.0632
   ],
-  "mass_kg": 0.012
+  "mass_kg": 0.013
  },
  {
   "number": "RJ28-03-062",
@@ -6028,7 +6028,7 @@
    -0.0522,
    0.0223
   ],
-  "mass_kg": 0.258
+  "mass_kg": 0.259
  },
  {
   "number": "RJ28-03-067",
@@ -6361,7 +6361,7 @@
    -0.0717,
    0.0307
   ],
-  "mass_kg": 0.514
+  "mass_kg": 0.517
  },
  {
   "number": "RJ28-03-076",
@@ -6398,7 +6398,7 @@
    -0.0622,
    0.0257
   ],
-  "mass_kg": 0.094
+  "mass_kg": 0.095
  },
  {
   "number": "RJ28-03-077",
@@ -6435,7 +6435,7 @@
    -0.0717,
    0.0412
   ],
-  "mass_kg": 0.514
+  "mass_kg": 0.517
  },
  {
   "number": "RJ28-03-078",
@@ -6472,7 +6472,7 @@
    -0.0622,
    0.0362
   ],
-  "mass_kg": 0.094
+  "mass_kg": 0.095
  },
  {
   "number": "RJ28-03-079",
@@ -6546,7 +6546,7 @@
    -0.0719,
    0.0358
   ],
-  "mass_kg": 0.846
+  "mass_kg": 0.851
  },
  {
   "number": "RJ28-03-081",
@@ -6768,7 +6768,7 @@
    -0.051,
    -0.0249
   ],
-  "mass_kg": 0.135
+  "mass_kg": 0.136
  },
  {
   "number": "RJ28-04-002",
@@ -6805,7 +6805,7 @@
    -0.051,
    -0.0244
   ],
-  "mass_kg": 0.181
+  "mass_kg": 0.182
  },
  {
   "number": "RJ28-04-003",
@@ -6953,7 +6953,7 @@
    0.0471,
    -0.0161
   ],
-  "mass_kg": 0.443
+  "mass_kg": 0.446
  },
  {
   "number": "RJ28-04-007",
@@ -6990,7 +6990,7 @@
    0.1346,
    -0.0018
   ],
-  "mass_kg": 0.23
+  "mass_kg": 0.232
  },
  {
   "number": "RJ28-04-008",
@@ -7175,7 +7175,7 @@
    0.0,
    -0.0059
   ],
-  "mass_kg": 0.17
+  "mass_kg": 0.171
  },
  {
   "number": "RJ28-04-013",
@@ -7249,7 +7249,7 @@
    0.0,
    0.0126
   ],
-  "mass_kg": 0.2
+  "mass_kg": 0.201
  },
  {
   "number": "RJ28-04-015",
@@ -7323,7 +7323,7 @@
    0.0,
    0.0171
   ],
-  "mass_kg": 0.107
+  "mass_kg": 0.108
  },
  {
   "number": "RJ28-04-017",
@@ -7434,7 +7434,7 @@
    0.0521,
    0.0386
   ],
-  "mass_kg": 0.178
+  "mass_kg": 0.179
  },
  {
   "number": "RJ28-04-020",
@@ -7471,7 +7471,7 @@
    0.0634,
    0.0065
   ],
-  "mass_kg": 0.183
+  "mass_kg": 0.184
  },
  {
   "number": "RJ28-04-021",
@@ -7526,7 +7526,7 @@
    1250.0
   ],
   "bbox_max": [
-   102.9,
+   103.0,
    49.3,
    1310.0
   ],
@@ -7535,7 +7535,7 @@
    42.7,
    60.0
   ],
-  "volume_cm3": 38.81,
+  "volume_cm3": 39.32,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -7545,7 +7545,7 @@
    0.0552,
    0.0525
   ],
-  "mass_kg": 0.062
+  "mass_kg": 0.063
  },
  {
   "number": "RJ28-04-023",
@@ -7595,7 +7595,7 @@
   "material_class": "structure",
   "function": "Fork bracket taking the rod-end load of the waist pitch actuator.",
   "bbox_min": [
-   59.1,
+   59.0,
    12.7,
    1086.0
   ],
@@ -7609,7 +7609,7 @@
    42.7,
    60.0
   ],
-  "volume_cm3": 38.81,
+  "volume_cm3": 39.32,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -7619,7 +7619,7 @@
    0.0644,
    -0.0049
   ],
-  "mass_kg": 0.062
+  "mass_kg": 0.063
  },
  {
   "number": "RJ28-04-025",
@@ -7693,7 +7693,7 @@
    0.0521,
    0.0386
   ],
-  "mass_kg": 0.178
+  "mass_kg": 0.179
  },
  {
   "number": "RJ28-04-027",
@@ -7730,7 +7730,7 @@
    0.0634,
    0.0065
   ],
-  "mass_kg": 0.183
+  "mass_kg": 0.184
  },
  {
   "number": "RJ28-04-028",
@@ -7780,7 +7780,7 @@
   "material_class": "structure",
   "function": "Fork bracket anchoring the body end of the waist pitch actuator.",
   "bbox_min": [
-   -102.9,
+   -103.0,
    6.7,
    1250.0
   ],
@@ -7794,7 +7794,7 @@
    42.7,
    60.0
   ],
-  "volume_cm3": 38.81,
+  "volume_cm3": 39.32,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -7804,7 +7804,7 @@
    0.0552,
    0.0525
   ],
-  "mass_kg": 0.062
+  "mass_kg": 0.063
  },
  {
   "number": "RJ28-04-030",
@@ -7859,7 +7859,7 @@
    1086.0
   ],
   "bbox_max": [
-   -59.1,
+   -59.0,
    55.3,
    1146.0
   ],
@@ -7868,7 +7868,7 @@
    42.7,
    60.0
   ],
-  "volume_cm3": 38.81,
+  "volume_cm3": 39.32,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -7878,7 +7878,7 @@
    0.0644,
    -0.0049
   ],
-  "mass_kg": 0.062
+  "mass_kg": 0.063
  },
  {
   "number": "RJ28-04-032",
@@ -8026,7 +8026,7 @@
    0.1209,
    -0.0252
   ],
-  "mass_kg": 0.01
+  "mass_kg": 0.011
  },
  {
   "number": "RJ28-04-036",
@@ -8322,7 +8322,7 @@
    -0.1095,
    -0.0109
   ],
-  "mass_kg": 0.119
+  "mass_kg": 0.12
  },
  {
   "number": "RJ28-04-044",
@@ -8396,7 +8396,7 @@
    -0.0616,
    -0.0083
   ],
-  "mass_kg": 0.02
+  "mass_kg": 0.021
  },
  {
   "number": "RJ28-04-046",
@@ -8507,7 +8507,7 @@
    -0.1157,
    0.0001
   ],
-  "mass_kg": 0.129
+  "mass_kg": 0.13
  },
  {
   "number": "RJ28-04-049",
@@ -8729,7 +8729,7 @@
    -0.1219,
    0.0111
   ],
-  "mass_kg": 0.141
+  "mass_kg": 0.142
  },
  {
   "number": "RJ28-04-055",
@@ -8951,7 +8951,7 @@
    -0.128,
    0.0221
   ],
-  "mass_kg": 0.152
+  "mass_kg": 0.153
  },
  {
   "number": "RJ28-04-061",
@@ -9173,7 +9173,7 @@
    -0.1231,
    0.0406
   ],
-  "mass_kg": 0.064
+  "mass_kg": 0.065
  },
  {
   "number": "RJ28-04-067",
@@ -9247,7 +9247,7 @@
    -0.1273,
    0.0336
   ],
-  "mass_kg": 0.037
+  "mass_kg": 0.038
  },
  {
   "number": "RJ28-04-069",
@@ -9395,7 +9395,7 @@
    0.0,
    -0.0003
   ],
-  "mass_kg": 2.891
+  "mass_kg": 2.909
  },
  {
   "number": "RJ28-05-002",
@@ -9432,7 +9432,7 @@
    -0.0452,
    0.035
   ],
-  "mass_kg": 1.137
+  "mass_kg": 1.144
  },
  {
   "number": "RJ28-05-003",
@@ -9506,7 +9506,7 @@
    -0.1539,
    0.0187
   ],
-  "mass_kg": 0.283
+  "mass_kg": 0.285
  },
  {
   "number": "RJ28-05-005",
@@ -9543,7 +9543,7 @@
    -0.1571,
    -0.0138
   ],
-  "mass_kg": 0.137
+  "mass_kg": 0.138
  },
  {
   "number": "RJ28-05-006",
@@ -9691,7 +9691,7 @@
    0.1533,
    0.0196
   ],
-  "mass_kg": 0.027
+  "mass_kg": 0.028
  },
  {
   "number": "RJ28-05-010",
@@ -9728,7 +9728,7 @@
    0.0,
    0.029
   ],
-  "mass_kg": 0.587
+  "mass_kg": 0.59
  },
  {
   "number": "RJ28-05-011",
@@ -9913,7 +9913,7 @@
    0.1496,
    0.0116
   ],
-  "mass_kg": 0.116
+  "mass_kg": 0.117
  },
  {
   "number": "RJ28-05-016",
@@ -10135,7 +10135,7 @@
    -0.0855,
    0.0273
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-05-022",
@@ -10209,7 +10209,7 @@
    0.0,
    0.029
   ],
-  "mass_kg": 0.587
+  "mass_kg": 0.59
  },
  {
   "number": "RJ28-05-024",
@@ -10394,7 +10394,7 @@
    0.1496,
    0.0116
   ],
-  "mass_kg": 0.116
+  "mass_kg": 0.117
  },
  {
   "number": "RJ28-05-029",
@@ -10616,7 +10616,7 @@
    -0.0855,
    0.0273
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-05-035",
@@ -10690,7 +10690,7 @@
    0.0,
    0.0
   ],
-  "mass_kg": 0.812
+  "mass_kg": 0.817
  },
  {
   "number": "RJ28-06-002",
@@ -10764,7 +10764,7 @@
    0.0872,
    0.0
   ],
-  "mass_kg": 1.057
+  "mass_kg": 1.064
  },
  {
   "number": "RJ28-06-004",
@@ -10801,7 +10801,7 @@
    0.0,
    0.0509
   ],
-  "mass_kg": 0.435
+  "mass_kg": 0.437
  },
  {
   "number": "RJ28-06-005",
@@ -10838,7 +10838,7 @@
    0.0,
    -0.0509
   ],
-  "mass_kg": 0.444
+  "mass_kg": 0.446
  },
  {
   "number": "RJ28-06-006",
@@ -10875,7 +10875,7 @@
    -0.0099,
    0.0
   ],
-  "mass_kg": 0.255
+  "mass_kg": 0.256
  },
  {
   "number": "RJ28-06-007",
@@ -10912,7 +10912,7 @@
    -0.0099,
    -0.0
   ],
-  "mass_kg": 0.282
+  "mass_kg": 0.284
  },
  {
   "number": "RJ28-06-008",
@@ -10986,7 +10986,7 @@
    0.0919,
    0.0039
   ],
-  "mass_kg": 0.017
+  "mass_kg": 0.018
  },
  {
   "number": "RJ28-06-010",
@@ -11097,7 +11097,7 @@
    -0.0066,
    0.0333
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-06-013",
@@ -11134,7 +11134,7 @@
    -0.0066,
    0.02
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-06-014",
@@ -11245,7 +11245,7 @@
    0.0334,
    -0.0185
   ],
-  "mass_kg": 0.166
+  "mass_kg": 0.167
  },
  {
   "number": "RJ28-06-017",
@@ -11356,7 +11356,7 @@
    0.0334,
    -0.0185
   ],
-  "mass_kg": 0.166
+  "mass_kg": 0.167
  },
  {
   "number": "RJ28-06-020",
@@ -11430,7 +11430,7 @@
    0.0805,
    0.0256
   ],
-  "mass_kg": 0.021
+  "mass_kg": 0.022
  },
  {
   "number": "RJ28-06-022",
@@ -11541,7 +11541,7 @@
    0.0804,
    0.0256
   ],
-  "mass_kg": 0.021
+  "mass_kg": 0.022
  },
  {
   "number": "RJ28-06-025",
@@ -11615,7 +11615,7 @@
    0.0568,
    0.0289
   ],
-  "mass_kg": 0.322
+  "mass_kg": 0.324
  },
  {
   "number": "RJ28-06-027",
@@ -11800,7 +11800,7 @@
    -0.0152,
    -0.0053
   ],
-  "mass_kg": 0.028
+  "mass_kg": 0.029
  },
  {
   "number": "RJ28-06-032",
@@ -11948,7 +11948,7 @@
    -0.0659,
    -0.0387
   ],
-  "mass_kg": 0.081
+  "mass_kg": 0.082
  },
  {
   "number": "RJ28-06-036",
@@ -11985,7 +11985,7 @@
    0.0,
    -0.0124
   ],
-  "mass_kg": 0.028
+  "mass_kg": 0.029
  },
  {
   "number": "RJ28-06-037",
@@ -12022,7 +12022,7 @@
    -0.0669,
    0.0417
   ],
-  "mass_kg": 0.136
+  "mass_kg": 0.137
  },
  {
   "number": "RJ28-06-038",
@@ -12096,7 +12096,7 @@
    0.0085,
    0.1003
   ],
-  "mass_kg": 3.327
+  "mass_kg": 3.347
  },
  {
   "number": "RJ28-07-002",
@@ -12133,7 +12133,7 @@
    -0.0881,
    0.1064
   ],
-  "mass_kg": 0.115
+  "mass_kg": 0.116
  },
  {
   "number": "RJ28-07-003",
@@ -12170,7 +12170,7 @@
    0.0195,
    0.0827
   ],
-  "mass_kg": 0.081
+  "mass_kg": 0.082
  },
  {
   "number": "RJ28-07-004",
@@ -12318,7 +12318,7 @@
    0.1142,
    0.0936
   ],
-  "mass_kg": 0.088
+  "mass_kg": 0.089
  },
  {
   "number": "RJ28-07-008",
@@ -12355,7 +12355,7 @@
    0.0077,
    0.0905
   ],
-  "mass_kg": 1.061
+  "mass_kg": 1.067
  },
  {
   "number": "RJ28-07-009",
@@ -12429,7 +12429,7 @@
    -0.0116,
    0.1488
   ],
-  "mass_kg": 0.841
+  "mass_kg": 0.846
  },
  {
   "number": "RJ28-07-011",
@@ -12466,7 +12466,7 @@
    0.0001,
    0.1274
   ],
-  "mass_kg": 0.411
+  "mass_kg": 0.413
  },
  {
   "number": "RJ28-07-012",
@@ -12503,7 +12503,7 @@
    0.0087,
    0.0928
   ],
-  "mass_kg": 0.25
+  "mass_kg": 0.251
  },
  {
   "number": "RJ28-07-013",
@@ -12688,7 +12688,7 @@
    -0.1378,
    0.1341
   ],
-  "mass_kg": 0.121
+  "mass_kg": 0.122
  },
  {
   "number": "RJ28-07-018",
@@ -12725,7 +12725,7 @@
    0.133,
    0.118
   ],
-  "mass_kg": 0.121
+  "mass_kg": 0.122
  },
  {
   "number": "RJ28-07-019",
@@ -12762,7 +12762,7 @@
    -0.0092,
    0.1259
   ],
-  "mass_kg": 0.37
+  "mass_kg": 0.372
  },
  {
   "number": "RJ28-07-020",
@@ -12799,7 +12799,7 @@
    -0.0692,
    0.1326
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-07-021",
@@ -13058,7 +13058,7 @@
    0.046,
    0.0475
   ],
-  "mass_kg": 3.115
+  "mass_kg": 3.134
  },
  {
   "number": "RJ28-07-028",
@@ -13169,7 +13169,7 @@
    0.0502,
    0.007
   ],
-  "mass_kg": 0.343
+  "mass_kg": 0.345
  },
  {
   "number": "RJ28-07-031",
@@ -13243,7 +13243,7 @@
    0.029,
    0.0501
   ],
-  "mass_kg": 0.264
+  "mass_kg": 0.265
  },
  {
   "number": "RJ28-07-033",
@@ -13391,7 +13391,7 @@
    0.0569,
    -0.0098
   ],
-  "mass_kg": 2.918
+  "mass_kg": 2.936
  },
  {
   "number": "RJ28-07-037",
@@ -13428,7 +13428,7 @@
    0.0596,
    -0.0244
   ],
-  "mass_kg": 0.366
+  "mass_kg": 0.368
  },
  {
   "number": "RJ28-07-038",
@@ -13576,7 +13576,7 @@
    0.0406,
    -0.0367
   ],
-  "mass_kg": 0.747
+  "mass_kg": 0.751
  },
  {
   "number": "RJ28-07-042",
@@ -13798,7 +13798,7 @@
    -0.0052,
    -0.0609
   ],
-  "mass_kg": 0.355
+  "mass_kg": 0.358
  },
  {
   "number": "RJ28-07-048",
@@ -13872,7 +13872,7 @@
    0.0138,
    -0.0468
   ],
-  "mass_kg": 0.133
+  "mass_kg": 0.134
  },
  {
   "number": "RJ28-07-050",
@@ -13909,7 +13909,7 @@
    -0.0072,
    -0.0849
   ],
-  "mass_kg": 0.557
+  "mass_kg": 0.56
  },
  {
   "number": "RJ28-07-051",
@@ -14094,7 +14094,7 @@
    -0.008,
    -0.0942
   ],
-  "mass_kg": 0.154
+  "mass_kg": 0.155
  },
  {
   "number": "RJ28-07-056",
@@ -14131,7 +14131,7 @@
    0.0288,
    -0.0549
   ],
-  "mass_kg": 0.519
+  "mass_kg": 0.522
  },
  {
   "number": "RJ28-07-057",
@@ -14168,7 +14168,7 @@
    0.0264,
    -0.0821
   ],
-  "mass_kg": 0.575
+  "mass_kg": 0.578
  },
  {
   "number": "RJ28-07-058",
@@ -14205,7 +14205,7 @@
    0.0142,
    -0.042
   ],
-  "mass_kg": 0.11
+  "mass_kg": 0.111
  },
  {
   "number": "RJ28-07-059",
@@ -14353,7 +14353,7 @@
    -0.11,
    -0.0392
   ],
-  "mass_kg": 0.062
+  "mass_kg": 0.063
  },
  {
   "number": "RJ28-07-063",
@@ -14464,7 +14464,7 @@
    0.13,
    -0.0856
   ],
-  "mass_kg": 0.062
+  "mass_kg": 0.063
  },
  {
   "number": "RJ28-07-066",
@@ -14649,7 +14649,7 @@
    0.0426,
    -0.0726
   ],
-  "mass_kg": 0.052
+  "mass_kg": 0.053
  },
  {
   "number": "RJ28-07-071",
@@ -14797,7 +14797,7 @@
    0.0085,
    0.1003
   ],
-  "mass_kg": 3.327
+  "mass_kg": 3.347
  },
  {
   "number": "RJ28-08-002",
@@ -14834,7 +14834,7 @@
    -0.0881,
    0.1064
   ],
-  "mass_kg": 0.115
+  "mass_kg": 0.116
  },
  {
   "number": "RJ28-08-003",
@@ -14871,7 +14871,7 @@
    0.0195,
    0.0827
   ],
-  "mass_kg": 0.081
+  "mass_kg": 0.082
  },
  {
   "number": "RJ28-08-004",
@@ -15056,7 +15056,7 @@
    0.0077,
    0.0905
   ],
-  "mass_kg": 1.061
+  "mass_kg": 1.067
  },
  {
   "number": "RJ28-08-009",
@@ -15130,7 +15130,7 @@
    -0.0754,
    0.1445
   ],
-  "mass_kg": 0.383
+  "mass_kg": 0.385
  },
  {
   "number": "RJ28-08-011",
@@ -15167,7 +15167,7 @@
    -0.0673,
    0.127
   ],
-  "mass_kg": 0.147
+  "mass_kg": 0.148
  },
  {
   "number": "RJ28-08-012",
@@ -15426,7 +15426,7 @@
    -0.0734,
    0.1295
   ],
-  "mass_kg": 0.166
+  "mass_kg": 0.167
  },
  {
   "number": "RJ28-08-019",
@@ -15463,7 +15463,7 @@
    -0.0692,
    0.1326
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-08-020",
@@ -15611,7 +15611,7 @@
    -0.0776,
    0.1521
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-08-024",
@@ -15648,7 +15648,7 @@
    -0.0605,
    0.1284
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
   "number": "RJ28-08-025",
@@ -15722,7 +15722,7 @@
    0.046,
    0.0475
   ],
-  "mass_kg": 3.115
+  "mass_kg": 3.134
  },
  {
   "number": "RJ28-08-027",
@@ -15833,7 +15833,7 @@
    0.0332,
    0.0066
   ],
-  "mass_kg": 0.345
+  "mass_kg": 0.347
  },
  {
   "number": "RJ28-08-030",
@@ -15907,7 +15907,7 @@
    0.0281,
    0.0532
   ],
-  "mass_kg": 0.321
+  "mass_kg": 0.323
  },
  {
   "number": "RJ28-08-032",
@@ -16055,7 +16055,7 @@
    0.0569,
    -0.0098
   ],
-  "mass_kg": 2.918
+  "mass_kg": 2.936
  },
  {
   "number": "RJ28-08-036",
@@ -16092,7 +16092,7 @@
    0.0596,
    -0.0244
   ],
-  "mass_kg": 0.366
+  "mass_kg": 0.368
  },
  {
   "number": "RJ28-08-037",
@@ -16240,7 +16240,7 @@
    0.0357,
    -0.0444
   ],
-  "mass_kg": 0.602
+  "mass_kg": 0.605
  },
  {
   "number": "RJ28-08-041",
@@ -16462,7 +16462,7 @@
    -0.0052,
    -0.0609
   ],
-  "mass_kg": 0.355
+  "mass_kg": 0.358
  },
  {
   "number": "RJ28-08-047",
@@ -16536,7 +16536,7 @@
    0.0138,
    -0.0468
   ],
-  "mass_kg": 0.133
+  "mass_kg": 0.134
  },
  {
   "number": "RJ28-08-049",
@@ -16573,7 +16573,7 @@
    -0.0072,
    -0.0849
   ],
-  "mass_kg": 0.557
+  "mass_kg": 0.56
  },
  {
   "number": "RJ28-08-050",
@@ -16758,7 +16758,7 @@
    -0.008,
    -0.0942
   ],
-  "mass_kg": 0.154
+  "mass_kg": 0.155
  },
  {
   "number": "RJ28-08-055",
@@ -16795,7 +16795,7 @@
    0.0288,
    -0.0549
   ],
-  "mass_kg": 0.519
+  "mass_kg": 0.522
  },
  {
   "number": "RJ28-08-056",
@@ -16832,7 +16832,7 @@
    0.0264,
    -0.0821
   ],
-  "mass_kg": 0.575
+  "mass_kg": 0.578
  },
  {
   "number": "RJ28-08-057",
@@ -16869,7 +16869,7 @@
    0.0141,
    -0.042
   ],
-  "mass_kg": 0.11
+  "mass_kg": 0.111
  },
  {
   "number": "RJ28-08-058",
@@ -17017,7 +17017,7 @@
    -0.11,
    -0.0392
   ],
-  "mass_kg": 0.062
+  "mass_kg": 0.063
  },
  {
   "number": "RJ28-08-062",
@@ -17128,7 +17128,7 @@
    0.13,
    -0.0856
   ],
-  "mass_kg": 0.062
+  "mass_kg": 0.063
  },
  {
   "number": "RJ28-08-065",
@@ -17313,7 +17313,7 @@
    0.0426,
    -0.0726
   ],
-  "mass_kg": 0.052
+  "mass_kg": 0.053
  },
  {
   "number": "RJ28-08-070",
@@ -17461,7 +17461,7 @@
    0.006,
    0.0331
   ],
-  "mass_kg": 0.08
+  "mass_kg": 0.081
  },
  {
   "number": "RJ28-09-002",
@@ -17535,7 +17535,7 @@
    0.0058,
    0.032
   ],
-  "mass_kg": 0.225
+  "mass_kg": 0.226
  },
  {
   "number": "RJ28-09-004",
@@ -17757,7 +17757,7 @@
    0.0014,
    0.0076
   ],
-  "mass_kg": 0.336
+  "mass_kg": 0.338
  },
  {
   "number": "RJ28-09-010",
@@ -17831,7 +17831,7 @@
    0.0015,
    0.0229
   ],
-  "mass_kg": 0.093
+  "mass_kg": 0.094
  },
  {
   "number": "RJ28-09-012",
@@ -18719,7 +18719,7 @@
    0.006,
    0.0331
   ],
-  "mass_kg": 0.08
+  "mass_kg": 0.081
  },
  {
   "number": "RJ28-10-002",
@@ -18793,7 +18793,7 @@
    0.0058,
    0.032
   ],
-  "mass_kg": 0.225
+  "mass_kg": 0.226
  },
  {
   "number": "RJ28-10-004",
@@ -19015,7 +19015,7 @@
    0.0014,
    0.0076
   ],
-  "mass_kg": 0.337
+  "mass_kg": 0.339
  },
  {
   "number": "RJ28-10-010",
@@ -19089,7 +19089,7 @@
    0.0015,
    0.0229
   ],
-  "mass_kg": 0.093
+  "mass_kg": 0.094
  },
  {
   "number": "RJ28-10-012",
@@ -19977,7 +19977,7 @@
    -0.0014,
    0.1421
   ],
-  "mass_kg": 5.584
+  "mass_kg": 5.617
  },
  {
   "number": "RJ28-11-002",
@@ -20014,7 +20014,7 @@
    0.0111,
    0.1534
   ],
-  "mass_kg": 0.155
+  "mass_kg": 0.156
  },
  {
   "number": "RJ28-11-003",
@@ -20062,7 +20062,7 @@
   "material": "Anodised aluminium, satin black",
   "material_key": "alu",
   "material_class": "structure",
-  "function": "Machined thigh member: hangs from the hip pitch output and ends in the knee fork.",
+  "function": "Machined thigh member: hangs from the hip pitch output, carries the knee actuator fork and ends in the knee fork.",
   "bbox_min": [
    46.8,
    -78.1,
@@ -20070,25 +20070,25 @@
   ],
   "bbox_max": [
    263.9,
-   122.3,
+   153.4,
    991.8
   ],
   "size": [
    217.1,
-   200.4,
+   231.5,
    559.2
   ],
-  "volume_cm3": 3033.96,
+  "volume_cm3": 3065.45,
   "density": 2810,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.0024,
-   0.0503,
+   -0.0036,
+   0.0683,
    0.0751
   ],
-  "mass_kg": 3.073
+  "mass_kg": 3.123
  },
  {
   "number": "RJ28-11-005",
@@ -20162,7 +20162,7 @@
    0.013,
    0.1554
   ],
-  "mass_kg": 0.039
+  "mass_kg": 0.04
  },
  {
   "number": "RJ28-11-007",
@@ -20236,7 +20236,7 @@
    -0.0143,
    0.1304
   ],
-  "mass_kg": 0.136
+  "mass_kg": 0.137
  },
  {
   "number": "RJ28-11-009",
@@ -20310,7 +20310,7 @@
    -0.0785,
    0.0909
   ],
-  "mass_kg": 0.502
+  "mass_kg": 0.505
  },
  {
   "number": "RJ28-11-011",
@@ -20347,7 +20347,7 @@
    -0.0834,
    0.0473
   ],
-  "mass_kg": 0.755
+  "mass_kg": 0.759
  },
  {
   "number": "RJ28-11-012",
@@ -20643,7 +20643,7 @@
    -0.1658,
    0.0604
   ],
-  "mass_kg": 0.286
+  "mass_kg": 0.288
  },
  {
   "number": "RJ28-11-020",
@@ -20717,7 +20717,7 @@
    0.1639,
    0.0832
   ],
-  "mass_kg": 0.416
+  "mass_kg": 0.418
  },
  {
   "number": "RJ28-11-022",
@@ -20976,7 +20976,7 @@
    -0.0441,
    0.0
   ],
-  "mass_kg": 0.53
+  "mass_kg": 0.533
  },
  {
   "number": "RJ28-11-029",
@@ -21013,7 +21013,7 @@
    -0.0072,
    0.0126
   ],
-  "mass_kg": 0.551
+  "mass_kg": 0.554
  },
  {
   "number": "RJ28-11-030",
@@ -21087,7 +21087,7 @@
    -0.0043,
    0.0144
   ],
-  "mass_kg": 0.065
+  "mass_kg": 0.066
  },
  {
   "number": "RJ28-11-032",
@@ -21161,7 +21161,7 @@
    -0.034,
    -0.0125
   ],
-  "mass_kg": 0.329
+  "mass_kg": 0.331
  },
  {
   "number": "RJ28-11-034",
@@ -21262,7 +21262,7 @@
    108.7,
    262.2
   ],
-  "volume_cm3": 447.33,
+  "volume_cm3": 446.43,
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
@@ -21272,7 +21272,7 @@
    0.1355,
    0.0892
   ],
-  "mass_kg": 0.756
+  "mass_kg": 0.759
  },
  {
   "number": "RJ28-11-037",
@@ -21309,7 +21309,7 @@
    0.0577,
    0.0117
   ],
-  "mass_kg": 0.695
+  "mass_kg": 0.699
  },
  {
   "number": "RJ28-11-038",
@@ -21350,45 +21350,8 @@
  },
  {
   "number": "RJ28-11-039",
-  "name": "Knee Outer Clevis A",
-  "node": "RJ28-11-039_Knee_Outer_Clevis_A",
-  "assembly": "11",
-  "assembly_name": "Leg, left",
-  "material": "Titanium, dark gunmetal",
-  "material_key": "ti",
-  "material_class": "structure",
-  "function": "Fork bracket anchoring the body end of the knee actuator.",
-  "bbox_min": [
-   143.2,
-   70.5,
-   782.8
-  ],
-  "bbox_max": [
-   202.0,
-   153.3,
-   874.2
-  ],
-  "size": [
-   58.8,
-   82.8,
-   91.4
-  ],
-  "volume_cm3": 98.28,
-  "density": 4430,
-  "count": 1,
-  "mount_group": "",
-  "explode_stage": 2,
-  "explode_offset": [
-   0.0308,
-   0.1537,
-   0.1191
-  ],
-  "mass_kg": 0.157
- },
- {
-  "number": "RJ28-11-040",
   "name": "Knee Outer Pin A",
-  "node": "RJ28-11-040_Knee_Outer_Pin_A",
+  "node": "RJ28-11-039_Knee_Outer_Pin_A",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -21398,11 +21361,11 @@
   "bbox_min": [
    143.6,
    106.1,
-   827.3
+   827.4
   ],
   "bbox_max": [
    203.1,
-   138.3,
+   138.4,
    859.1
   ],
   "size": [
@@ -21423,9 +21386,9 @@
   "mass_kg": 0.051
  },
  {
-  "number": "RJ28-11-041",
+  "number": "RJ28-11-040",
   "name": "Knee Outer Crank Pin",
-  "node": "RJ28-11-041_Knee_Outer_Crank_Pin",
+  "node": "RJ28-11-040_Knee_Outer_Crank_Pin",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -21460,9 +21423,9 @@
   "mass_kg": 0.036
  },
  {
-  "number": "RJ28-11-042",
+  "number": "RJ28-11-041",
   "name": "Knee Inner Act Body",
-  "node": "RJ28-11-042_Knee_Inner_Act_Body",
+  "node": "RJ28-11-041_Knee_Inner_Act_Body",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Anodised aluminium, satin black",
@@ -21484,7 +21447,7 @@
    108.7,
    262.2
   ],
-  "volume_cm3": 447.33,
+  "volume_cm3": 446.43,
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
@@ -21494,12 +21457,12 @@
    0.1238,
    0.0778
   ],
-  "mass_kg": 0.756
+  "mass_kg": 0.759
  },
  {
-  "number": "RJ28-11-043",
+  "number": "RJ28-11-042",
   "name": "Knee Inner Act Rod",
-  "node": "RJ28-11-043_Knee_Inner_Act_Rod",
+  "node": "RJ28-11-042_Knee_Inner_Act_Rod",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -21531,12 +21494,12 @@
    0.0425,
    -0.0019
   ],
-  "mass_kg": 0.695
+  "mass_kg": 0.699
  },
  {
-  "number": "RJ28-11-044",
+  "number": "RJ28-11-043",
   "name": "Knee Inner Act Bellows",
-  "node": "RJ28-11-044_Knee_Inner_Act_Bellows",
+  "node": "RJ28-11-043_Knee_Inner_Act_Bellows",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Rubber",
@@ -21571,46 +21534,9 @@
   "mass_kg": 0.03
  },
  {
-  "number": "RJ28-11-045",
-  "name": "Knee Inner Clevis A",
-  "node": "RJ28-11-045_Knee_Inner_Clevis_A",
-  "assembly": "11",
-  "assembly_name": "Leg, left",
-  "material": "Titanium, dark gunmetal",
-  "material_key": "ti",
-  "material_class": "structure",
-  "function": "Fork bracket anchoring the body end of the knee actuator.",
-  "bbox_min": [
-   60.0,
-   61.8,
-   774.8
-  ],
-  "bbox_max": [
-   118.8,
-   144.6,
-   866.2
-  ],
-  "size": [
-   58.8,
-   82.8,
-   91.4
-  ],
-  "volume_cm3": 98.28,
-  "density": 4430,
-  "count": 1,
-  "mount_group": "",
-  "explode_stage": 2,
-  "explode_offset": [
-   -0.0851,
-   0.1414,
-   0.1079
-  ],
-  "mass_kg": 0.157
- },
- {
-  "number": "RJ28-11-046",
+  "number": "RJ28-11-044",
   "name": "Knee Inner Pin A",
-  "node": "RJ28-11-046_Knee_Inner_Pin_A",
+  "node": "RJ28-11-044_Knee_Inner_Pin_A",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -21623,7 +21549,7 @@
    819.3
   ],
   "bbox_max": [
-   119.9,
+   120.0,
    129.6,
    851.1
   ],
@@ -21639,15 +21565,15 @@
   "explode_stage": 2,
   "explode_offset": [
    -0.0817,
-   0.154,
+   0.1541,
    0.1135
   ],
   "mass_kg": 0.051
  },
  {
-  "number": "RJ28-11-047",
+  "number": "RJ28-11-045",
   "name": "Knee Inner Crank Pin",
-  "node": "RJ28-11-047_Knee_Inner_Crank_Pin",
+  "node": "RJ28-11-045_Knee_Inner_Crank_Pin",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -21682,9 +21608,9 @@
   "mass_kg": 0.036
  },
  {
-  "number": "RJ28-11-048",
+  "number": "RJ28-11-046",
   "name": "Knee Guard",
-  "node": "RJ28-11-048_Knee_Guard",
+  "node": "RJ28-11-046_Knee_Guard",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Armour composite, matte",
@@ -21716,12 +21642,12 @@
    -0.1688,
    0.0024
   ],
-  "mass_kg": 0.36
+  "mass_kg": 0.362
  },
  {
-  "number": "RJ28-11-049",
+  "number": "RJ28-11-047",
   "name": "Knee Guard Links Upper",
-  "node": "RJ28-11-049_Knee_Guard_Links_Upper",
+  "node": "RJ28-11-047_Knee_Guard_Links_Upper",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Titanium, dark gunmetal",
@@ -21756,9 +21682,9 @@
   "mass_kg": 0.019
  },
  {
-  "number": "RJ28-11-050",
+  "number": "RJ28-11-048",
   "name": "Knee Guard Links Lower",
-  "node": "RJ28-11-050_Knee_Guard_Links_Lower",
+  "node": "RJ28-11-048_Knee_Guard_Links_Lower",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Titanium, dark gunmetal",
@@ -21793,9 +21719,9 @@
   "mass_kg": 0.036
  },
  {
-  "number": "RJ28-11-051",
+  "number": "RJ28-11-049",
   "name": "Knee Guard Link Pins",
-  "node": "RJ28-11-051_Knee_Guard_Link_Pins",
+  "node": "RJ28-11-049_Knee_Guard_Link_Pins",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Fastener black oxide",
@@ -21830,9 +21756,9 @@
   "mass_kg": 0.02
  },
  {
-  "number": "RJ28-11-052",
+  "number": "RJ28-11-050",
   "name": "Knee Guard Brackets",
-  "node": "RJ28-11-052_Knee_Guard_Brackets",
+  "node": "RJ28-11-050_Knee_Guard_Brackets",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Titanium, dark gunmetal",
@@ -21864,12 +21790,12 @@
    -0.1505,
    0.0015
   ],
-  "mass_kg": 0.023
+  "mass_kg": 0.024
  },
  {
-  "number": "RJ28-11-053",
+  "number": "RJ28-11-051",
   "name": "Knee Guard Screws",
-  "node": "RJ28-11-053_Knee_Guard_Screws",
+  "node": "RJ28-11-051_Knee_Guard_Screws",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Fastener black oxide",
@@ -21904,9 +21830,9 @@
   "mass_kg": 0.003
  },
  {
-  "number": "RJ28-11-054",
+  "number": "RJ28-11-052",
   "name": "Shin Member",
-  "node": "RJ28-11-054_Shin_Member",
+  "node": "RJ28-11-052_Shin_Member",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Anodised aluminium, satin black",
@@ -21920,30 +21846,30 @@
   ],
   "bbox_max": [
    296.7,
-   75.4,
+   59.2,
    551.8
   ],
   "size": [
    185.6,
-   137.4,
+   121.2,
    506.2
   ],
-  "volume_cm3": 2735.07,
+  "volume_cm3": 2565.18,
   "density": 2810,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.0068,
-   0.0007,
-   -0.0708
+   0.042,
+   -0.024,
+   -0.0677
   ],
-  "mass_kg": 2.77
+  "mass_kg": 2.614
  },
  {
-  "number": "RJ28-11-055",
+  "number": "RJ28-11-053",
   "name": "Shin Cable Channel Cover",
-  "node": "RJ28-11-055_Shin_Cable_Channel_Cover",
+  "node": "RJ28-11-053_Shin_Cable_Channel_Cover",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Anodised aluminium, satin black",
@@ -21951,21 +21877,21 @@
   "material_class": "structure",
   "function": "Cover plate over the cable channel down the back of the shin.",
   "bbox_min": [
-   167.0,
-   38.5,
-   155.8
+   168.6,
+   39.3,
+   173.7
   ],
   "bbox_max": [
-   222.7,
-   52.2,
-   320.0
+   221.0,
+   51.4,
+   302.1
   ],
   "size": [
-   55.7,
-   13.6,
-   164.3
+   52.4,
+   12.0,
+   128.5
   ],
-  "volume_cm3": 16.92,
+  "volume_cm3": 13.14,
   "density": 2810,
   "count": 1,
   "mount_group": "",
@@ -21975,12 +21901,12 @@
    0.0732,
    -0.0917
   ],
-  "mass_kg": 0.017
+  "mass_kg": 0.013
  },
  {
-  "number": "RJ28-11-056",
+  "number": "RJ28-11-054",
   "name": "Shin Channel Cover Screws",
-  "node": "RJ28-11-056_Shin_Channel_Cover_Screws",
+  "node": "RJ28-11-054_Shin_Channel_Cover_Screws",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Fastener black oxide",
@@ -21988,19 +21914,19 @@
   "material_class": "mechanism",
   "function": "Countersunk screws holding the shin cable channel cover.",
   "bbox_min": [
-   169.5,
-   33.7,
-   162.9
+   170.9,
+   34.5,
+   178.8
   ],
   "bbox_max": [
-   219.9,
-   51.7,
-   313.0
+   218.4,
+   51.0,
+   297.1
   ],
   "size": [
-   50.4,
-   18.0,
-   150.1
+   47.5,
+   16.6,
+   118.3
   ],
   "volume_cm3": 0.7,
   "density": 7850,
@@ -22015,9 +21941,9 @@
   "mass_kg": 0.003
  },
  {
-  "number": "RJ28-11-057",
+  "number": "RJ28-11-055",
   "name": "Shin Armour Front",
-  "node": "RJ28-11-057_Shin_Armour_Front",
+  "node": "RJ28-11-055_Shin_Armour_Front",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Armour composite, matte",
@@ -22049,12 +21975,12 @@
    -0.1283,
    -0.0671
   ],
-  "mass_kg": 0.472
+  "mass_kg": 0.475
  },
  {
-  "number": "RJ28-11-058",
+  "number": "RJ28-11-056",
   "name": "Shin Armour Outer",
-  "node": "RJ28-11-058_Shin_Armour_Outer",
+  "node": "RJ28-11-056_Shin_Armour_Outer",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Armour composite, matte",
@@ -22086,12 +22012,12 @@
    -0.0397,
    -0.0568
   ],
-  "mass_kg": 0.457
+  "mass_kg": 0.459
  },
  {
-  "number": "RJ28-11-059",
+  "number": "RJ28-11-057",
   "name": "Shin Armour Inner",
-  "node": "RJ28-11-059_Shin_Armour_Inner",
+  "node": "RJ28-11-057_Shin_Armour_Inner",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Armour composite, matte",
@@ -22123,12 +22049,12 @@
    -0.0601,
    -0.0777
   ],
-  "mass_kg": 0.457
+  "mass_kg": 0.459
  },
  {
-  "number": "RJ28-11-060",
+  "number": "RJ28-11-058",
   "name": "Shin Vent Screen",
-  "node": "RJ28-11-060_Shin_Vent_Screen",
+  "node": "RJ28-11-058_Shin_Vent_Screen",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Mesh",
@@ -22160,12 +22086,12 @@
    -0.1374,
    -0.0533
   ],
-  "mass_kg": 0.175
+  "mass_kg": 0.176
  },
  {
-  "number": "RJ28-11-061",
+  "number": "RJ28-11-059",
   "name": "Shin Armour Carrier",
-  "node": "RJ28-11-061_Shin_Armour_Carrier",
+  "node": "RJ28-11-059_Shin_Armour_Carrier",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "CFRP",
@@ -22200,9 +22126,9 @@
   "mass_kg": 0.036
  },
  {
-  "number": "RJ28-11-062",
+  "number": "RJ28-11-060",
   "name": "Shin Carrier Standoffs",
-  "node": "RJ28-11-062_Shin_Carrier_Standoffs",
+  "node": "RJ28-11-060_Shin_Carrier_Standoffs",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Anodised aluminium, satin black",
@@ -22237,9 +22163,9 @@
   "mass_kg": 0.033
  },
  {
-  "number": "RJ28-11-063",
+  "number": "RJ28-11-061",
   "name": "Shin Front Screws",
-  "node": "RJ28-11-063_Shin_Front_Screws",
+  "node": "RJ28-11-061_Shin_Front_Screws",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Fastener black oxide",
@@ -22274,9 +22200,9 @@
   "mass_kg": 0.01
  },
  {
-  "number": "RJ28-11-064",
+  "number": "RJ28-11-062",
   "name": "Shin Outer Screws",
-  "node": "RJ28-11-064_Shin_Outer_Screws",
+  "node": "RJ28-11-062_Shin_Outer_Screws",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Fastener black oxide",
@@ -22308,12 +22234,12 @@
    -0.0467,
    -0.06
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
-  "number": "RJ28-11-065",
+  "number": "RJ28-11-063",
   "name": "Shin Inner Screws",
-  "node": "RJ28-11-065_Shin_Inner_Screws",
+  "node": "RJ28-11-063_Shin_Inner_Screws",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Fastener black oxide",
@@ -22345,12 +22271,12 @@
    -0.072,
    -0.0823
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
-  "number": "RJ28-11-066",
+  "number": "RJ28-11-064",
   "name": "Shin Strike Plate",
-  "node": "RJ28-11-066_Shin_Strike_Plate",
+  "node": "RJ28-11-064_Shin_Strike_Plate",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Armour composite, matte",
@@ -22382,12 +22308,12 @@
    -0.1304,
    -0.0883
   ],
-  "mass_kg": 0.185
+  "mass_kg": 0.186
  },
  {
-  "number": "RJ28-11-067",
+  "number": "RJ28-11-065",
   "name": "Shin Strike Plate Screws",
-  "node": "RJ28-11-067_Shin_Strike_Plate_Screws",
+  "node": "RJ28-11-065_Shin_Strike_Plate_Screws",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Fastener black oxide",
@@ -22422,9 +22348,9 @@
   "mass_kg": 0.01
  },
  {
-  "number": "RJ28-11-068",
+  "number": "RJ28-11-066",
   "name": "Ankle Outer Act Body",
-  "node": "RJ28-11-068_Ankle_Outer_Act_Body",
+  "node": "RJ28-11-066_Ankle_Outer_Act_Body",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Anodised aluminium, satin black",
@@ -22432,8 +22358,8 @@
   "material_class": "actuator",
   "function": "Roller-screw actuator body with motor for the ankle.",
   "bbox_min": [
-   202.9,
-   64.0,
+   199.8,
+   66.6,
    221.1
   ],
   "bbox_max": [
@@ -22442,26 +22368,26 @@
    377.2
   ],
   "size": [
-   45.5,
-   54.8,
+   48.6,
+   52.3,
    156.1
   ],
-  "volume_cm3": 135.6,
+  "volume_cm3": 135.29,
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.0538,
-   0.125,
-   -0.0659
+   0.0515,
+   0.1266,
+   -0.0661
   ],
-  "mass_kg": 0.229
+  "mass_kg": 0.23
  },
  {
-  "number": "RJ28-11-069",
+  "number": "RJ28-11-067",
   "name": "Ankle Outer Act Rod",
-  "node": "RJ28-11-069_Ankle_Outer_Act_Rod",
+  "node": "RJ28-11-067_Ankle_Outer_Act_Rod",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -22493,12 +22419,12 @@
    0.1494,
    -0.1185
   ],
-  "mass_kg": 0.225
+  "mass_kg": 0.226
  },
  {
-  "number": "RJ28-11-070",
+  "number": "RJ28-11-068",
   "name": "Ankle Outer Act Bellows",
-  "node": "RJ28-11-070_Ankle_Outer_Act_Bellows",
+  "node": "RJ28-11-068_Ankle_Outer_Act_Bellows",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Rubber",
@@ -22533,9 +22459,9 @@
   "mass_kg": 0.011
  },
  {
-  "number": "RJ28-11-071",
+  "number": "RJ28-11-069",
   "name": "Ankle Outer Clevis A",
-  "node": "RJ28-11-071_Ankle_Outer_Clevis_A",
+  "node": "RJ28-11-069_Ankle_Outer_Clevis_A",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Titanium, dark gunmetal",
@@ -22544,7 +22470,7 @@
   "function": "Fork bracket anchoring the body end of the ankle actuator.",
   "bbox_min": [
    201.0,
-   50.1,
+   50.0,
    335.7
   ],
   "bbox_max": [
@@ -22554,10 +22480,10 @@
   ],
   "size": [
    39.4,
-   57.0,
+   57.1,
    42.6
   ],
-  "volume_cm3": 29.17,
+  "volume_cm3": 29.67,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -22567,12 +22493,12 @@
    0.11,
    -0.0456
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
-  "number": "RJ28-11-072",
+  "number": "RJ28-11-070",
   "name": "Ankle Outer Pin A",
-  "node": "RJ28-11-072_Ankle_Outer_Pin_A",
+  "node": "RJ28-11-070_Ankle_Outer_Pin_A",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -22607,9 +22533,9 @@
   "mass_kg": 0.016
  },
  {
-  "number": "RJ28-11-073",
+  "number": "RJ28-11-071",
   "name": "Ankle Outer Clevis B",
-  "node": "RJ28-11-073_Ankle_Outer_Clevis_B",
+  "node": "RJ28-11-071_Ankle_Outer_Clevis_B",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Titanium, dark gunmetal",
@@ -22619,7 +22545,7 @@
   "bbox_min": [
    223.1,
    94.9,
-   53.8
+   53.7
   ],
   "bbox_max": [
    262.3,
@@ -22631,7 +22557,7 @@
    42.1,
    56.0
   ],
-  "volume_cm3": 29.17,
+  "volume_cm3": 29.67,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -22641,12 +22567,12 @@
    0.1523,
    -0.1424
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
-  "number": "RJ28-11-074",
+  "number": "RJ28-11-072",
   "name": "Ankle Outer Pin B",
-  "node": "RJ28-11-074_Ankle_Outer_Pin_B",
+  "node": "RJ28-11-072_Ankle_Outer_Pin_B",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -22681,9 +22607,9 @@
   "mass_kg": 0.016
  },
  {
-  "number": "RJ28-11-075",
+  "number": "RJ28-11-073",
   "name": "Ankle Inner Act Body",
-  "node": "RJ28-11-075_Ankle_Inner_Act_Body",
+  "node": "RJ28-11-073_Ankle_Inner_Act_Body",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Anodised aluminium, satin black",
@@ -22692,7 +22618,7 @@
   "function": "Roller-screw actuator body with motor for the ankle.",
   "bbox_min": [
    123.7,
-   55.9,
+   58.2,
    213.5
   ],
   "bbox_max": [
@@ -22702,25 +22628,25 @@
   ],
   "size": [
    45.6,
-   55.0,
+   52.7,
    156.1
   ],
-  "volume_cm3": 135.6,
+  "volume_cm3": 135.29,
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.0616,
-   0.1135,
+   -0.0614,
+   0.1149,
    -0.0771
   ],
-  "mass_kg": 0.229
+  "mass_kg": 0.23
  },
  {
-  "number": "RJ28-11-076",
+  "number": "RJ28-11-074",
   "name": "Ankle Inner Act Rod",
-  "node": "RJ28-11-076_Ankle_Inner_Act_Rod",
+  "node": "RJ28-11-074_Ankle_Inner_Act_Rod",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -22752,12 +22678,12 @@
    0.138,
    -0.1279
   ],
-  "mass_kg": 0.216
+  "mass_kg": 0.217
  },
  {
-  "number": "RJ28-11-077",
+  "number": "RJ28-11-075",
   "name": "Ankle Inner Act Bellows",
-  "node": "RJ28-11-077_Ankle_Inner_Act_Bellows",
+  "node": "RJ28-11-075_Ankle_Inner_Act_Bellows",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Rubber",
@@ -22792,9 +22718,9 @@
   "mass_kg": 0.01
  },
  {
-  "number": "RJ28-11-078",
+  "number": "RJ28-11-076",
   "name": "Ankle Inner Clevis A",
-  "node": "RJ28-11-078_Ankle_Inner_Clevis_A",
+  "node": "RJ28-11-076_Ankle_Inner_Clevis_A",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Titanium, dark gunmetal",
@@ -22802,9 +22728,9 @@
   "material_class": "structure",
   "function": "Fork bracket anchoring the body end of the ankle actuator.",
   "bbox_min": [
-   121.8,
-   41.8,
-   328.1
+   121.7,
+   41.7,
+   328.0
   ],
   "bbox_max": [
    161.2,
@@ -22812,11 +22738,11 @@
    370.7
   ],
   "size": [
-   39.4,
-   57.0,
-   42.6
+   39.5,
+   57.1,
+   42.7
   ],
-  "volume_cm3": 29.17,
+  "volume_cm3": 29.67,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -22826,12 +22752,12 @@
    0.0977,
    -0.0571
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
-  "number": "RJ28-11-079",
+  "number": "RJ28-11-077",
   "name": "Ankle Inner Pin A",
-  "node": "RJ28-11-079_Ankle_Inner_Pin_A",
+  "node": "RJ28-11-077_Ankle_Inner_Pin_A",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -22866,9 +22792,9 @@
   "mass_kg": 0.016
  },
  {
-  "number": "RJ28-11-080",
+  "number": "RJ28-11-078",
   "name": "Ankle Inner Clevis B",
-  "node": "RJ28-11-080_Ankle_Inner_Clevis_B",
+  "node": "RJ28-11-078_Ankle_Inner_Clevis_B",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Titanium, dark gunmetal",
@@ -22883,14 +22809,14 @@
   "bbox_max": [
    182.8,
    128.6,
-   109.7
+   109.8
   ],
   "size": [
-   39.2,
+   39.3,
    42.1,
    56.0
   ],
-  "volume_cm3": 29.17,
+  "volume_cm3": 29.67,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -22900,12 +22826,12 @@
    0.1406,
    -0.1504
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
-  "number": "RJ28-11-081",
+  "number": "RJ28-11-079",
   "name": "Ankle Inner Pin B",
-  "node": "RJ28-11-081_Ankle_Inner_Pin_B",
+  "node": "RJ28-11-079_Ankle_Inner_Pin_B",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Steel, polished",
@@ -22940,9 +22866,9 @@
   "mass_kg": 0.016
  },
  {
-  "number": "RJ28-11-082",
+  "number": "RJ28-11-080",
   "name": "Calf Guard",
-  "node": "RJ28-11-082_Calf_Guard",
+  "node": "RJ28-11-080_Calf_Guard",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Armour composite, matte",
@@ -22974,12 +22900,12 @@
    0.1561,
    -0.0969
   ],
-  "mass_kg": 0.342
+  "mass_kg": 0.344
  },
  {
-  "number": "RJ28-11-083",
+  "number": "RJ28-11-081",
   "name": "Calf Guard Pylons",
-  "node": "RJ28-11-083_Calf_Guard_Pylons",
+  "node": "RJ28-11-081_Calf_Guard_Pylons",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Anodised aluminium, satin black",
@@ -23011,12 +22937,12 @@
    0.1165,
    -0.0974
   ],
-  "mass_kg": 0.08
+  "mass_kg": 0.081
  },
  {
-  "number": "RJ28-11-084",
+  "number": "RJ28-11-082",
   "name": "Calf Pylon Screws",
-  "node": "RJ28-11-084_Calf_Pylon_Screws",
+  "node": "RJ28-11-082_Calf_Pylon_Screws",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Fastener black oxide",
@@ -23051,9 +22977,9 @@
   "mass_kg": 0.003
  },
  {
-  "number": "RJ28-11-085",
+  "number": "RJ28-11-083",
   "name": "Calf Guard Screws",
-  "node": "RJ28-11-085_Calf_Guard_Screws",
+  "node": "RJ28-11-083_Calf_Guard_Screws",
   "assembly": "11",
   "assembly_name": "Leg, left",
   "material": "Fastener black oxide",
@@ -23122,7 +23048,7 @@
    -0.0014,
    0.1421
   ],
-  "mass_kg": 5.584
+  "mass_kg": 5.617
  },
  {
   "number": "RJ28-12-002",
@@ -23159,7 +23085,7 @@
    0.0111,
    0.1534
   ],
-  "mass_kg": 0.155
+  "mass_kg": 0.156
  },
  {
   "number": "RJ28-12-003",
@@ -23207,7 +23133,7 @@
   "material": "Anodised aluminium, satin black",
   "material_key": "alu",
   "material_class": "structure",
-  "function": "Machined thigh member: hangs from the hip pitch output and ends in the knee fork.",
+  "function": "Machined thigh member: hangs from the hip pitch output, carries the knee actuator fork and ends in the knee fork.",
   "bbox_min": [
    -263.9,
    -78.1,
@@ -23215,25 +23141,25 @@
   ],
   "bbox_max": [
    -46.8,
-   122.3,
+   153.4,
    991.8
   ],
   "size": [
    217.1,
-   200.4,
+   231.5,
    559.2
   ],
-  "volume_cm3": 3033.96,
+  "volume_cm3": 3065.45,
   "density": 2810,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.0024,
-   0.0503,
+   0.0036,
+   0.0683,
    0.0751
   ],
-  "mass_kg": 3.073
+  "mass_kg": 3.123
  },
  {
   "number": "RJ28-12-005",
@@ -23307,7 +23233,7 @@
    0.013,
    0.1554
   ],
-  "mass_kg": 0.039
+  "mass_kg": 0.04
  },
  {
   "number": "RJ28-12-007",
@@ -23381,7 +23307,7 @@
    -0.0143,
    0.1304
   ],
-  "mass_kg": 0.136
+  "mass_kg": 0.137
  },
  {
   "number": "RJ28-12-009",
@@ -23455,7 +23381,7 @@
    -0.0785,
    0.0909
   ],
-  "mass_kg": 0.502
+  "mass_kg": 0.505
  },
  {
   "number": "RJ28-12-011",
@@ -23492,7 +23418,7 @@
    -0.0834,
    0.0473
   ],
-  "mass_kg": 0.755
+  "mass_kg": 0.759
  },
  {
   "number": "RJ28-12-012",
@@ -23788,7 +23714,7 @@
    -0.1658,
    0.0604
   ],
-  "mass_kg": 0.286
+  "mass_kg": 0.288
  },
  {
   "number": "RJ28-12-020",
@@ -23862,7 +23788,7 @@
    0.1639,
    0.0832
   ],
-  "mass_kg": 0.411
+  "mass_kg": 0.413
  },
  {
   "number": "RJ28-12-022",
@@ -24010,7 +23936,7 @@
    -0.0441,
    0.0
   ],
-  "mass_kg": 0.53
+  "mass_kg": 0.533
  },
  {
   "number": "RJ28-12-026",
@@ -24047,7 +23973,7 @@
    -0.0072,
    0.0126
   ],
-  "mass_kg": 0.551
+  "mass_kg": 0.554
  },
  {
   "number": "RJ28-12-027",
@@ -24121,7 +24047,7 @@
    -0.0043,
    0.0144
   ],
-  "mass_kg": 0.065
+  "mass_kg": 0.066
  },
  {
   "number": "RJ28-12-029",
@@ -24195,7 +24121,7 @@
    -0.034,
    -0.0125
   ],
-  "mass_kg": 0.329
+  "mass_kg": 0.331
  },
  {
   "number": "RJ28-12-031",
@@ -24296,7 +24222,7 @@
    108.7,
    262.2
   ],
-  "volume_cm3": 447.33,
+  "volume_cm3": 446.43,
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
@@ -24306,7 +24232,7 @@
    0.1355,
    0.0892
   ],
-  "mass_kg": 0.756
+  "mass_kg": 0.759
  },
  {
   "number": "RJ28-12-034",
@@ -24343,7 +24269,7 @@
    0.0577,
    0.0117
   ],
-  "mass_kg": 0.695
+  "mass_kg": 0.699
  },
  {
   "number": "RJ28-12-035",
@@ -24384,45 +24310,8 @@
  },
  {
   "number": "RJ28-12-036",
-  "name": "Knee Outer Clevis A",
-  "node": "RJ28-12-036_Knee_Outer_Clevis_A",
-  "assembly": "12",
-  "assembly_name": "Leg, right",
-  "material": "Titanium, dark gunmetal",
-  "material_key": "ti",
-  "material_class": "structure",
-  "function": "Fork bracket anchoring the body end of the knee actuator.",
-  "bbox_min": [
-   -202.0,
-   70.5,
-   782.8
-  ],
-  "bbox_max": [
-   -143.2,
-   153.3,
-   874.2
-  ],
-  "size": [
-   58.8,
-   82.8,
-   91.4
-  ],
-  "volume_cm3": 98.28,
-  "density": 4430,
-  "count": 1,
-  "mount_group": "",
-  "explode_stage": 2,
-  "explode_offset": [
-   -0.0308,
-   0.1537,
-   0.1191
-  ],
-  "mass_kg": 0.157
- },
- {
-  "number": "RJ28-12-037",
   "name": "Knee Outer Pin A",
-  "node": "RJ28-12-037_Knee_Outer_Pin_A",
+  "node": "RJ28-12-036_Knee_Outer_Pin_A",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -24431,7 +24320,7 @@
   "function": "Clevis pin with retaining clip, body end of the knee actuator.",
   "bbox_min": [
    -197.5,
-   106.0,
+   105.9,
    827.2
   ],
   "bbox_max": [
@@ -24452,14 +24341,14 @@
   "explode_offset": [
    -0.0251,
    0.1658,
-   0.124
+   0.1239
   ],
   "mass_kg": 0.051
  },
  {
-  "number": "RJ28-12-038",
+  "number": "RJ28-12-037",
   "name": "Knee Outer Crank Pin",
-  "node": "RJ28-12-038_Knee_Outer_Crank_Pin",
+  "node": "RJ28-12-037_Knee_Outer_Crank_Pin",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -24494,9 +24383,9 @@
   "mass_kg": 0.036
  },
  {
-  "number": "RJ28-12-039",
+  "number": "RJ28-12-038",
   "name": "Knee Inner Act Body",
-  "node": "RJ28-12-039_Knee_Inner_Act_Body",
+  "node": "RJ28-12-038_Knee_Inner_Act_Body",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Anodised aluminium, satin black",
@@ -24518,7 +24407,7 @@
    108.7,
    262.2
   ],
-  "volume_cm3": 447.33,
+  "volume_cm3": 446.43,
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
@@ -24528,12 +24417,12 @@
    0.1238,
    0.0778
   ],
-  "mass_kg": 0.756
+  "mass_kg": 0.759
  },
  {
-  "number": "RJ28-12-040",
+  "number": "RJ28-12-039",
   "name": "Knee Inner Act Rod",
-  "node": "RJ28-12-040_Knee_Inner_Act_Rod",
+  "node": "RJ28-12-039_Knee_Inner_Act_Rod",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -24565,12 +24454,12 @@
    0.0425,
    -0.0019
   ],
-  "mass_kg": 0.695
+  "mass_kg": 0.699
  },
  {
-  "number": "RJ28-12-041",
+  "number": "RJ28-12-040",
   "name": "Knee Inner Act Bellows",
-  "node": "RJ28-12-041_Knee_Inner_Act_Bellows",
+  "node": "RJ28-12-040_Knee_Inner_Act_Bellows",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Rubber",
@@ -24605,46 +24494,9 @@
   "mass_kg": 0.03
  },
  {
-  "number": "RJ28-12-042",
-  "name": "Knee Inner Clevis A",
-  "node": "RJ28-12-042_Knee_Inner_Clevis_A",
-  "assembly": "12",
-  "assembly_name": "Leg, right",
-  "material": "Titanium, dark gunmetal",
-  "material_key": "ti",
-  "material_class": "structure",
-  "function": "Fork bracket anchoring the body end of the knee actuator.",
-  "bbox_min": [
-   -118.8,
-   61.8,
-   774.8
-  ],
-  "bbox_max": [
-   -60.0,
-   144.6,
-   866.2
-  ],
-  "size": [
-   58.8,
-   82.8,
-   91.4
-  ],
-  "volume_cm3": 98.28,
-  "density": 4430,
-  "count": 1,
-  "mount_group": "",
-  "explode_stage": 2,
-  "explode_offset": [
-   0.0851,
-   0.1414,
-   0.1079
-  ],
-  "mass_kg": 0.157
- },
- {
-  "number": "RJ28-12-043",
+  "number": "RJ28-12-041",
   "name": "Knee Inner Pin A",
-  "node": "RJ28-12-043_Knee_Inner_Pin_A",
+  "node": "RJ28-12-041_Knee_Inner_Pin_A",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -24679,9 +24531,9 @@
   "mass_kg": 0.051
  },
  {
-  "number": "RJ28-12-044",
+  "number": "RJ28-12-042",
   "name": "Knee Inner Crank Pin",
-  "node": "RJ28-12-044_Knee_Inner_Crank_Pin",
+  "node": "RJ28-12-042_Knee_Inner_Crank_Pin",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -24716,9 +24568,9 @@
   "mass_kg": 0.036
  },
  {
-  "number": "RJ28-12-045",
+  "number": "RJ28-12-043",
   "name": "Knee Guard",
-  "node": "RJ28-12-045_Knee_Guard",
+  "node": "RJ28-12-043_Knee_Guard",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Armour composite, matte",
@@ -24750,12 +24602,12 @@
    -0.1687,
    0.0024
   ],
-  "mass_kg": 0.361
+  "mass_kg": 0.363
  },
  {
-  "number": "RJ28-12-046",
+  "number": "RJ28-12-044",
   "name": "Knee Guard Links Upper",
-  "node": "RJ28-12-046_Knee_Guard_Links_Upper",
+  "node": "RJ28-12-044_Knee_Guard_Links_Upper",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Titanium, dark gunmetal",
@@ -24790,9 +24642,9 @@
   "mass_kg": 0.019
  },
  {
-  "number": "RJ28-12-047",
+  "number": "RJ28-12-045",
   "name": "Knee Guard Links Lower",
-  "node": "RJ28-12-047_Knee_Guard_Links_Lower",
+  "node": "RJ28-12-045_Knee_Guard_Links_Lower",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Titanium, dark gunmetal",
@@ -24827,9 +24679,9 @@
   "mass_kg": 0.036
  },
  {
-  "number": "RJ28-12-048",
+  "number": "RJ28-12-046",
   "name": "Knee Guard Link Pins",
-  "node": "RJ28-12-048_Knee_Guard_Link_Pins",
+  "node": "RJ28-12-046_Knee_Guard_Link_Pins",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Fastener black oxide",
@@ -24864,9 +24716,9 @@
   "mass_kg": 0.02
  },
  {
-  "number": "RJ28-12-049",
+  "number": "RJ28-12-047",
   "name": "Knee Guard Brackets",
-  "node": "RJ28-12-049_Knee_Guard_Brackets",
+  "node": "RJ28-12-047_Knee_Guard_Brackets",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Titanium, dark gunmetal",
@@ -24898,12 +24750,12 @@
    -0.1505,
    0.0015
   ],
-  "mass_kg": 0.023
+  "mass_kg": 0.024
  },
  {
-  "number": "RJ28-12-050",
+  "number": "RJ28-12-048",
   "name": "Knee Guard Screws",
-  "node": "RJ28-12-050_Knee_Guard_Screws",
+  "node": "RJ28-12-048_Knee_Guard_Screws",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Fastener black oxide",
@@ -24938,9 +24790,9 @@
   "mass_kg": 0.003
  },
  {
-  "number": "RJ28-12-051",
+  "number": "RJ28-12-049",
   "name": "Shin Member",
-  "node": "RJ28-12-051_Shin_Member",
+  "node": "RJ28-12-049_Shin_Member",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Anodised aluminium, satin black",
@@ -24954,30 +24806,30 @@
   ],
   "bbox_max": [
    -111.1,
-   75.4,
+   59.2,
    551.8
   ],
   "size": [
    185.6,
-   137.4,
+   121.2,
    506.2
   ],
-  "volume_cm3": 2735.07,
+  "volume_cm3": 2565.18,
   "density": 2810,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.0068,
-   0.0007,
-   -0.0708
+   -0.042,
+   -0.024,
+   -0.0677
   ],
-  "mass_kg": 2.77
+  "mass_kg": 2.614
  },
  {
-  "number": "RJ28-12-052",
+  "number": "RJ28-12-050",
   "name": "Shin Cable Channel Cover",
-  "node": "RJ28-12-052_Shin_Cable_Channel_Cover",
+  "node": "RJ28-12-050_Shin_Cable_Channel_Cover",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Anodised aluminium, satin black",
@@ -24985,21 +24837,21 @@
   "material_class": "structure",
   "function": "Cover plate over the cable channel down the back of the shin.",
   "bbox_min": [
-   -222.7,
-   38.5,
-   155.8
+   -221.0,
+   39.3,
+   173.7
   ],
   "bbox_max": [
-   -167.0,
-   52.2,
-   320.0
+   -168.6,
+   51.4,
+   302.1
   ],
   "size": [
-   55.7,
-   13.6,
-   164.3
+   52.4,
+   12.0,
+   128.5
   ],
-  "volume_cm3": 16.92,
+  "volume_cm3": 13.14,
   "density": 2810,
   "count": 1,
   "mount_group": "",
@@ -25009,12 +24861,12 @@
    0.0732,
    -0.0917
   ],
-  "mass_kg": 0.017
+  "mass_kg": 0.013
  },
  {
-  "number": "RJ28-12-053",
+  "number": "RJ28-12-051",
   "name": "Shin Channel Cover Screws",
-  "node": "RJ28-12-053_Shin_Channel_Cover_Screws",
+  "node": "RJ28-12-051_Shin_Channel_Cover_Screws",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Fastener black oxide",
@@ -25022,19 +24874,19 @@
   "material_class": "mechanism",
   "function": "Countersunk screws holding the shin cable channel cover.",
   "bbox_min": [
-   -219.9,
-   33.7,
-   162.9
+   -218.4,
+   34.5,
+   178.8
   ],
   "bbox_max": [
-   -169.5,
-   51.7,
-   313.0
+   -170.9,
+   51.0,
+   297.1
   ],
   "size": [
-   50.4,
-   18.0,
-   150.1
+   47.5,
+   16.6,
+   118.3
   ],
   "volume_cm3": 0.7,
   "density": 7850,
@@ -25049,9 +24901,9 @@
   "mass_kg": 0.003
  },
  {
-  "number": "RJ28-12-054",
+  "number": "RJ28-12-052",
   "name": "Shin Armour Front",
-  "node": "RJ28-12-054_Shin_Armour_Front",
+  "node": "RJ28-12-052_Shin_Armour_Front",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Armour composite, matte",
@@ -25083,12 +24935,12 @@
    -0.1283,
    -0.0671
   ],
-  "mass_kg": 0.472
+  "mass_kg": 0.475
  },
  {
-  "number": "RJ28-12-055",
+  "number": "RJ28-12-053",
   "name": "Shin Armour Outer",
-  "node": "RJ28-12-055_Shin_Armour_Outer",
+  "node": "RJ28-12-053_Shin_Armour_Outer",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Armour composite, matte",
@@ -25120,12 +24972,12 @@
    -0.0397,
    -0.0568
   ],
-  "mass_kg": 0.457
+  "mass_kg": 0.459
  },
  {
-  "number": "RJ28-12-056",
+  "number": "RJ28-12-054",
   "name": "Shin Armour Inner",
-  "node": "RJ28-12-056_Shin_Armour_Inner",
+  "node": "RJ28-12-054_Shin_Armour_Inner",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Armour composite, matte",
@@ -25157,12 +25009,12 @@
    -0.0601,
    -0.0777
   ],
-  "mass_kg": 0.457
+  "mass_kg": 0.459
  },
  {
-  "number": "RJ28-12-057",
+  "number": "RJ28-12-055",
   "name": "Shin Vent Screen",
-  "node": "RJ28-12-057_Shin_Vent_Screen",
+  "node": "RJ28-12-055_Shin_Vent_Screen",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Mesh",
@@ -25194,12 +25046,12 @@
    -0.1374,
    -0.0533
   ],
-  "mass_kg": 0.175
+  "mass_kg": 0.176
  },
  {
-  "number": "RJ28-12-058",
+  "number": "RJ28-12-056",
   "name": "Shin Armour Carrier",
-  "node": "RJ28-12-058_Shin_Armour_Carrier",
+  "node": "RJ28-12-056_Shin_Armour_Carrier",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "CFRP",
@@ -25234,9 +25086,9 @@
   "mass_kg": 0.036
  },
  {
-  "number": "RJ28-12-059",
+  "number": "RJ28-12-057",
   "name": "Shin Carrier Standoffs",
-  "node": "RJ28-12-059_Shin_Carrier_Standoffs",
+  "node": "RJ28-12-057_Shin_Carrier_Standoffs",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Anodised aluminium, satin black",
@@ -25271,9 +25123,9 @@
   "mass_kg": 0.033
  },
  {
-  "number": "RJ28-12-060",
+  "number": "RJ28-12-058",
   "name": "Shin Front Screws",
-  "node": "RJ28-12-060_Shin_Front_Screws",
+  "node": "RJ28-12-058_Shin_Front_Screws",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Fastener black oxide",
@@ -25308,9 +25160,9 @@
   "mass_kg": 0.01
  },
  {
-  "number": "RJ28-12-061",
+  "number": "RJ28-12-059",
   "name": "Shin Outer Screws",
-  "node": "RJ28-12-061_Shin_Outer_Screws",
+  "node": "RJ28-12-059_Shin_Outer_Screws",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Fastener black oxide",
@@ -25342,12 +25194,12 @@
    -0.0467,
    -0.06
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
-  "number": "RJ28-12-062",
+  "number": "RJ28-12-060",
   "name": "Shin Inner Screws",
-  "node": "RJ28-12-062_Shin_Inner_Screws",
+  "node": "RJ28-12-060_Shin_Inner_Screws",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Fastener black oxide",
@@ -25379,12 +25231,12 @@
    -0.072,
    -0.0823
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.008
  },
  {
-  "number": "RJ28-12-063",
+  "number": "RJ28-12-061",
   "name": "Shin Strike Plate",
-  "node": "RJ28-12-063_Shin_Strike_Plate",
+  "node": "RJ28-12-061_Shin_Strike_Plate",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Armour composite, matte",
@@ -25416,12 +25268,12 @@
    -0.1304,
    -0.0883
   ],
-  "mass_kg": 0.185
+  "mass_kg": 0.186
  },
  {
-  "number": "RJ28-12-064",
+  "number": "RJ28-12-062",
   "name": "Shin Strike Plate Screws",
-  "node": "RJ28-12-064_Shin_Strike_Plate_Screws",
+  "node": "RJ28-12-062_Shin_Strike_Plate_Screws",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Fastener black oxide",
@@ -25456,9 +25308,9 @@
   "mass_kg": 0.01
  },
  {
-  "number": "RJ28-12-065",
+  "number": "RJ28-12-063",
   "name": "Ankle Outer Act Body",
-  "node": "RJ28-12-065_Ankle_Outer_Act_Body",
+  "node": "RJ28-12-063_Ankle_Outer_Act_Body",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Anodised aluminium, satin black",
@@ -25467,35 +25319,35 @@
   "function": "Roller-screw actuator body with motor for the ankle.",
   "bbox_min": [
    -248.4,
-   64.0,
+   66.6,
    221.1
   ],
   "bbox_max": [
-   -202.9,
+   -199.8,
    118.8,
    377.2
   ],
   "size": [
-   45.5,
-   54.8,
+   48.6,
+   52.3,
    156.1
   ],
-  "volume_cm3": 135.6,
+  "volume_cm3": 135.29,
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.0538,
-   0.125,
-   -0.0659
+   -0.0515,
+   0.1266,
+   -0.0661
   ],
-  "mass_kg": 0.229
+  "mass_kg": 0.23
  },
  {
-  "number": "RJ28-12-066",
+  "number": "RJ28-12-064",
   "name": "Ankle Outer Act Rod",
-  "node": "RJ28-12-066_Ankle_Outer_Act_Rod",
+  "node": "RJ28-12-064_Ankle_Outer_Act_Rod",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -25527,12 +25379,12 @@
    0.1494,
    -0.1185
   ],
-  "mass_kg": 0.225
+  "mass_kg": 0.226
  },
  {
-  "number": "RJ28-12-067",
+  "number": "RJ28-12-065",
   "name": "Ankle Outer Act Bellows",
-  "node": "RJ28-12-067_Ankle_Outer_Act_Bellows",
+  "node": "RJ28-12-065_Ankle_Outer_Act_Bellows",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Rubber",
@@ -25567,9 +25419,9 @@
   "mass_kg": 0.011
  },
  {
-  "number": "RJ28-12-068",
+  "number": "RJ28-12-066",
   "name": "Ankle Outer Clevis A",
-  "node": "RJ28-12-068_Ankle_Outer_Clevis_A",
+  "node": "RJ28-12-066_Ankle_Outer_Clevis_A",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Titanium, dark gunmetal",
@@ -25578,7 +25430,7 @@
   "function": "Fork bracket anchoring the body end of the ankle actuator.",
   "bbox_min": [
    -240.4,
-   50.1,
+   50.0,
    335.7
   ],
   "bbox_max": [
@@ -25588,10 +25440,10 @@
   ],
   "size": [
    39.4,
-   57.0,
+   57.1,
    42.6
   ],
-  "volume_cm3": 29.17,
+  "volume_cm3": 29.67,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -25601,12 +25453,12 @@
    0.11,
    -0.0456
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
-  "number": "RJ28-12-069",
+  "number": "RJ28-12-067",
   "name": "Ankle Outer Pin A",
-  "node": "RJ28-12-069_Ankle_Outer_Pin_A",
+  "node": "RJ28-12-067_Ankle_Outer_Pin_A",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -25641,9 +25493,9 @@
   "mass_kg": 0.016
  },
  {
-  "number": "RJ28-12-070",
+  "number": "RJ28-12-068",
   "name": "Ankle Outer Clevis B",
-  "node": "RJ28-12-070_Ankle_Outer_Clevis_B",
+  "node": "RJ28-12-068_Ankle_Outer_Clevis_B",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Titanium, dark gunmetal",
@@ -25653,7 +25505,7 @@
   "bbox_min": [
    -262.3,
    94.9,
-   53.8
+   53.7
   ],
   "bbox_max": [
    -223.1,
@@ -25665,7 +25517,7 @@
    42.1,
    56.0
   ],
-  "volume_cm3": 29.17,
+  "volume_cm3": 29.67,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -25675,12 +25527,12 @@
    0.1523,
    -0.1424
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
-  "number": "RJ28-12-071",
+  "number": "RJ28-12-069",
   "name": "Ankle Outer Pin B",
-  "node": "RJ28-12-071_Ankle_Outer_Pin_B",
+  "node": "RJ28-12-069_Ankle_Outer_Pin_B",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -25715,9 +25567,9 @@
   "mass_kg": 0.016
  },
  {
-  "number": "RJ28-12-072",
+  "number": "RJ28-12-070",
   "name": "Ankle Inner Act Body",
-  "node": "RJ28-12-072_Ankle_Inner_Act_Body",
+  "node": "RJ28-12-070_Ankle_Inner_Act_Body",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Anodised aluminium, satin black",
@@ -25726,7 +25578,7 @@
   "function": "Roller-screw actuator body with motor for the ankle.",
   "bbox_min": [
    -169.3,
-   55.9,
+   58.2,
    213.5
   ],
   "bbox_max": [
@@ -25736,25 +25588,25 @@
   ],
   "size": [
    45.6,
-   55.0,
+   52.7,
    156.1
   ],
-  "volume_cm3": 135.6,
+  "volume_cm3": 135.29,
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.0616,
-   0.1135,
+   0.0614,
+   0.1149,
    -0.0771
   ],
-  "mass_kg": 0.229
+  "mass_kg": 0.23
  },
  {
-  "number": "RJ28-12-073",
+  "number": "RJ28-12-071",
   "name": "Ankle Inner Act Rod",
-  "node": "RJ28-12-073_Ankle_Inner_Act_Rod",
+  "node": "RJ28-12-071_Ankle_Inner_Act_Rod",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -25786,12 +25638,12 @@
    0.138,
    -0.1279
   ],
-  "mass_kg": 0.216
+  "mass_kg": 0.217
  },
  {
-  "number": "RJ28-12-074",
+  "number": "RJ28-12-072",
   "name": "Ankle Inner Act Bellows",
-  "node": "RJ28-12-074_Ankle_Inner_Act_Bellows",
+  "node": "RJ28-12-072_Ankle_Inner_Act_Bellows",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Rubber",
@@ -25826,9 +25678,9 @@
   "mass_kg": 0.01
  },
  {
-  "number": "RJ28-12-075",
+  "number": "RJ28-12-073",
   "name": "Ankle Inner Clevis A",
-  "node": "RJ28-12-075_Ankle_Inner_Clevis_A",
+  "node": "RJ28-12-073_Ankle_Inner_Clevis_A",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Titanium, dark gunmetal",
@@ -25837,20 +25689,20 @@
   "function": "Fork bracket anchoring the body end of the ankle actuator.",
   "bbox_min": [
    -161.2,
-   41.8,
-   328.1
+   41.7,
+   328.0
   ],
   "bbox_max": [
-   -121.8,
+   -121.7,
    98.8,
    370.7
   ],
   "size": [
-   39.4,
-   57.0,
-   42.6
+   39.5,
+   57.1,
+   42.7
   ],
-  "volume_cm3": 29.17,
+  "volume_cm3": 29.67,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -25860,12 +25712,12 @@
    0.0977,
    -0.0571
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
-  "number": "RJ28-12-076",
+  "number": "RJ28-12-074",
   "name": "Ankle Inner Pin A",
-  "node": "RJ28-12-076_Ankle_Inner_Pin_A",
+  "node": "RJ28-12-074_Ankle_Inner_Pin_A",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -25900,9 +25752,9 @@
   "mass_kg": 0.016
  },
  {
-  "number": "RJ28-12-077",
+  "number": "RJ28-12-075",
   "name": "Ankle Inner Clevis B",
-  "node": "RJ28-12-077_Ankle_Inner_Clevis_B",
+  "node": "RJ28-12-075_Ankle_Inner_Clevis_B",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Titanium, dark gunmetal",
@@ -25917,14 +25769,14 @@
   "bbox_max": [
    -143.5,
    128.6,
-   109.7
+   109.8
   ],
   "size": [
-   39.2,
+   39.3,
    42.1,
    56.0
   ],
-  "volume_cm3": 29.17,
+  "volume_cm3": 29.67,
   "density": 4430,
   "count": 1,
   "mount_group": "",
@@ -25934,12 +25786,12 @@
    0.1406,
    -0.1504
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
-  "number": "RJ28-12-078",
+  "number": "RJ28-12-076",
   "name": "Ankle Inner Pin B",
-  "node": "RJ28-12-078_Ankle_Inner_Pin_B",
+  "node": "RJ28-12-076_Ankle_Inner_Pin_B",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Steel, polished",
@@ -25974,9 +25826,9 @@
   "mass_kg": 0.016
  },
  {
-  "number": "RJ28-12-079",
+  "number": "RJ28-12-077",
   "name": "Calf Guard",
-  "node": "RJ28-12-079_Calf_Guard",
+  "node": "RJ28-12-077_Calf_Guard",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Armour composite, matte",
@@ -26008,12 +25860,12 @@
    0.1561,
    -0.0969
   ],
-  "mass_kg": 0.342
+  "mass_kg": 0.344
  },
  {
-  "number": "RJ28-12-080",
+  "number": "RJ28-12-078",
   "name": "Calf Guard Pylons",
-  "node": "RJ28-12-080_Calf_Guard_Pylons",
+  "node": "RJ28-12-078_Calf_Guard_Pylons",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Anodised aluminium, satin black",
@@ -26045,12 +25897,12 @@
    0.1165,
    -0.0974
   ],
-  "mass_kg": 0.08
+  "mass_kg": 0.081
  },
  {
-  "number": "RJ28-12-081",
+  "number": "RJ28-12-079",
   "name": "Calf Pylon Screws",
-  "node": "RJ28-12-081_Calf_Pylon_Screws",
+  "node": "RJ28-12-079_Calf_Pylon_Screws",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Fastener black oxide",
@@ -26085,9 +25937,9 @@
   "mass_kg": 0.003
  },
  {
-  "number": "RJ28-12-082",
+  "number": "RJ28-12-080",
   "name": "Calf Guard Screws",
-  "node": "RJ28-12-082_Calf_Guard_Screws",
+  "node": "RJ28-12-080_Calf_Guard_Screws",
   "assembly": "12",
   "assembly_name": "Leg, right",
   "material": "Fastener black oxide",
@@ -26156,7 +26008,7 @@
    0.0192,
    0.074
   ],
-  "mass_kg": 0.722
+  "mass_kg": 0.727
  },
  {
   "number": "RJ28-13-002",
@@ -26304,7 +26156,7 @@
    0.0207,
    0.0394
   ],
-  "mass_kg": 1.207
+  "mass_kg": 1.214
  },
  {
   "number": "RJ28-13-006",
@@ -26489,7 +26341,7 @@
    0.0171,
    -0.0769
   ],
-  "mass_kg": 0.241
+  "mass_kg": 0.242
  },
  {
   "number": "RJ28-13-011",
@@ -26563,7 +26415,7 @@
    0.0017,
    -0.0857
   ],
-  "mass_kg": 0.096
+  "mass_kg": 0.097
  },
  {
   "number": "RJ28-13-013",
@@ -26637,7 +26489,7 @@
    -0.038,
    -0.0566
   ],
-  "mass_kg": 0.382
+  "mass_kg": 0.384
  },
  {
   "number": "RJ28-13-015",
@@ -26674,7 +26526,7 @@
    -0.0395,
    -0.076
   ],
-  "mass_kg": 0.102
+  "mass_kg": 0.103
  },
  {
   "number": "RJ28-13-016",
@@ -26822,7 +26674,7 @@
    -0.0411,
    0.001
   ],
-  "mass_kg": 0.221
+  "mass_kg": 0.222
  },
  {
   "number": "RJ28-13-020",
@@ -26933,7 +26785,7 @@
    -0.0545,
    -0.0376
   ],
-  "mass_kg": 0.045
+  "mass_kg": 0.046
  },
  {
   "number": "RJ28-13-023",
@@ -27007,7 +26859,7 @@
    0.0127,
    0.0
   ],
-  "mass_kg": 0.182
+  "mass_kg": 0.183
  },
  {
   "number": "RJ28-13-025",
@@ -27081,7 +26933,7 @@
    -0.0045,
    0.0387
   ],
-  "mass_kg": 0.015
+  "mass_kg": 0.016
  },
  {
   "number": "RJ28-13-027",
@@ -27303,7 +27155,7 @@
    0.0192,
    0.074
   ],
-  "mass_kg": 0.722
+  "mass_kg": 0.727
  },
  {
   "number": "RJ28-14-002",
@@ -27451,7 +27303,7 @@
    0.0207,
    0.0394
   ],
-  "mass_kg": 1.207
+  "mass_kg": 1.214
  },
  {
   "number": "RJ28-14-006",
@@ -27636,7 +27488,7 @@
    0.0171,
    -0.0769
   ],
-  "mass_kg": 0.241
+  "mass_kg": 0.242
  },
  {
   "number": "RJ28-14-011",
@@ -27710,7 +27562,7 @@
    0.0017,
    -0.0857
   ],
-  "mass_kg": 0.096
+  "mass_kg": 0.097
  },
  {
   "number": "RJ28-14-013",
@@ -27784,7 +27636,7 @@
    -0.038,
    -0.0566
   ],
-  "mass_kg": 0.382
+  "mass_kg": 0.384
  },
  {
   "number": "RJ28-14-015",
@@ -27821,7 +27673,7 @@
    -0.0395,
    -0.076
   ],
-  "mass_kg": 0.102
+  "mass_kg": 0.103
  },
  {
   "number": "RJ28-14-016",
@@ -27969,7 +27821,7 @@
    -0.0411,
    0.0013
   ],
-  "mass_kg": 0.22
+  "mass_kg": 0.222
  },
  {
   "number": "RJ28-14-020",
@@ -28080,7 +27932,7 @@
    -0.0545,
    -0.0376
   ],
-  "mass_kg": 0.045
+  "mass_kg": 0.046
  },
  {
   "number": "RJ28-14-023",
@@ -28154,7 +28006,7 @@
    0.0127,
    0.0
   ],
-  "mass_kg": 0.182
+  "mass_kg": 0.183
  },
  {
   "number": "RJ28-14-025",
@@ -28228,7 +28080,7 @@
    -0.0045,
    0.0387
   ],
-  "mass_kg": 0.015
+  "mass_kg": 0.016
  },
  {
   "number": "RJ28-14-027",
@@ -28450,7 +28302,7 @@
    0.0796,
    0.0
   ],
-  "mass_kg": 8.09
+  "mass_kg": 8.138
  },
  {
   "number": "RJ28-15-002",
@@ -28635,7 +28487,7 @@
    -0.032,
    0.0
   ],
-  "mass_kg": 3.542
+  "mass_kg": 3.563
  },
  {
   "number": "RJ28-15-007",
@@ -28672,7 +28524,7 @@
    0.044,
    0.0
   ],
-  "mass_kg": 0.238
+  "mass_kg": 0.239
  },
  {
   "number": "RJ28-15-008",
@@ -28709,7 +28561,7 @@
    0.0251,
    0.0
   ],
-  "mass_kg": 0.439
+  "mass_kg": 0.442
  },
  {
   "number": "RJ28-15-009",
@@ -28746,7 +28598,7 @@
    -0.1034,
    0.0
   ],
-  "mass_kg": 0.382
+  "mass_kg": 0.384
  },
  {
   "number": "RJ28-15-010",
@@ -28783,7 +28635,7 @@
    0.0124,
    0.113
   ],
-  "mass_kg": 0.537
+  "mass_kg": 0.54
  },
  {
   "number": "RJ28-15-011",
@@ -28820,7 +28672,7 @@
    0.0124,
    0.113
   ],
-  "mass_kg": 0.537
+  "mass_kg": 0.54
  },
  {
   "number": "RJ28-15-012",
@@ -28857,7 +28709,7 @@
    0.0376,
    0.1499
   ],
-  "mass_kg": 0.414
+  "mass_kg": 0.417
  },
  {
   "number": "RJ28-15-013",
@@ -28931,7 +28783,7 @@
    -0.0383,
    0.097
   ],
-  "mass_kg": 0.3
+  "mass_kg": 0.302
  },
  {
   "number": "RJ28-15-015",
@@ -29042,7 +28894,7 @@
    0.0639,
    0.0
   ],
-  "mass_kg": 0.346
+  "mass_kg": 0.348
  },
  {
   "number": "RJ28-15-018",
@@ -29227,7 +29079,7 @@
    0.0275,
    0.0083
   ],
-  "mass_kg": 0.757
+  "mass_kg": 0.761
  },
  {
   "number": "RJ28-15-023",
@@ -29338,7 +29190,7 @@
    0.024,
    0.1006
   ],
-  "mass_kg": 0.032
+  "mass_kg": 0.033
  },
  {
   "number": "RJ28-15-026",
@@ -29412,7 +29264,7 @@
    0.0779,
    -0.0981
   ],
-  "mass_kg": 1.179
+  "mass_kg": 1.186
  },
  {
   "number": "RJ28-15-028",
@@ -29486,7 +29338,7 @@
    0.0786,
    -0.2369
   ],
-  "mass_kg": 0.12
+  "mass_kg": 0.121
  },
  {
   "number": "RJ28-15-030",
@@ -29560,7 +29412,7 @@
    0.0744,
    -0.1646
   ],
-  "mass_kg": 0.618
+  "mass_kg": 0.621
  },
  {
   "number": "RJ28-15-032",
@@ -29597,7 +29449,7 @@
    0.0744,
    -0.1865
   ],
-  "mass_kg": 0.485
+  "mass_kg": 0.488
  },
  {
   "number": "RJ28-15-033",
@@ -29634,7 +29486,7 @@
    0.0744,
    -0.1635
   ],
-  "mass_kg": 0.394
+  "mass_kg": 0.397
  },
  {
   "number": "RJ28-15-034",
@@ -29671,7 +29523,7 @@
    0.0744,
    -0.162
   ],
-  "mass_kg": 0.361
+  "mass_kg": 0.363
  },
  {
   "number": "RJ28-15-035",
@@ -29745,7 +29597,7 @@
    0.0744,
    -0.1614
   ],
-  "mass_kg": 0.045
+  "mass_kg": 0.046
  },
  {
   "number": "RJ28-15-037",
@@ -29819,7 +29671,7 @@
    0.0677,
    -0.3245
   ],
-  "mass_kg": 0.454
+  "mass_kg": 0.457
  },
  {
   "number": "RJ28-15-039",
@@ -29856,7 +29708,7 @@
    0.0623,
    -0.3217
   ],
-  "mass_kg": 0.017
+  "mass_kg": 0.018
  },
  {
   "number": "RJ28-15-040",
@@ -29893,7 +29745,7 @@
    0.0569,
    -0.3027
   ],
-  "mass_kg": 0.034
+  "mass_kg": 0.035
  },
  {
   "number": "RJ28-15-041",
@@ -29930,7 +29782,7 @@
    0.0569,
    -0.269
   ],
-  "mass_kg": 0.327
+  "mass_kg": 0.329
  },
  {
   "number": "RJ28-15-042",
@@ -30115,7 +29967,7 @@
    0.0744,
    -0.3582
   ],
-  "mass_kg": 0.329
+  "mass_kg": 0.331
  },
  {
   "number": "RJ28-15-047",
@@ -30152,7 +30004,7 @@
    0.0744,
    -0.3533
   ],
-  "mass_kg": 0.564
+  "mass_kg": 0.567
  },
  {
   "number": "RJ28-15-048",
@@ -30263,7 +30115,7 @@
    0.0744,
    -0.3673
   ],
-  "mass_kg": 0.179
+  "mass_kg": 0.18
  },
  {
   "number": "RJ28-15-051",
@@ -30300,7 +30152,7 @@
    0.0744,
    -0.45
   ],
-  "mass_kg": 1.805
+  "mass_kg": 1.816
  },
  {
   "number": "RJ28-15-052",
@@ -30374,7 +30226,7 @@
    0.0772,
    -0.4703
   ],
-  "mass_kg": 0.218
+  "mass_kg": 0.219
  },
  {
   "number": "RJ28-15-054",
@@ -30633,7 +30485,7 @@
    0.0677,
    -0.1695
   ],
-  "mass_kg": 0.028
+  "mass_kg": 0.029
  },
  {
   "number": "RJ28-16-001",
@@ -30903,33 +30755,33 @@
   "material": "Braided sleeve",
   "material_key": "braid",
   "material_class": "harness",
-  "function": "Braided cable: left leg power and signal from the pelvis to the knee junction.",
+  "function": "Loom of 4 braided cables bound with ties: left leg power and signal from the pelvis to the knee junction.",
   "bbox_min": [
-   43.4,
-   49.4,
+   41.1,
+   49.2,
    590.6
   ],
   "bbox_max": [
-   89.8,
-   121.2,
+   90.0,
+   121.4,
    1013.3
   ],
   "size": [
-   46.4,
-   71.8,
+   48.9,
+   72.2,
    422.7
   ],
-  "volume_cm3": 32.01,
+  "volume_cm3": 23.18,
   "density": 1400,
-  "count": 1,
+  "count": 4,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.0938,
-   0.1201,
+   0.0924,
+   0.1203,
    -0.0868
   ],
-  "mass_kg": 0.016
+  "mass_kg": 0.012
  },
  {
   "number": "RJ28-16-009",
@@ -30940,23 +30792,23 @@
   "material": "Fastener black oxide",
   "material_key": "fastener",
   "material_class": "mechanism",
-  "function": "P-clips holding the left leg power and signal from the pelvis to the knee junction cable to the structure.",
+  "function": "P-clips holding the left leg power and signal from the pelvis to the knee junction loom to the structure.",
   "bbox_min": [
    55.3,
    42.1,
    626.9
   ],
   "bbox_max": [
-   87.5,
-   65.6,
+   87.6,
+   65.7,
    711.7
   ],
   "size": [
-   32.2,
-   23.5,
+   32.3,
+   23.7,
    84.8
   ],
-  "volume_cm3": 2.45,
+  "volume_cm3": 2.46,
   "density": 7850,
   "count": 2,
   "mount_group": "",
@@ -30970,82 +30822,8 @@
  },
  {
   "number": "RJ28-16-010",
-  "name": "Knee Outer Plug L",
-  "node": "RJ28-16-010_Knee_Outer_Plug_L",
-  "assembly": "16",
-  "assembly_name": "Harness",
-  "material": "Fastener black oxide",
-  "material_key": "fastener",
-  "material_class": "mechanism",
-  "function": "Connector: power to the outer knee actuator.",
-  "bbox_min": [
-   173.6,
-   45.2,
-   774.9
-  ],
-  "bbox_max": [
-   190.2,
-   72.8,
-   792.4
-  ],
-  "size": [
-   16.6,
-   27.6,
-   17.5
-  ],
-  "volume_cm3": 2.55,
-  "density": 7850,
-  "count": 1,
-  "mount_group": "",
-  "explode_stage": 2,
-  "explode_offset": [
-   0.2358,
-   0.0765,
-   -0.0932
-  ],
-  "mass_kg": 0.009
- },
- {
-  "number": "RJ28-16-011",
-  "name": "Knee Outer Lead L",
-  "node": "RJ28-16-011_Knee_Outer_Lead_L",
-  "assembly": "16",
-  "assembly_name": "Harness",
-  "material": "Braided sleeve",
-  "material_key": "braid",
-  "material_class": "harness",
-  "function": "Braided cable: junction to the outer knee actuator.",
-  "bbox_min": [
-   77.2,
-   26.5,
-   590.6
-  ],
-  "bbox_max": [
-   185.7,
-   60.9,
-   791.9
-  ],
-  "size": [
-   108.5,
-   34.4,
-   201.3
-  ],
-  "volume_cm3": 7.55,
-  "density": 1400,
-  "count": 1,
-  "mount_group": "",
-  "explode_stage": 2,
-  "explode_offset": [
-   0.1777,
-   0.0591,
-   -0.1256
-  ],
-  "mass_kg": 0.004
- },
- {
-  "number": "RJ28-16-012",
   "name": "Knee Inner Plug L",
-  "node": "RJ28-16-012_Knee_Inner_Plug_L",
+  "node": "RJ28-16-010_Knee_Inner_Plug_L",
   "assembly": "16",
   "assembly_name": "Harness",
   "material": "Fastener black oxide",
@@ -31053,36 +30831,36 @@
   "material_class": "mechanism",
   "function": "Connector: power to the inner knee actuator.",
   "bbox_min": [
-   90.5,
-   36.4,
-   766.9
+   112.0,
+   109.5,
+   739.1
   ],
   "bbox_max": [
-   107.1,
-   64.1,
-   784.4
+   130.1,
+   129.2,
+   752.0
   ],
   "size": [
-   16.6,
-   27.6,
-   17.5
+   18.1,
+   19.6,
+   12.9
   ],
-  "volume_cm3": 2.55,
+  "volume_cm3": 1.03,
   "density": 7850,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.1385,
-   0.0705,
-   -0.096
+   0.1591,
+   0.1569,
+   -0.1066
   ],
-  "mass_kg": 0.009
+  "mass_kg": 0.004
  },
  {
-  "number": "RJ28-16-013",
+  "number": "RJ28-16-011",
   "name": "Knee Inner Lead L",
-  "node": "RJ28-16-013_Knee_Inner_Lead_L",
+  "node": "RJ28-16-011_Knee_Inner_Lead_L",
   "assembly": "16",
   "assembly_name": "Harness",
   "material": "Braided sleeve",
@@ -31090,31 +30868,105 @@
   "material_class": "harness",
   "function": "Braided cable: junction to the inner knee actuator.",
   "bbox_min": [
-   77.2,
-   19.4,
-   590.6
+   70.9,
+   50.4,
+   589.4
   ],
   "bbox_max": [
-   103.5,
-   60.9,
-   783.0
+   144.8,
+   134.4,
+   745.4
   ],
   "size": [
-   26.3,
-   41.5,
-   192.4
+   73.9,
+   84.0,
+   156.0
   ],
-  "volume_cm3": 6.16,
+  "volume_cm3": 6.51,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.1295,
-   0.0575,
-   -0.1271
+   0.1453,
+   0.1245,
+   -0.1339
   ],
   "mass_kg": 0.003
+ },
+ {
+  "number": "RJ28-16-012",
+  "name": "Knee Outer Plug L",
+  "node": "RJ28-16-012_Knee_Outer_Plug_L",
+  "assembly": "16",
+  "assembly_name": "Harness",
+  "material": "Fastener black oxide",
+  "material_key": "fastener",
+  "material_class": "mechanism",
+  "function": "Connector: power to the outer knee actuator.",
+  "bbox_min": [
+   140.7,
+   119.6,
+   771.4
+  ],
+  "bbox_max": [
+   159.8,
+   138.5,
+   785.5
+  ],
+  "size": [
+   19.1,
+   18.9,
+   14.1
+  ],
+  "volume_cm3": 1.03,
+  "density": 7850,
+  "count": 1,
+  "mount_group": "",
+  "explode_stage": 2,
+  "explode_offset": [
+   0.1941,
+   0.1667,
+   -0.095
+  ],
+  "mass_kg": 0.004
+ },
+ {
+  "number": "RJ28-16-013",
+  "name": "Knee Outer Lead L",
+  "node": "RJ28-16-013_Knee_Outer_Lead_L",
+  "assembly": "16",
+  "assembly_name": "Harness",
+  "material": "Braided sleeve",
+  "material_key": "braid",
+  "material_class": "harness",
+  "function": "Braided cable: junction to the outer knee actuator.",
+  "bbox_min": [
+   77.3,
+   52.2,
+   591.3
+  ],
+  "bbox_max": [
+   155.2,
+   142.6,
+   775.8
+  ],
+  "size": [
+   77.9,
+   90.4,
+   184.5
+  ],
+  "volume_cm3": 7.67,
+  "density": 1400,
+  "count": 1,
+  "mount_group": "",
+  "explode_stage": 2,
+  "explode_offset": [
+   0.1552,
+   0.13,
+   -0.1283
+  ],
+  "mass_kg": 0.004
  },
  {
   "number": "RJ28-16-014",
@@ -31133,23 +30985,23 @@
   ],
   "bbox_max": [
    280.3,
-   73.0,
-   723.5
+   72.9,
+   720.3
   ],
   "size": [
    204.6,
-   29.4,
-   216.9
+   29.3,
+   213.7
   ],
-  "volume_cm3": 7.99,
+  "volume_cm3": 7.95,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
    0.2314,
-   0.0758,
-   -0.1522
+   0.0757,
+   -0.1528
   ],
   "mass_kg": 0.004
  },
@@ -31162,33 +31014,33 @@
   "material": "Braided sleeve",
   "material_key": "braid",
   "material_class": "harness",
-  "function": "Braided cable: service loop carrying the shin loom across the knee.",
+  "function": "Loom of 3 braided cables bound with ties: service loop carrying the shin loom across the knee.",
   "bbox_min": [
-   79.6,
-   46.0,
-   308.1
+   77.7,
+   33.3,
+   292.6
   ],
   "bbox_max": [
-   190.7,
-   85.8,
-   544.8
+   194.5,
+   85.9,
+   544.7
   ],
   "size": [
-   111.1,
-   39.8,
-   236.7
+   116.8,
+   52.6,
+   252.1
   ],
-  "volume_cm3": 15.27,
+  "volume_cm3": 11.16,
   "density": 1400,
-  "count": 1,
+  "count": 3,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.1806,
-   0.088,
-   -0.2182
+   0.1822,
+   0.0798,
+   -0.221
   ],
-  "mass_kg": 0.008
+  "mass_kg": 0.006
  },
  {
   "number": "RJ28-16-016",
@@ -31236,31 +31088,31 @@
   "material": "Braided sleeve",
   "material_key": "braid",
   "material_class": "harness",
-  "function": "Braided cable: service loop carrying the foot cable across the ankle.",
+  "function": "Loom of 2 braided cables bound with ties: service loop carrying the foot cables across the ankle.",
   "bbox_min": [
-   196.7,
-   53.1,
-   85.6
+   195.0,
+   39.1,
+   85.5
   ],
   "bbox_max": [
-   207.9,
-   98.3,
-   167.1
+   208.4,
+   101.1,
+   182.7
   ],
   "size": [
-   11.2,
-   45.2,
-   81.6
+   13.4,
+   62.1,
+   97.1
   ],
-  "volume_cm3": 4.57,
+  "volume_cm3": 2.99,
   "density": 1400,
-  "count": 1,
+  "count": 2,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.2589,
-   0.0968,
-   -0.3233
+   0.2584,
+   0.0898,
+   -0.3206
   ],
   "mass_kg": 0.002
  },
@@ -31275,31 +31127,31 @@
   "material_class": "mechanism",
   "function": "Connector: power to the outer ankle actuator.",
   "bbox_min": [
-   219.2,
-   43.9,
-   304.5
+   181.9,
+   79.9,
+   313.1
   ],
   "bbox_max": [
-   232.9,
-   66.0,
-   318.2
+   201.2,
+   95.4,
+   328.6
   ],
   "size": [
-   13.6,
-   22.1,
-   13.7
+   19.3,
+   15.5,
+   15.5
   ],
-  "volume_cm3": 1.44,
+  "volume_cm3": 1.03,
   "density": 7850,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.2872,
-   0.0698,
-   -0.2585
+   0.2457,
+   0.1125,
+   -0.2552
   ],
-  "mass_kg": 0.005
+  "mass_kg": 0.004
  },
  {
   "number": "RJ28-16-019",
@@ -31312,29 +31164,29 @@
   "material_class": "harness",
   "function": "Braided cable: shin channel to the outer ankle actuator.",
   "bbox_min": [
-   185.3,
-   30.8,
-   304.6
+   173.5,
+   33.7,
+   292.7
   ],
   "bbox_max": [
-   230.8,
-   60.2,
-   324.0
+   185.3,
+   88.0,
+   322.3
   ],
   "size": [
-   45.6,
-   29.4,
-   19.3
+   11.8,
+   54.3,
+   29.7
   ],
-  "volume_cm3": 1.77,
+  "volume_cm3": 1.65,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.2666,
-   0.0583,
-   -0.2575
+   0.2328,
+   0.079,
+   -0.2599
   ],
   "mass_kg": 0.001
  },
@@ -31349,31 +31201,31 @@
   "material_class": "mechanism",
   "function": "Connector: power to the inner ankle actuator.",
   "bbox_min": [
-   140.1,
-   35.7,
-   296.8
+   165.9,
+   79.0,
+   287.5
   ],
   "bbox_max": [
-   153.7,
-   57.8,
-   310.5
+   185.2,
+   94.5,
+   303.1
   ],
   "size": [
-   13.6,
-   22.1,
-   13.7
+   19.3,
+   15.5,
+   15.5
   ],
-  "volume_cm3": 1.44,
+  "volume_cm3": 1.03,
   "density": 7850,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.1956,
-   0.0622,
-   -0.2612
+   0.227,
+   0.1122,
+   -0.2641
   ],
-  "mass_kg": 0.005
+  "mass_kg": 0.004
  },
  {
   "number": "RJ28-16-021",
@@ -31386,29 +31238,29 @@
   "material_class": "harness",
   "function": "Braided cable: shin channel to the inner ankle actuator.",
   "bbox_min": [
-   146.4,
-   24.7,
-   299.5
+   182.3,
+   35.4,
+   293.7
   ],
   "bbox_max": [
-   189.2,
-   58.0,
-   319.6
+   201.9,
+   91.0,
+   311.4
   ],
   "size": [
-   42.7,
-   33.3,
-   20.1
+   19.7,
+   55.6,
+   17.7
   ],
-  "volume_cm3": 1.77,
+  "volume_cm3": 1.69,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.2202,
-   0.0543,
-   -0.2592
+   0.2475,
+   0.0814,
+   -0.2616
   ],
   "mass_kg": 0.001
  },
@@ -31495,33 +31347,33 @@
   "material": "Braided sleeve",
   "material_key": "braid",
   "material_class": "harness",
-  "function": "Braided cable: left arm trunk from the thorax to the upper-arm junction.",
+  "function": "Loom of 4 braided cables bound with ties: left arm trunk from the thorax to the upper-arm junction.",
   "bbox_min": [
-   206.5,
-   38.7,
-   1258.4
+   206.6,
+   39.0,
+   1258.3
   ],
   "bbox_max": [
-   290.8,
-   97.9,
-   1392.8
+   290.6,
+   98.0,
+   1392.2
   ],
   "size": [
-   84.2,
-   59.3,
-   134.4
+   84.0,
+   58.9,
+   133.9
   ],
-  "volume_cm3": 14.92,
+  "volume_cm3": 10.89,
   "density": 1400,
-  "count": 1,
+  "count": 4,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
    0.3129,
-   0.086,
-   0.0965
+   0.0862,
+   0.0963
   ],
-  "mass_kg": 0.008
+  "mass_kg": 0.006
  },
  {
   "number": "RJ28-16-025",
@@ -31532,23 +31384,23 @@
   "material": "Fastener black oxide",
   "material_key": "fastener",
   "material_class": "mechanism",
-  "function": "P-clips holding the left arm trunk from the thorax to the upper-arm junction cable to the structure.",
+  "function": "P-clips holding the left arm trunk from the thorax to the upper-arm junction loom to the structure.",
   "bbox_min": [
-   263.3,
-   36.5,
+   263.2,
+   36.4,
    1269.9
   ],
   "bbox_max": [
-   289.4,
+   289.5,
    55.6,
    1284.2
   ],
   "size": [
-   26.1,
-   19.1,
+   26.3,
+   19.2,
    14.3
   ],
-  "volume_cm3": 1.22,
+  "volume_cm3": 1.23,
   "density": 7850,
   "count": 1,
   "mount_group": "",
@@ -31572,28 +31424,28 @@
   "function": "Braided cable: junction to the left shoulder roll actuator.",
   "bbox_min": [
    257.1,
-   43.1,
-   1255.8
+   40.4,
+   1257.4
   ],
   "bbox_max": [
-   289.0,
-   91.7,
+   281.1,
+   92.2,
    1432.8
   ],
   "size": [
-   32.0,
-   48.6,
-   177.0
+   24.0,
+   51.7,
+   175.4
   ],
-  "volume_cm3": 5.45,
+  "volume_cm3": 5.31,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.3412,
-   0.0842,
-   0.103
+   0.3366,
+   0.0829,
+   0.1033
   ],
   "mass_kg": 0.003
  },
@@ -31609,28 +31461,28 @@
   "function": "Braided cable: junction to the left shoulder yaw actuator.",
   "bbox_min": [
    192.3,
-   43.2,
-   1256.3
+   40.3,
+   1260.7
   ],
   "bbox_max": [
-   289.6,
-   83.5,
+   296.6,
+   83.8,
    1307.0
   ],
   "size": [
-   97.3,
-   40.3,
-   50.7
+   104.4,
+   43.4,
+   46.4
   ],
-  "volume_cm3": 3.84,
+  "volume_cm3": 4.2,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.3042,
-   0.0799,
-   0.0811
+   0.3083,
+   0.0782,
+   0.0818
   ],
   "mass_kg": 0.002
  },
@@ -31645,29 +31497,29 @@
   "material_class": "harness",
   "function": "Braided cable: junction to the left elbow actuator.",
   "bbox_min": [
-   292.8,
-   43.5,
-   1200.2
+   299.9,
+   40.3,
+   1189.8
   ],
   "bbox_max": [
-   312.4,
-   87.0,
-   1215.7
+   312.0,
+   86.4,
+   1214.9
   ],
   "size": [
-   19.6,
-   43.6,
-   15.5
+   12.0,
+   46.1,
+   25.0
   ],
-  "volume_cm3": 2.03,
+  "volume_cm3": 2.45,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.3754,
-   0.0809,
-   0.0553
+   0.3792,
+   0.0786,
+   0.0533
   ],
   "mass_kg": 0.001
  },
@@ -31754,33 +31606,33 @@
   "material": "Braided sleeve",
   "material_key": "braid",
   "material_class": "harness",
-  "function": "Braided cable: service loop carrying the left forearm loom across the elbow.",
+  "function": "Loom of 3 braided cables bound with ties: service loop carrying the left forearm loom across the elbow.",
   "bbox_min": [
-   291.8,
-   -4.3,
-   969.1
+   287.4,
+   -4.2,
+   969.2
   ],
   "bbox_max": [
-   361.5,
-   106.4,
-   1215.4
+   361.3,
+   108.6,
+   1212.7
   ],
   "size": [
-   69.7,
-   110.7,
-   246.3
+   73.9,
+   112.8,
+   243.5
   ],
-  "volume_cm3": 17.32,
+  "volume_cm3": 11.89,
   "density": 1400,
-  "count": 1,
+  "count": 3,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   0.4033,
-   0.063,
-   0.0148
+   0.4006,
+   0.0645,
+   0.0143
   ],
-  "mass_kg": 0.009
+  "mass_kg": 0.006
  },
  {
   "number": "RJ28-16-032",
@@ -31976,33 +31828,33 @@
   "material": "Braided sleeve",
   "material_key": "braid",
   "material_class": "harness",
-  "function": "Braided cable: right leg power and signal from the pelvis to the knee junction.",
+  "function": "Loom of 4 braided cables bound with ties: right leg power and signal from the pelvis to the knee junction.",
   "bbox_min": [
    -89.9,
-   49.5,
-   590.6
+   49.3,
+   590.5
   ],
   "bbox_max": [
-   -43.3,
-   121.2,
+   -43.0,
+   121.5,
    1013.3
   ],
   "size": [
-   46.6,
-   71.6,
-   422.7
+   47.0,
+   72.3,
+   422.8
   ],
-  "volume_cm3": 32.01,
+  "volume_cm3": 23.18,
   "density": 1400,
-  "count": 1,
+  "count": 4,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.0938,
-   0.1202,
+   -0.0936,
+   0.1203,
    -0.0868
   ],
-  "mass_kg": 0.016
+  "mass_kg": 0.012
  },
  {
   "number": "RJ28-16-038",
@@ -32013,112 +31865,38 @@
   "material": "Fastener black oxide",
   "material_key": "fastener",
   "material_class": "mechanism",
-  "function": "P-clips holding the right leg power and signal from the pelvis to the knee junction cable to the structure.",
+  "function": "P-clips holding the right leg power and signal from the pelvis to the knee junction loom to the structure.",
   "bbox_min": [
-   -99.7,
-   44.7,
-   627.9
+   -87.6,
+   42.1,
+   626.9
   ],
   "bbox_max": [
-   -66.5,
-   65.6,
-   713.2
+   -55.3,
+   65.7,
+   711.7
   ],
   "size": [
-   33.2,
-   20.9,
-   85.3
+   32.3,
+   23.7,
+   84.8
   ],
-  "volume_cm3": 2.45,
+  "volume_cm3": 2.46,
   "density": 7850,
   "count": 2,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.1189,
-   0.079,
-   -0.1328
+   -0.1045,
+   0.0788,
+   -0.1333
   ],
   "mass_kg": 0.009
  },
  {
   "number": "RJ28-16-039",
-  "name": "Knee Outer Plug R",
-  "node": "RJ28-16-039_Knee_Outer_Plug_R",
-  "assembly": "16",
-  "assembly_name": "Harness",
-  "material": "Fastener black oxide",
-  "material_key": "fastener",
-  "material_class": "mechanism",
-  "function": "Connector: power to the outer knee actuator.",
-  "bbox_min": [
-   -190.2,
-   45.2,
-   774.9
-  ],
-  "bbox_max": [
-   -173.6,
-   72.8,
-   792.4
-  ],
-  "size": [
-   16.6,
-   27.6,
-   17.5
-  ],
-  "volume_cm3": 2.55,
-  "density": 7850,
-  "count": 1,
-  "mount_group": "",
-  "explode_stage": 2,
-  "explode_offset": [
-   -0.2358,
-   0.0765,
-   -0.0932
-  ],
-  "mass_kg": 0.009
- },
- {
-  "number": "RJ28-16-040",
-  "name": "Knee Outer Lead R",
-  "node": "RJ28-16-040_Knee_Outer_Lead_R",
-  "assembly": "16",
-  "assembly_name": "Harness",
-  "material": "Braided sleeve",
-  "material_key": "braid",
-  "material_class": "harness",
-  "function": "Braided cable: junction to the outer knee actuator.",
-  "bbox_min": [
-   -185.7,
-   26.5,
-   590.6
-  ],
-  "bbox_max": [
-   -77.2,
-   60.9,
-   791.9
-  ],
-  "size": [
-   108.5,
-   34.4,
-   201.3
-  ],
-  "volume_cm3": 7.55,
-  "density": 1400,
-  "count": 1,
-  "mount_group": "",
-  "explode_stage": 2,
-  "explode_offset": [
-   -0.1777,
-   0.0591,
-   -0.1256
-  ],
-  "mass_kg": 0.004
- },
- {
-  "number": "RJ28-16-041",
   "name": "Knee Inner Plug R",
-  "node": "RJ28-16-041_Knee_Inner_Plug_R",
+  "node": "RJ28-16-039_Knee_Inner_Plug_R",
   "assembly": "16",
   "assembly_name": "Harness",
   "material": "Fastener black oxide",
@@ -32126,36 +31904,36 @@
   "material_class": "mechanism",
   "function": "Connector: power to the inner knee actuator.",
   "bbox_min": [
-   -107.1,
-   36.4,
-   766.9
+   -130.1,
+   109.5,
+   739.1
   ],
   "bbox_max": [
-   -90.5,
-   64.1,
-   784.4
+   -112.0,
+   129.2,
+   752.0
   ],
   "size": [
-   16.6,
-   27.6,
-   17.5
+   18.1,
+   19.6,
+   12.9
   ],
-  "volume_cm3": 2.55,
+  "volume_cm3": 1.03,
   "density": 7850,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.1385,
-   0.0705,
-   -0.096
+   -0.1591,
+   0.1569,
+   -0.1066
   ],
-  "mass_kg": 0.009
+  "mass_kg": 0.004
  },
  {
-  "number": "RJ28-16-042",
+  "number": "RJ28-16-040",
   "name": "Knee Inner Lead R",
-  "node": "RJ28-16-042_Knee_Inner_Lead_R",
+  "node": "RJ28-16-040_Knee_Inner_Lead_R",
   "assembly": "16",
   "assembly_name": "Harness",
   "material": "Braided sleeve",
@@ -32163,31 +31941,105 @@
   "material_class": "harness",
   "function": "Braided cable: junction to the inner knee actuator.",
   "bbox_min": [
-   -103.6,
-   19.3,
-   590.6
+   -144.7,
+   50.3,
+   589.4
   ],
   "bbox_max": [
-   -77.3,
-   61.0,
-   783.0
+   -70.9,
+   134.5,
+   745.4
   ],
   "size": [
-   26.3,
-   41.6,
-   192.4
+   73.8,
+   84.1,
+   156.0
   ],
-  "volume_cm3": 6.16,
+  "volume_cm3": 6.51,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.1296,
-   0.0575,
-   -0.1271
+   -0.1453,
+   0.1245,
+   -0.1339
   ],
   "mass_kg": 0.003
+ },
+ {
+  "number": "RJ28-16-041",
+  "name": "Knee Outer Plug R",
+  "node": "RJ28-16-041_Knee_Outer_Plug_R",
+  "assembly": "16",
+  "assembly_name": "Harness",
+  "material": "Fastener black oxide",
+  "material_key": "fastener",
+  "material_class": "mechanism",
+  "function": "Connector: power to the outer knee actuator.",
+  "bbox_min": [
+   -159.8,
+   119.6,
+   771.4
+  ],
+  "bbox_max": [
+   -140.7,
+   138.5,
+   785.5
+  ],
+  "size": [
+   19.1,
+   18.9,
+   14.1
+  ],
+  "volume_cm3": 1.03,
+  "density": 7850,
+  "count": 1,
+  "mount_group": "",
+  "explode_stage": 2,
+  "explode_offset": [
+   -0.1941,
+   0.1667,
+   -0.095
+  ],
+  "mass_kg": 0.004
+ },
+ {
+  "number": "RJ28-16-042",
+  "name": "Knee Outer Lead R",
+  "node": "RJ28-16-042_Knee_Outer_Lead_R",
+  "assembly": "16",
+  "assembly_name": "Harness",
+  "material": "Braided sleeve",
+  "material_key": "braid",
+  "material_class": "harness",
+  "function": "Braided cable: junction to the outer knee actuator.",
+  "bbox_min": [
+   -155.3,
+   52.2,
+   591.3
+  ],
+  "bbox_max": [
+   -77.2,
+   142.6,
+   775.8
+  ],
+  "size": [
+   78.1,
+   90.4,
+   184.5
+  ],
+  "volume_cm3": 7.67,
+  "density": 1400,
+  "count": 1,
+  "mount_group": "",
+  "explode_stage": 2,
+  "explode_offset": [
+   -0.1552,
+   0.13,
+   -0.1283
+  ],
+  "mass_kg": 0.004
  },
  {
   "number": "RJ28-16-043",
@@ -32205,24 +32057,24 @@
    506.6
   ],
   "bbox_max": [
-   -75.7,
-   73.0,
-   723.5
+   -75.8,
+   72.8,
+   720.3
   ],
   "size": [
    204.6,
-   29.4,
-   216.9
+   29.2,
+   213.7
   ],
-  "volume_cm3": 7.99,
+  "volume_cm3": 7.95,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.2313,
-   0.0757,
-   -0.1522
+   -0.2314,
+   0.0756,
+   -0.1528
   ],
   "mass_kg": 0.004
  },
@@ -32235,33 +32087,33 @@
   "material": "Braided sleeve",
   "material_key": "braid",
   "material_class": "harness",
-  "function": "Braided cable: service loop carrying the shin loom across the knee.",
+  "function": "Loom of 3 braided cables bound with ties: service loop carrying the shin loom across the knee.",
   "bbox_min": [
-   -190.6,
-   45.8,
-   308.0
+   -194.3,
+   33.1,
+   292.8
   ],
   "bbox_max": [
-   -79.6,
-   86.0,
-   544.7
+   -79.5,
+   84.9,
+   544.6
   ],
   "size": [
-   111.0,
-   40.1,
-   236.7
+   114.8,
+   51.8,
+   251.8
   ],
-  "volume_cm3": 15.27,
+  "volume_cm3": 11.16,
   "density": 1400,
-  "count": 1,
+  "count": 3,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.1806,
-   0.0881,
-   -0.2183
+   -0.1832,
+   0.0789,
+   -0.221
   ],
-  "mass_kg": 0.008
+  "mass_kg": 0.006
  },
  {
   "number": "RJ28-16-045",
@@ -32309,31 +32161,31 @@
   "material": "Braided sleeve",
   "material_key": "braid",
   "material_class": "harness",
-  "function": "Braided cable: service loop carrying the foot cable across the ankle.",
+  "function": "Loom of 2 braided cables bound with ties: service loop carrying the foot cables across the ankle.",
   "bbox_min": [
-   -207.9,
-   53.1,
-   85.6
+   -210.0,
+   39.0,
+   85.5
   ],
   "bbox_max": [
-   -196.7,
-   98.3,
-   167.1
+   -197.1,
+   101.1,
+   182.6
   ],
   "size": [
-   11.2,
-   45.2,
-   81.5
+   13.0,
+   62.1,
+   97.1
   ],
-  "volume_cm3": 4.57,
+  "volume_cm3": 2.99,
   "density": 1400,
-  "count": 1,
+  "count": 2,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.2589,
-   0.0968,
-   -0.3233
+   -0.2606,
+   0.0897,
+   -0.3206
   ],
   "mass_kg": 0.002
  },
@@ -32348,31 +32200,31 @@
   "material_class": "mechanism",
   "function": "Connector: power to the outer ankle actuator.",
   "bbox_min": [
-   -232.9,
-   43.9,
-   304.5
+   -201.2,
+   79.9,
+   313.1
   ],
   "bbox_max": [
-   -219.2,
-   66.0,
-   318.2
+   -181.9,
+   95.4,
+   328.6
   ],
   "size": [
-   13.6,
-   22.1,
-   13.7
+   19.3,
+   15.5,
+   15.5
   ],
-  "volume_cm3": 1.44,
+  "volume_cm3": 1.03,
   "density": 7850,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.2872,
-   0.0698,
-   -0.2585
+   -0.2457,
+   0.1125,
+   -0.2552
   ],
-  "mass_kg": 0.005
+  "mass_kg": 0.004
  },
  {
   "number": "RJ28-16-048",
@@ -32385,29 +32237,29 @@
   "material_class": "harness",
   "function": "Braided cable: shin channel to the outer ankle actuator.",
   "bbox_min": [
-   -230.7,
-   30.7,
-   304.6
+   -185.3,
+   33.7,
+   292.6
   ],
   "bbox_max": [
-   -185.3,
-   60.3,
-   324.0
+   -173.5,
+   88.0,
+   322.4
   ],
   "size": [
-   45.5,
-   29.5,
-   19.4
+   11.8,
+   54.3,
+   29.7
   ],
-  "volume_cm3": 1.77,
+  "volume_cm3": 1.65,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.2666,
-   0.0583,
-   -0.2575
+   -0.2328,
+   0.079,
+   -0.2599
   ],
   "mass_kg": 0.001
  },
@@ -32422,31 +32274,31 @@
   "material_class": "mechanism",
   "function": "Connector: power to the inner ankle actuator.",
   "bbox_min": [
-   -153.7,
-   35.7,
-   296.8
+   -185.2,
+   79.0,
+   287.5
   ],
   "bbox_max": [
-   -140.1,
-   57.8,
-   310.5
+   -165.9,
+   94.5,
+   303.1
   ],
   "size": [
-   13.6,
-   22.1,
-   13.7
+   19.3,
+   15.5,
+   15.5
   ],
-  "volume_cm3": 1.44,
+  "volume_cm3": 1.03,
   "density": 7850,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.1956,
-   0.0622,
-   -0.2612
+   -0.227,
+   0.1122,
+   -0.2641
   ],
-  "mass_kg": 0.005
+  "mass_kg": 0.004
  },
  {
   "number": "RJ28-16-050",
@@ -32459,29 +32311,29 @@
   "material_class": "harness",
   "function": "Braided cable: shin channel to the inner ankle actuator.",
   "bbox_min": [
-   -189.2,
-   24.8,
-   299.4
+   -201.9,
+   35.4,
+   293.7
   ],
   "bbox_max": [
-   -146.5,
-   58.0,
-   319.6
+   -182.3,
+   91.0,
+   311.4
   ],
   "size": [
-   42.7,
-   33.2,
-   20.2
+   19.7,
+   55.6,
+   17.7
   ],
-  "volume_cm3": 1.77,
+  "volume_cm3": 1.69,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.2202,
-   0.0543,
-   -0.2592
+   -0.2475,
+   0.0814,
+   -0.2616
   ],
   "mass_kg": 0.001
  },
@@ -32568,33 +32420,33 @@
   "material": "Braided sleeve",
   "material_key": "braid",
   "material_class": "harness",
-  "function": "Braided cable: right arm trunk from the thorax to the upper-arm junction.",
+  "function": "Loom of 4 braided cables bound with ties: right arm trunk from the thorax to the upper-arm junction.",
   "bbox_min": [
-   -290.7,
-   38.8,
-   1258.2
+   -290.9,
+   38.7,
+   1258.4
   ],
   "bbox_max": [
-   -207.7,
-   70.4,
-   1392.8
+   -207.6,
+   70.8,
+   1392.1
   ],
   "size": [
-   83.0,
-   31.6,
-   134.6
+   83.3,
+   32.1,
+   133.8
   ],
-  "volume_cm3": 13.18,
+  "volume_cm3": 9.52,
   "density": 1400,
-  "count": 1,
+  "count": 4,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.3139,
-   0.0687,
-   0.0964
+   -0.314,
+   0.069,
+   0.0963
   ],
-  "mass_kg": 0.007
+  "mass_kg": 0.005
  },
  {
   "number": "RJ28-16-054",
@@ -32605,23 +32457,23 @@
   "material": "Fastener black oxide",
   "material_key": "fastener",
   "material_class": "mechanism",
-  "function": "P-clips holding the right arm trunk from the thorax to the upper-arm junction cable to the structure.",
+  "function": "P-clips holding the right arm trunk from the thorax to the upper-arm junction loom to the structure.",
   "bbox_min": [
-   -300.6,
-   36.5,
+   -300.7,
+   36.4,
    1270.8
   ],
   "bbox_max": [
-   -275.0,
+   -274.9,
    55.6,
    1287.5
   ],
   "size": [
-   25.6,
-   19.1,
+   25.8,
+   19.2,
    16.7
   ],
-  "volume_cm3": 1.22,
+  "volume_cm3": 1.23,
   "density": 7850,
   "count": 1,
   "mount_group": "",
@@ -32644,29 +32496,29 @@
   "material_class": "harness",
   "function": "Braided cable: junction to the right shoulder roll actuator.",
   "bbox_min": [
-   -289.0,
-   43.1,
-   1255.8
+   -296.6,
+   40.3,
+   1260.7
   ],
   "bbox_max": [
    -257.1,
-   91.9,
+   92.3,
    1432.8
   ],
   "size": [
-   31.9,
-   48.8,
-   177.0
+   39.6,
+   51.9,
+   172.1
   ],
-  "volume_cm3": 5.45,
+  "volume_cm3": 5.29,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.3412,
-   0.0843,
-   0.103
+   -0.3456,
+   0.0828,
+   0.1039
   ],
   "mass_kg": 0.003
  },
@@ -32681,19 +32533,19 @@
   "material_class": "harness",
   "function": "Braided cable: junction to the right shoulder yaw actuator.",
   "bbox_min": [
-   -289.6,
-   43.2,
-   1256.3
+   -281.1,
+   40.4,
+   1257.4
   ],
   "bbox_max": [
    -192.2,
-   83.5,
+   83.8,
    1307.1
   ],
   "size": [
-   97.4,
-   40.3,
-   50.8
+   88.8,
+   43.5,
+   49.8
   ],
   "volume_cm3": 3.84,
   "density": 1400,
@@ -32701,9 +32553,9 @@
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.3041,
-   0.08,
-   0.0811
+   -0.2992,
+   0.0785,
+   0.0813
   ],
   "mass_kg": 0.002
  },
@@ -32718,29 +32570,29 @@
   "material_class": "harness",
   "function": "Braided cable: junction to the right elbow actuator.",
   "bbox_min": [
-   -312.4,
-   43.5,
-   1200.2
+   -312.6,
+   40.4,
+   1187.0
   ],
   "bbox_max": [
-   -292.8,
-   87.0,
-   1215.8
+   -286.2,
+   87.4,
+   1214.4
   ],
   "size": [
-   19.5,
-   43.6,
-   15.6
+   26.4,
+   47.0,
+   27.4
   ],
-  "volume_cm3": 2.03,
+  "volume_cm3": 2.65,
   "density": 1400,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.3754,
-   0.0809,
-   0.0553
+   -0.3717,
+   0.0793,
+   0.0527
   ],
   "mass_kg": 0.001
  },
@@ -32827,33 +32679,33 @@
   "material": "Braided sleeve",
   "material_key": "braid",
   "material_class": "harness",
-  "function": "Braided cable: service loop carrying the right forearm loom across the elbow.",
+  "function": "Loom of 3 braided cables bound with ties: service loop carrying the right forearm loom across the elbow.",
   "bbox_min": [
-   -361.5,
+   -361.9,
    -4.3,
-   969.2
+   969.8
   ],
   "bbox_max": [
-   -291.7,
-   106.5,
-   1215.4
+   -296.6,
+   108.3,
+   1214.8
   ],
   "size": [
-   69.8,
-   110.8,
-   246.1
+   65.3,
+   112.6,
+   245.0
   ],
-  "volume_cm3": 17.32,
+  "volume_cm3": 11.85,
   "density": 1400,
-  "count": 1,
+  "count": 3,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.4033,
-   0.0631,
+   -0.4063,
+   0.0642,
    0.0148
   ],
-  "mass_kg": 0.009
+  "mass_kg": 0.006
  },
  {
   "number": "RJ28-16-061",
@@ -32867,30 +32719,30 @@
   "function": "Coolant hose: coolant to the right hand-drive controller.",
   "bbox_min": [
    -387.5,
-   32.7,
+   32.6,
    995.5
   ],
   "bbox_max": [
-   -172.3,
-   108.5,
-   1361.0
+   -173.4,
+   108.6,
+   1360.9
   ],
   "size": [
-   215.3,
+   214.1,
    75.9,
-   365.5
+   365.3
   ],
-  "volume_cm3": 47.83,
+  "volume_cm3": 46.0,
   "density": 1150,
   "count": 1,
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.349,
+   -0.3497,
    0.088,
    0.0449
   ],
-  "mass_kg": 0.029
+  "mass_kg": 0.028
  },
  {
   "number": "RJ28-16-062",
@@ -32908,14 +32760,14 @@
    988.3
   ],
   "bbox_max": [
-   -165.5,
-   83.5,
-   1366.2
+   -166.0,
+   75.7,
+   1367.1
   ],
   "size": [
-   225.2,
-   42.8,
-   377.9
+   224.7,
+   35.0,
+   378.8
   ],
   "volume_cm3": 9.76,
   "density": 7850,
@@ -32923,9 +32775,9 @@
   "mount_group": "",
   "explode_stage": 2,
   "explode_offset": [
-   -0.3472,
-   0.0776,
-   0.0445
+   -0.3475,
+   0.0727,
+   0.0447
   ],
   "mass_kg": 0.035
  },
@@ -33630,7 +33482,7 @@
    0.1119,
    0.1381
   ],
-  "mass_kg": 0.005
+  "mass_kg": 0.006
  },
  {
   "number": "RJ28-16-082",
@@ -33644,12 +33496,12 @@
   "function": "Connector: tracking head signal into the breech.",
   "bbox_min": [
    -357.5,
-   373.0,
+   379.0,
    1541.5
   ],
   "bbox_max": [
    -342.5,
-   396.0,
+   402.0,
    1556.5
   ],
   "size": [
@@ -33665,7 +33517,7 @@
   "explode_offset": [
    -0.4288,
    0.1544,
-   0.2413
+   0.2434
   ],
   "mass_kg": 0.007
  },
@@ -33682,27 +33534,27 @@
   "bbox_min": [
    -412.7,
    314.2,
-   1546.6
+   1545.2
   ],
   "bbox_max": [
-   -347.8,
-   409.8,
+   -347.6,
+   417.7,
    1617.7
   ],
   "size": [
-   64.9,
-   95.6,
-   71.1
+   65.1,
+   103.6,
+   72.4
   ],
-  "volume_cm3": 3.31,
+  "volume_cm3": 3.53,
   "density": 1400,
   "count": 1,
   "mount_group": "elev",
   "explode_stage": 2,
   "explode_offset": [
-   -0.4645,
-   0.1135,
-   0.2334
+   -0.4644,
+   0.1143,
+   0.2348
   ],
   "mass_kg": 0.002
  },

@@ -12,11 +12,11 @@
    "max": [
     464.2,
     270.0,
-    1771.0
+    1772.7
    ],
    "width": 928.4,
    "depth": 645.0,
-   "height": 1771.0
+   "height": 1772.7
   },
   "stowed": {
    "min": [
@@ -26,11 +26,11 @@
    ],
    "max": [
     464.2,
-    416.0,
+    417.7,
     2050.0
    ],
    "width": 928.4,
-   "depth": 637.1,
+   "depth": 638.8,
    "height": 2050.0
   }
  },
@@ -974,69 +974,69 @@
   "mass_ready_kg": 185.0
  },
  "mass": {
-  "total_kg": 185.02,
+  "total_kg": 185.01,
   "target_kg": 185.0,
   "error_pct": 0.01,
   "fill_factors": {
-   "structure": 0.3604,
-   "armour": 0.5898,
-   "mechanism": 0.4587,
-   "optic": 0.3932,
-   "electronics": 0.5898,
-   "harness": 0.3604,
-   "soft": 0.5243,
-   "actuator": 0.3932,
+   "structure": 0.3626,
+   "armour": 0.5933,
+   "mechanism": 0.4615,
+   "optic": 0.3956,
+   "electronics": 0.5933,
+   "harness": 0.3626,
+   "soft": 0.5274,
+   "actuator": 0.3956,
    "battery": 1.0302
   },
-  "common_scale": 0.6553,
+  "common_scale": 0.6593,
   "by_assembly": [
    {
     "assembly": "01",
     "name": "Head and cap",
     "parts": 70,
-    "mass_kg": 3.3
+    "mass_kg": 3.32
    },
    {
     "assembly": "02",
     "name": "Neck",
     "parts": 27,
-    "mass_kg": 0.71
+    "mass_kg": 0.72
    },
    {
     "assembly": "03",
     "name": "Thorax",
     "parts": 85,
-    "mass_kg": 50.37
+    "mass_kg": 50.54
    },
    {
     "assembly": "04",
     "name": "Abdomen and spine",
     "parts": 71,
-    "mass_kg": 4.22
+    "mass_kg": 4.25
    },
    {
     "assembly": "05",
     "name": "Pelvis",
     "parts": 35,
-    "mass_kg": 6.64
+    "mass_kg": 6.68
    },
    {
     "assembly": "06",
     "name": "Backpack",
     "parts": 38,
-    "mass_kg": 4.98
+    "mass_kg": 5.02
    },
    {
     "assembly": "07",
     "name": "Arm, left",
     "parts": 73,
-    "mass_kg": 17.95
+    "mass_kg": 18.06
    },
    {
     "assembly": "08",
     "name": "Arm, right",
     "parts": 72,
-    "mass_kg": 16.5
+    "mass_kg": 16.6
    },
    {
     "assembly": "09",
@@ -1053,38 +1053,38 @@
    {
     "assembly": "11",
     "name": "Leg, left",
-    "parts": 85,
-    "mass_kg": 22.96
+    "parts": 83,
+    "mass_kg": 22.63
    },
    {
     "assembly": "12",
     "name": "Leg, right",
-    "parts": 82,
-    "mass_kg": 22.93
+    "parts": 80,
+    "mass_kg": 22.6
    },
    {
     "assembly": "13",
     "name": "Foot, left",
     "parts": 31,
-    "mass_kg": 3.67
+    "mass_kg": 3.7
    },
    {
     "assembly": "14",
     "name": "Foot, right",
     "parts": 31,
-    "mass_kg": 3.67
+    "mass_kg": 3.7
    },
    {
     "assembly": "15",
     "name": "Interceptor mount",
     "parts": 60,
-    "mass_kg": 23.49
+    "mass_kg": 23.63
    },
    {
     "assembly": "16",
     "name": "Harness",
     "parts": 83,
-    "mass_kg": 0.63
+    "mass_kg": 0.59
    },
    {
     "assembly": "17",
@@ -1094,18 +1094,18 @@
    }
   ],
   "by_class": {
-   "structure": 66.19,
-   "armour": 23.13,
-   "mechanism": 12.3,
+   "structure": 65.66,
+   "armour": 23.26,
+   "mechanism": 12.35,
    "optic": 0.02,
-   "electronics": 2.38,
-   "harness": 0.16,
-   "soft": 3.99,
-   "actuator": 53.85,
+   "electronics": 2.4,
+   "harness": 0.14,
+   "soft": 4.02,
+   "actuator": 54.17,
    "battery": 23.0
   }
  },
- "part_count": 930,
+ "part_count": 926,
  "design_notes": [
   {
    "title": "Static knee torque in a 90 degree squat",
@@ -1169,13 +1169,13 @@
   {
    "title": "Mass roll-up from part volumes",
    "working": [
-    "930 parts; mass = mesh volume x material density x class fill factor",
+    "926 parts; mass = mesh volume x material density x class fill factor",
     "Battery parts pinned to the pack target; all other classes share one scale factor",
     "Roll-up: 185.0 kg against 185 kg (+0.01%)"
    ],
    "result": {
-    "total_kg": 185.02,
-    "common_scale": 0.6553
+    "total_kg": 185.01,
+    "common_scale": 0.6593
    },
    "verdict": "Fill factors are listed with the mass data; none is set per part."
   }
