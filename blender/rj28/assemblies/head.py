@@ -457,11 +457,12 @@ def build():
     a.take(mech.fasteners("_bs", seats, "M4"), "Board_Screws", "Screws through the processor board into its standoffs.")
     a.add("Heat_Spreader", D.finned_block_bm(82, 58, 20, fins=10), "Finned heat spreader on the processor; its air "
           "leaves through the cap's arch mesh and eyelets.", "alu", W @ T(0, -32, Z1 + 17), bevel=0.3, seg=1)
-    conn, tail = H.connector("_nc", W @ Vector((0, 58, Z0 + 2)), (0, 0, -1), 16.0)
+    # off the centreline: the neck yaw motor stands directly below the middle of the skull base
+    conn, tail = H.connector("_nc", W @ Vector((-22, 52, Z0 + 2)), (0, 0, -1), 16.0)
     a.take(conn, "Neck_Connector", "Bulkhead connector carrying head power and data down through the neck.")
     for i, x in enumerate((-16, 16)):
         pts = [W @ Vector((x, 2, Z1 + 16)), W @ Vector((x * 1.4, 34, Z1 - 6)), W @ Vector((x * 0.9, 54, 1590)),
-               W @ Vector((x * 0.4, 58, Z0 + 16))]
+               W @ Vector((-22 + x * 0.3, 52, Z0 + 16))]
         a.take(H.cable("_hc", pts, 3.2, sag=0.0), f"Head_Harness_{'AB'[i]}",
                "Braided harness from the processor board to the neck connector.")
 

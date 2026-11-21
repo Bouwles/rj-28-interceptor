@@ -171,9 +171,9 @@ def leg(rn, s):
 def neck(rn):
     """Head loom and one coolant line through the neck gimbal, with slack for all three axes."""
     W = FR.torso()
-    top = W @ Vector((0, 58, 1540 - 16 * 2.3 + 1))               # tail of the head's neck connector
+    top = tail_of(connector("01", "Neck_Connector"))[0]
     for k, x in enumerate((-9, 0, 9)):
-        pts = [W @ Vector((x * 2.2, 96, 1492)), W @ Vector((x * 2.0, 104, 1512)), W @ Vector((x * 1.2, 92, 1532)),
+        pts = [W @ Vector((-26 + x * 1.6, 96, 1492)), W @ Vector((-26 + x * 1.5, 104, 1512)), W @ Vector((-24 + x * 1.0, 90, 1532)),
                top + Vector((x * 0.5, 6, -14)), top + Vector((x * 0.35, 0, 0))]
         rn.cable(f"Neck_Loom_{k + 1}", pts, "head power and data across the neck", r=2.8)
     pts = [W @ Vector((30, 92, 1492)), W @ Vector((34, 108, 1518)), W @ Vector((30, 96, 1546)), W @ Vector((26, 80, 1566)),
@@ -271,24 +271,40 @@ def mount(rn):
 
 
 def pelvis(rn):
-    """Leads from the hip and waist actuators to the connector panel at the back of the pelvis."""
-    slots = {("11", "Hip_Pitch_Connector"): (26, 1016), ("12", "Hip_Pitch_Connector"): (-26, 1016),
-             ("05", "Hip_Yaw_Connector_L"): (12, 1016), ("05", "Hip_Yaw_Connector_R"): (-12, 1016),
-             ("05", "Hip_Roll_L_Connector"): (28, 996), ("05", "Hip_Roll_R_Connector"): (-28, 996),
-             ("04", "Waist_Yaw_Drive_Connector"): (0, 998)}
-    for (aa, short), (x, z) in slots.items():
-        ob = connector(aa, short)
-        if ob is None:
-            print("HARNESS SKIP", aa, short)
-            continue
+    """Hip actuator leads. Each leaves its plug on the pelvis panel straight back, turns outboard in
+    a flat rank with its neighbours, passes a saddle clip at the panel edge and only then fans out
+    to its actuator. Nothing crosses the centreline. The waist yaw drive rides on the turntable, so
+    its lead goes up to the thorax floor instead of across the yaw joint."""
+    for s in (1, -1):
+        n = "L" if s > 0 else "R"
+        aa = "11" if s > 0 else "12"
+        rank = Vector((s * 58, 141, 1006))                      # where the three leads pass the saddle clip
+        for (asm, short, nm), (x, z), mid in (
+                ((aa, "Hip_Pitch_Connector", f"Hip_Pitch_{n}"), (26, 996), [(s * 64, 136, 978)]),
+                (("05", f"Hip_Yaw_Connector_{n}", f"Hip_Yaw_{n}"), (26, 1016), [(s * 76, 128, 1030)]),
+                (("05", f"Hip_Roll_{n}_Connector", f"Hip_Roll_{n}"), (12, 1006),
+                 [(s * 104, 147, 1032), (s * 186, 151, 1032), (s * 238, 154, 1008)])):   # up under the plate rim
+            ob = connector(asm, short)
+            if ob is None:
+                print("HARNESS SKIP", asm, short)
+                continue
+            tip, out = tail_of(ob)
+            tail = rn.plug(f"{nm}_Panel_Plug", Vector((s * x, 126, z)), (0, 1, 0),
+                           f"{nm.replace('_', ' ').lower()} at the pelvis panel", d=9.5)
+            lane = Vector((rank.x, rank.y, z))
+            pts = [tail, tail + Vector((0, 9, 0)), lane - Vector((s * 12, 0, 0)), lane + Vector((s * 4, 0, 0))]
+            pts += [Vector(m) for m in mid] + [tip + out * 16, tip]
+            rn.cable(f"{nm}_Lead", pts, f"pelvis panel to the {nm.replace('_', ' ').lower()} actuator", r=3.0,
+                     clips=[lane - Vector((s * 3, 0, 0)), lane + Vector((s * 3, 0, 0))] if short.startswith("Hip_Yaw") else None,
+                     clip_dir=(0, -1, 0))
+    ob = connector("04", "Waist_Yaw_Drive_Connector")
+    if ob is not None:
         tip, out = tail_of(ob)
-        nm = short.replace("_Connector", "").replace("__", "_")
-        nm = f"{nm}_{'L' if aa == '11' else 'R'}" if aa in ("11", "12") else nm
-        tail = rn.plug(f"{nm}_Panel_Plug", Vector((x, 126, z)), (0, 1, 0), f"{nm.replace('_', ' ').lower()} at the pelvis panel", d=9.5)
-        mid = (tip + tail) / 2
-        mid.y = max(tip.y, tail.y) + 26
-        pts = [tip, tip + out * 16 + Vector((0, 8, 4)), mid, tail + Vector((0, 12, 0)), tail]
-        rn.cable(f"{nm}_Lead", pts, f"pelvis panel to the {nm.replace('_', ' ').lower()} actuator", r=3.0)
+        W = FR.torso()
+        tail = rn.plug("Waist_Yaw_Thorax_Plug", W @ Vector((30, 84, 1205)), (0, 0, -1),
+                       "waist yaw drive at the thorax floor", d=9.5)
+        pts = [tip, tip + out * 16, tip + out * 22 + Vector((0, -4, 22)), tail + Vector((14, 6, -16)), tail]
+        rn.cable("Waist_Yaw_Lead", pts, "thorax floor to the waist yaw drive", r=3.0)
 
 
 def build():
