@@ -64,7 +64,7 @@ Part numbers are `RJ28-AA-NNN`. The counts below were the intent before Gate G1.
 
 Skull frame; faceplate, raked 12° with the top forward, 124 mm wide at the jaw and 148 mm at the brow; slit bezel, slit glass, emitter strip, stereo camera pair on a bracket; lens cluster bezel on the left cheek with thermal imager, lidar window and spotter camera; jaw guard with two louvred intakes; lidar unit; processing board and heat spreader; neck connector and wiring.
 
-Cap: crown shell (4 mm, six panels separated by real 1.5 × 2 mm seams), sweatband ring with four countersunk screws, antenna puck at the button position, snapback arch with mesh backing, strap bar with seven hex studs, brim (175 × 72 × 4 mm, raked 12° down, edges curved down 9 mm), three rear sensor windows and two status LEDs under the brim lip, "28" stencil.
+Cap: crown shell (4 mm, six gores with raised double seams and a flanged eyelet vent each), button with gasket, sweatband ring, arch over the brow with mesh backing, a toothed strap and a plain strap overlapping under one latch, brim (175 × 72 mm, raked 12° down, 12 mm camber, 6 mm rolled bead, five underside ribs, bolted flange to the crown), rear sensor bar with three windows and two status LEDs under the brim lip, "28" stencil on a flat in the left gore.
 
 The cap base sits at 1,613 mm at the rear and 1,637 mm at the front, so the cap sits back on the head and its front edge clears the slit. The crown's high point is shifted 14 mm towards the brim, which is what makes it read as a cap and not as a dome.
 
@@ -74,11 +74,11 @@ Neck ring on a crossed-roller bearing (yaw); two-axis gimbal; two linear actuato
 
 ### 03 Thorax (about 60 parts)
 
-Frame (welded and bolted aluminium); sternum panel, two pectoral panels, two flank panels with mesh intakes, collar guard; armour carriers; two front service hatches with hinges and quarter-turn fasteners; two shoulder yokes with lifting eyes; data plate. Inside: battery enclosure with busbars, service disconnect and coolant ports; two compute modules on cold plates; power distribution unit; two shoulder pitch actuators.
+Frame (machined aluminium tub); T-shaped sternum keel, two pectoral panels set back behind clavicle and rib plates that lap over them, two flank panels with mesh intakes, collar guard; a carrier behind every plate; two front service hatches with hinges and quarter-turn fasteners; two shoulder yokes with lifting eyes; data plate. Inside: battery enclosure with busbars, service disconnect and coolant ports; two compute modules on cold plates; power distribution unit; two shoulder pitch actuators.
 
 ### 04 Abdomen and spine (about 28 parts)
 
-Spine column; waist slewing ring (yaw); two pitch actuators with bellows and clevises; flexible conduit across the joint; four overlapping lames with their carriers, open at the rear; side bellows.
+Spine column; waist slewing ring (yaw); two pitch actuators with bellows and clevises; flexible conduit across the joint; four tapered lames lapping 14 mm with rolled lower lips, slotted shoulder screws at each lap and two tie-rod links a side to the spine clamp rings, open at the rear; bellows from the top lame to a flange on the tub.
 
 ### 05 Pelvis (about 26 parts)
 
@@ -90,7 +90,7 @@ Shell; two radiator cores behind slatted grilles; two axial blowers with guards;
 
 ### 07 / 08 Arms (about 34 parts each)
 
-Shoulder roll actuator; pauldron shell with front and rear cheeks, on a carrier; shoulder yaw actuator; upper-arm structural member; outer half-shell; elbow housing with dust cover and hard stop; forearm shell in two halves with two access panels, a vent and a wear plate; forearm roll bearing; wrist joint with bellows.
+Shoulder roll actuator; pauldron in three plates (cap, main plate, hinged skirt) on a carrier screwed to the roll housing; shoulder yaw actuator; upper-arm structural member; outer half-shell; elbow housing with dust cover and hard stop; forearm shell in two halves with two access panels, a vent and a wear plate; forearm roll bearing; wrist joint with bellows.
 
 Left and right are not mirror images. The left pauldron reaches 398 mm from the centreline, has a longer skirt and a rear cheek, and carries the unit number. The right reaches 382 mm, sits 18 mm lower and is cut back at the rear to clear the cannon (D-011).
 
@@ -100,11 +100,11 @@ Palm frame; knuckle plate; thumb in two segments; three fingers in three segment
 
 ### 11 / 12 Legs (about 36 parts each)
 
-Hip pitch drum and cap; thigh frame; thigh armour in two pieces with a gap showing the frame; two knee actuators (body, rod, bellows, clevises, pins, clips); knee barrel, outer and inner bearing housings, crank lug; knee guard on a linkage; shin member; front shin panel with vent slots, two side panels, rear cable channel and cover; two ankle actuators.
+Hip pitch drum and cap; thigh frame; thigh armour in two pieces with a gap showing the frame; two knee actuators (body, rod, bellows, clevises, pins, clips); knee barrel, outer and inner bearing housings, crank lug; knee guard on a linkage; shin member; front shin panel with vent slots, two side panels, rear cable channel and cover; strike plates on the thigh and shin fronts; hamstring and calf guards on brackets at the rear; two ankle actuators.
 
 ### 13 / 14 Feet (about 14 parts each)
 
-Ankle universal joint; machined frame; armoured upper; hinged toe section; heel block; replaceable sole with straight sipes.
+Ankle cross with bolted pitch and roll caps and two encoders; welded frame with a machined heel block; armoured upper; hinged toe section with a wrapped strike plate; sole in three replaceable pads (heel, arch, toe) of lugged rubber on screwed carrier plates.
 
 ### 15 Interceptor mount (about 46 parts)
 

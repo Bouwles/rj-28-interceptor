@@ -207,7 +207,10 @@ def arm(rn, s):
     t0 = rn.plug(f"Arm_Trunk_Plug_{n}", W @ Vector((s * (PR.SX - 82), 86, 1388)), (s, 0, 0),
                  f"{side} arm power and signal leaving the thorax", d=14.0)
     c1, d1 = surf.hug(up_pt(-s * 10, 260, -146), up_pt(-s * 10, 0, -146), 5.0)
-    pts = [t0, t0 + Vector((s * 26, 16, -6)), W @ Vector((s * (PR.SX + 6), 120, 1372)), up_pt(-s * 16, 118, -112), c1, j_top]
+    # on the right the mount hardpoint fills the space behind the shoulder from y = 106: the trunk stays in front of it
+    ty = 118 if s > 0 else 93
+    pts = [t0, t0 + Vector((s * 26, 16 if s > 0 else 6, -6)), W @ Vector((s * (PR.SX + 6), ty + 2, 1372)),
+           up_pt(-s * 16, ty, -112), c1, j_top]
     rn.cable(f"Arm_Trunk_{n}", pts, f"{side} arm trunk from the thorax to the upper-arm junction", r=5.0, clips=[c1, c1 + (j_top - c1) * 0.6],
              clip_dir=d1, spacing=60.0)
 

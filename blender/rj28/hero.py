@@ -11,7 +11,7 @@ from pathlib import Path
 import bpy
 from mathutils import Vector
 
-from . import explode, poses, render as RD
+from . import explode, parts, poses, render as RD
 from .lib.core import MM
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -21,12 +21,12 @@ RENDERS = ROOT / "site" / "public" / "renders"
 SHOTS = {
     "front_deployed": dict(state="deployed", loc=(2250, -3800, 1150), target=(-20, -80, 1005), lens=75,
                            res=(3840, 4800)),
-    "rear_stowed": dict(state="stowed", loc=(-2550, 3650, 1520), target=(-40, 70, 1085), lens=75, res=(3840, 5120)),
-    "head_cap": dict(state="deployed", loc=(-470, -980, 1705), target=(-10, -50, 1640), lens=105, res=(3840, 2880)),
+    "rear_stowed": dict(gain=1.3, state="stowed", loc=(-2550, 3650, 1520), target=(-40, 70, 1085), lens=75, res=(3840, 5120)),
+    "head_cap": dict(gain=0.6, state="deployed", loc=(-470, -980, 1705), target=(-10, -50, 1640), lens=105, res=(3840, 2880)),
     "mount": dict(state="deployed", loc=(-1180, 880, 1790), target=(-300, 110, 1570), lens=90, res=(3840, 2880)),
-    "knee": dict(state="stowed", loc=(1150, 840, 640), target=(176, 30, 505), lens=105, res=(3840, 2880)),
-    "exploded": dict(state="stowed", loc=(-5200, -7400, 2500), target=(0, 0, 900), lens=85, res=(3840, 3840),
-                     explode=1.0, extent=3800.0),
+    "knee": dict(gain=1.25, state="stowed", loc=(1150, 840, 640), target=(176, 30, 505), lens=105, res=(3840, 2880)),
+    "exploded": dict(state="stowed", loc=(-4500, -6400, 1900), target=(-150, 100, 660), lens=85, res=(3840, 3840),
+                     explode=1.0, extent=3800.0, gain=1.7),
     "social_card": dict(state="deployed", loc=(-2700, -3600, 1250), target=(-520, -80, 1120), lens=70, res=(3840, 2016)),
 }
 
@@ -105,7 +105,11 @@ def render(name, scale=1.0, samples=256, out=None, tag=""):
     if amount:
         explode.apply()
         explode.pose(amount)
-    studio(shot.get("extent", 2000.0), shot.get("gain", 1.0), shot["loc"])
+    fl = studio(shot.get("extent", 2000.0), shot.get("gain", 1.0), shot["loc"])
+    if amount:                                        # the legs and feet come apart downwards: the floor goes with them
+        from .lib import core as C
+        lo, _ = C.bounds_mm([o for o in parts.all_parts() if o.type == "MESH"])
+        fl.location.z = (lo.z - 30.0) * MM
     setup(shot["res"], samples, scale)
     cam = RD.camera(shot["loc"], shot["target"], shot["lens"])
     cam.data.dof.use_dof = False

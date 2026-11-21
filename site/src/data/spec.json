@@ -1,0 +1,1183 @@
+{
+ "designation": "RJ-28 INTERCEPTOR",
+ "klass": "Autonomous humanoid interceptor, Mark 1 prototype",
+ "serial": "RJ28-M1-0001",
+ "envelope": {
+  "deployed": {
+   "min": [
+    -464.2,
+    -375.0,
+    -0.0
+   ],
+   "max": [
+    464.2,
+    270.0,
+    1771.0
+   ],
+   "width": 928.4,
+   "depth": 645.0,
+   "height": 1771.0
+  },
+  "stowed": {
+   "min": [
+    -464.2,
+    -221.1,
+    -0.0
+   ],
+   "max": [
+    464.2,
+    416.0,
+    2050.0
+   ],
+   "width": 928.4,
+   "depth": 637.1,
+   "height": 2050.0
+  }
+ },
+ "body": {
+  "min": [
+   -464.2,
+   -221.0,
+   -0.0
+  ],
+  "max": [
+   464.2,
+   245.7,
+   1730.0
+  ],
+  "width": 928.4,
+  "depth": 466.7,
+  "height": 1730.0
+ },
+ "height_to_cap_crown": 1730.0,
+ "shoulder_armour_span": 780.0,
+ "landmarks": {
+  "ankle_axis": 95.0,
+  "knee_axis": 500.0,
+  "hip_axis": 905.0,
+  "waist_joint": 1060.0,
+  "shoulder_axis": 1430.0,
+  "neck_ring": 1499.0,
+  "sensor_slit": 1620.0,
+  "shoulder_axis_span": 520.0,
+  "hip_axis_span": 270.0,
+  "stance_width": 425.1
+ },
+ "joints": [
+  {
+   "name": "hip_yaw_L",
+   "group": "leg",
+   "origin": [
+    135.0,
+    0.0,
+    905.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "range": [
+    -40,
+    40
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "hip_roll_L",
+   "group": "leg",
+   "origin": [
+    135.0,
+    0.0,
+    905.0
+   ],
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "range": [
+    -25,
+    35
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "hip_pitch_L",
+   "group": "leg",
+   "origin": [
+    135.0,
+    0.0,
+    905.0
+   ],
+   "axis": [
+    0.9899,
+    0.104,
+    0.0958
+   ],
+   "range": [
+    -110,
+    30
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "knee_pitch_L",
+   "group": "leg",
+   "origin": [
+    175.3,
+    -10.1,
+    500.0
+   ],
+   "axis": [
+    0.9899,
+    0.104,
+    0.0958
+   ],
+   "range": [
+    0,
+    110.0
+   ],
+   "drive": "Planetary roller-screw linear actuator x2 on a crank"
+  },
+  {
+   "name": "ankle_pitch_L",
+   "group": "leg",
+   "origin": [
+    212.6,
+    8.2,
+    95.0
+   ],
+   "axis": [
+    0.9899,
+    0.104,
+    0.0958
+   ],
+   "range": [
+    -35,
+    35
+   ],
+   "drive": "Planetary roller-screw linear actuator x2, common mode"
+  },
+  {
+   "name": "ankle_roll_L",
+   "group": "leg",
+   "origin": [
+    212.6,
+    8.2,
+    95.0
+   ],
+   "axis": [
+    0.1045,
+    -0.9945,
+    0.0
+   ],
+   "range": [
+    -20,
+    20
+   ],
+   "drive": "Planetary roller-screw linear actuator x2, differential"
+  },
+  {
+   "name": "hip_yaw_R",
+   "group": "leg",
+   "origin": [
+    -135.0,
+    0.0,
+    905.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "range": [
+    -40,
+    40
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "hip_roll_R",
+   "group": "leg",
+   "origin": [
+    -135.0,
+    0.0,
+    905.0
+   ],
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "range": [
+    -25,
+    35
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "hip_pitch_R",
+   "group": "leg",
+   "origin": [
+    -135.0,
+    0.0,
+    905.0
+   ],
+   "axis": [
+    0.9899,
+    -0.104,
+    -0.0958
+   ],
+   "range": [
+    -110,
+    30
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "knee_pitch_R",
+   "group": "leg",
+   "origin": [
+    -175.3,
+    -10.1,
+    500.0
+   ],
+   "axis": [
+    0.9899,
+    -0.104,
+    -0.0958
+   ],
+   "range": [
+    0,
+    110.0
+   ],
+   "drive": "Planetary roller-screw linear actuator x2 on a crank"
+  },
+  {
+   "name": "ankle_pitch_R",
+   "group": "leg",
+   "origin": [
+    -212.6,
+    8.2,
+    95.0
+   ],
+   "axis": [
+    0.9899,
+    -0.104,
+    -0.0958
+   ],
+   "range": [
+    -35,
+    35
+   ],
+   "drive": "Planetary roller-screw linear actuator x2, common mode"
+  },
+  {
+   "name": "ankle_roll_R",
+   "group": "leg",
+   "origin": [
+    -212.6,
+    8.2,
+    95.0
+   ],
+   "axis": [
+    -0.1045,
+    -0.9945,
+    0.0
+   ],
+   "range": [
+    -20,
+    20
+   ],
+   "drive": "Planetary roller-screw linear actuator x2, differential"
+  },
+  {
+   "name": "waist_yaw",
+   "group": "waist",
+   "origin": [
+    0.0,
+    -30.0,
+    1060.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "range": [
+    -60,
+    60
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction on a slewing ring"
+  },
+  {
+   "name": "waist_pitch",
+   "group": "waist",
+   "origin": [
+    0.0,
+    -30.0,
+    1080.0
+   ],
+   "axis": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "range": [
+    -15,
+    30
+   ],
+   "drive": "Planetary roller-screw linear actuator x2"
+  },
+  {
+   "name": "shoulder_pitch_L",
+   "group": "arm",
+   "origin": [
+    260.0,
+    -30.0,
+    1430.0
+   ],
+   "axis": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "range": [
+    -180,
+    60
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "shoulder_roll_L",
+   "group": "arm",
+   "origin": [
+    260.0,
+    -30.0,
+    1430.0
+   ],
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "range": [
+    -10,
+    120
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "shoulder_yaw_L",
+   "group": "arm",
+   "origin": [
+    285.8,
+    -30.0,
+    1308.7
+   ],
+   "axis": [
+    -0.2079,
+    0.0,
+    0.9781
+   ],
+   "range": [
+    -90,
+    90
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "elbow_pitch_L",
+   "group": "arm",
+   "origin": [
+    324.5,
+    -30.0,
+    1126.8
+   ],
+   "axis": [
+    0.9781,
+    0.0,
+    0.2079
+   ],
+   "range": [
+    0,
+    135
+   ],
+   "drive": "Frameless BLDC motor with cycloidal reduction"
+  },
+  {
+   "name": "forearm_roll_L",
+   "group": "arm",
+   "origin": [
+    373.6,
+    -71.7,
+    895.6
+   ],
+   "axis": [
+    -0.2048,
+    0.1736,
+    0.9633
+   ],
+   "range": [
+    -90,
+    90
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "wrist_pitch_L",
+   "group": "arm",
+   "origin": [
+    381.8,
+    -78.6,
+    857.1
+   ],
+   "axis": [
+    0.9781,
+    0.0,
+    0.2079
+   ],
+   "range": [
+    -60,
+    60
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "wrist_yaw_L",
+   "group": "arm",
+   "origin": [
+    381.8,
+    -78.6,
+    857.1
+   ],
+   "axis": [
+    0.0361,
+    0.9848,
+    -0.1699
+   ],
+   "range": [
+    -30,
+    30
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "thumb_opposition_L",
+   "group": "hand",
+   "origin": [
+    379.0,
+    -135.7,
+    831.5
+   ],
+   "axis": [
+    -0.2048,
+    0.1736,
+    0.9633
+   ],
+   "range": [
+    0,
+    80
+   ],
+   "drive": "Motor in the forearm, linkage drive"
+  },
+  {
+   "name": "thumb_flexion_L",
+   "group": "hand",
+   "origin": [
+    379.0,
+    -135.7,
+    831.5
+   ],
+   "axis": [
+    -0.0744,
+    0.9338,
+    0.35
+   ],
+   "range": [
+    0,
+    75
+   ],
+   "drive": "Motor in the forearm, linkage drive"
+  },
+  {
+   "name": "finger1_flexion_L",
+   "group": "hand",
+   "origin": [
+    400.5,
+    -133.1,
+    769.1
+   ],
+   "axis": [
+    0.0361,
+    0.9848,
+    -0.1699
+   ],
+   "range": [
+    0,
+    95
+   ],
+   "drive": "Motor in the forearm, linkage drive, coupled knuckles"
+  },
+  {
+   "name": "finger2_flexion_L",
+   "group": "hand",
+   "origin": [
+    401.8,
+    -95.6,
+    762.7
+   ],
+   "axis": [
+    0.0361,
+    0.9848,
+    -0.1699
+   ],
+   "range": [
+    0,
+    95
+   ],
+   "drive": "Motor in the forearm, linkage drive, coupled knuckles"
+  },
+  {
+   "name": "finger3_flexion_L",
+   "group": "hand",
+   "origin": [
+    403.2,
+    -58.2,
+    756.2
+   ],
+   "axis": [
+    0.0361,
+    0.9848,
+    -0.1699
+   ],
+   "range": [
+    0,
+    95
+   ],
+   "drive": "Motor in the forearm, linkage drive, coupled knuckles"
+  },
+  {
+   "name": "finger_splay_L",
+   "group": "hand",
+   "origin": [
+    401.8,
+    -95.6,
+    762.7
+   ],
+   "axis": [
+    0.9781,
+    0.0,
+    0.2079
+   ],
+   "range": [
+    -8,
+    8
+   ],
+   "drive": "Motor in the forearm, linkage drive, ganged"
+  },
+  {
+   "name": "shoulder_pitch_R",
+   "group": "arm",
+   "origin": [
+    -260.0,
+    -30.0,
+    1430.0
+   ],
+   "axis": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "range": [
+    -180,
+    60
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "shoulder_roll_R",
+   "group": "arm",
+   "origin": [
+    -260.0,
+    -30.0,
+    1430.0
+   ],
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "range": [
+    -10,
+    120
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "shoulder_yaw_R",
+   "group": "arm",
+   "origin": [
+    -285.8,
+    -30.0,
+    1308.7
+   ],
+   "axis": [
+    0.2079,
+    0.0,
+    0.9781
+   ],
+   "range": [
+    -90,
+    90
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "elbow_pitch_R",
+   "group": "arm",
+   "origin": [
+    -324.5,
+    -30.0,
+    1126.8
+   ],
+   "axis": [
+    0.9781,
+    0.0,
+    -0.2079
+   ],
+   "range": [
+    0,
+    135
+   ],
+   "drive": "Frameless BLDC motor with cycloidal reduction"
+  },
+  {
+   "name": "forearm_roll_R",
+   "group": "arm",
+   "origin": [
+    -373.6,
+    -71.7,
+    895.6
+   ],
+   "axis": [
+    0.2048,
+    0.1736,
+    0.9633
+   ],
+   "range": [
+    -90,
+    90
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "wrist_pitch_R",
+   "group": "arm",
+   "origin": [
+    -381.8,
+    -78.6,
+    857.1
+   ],
+   "axis": [
+    0.9781,
+    0.0,
+    -0.2079
+   ],
+   "range": [
+    -60,
+    60
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "wrist_yaw_R",
+   "group": "arm",
+   "origin": [
+    -381.8,
+    -78.6,
+    857.1
+   ],
+   "axis": [
+    -0.0361,
+    0.9848,
+    -0.1699
+   ],
+   "range": [
+    -30,
+    30
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction"
+  },
+  {
+   "name": "thumb_opposition_R",
+   "group": "hand",
+   "origin": [
+    -379.0,
+    -135.7,
+    831.5
+   ],
+   "axis": [
+    0.2048,
+    0.1736,
+    0.9633
+   ],
+   "range": [
+    0,
+    80
+   ],
+   "drive": "Motor in the forearm, linkage drive"
+  },
+  {
+   "name": "thumb_flexion_R",
+   "group": "hand",
+   "origin": [
+    -379.0,
+    -135.7,
+    831.5
+   ],
+   "axis": [
+    0.0744,
+    0.9338,
+    0.35
+   ],
+   "range": [
+    0,
+    75
+   ],
+   "drive": "Motor in the forearm, linkage drive"
+  },
+  {
+   "name": "finger1_flexion_R",
+   "group": "hand",
+   "origin": [
+    -400.5,
+    -133.1,
+    769.1
+   ],
+   "axis": [
+    -0.0361,
+    0.9848,
+    -0.1699
+   ],
+   "range": [
+    0,
+    95
+   ],
+   "drive": "Motor in the forearm, linkage drive, coupled knuckles"
+  },
+  {
+   "name": "finger2_flexion_R",
+   "group": "hand",
+   "origin": [
+    -401.8,
+    -95.6,
+    762.7
+   ],
+   "axis": [
+    -0.0361,
+    0.9848,
+    -0.1699
+   ],
+   "range": [
+    0,
+    95
+   ],
+   "drive": "Motor in the forearm, linkage drive, coupled knuckles"
+  },
+  {
+   "name": "finger3_flexion_R",
+   "group": "hand",
+   "origin": [
+    -403.2,
+    -58.2,
+    756.2
+   ],
+   "axis": [
+    -0.0361,
+    0.9848,
+    -0.1699
+   ],
+   "range": [
+    0,
+    95
+   ],
+   "drive": "Motor in the forearm, linkage drive, coupled knuckles"
+  },
+  {
+   "name": "finger_splay_R",
+   "group": "hand",
+   "origin": [
+    -401.8,
+    -95.6,
+    762.7
+   ],
+   "axis": [
+    0.9781,
+    0.0,
+    -0.2079
+   ],
+   "range": [
+    -8,
+    8
+   ],
+   "drive": "Motor in the forearm, linkage drive, ganged"
+  },
+  {
+   "name": "neck_yaw",
+   "group": "neck",
+   "origin": [
+    0.0,
+    -26.0,
+    1499.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "range": [
+    -70,
+    70
+   ],
+   "drive": "Motor and pinion on a geared slewing ring"
+  },
+  {
+   "name": "neck_pitch",
+   "group": "neck",
+   "origin": [
+    0.0,
+    -26.0,
+    1526.0
+   ],
+   "axis": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "range": [
+    -15,
+    15
+   ],
+   "drive": "Planetary roller-screw linear actuator x2, common mode"
+  },
+  {
+   "name": "neck_roll",
+   "group": "neck",
+   "origin": [
+    0.0,
+    -26.0,
+    1526.0
+   ],
+   "axis": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "range": [
+    -12,
+    12
+   ],
+   "drive": "Planetary roller-screw linear actuator x2, differential"
+  },
+  {
+   "name": "mount_elevation",
+   "group": "mount",
+   "origin": [
+    -292.0,
+    160.0,
+    1515.0
+   ],
+   "axis": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "range": [
+    -5.0,
+    90.0
+   ],
+   "drive": "Motor and pinion on a gear sector"
+  },
+  {
+   "name": "mount_traverse",
+   "group": "mount",
+   "origin": [
+    -292.0,
+    160.0,
+    1355.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "range": [
+    -25.0,
+    25.0
+   ],
+   "drive": "Frameless BLDC motor with strain-wave reduction on a slewing ring"
+  },
+  {
+   "name": "tracker_tilt",
+   "group": "mount",
+   "origin": [
+    -410.0,
+    26.0,
+    1646.0
+   ],
+   "axis": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "range": [
+    -20,
+    45
+   ],
+   "drive": "Small geared motor"
+  }
+ ],
+ "dof": {
+  "legs": 12,
+  "waist": 2,
+  "arms": 14,
+  "hands": 12,
+  "neck": 3,
+  "mount": 3,
+  "total": 46
+ },
+ "mount": {
+  "barrel_od": 110.0,
+  "barrel_length": 455.0,
+  "elevation": [
+   -5.0,
+   90.0
+  ],
+  "traverse": 25.0,
+  "trunnion": [
+   -292.0,
+   160.0,
+   1515.0
+  ],
+  "bore_rise": 125.0
+ },
+ "targets": {
+  "power": "96 V nominal lithium-ion pack, 5.0 kWh, liquid cooled",
+  "pack_voltage": 96.0,
+  "pack_kwh": 5.0,
+  "average_draw_kw": 2.0,
+  "walk_kmh": 5,
+  "run_kmh": 11,
+  "sealing": "IP65",
+  "mass_ready_kg": 185.0
+ },
+ "mass": {
+  "total_kg": 185.02,
+  "target_kg": 185.0,
+  "error_pct": 0.01,
+  "fill_factors": {
+   "structure": 0.3604,
+   "armour": 0.5898,
+   "mechanism": 0.4587,
+   "optic": 0.3932,
+   "electronics": 0.5898,
+   "harness": 0.3604,
+   "soft": 0.5243,
+   "actuator": 0.3932,
+   "battery": 1.0302
+  },
+  "common_scale": 0.6553,
+  "by_assembly": [
+   {
+    "assembly": "01",
+    "name": "Head and cap",
+    "parts": 70,
+    "mass_kg": 3.3
+   },
+   {
+    "assembly": "02",
+    "name": "Neck",
+    "parts": 27,
+    "mass_kg": 0.71
+   },
+   {
+    "assembly": "03",
+    "name": "Thorax",
+    "parts": 85,
+    "mass_kg": 50.37
+   },
+   {
+    "assembly": "04",
+    "name": "Abdomen and spine",
+    "parts": 71,
+    "mass_kg": 4.22
+   },
+   {
+    "assembly": "05",
+    "name": "Pelvis",
+    "parts": 35,
+    "mass_kg": 6.64
+   },
+   {
+    "assembly": "06",
+    "name": "Backpack",
+    "parts": 38,
+    "mass_kg": 4.98
+   },
+   {
+    "assembly": "07",
+    "name": "Arm, left",
+    "parts": 73,
+    "mass_kg": 17.95
+   },
+   {
+    "assembly": "08",
+    "name": "Arm, right",
+    "parts": 72,
+    "mass_kg": 16.5
+   },
+   {
+    "assembly": "09",
+    "name": "Hand, left",
+    "parts": 34,
+    "mass_kg": 1.49
+   },
+   {
+    "assembly": "10",
+    "name": "Hand, right",
+    "parts": 34,
+    "mass_kg": 1.49
+   },
+   {
+    "assembly": "11",
+    "name": "Leg, left",
+    "parts": 85,
+    "mass_kg": 22.96
+   },
+   {
+    "assembly": "12",
+    "name": "Leg, right",
+    "parts": 82,
+    "mass_kg": 22.93
+   },
+   {
+    "assembly": "13",
+    "name": "Foot, left",
+    "parts": 31,
+    "mass_kg": 3.67
+   },
+   {
+    "assembly": "14",
+    "name": "Foot, right",
+    "parts": 31,
+    "mass_kg": 3.67
+   },
+   {
+    "assembly": "15",
+    "name": "Interceptor mount",
+    "parts": 60,
+    "mass_kg": 23.49
+   },
+   {
+    "assembly": "16",
+    "name": "Harness",
+    "parts": 83,
+    "mass_kg": 0.63
+   },
+   {
+    "assembly": "17",
+    "name": "Markings",
+    "parts": 19,
+    "mass_kg": 0.0
+   }
+  ],
+  "by_class": {
+   "structure": 66.19,
+   "armour": 23.13,
+   "mechanism": 12.3,
+   "optic": 0.02,
+   "electronics": 2.38,
+   "harness": 0.16,
+   "soft": 3.99,
+   "actuator": 53.85,
+   "battery": 23.0
+  }
+ },
+ "part_count": 930,
+ "design_notes": [
+  {
+   "title": "Static knee torque in a 90 degree squat",
+   "inputs": {
+    "ready_mass_kg": 185.0,
+    "mass_above_knees_kg": 163.0,
+    "shin_length_mm": 407.1,
+    "lever_mm": 184.0,
+    "crank_radius_mm": 70.0,
+    "knee_range_deg": 110.0,
+    "actuator_moment_arm_mm": 59.5,
+    "moment_arm_by_flexion_mm": {
+     "0": 40.0,
+     "30": 61.5,
+     "55": 69.8,
+     "90": 59.5,
+     "110": 40.3
+    },
+    "actuator_stroke_mm": 114.7,
+    "actuators_per_knee": 2
+   },
+   "working": [
+    "Weight above the knees: 163 kg x 9.81 = 1599 N",
+    "Lever from knee axis to the weight line: 184 mm",
+    "Torque, both knees: 1599 N x 0.184 m = 293 N m",
+    "Per knee: 147 N m",
+    "Actuator moment arm at 90 degrees flexion (from the modelled pivots): 59 mm",
+    "Moment arm across the range: 40.0 mm at 0, 61.5 mm at 30, 69.8 mm at 55, 59.5 mm at 90, 40.3 mm at 110 degrees",
+    "Actuator stroke for 0 to 110 degrees: 115 mm",
+    "Force per knee: 147 / 0.059 = 2.5 kN, 1.2 kN per actuator"
+   ],
+   "result": {
+    "torque_per_knee_nm": 147.0,
+    "force_per_actuator_kn": 1.2
+   },
+   "verdict": "Static load is a small fraction of what a 30 mm planetary roller screw carries (about 12 kN continuous). The margin is for dynamics: a landing or a single-leg push-off multiplies this several times for a fraction of a second."
+  },
+  {
+   "title": "Endurance from pack energy and average draw",
+   "inputs": {
+    "pack_kwh": 5.0,
+    "average_draw_kw": 2.0,
+    "usable_fraction": 0.9,
+    "pack_mass_kg": 23.0
+   },
+   "working": [
+    "Pack energy: 5.0 kWh at 96 V nominal = 52 Ah",
+    "Mixed-duty average draw: 2.0 kW",
+    "Endurance to empty: 5.0 / 2.0 = 2.5 h",
+    "Endurance to the 10% reserve: 2.25 h",
+    "Pack specific energy: 217 Wh/kg at pack level",
+    "Enclosure volume from the model: 8.3 L, so 605 Wh/L and 2.78 kg/L at pack level"
+   ],
+   "result": {
+    "endurance_h": 2.5,
+    "endurance_to_reserve_h": 2.25,
+    "pack_wh_per_kg": 217.0
+   },
+   "verdict": "2.5 h holds only if the pack is run to empty; the dossier quotes 2.5 h mixed duty and 2.25 h to reserve. The volumetric figure needs silicon-anode cells (about 1,100 Wh/L at the cell) stacked cell-to-pack; with ordinary NMC cells at 430 Wh/L pack level this enclosure would hold about 3.6 kWh."
+  },
+  {
+   "title": "Mass roll-up from part volumes",
+   "working": [
+    "930 parts; mass = mesh volume x material density x class fill factor",
+    "Battery parts pinned to the pack target; all other classes share one scale factor",
+    "Roll-up: 185.0 kg against 185 kg (+0.01%)"
+   ],
+   "result": {
+    "total_kg": 185.02,
+    "common_scale": 0.6553
+   },
+   "verdict": "Fill factors are listed with the mass data; none is set per part."
+  }
+ ]
+}

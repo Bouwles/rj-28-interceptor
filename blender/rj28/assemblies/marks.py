@@ -66,7 +66,9 @@ def build():
            what="Unit designation on the left shoulder armour.", name="Shoulder_Designation")
     hip, thigh, knee, shin, ankle, foot = FR.leg(-1)
     shin_o = find("12", "Shin_Armour_Outer")
-    mk.put(shin_o, "RJ-28", 20.0, shin @ Vector((-200, -22, -250)), (shin.to_3x3() @ Vector((-1, 0, 0))), (0, -1, 0),
+    # reads down the shin: the outer panel is taller than it is deep
+    mk.put(shin_o, "RJ-28", 17.0, shin @ Vector((-200, -8, -235)), (shin.to_3x3() @ Vector((-1, 0, 0))),
+           (shin.to_3x3() @ Vector((0, 0, -1))),
            what="Unit designation on the right shin.", name="Shin_Designation")
     stern = find("03", "Sternum_Panel") or find("03", "Sternum")
     mk.put(stern, "INTERCEPTOR", 9.0, W @ Vector((0, -400, 1452)), (0, -1, 0), (1, 0, 0), "cyan",
@@ -79,7 +81,7 @@ def build():
         mk.put(toe, "NO STEP", 8.0, foot @ Vector((0, PR.FOOT_L / 3 - PR.FOOT_L + 62, 200)), up,
                (foot.to_3x3() @ Vector((1, 0, 0))), what="Warning on the hinged toe section: not a step.")
         low = find(aa_leg, "Thigh_Armour_Lower")
-        mk.put(low, "PINCH POINT", 6.0, thigh @ Vector((s * 260, -44, -286)), (thigh.to_3x3() @ Vector((s, 0, 0))),
+        mk.put(low, "PINCH POINT", 5.0, thigh @ Vector((s * 260, -18, -286)), (thigh.to_3x3() @ Vector((s, 0, 0))),
                (thigh.to_3x3() @ Vector((0, s, 0))), "cyan", what="Warning beside the knee joint.")
         door = find(aa_leg, "Thigh_Hatch")
         if door is not None:

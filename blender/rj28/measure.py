@@ -192,7 +192,7 @@ def endurance_note():
             f"Pack energy: {PR.PACK_KWH:.1f} kWh at {PR.PACK_VOLTAGE:.0f} V nominal = {PR.PACK_KWH * 1000 / PR.PACK_VOLTAGE:.0f} Ah",
             f"Mixed-duty average draw: {PR.AVG_DRAW_KW:.1f} kW",
             f"Endurance to empty: {PR.PACK_KWH:.1f} / {PR.AVG_DRAW_KW:.1f} = {h:.1f} h",
-            f"Endurance to the {int((1 - usable) * 100)}% reserve: {h * usable:.2f} h",
+            f"Endurance to the {round((1 - usable) * 100)}% reserve: {h * usable:.2f} h",
             f"Pack specific energy: {PR.PACK_KWH * 1000 / PR.MASS_BATTERY_KG:.0f} Wh/kg at pack level",
             f"Enclosure volume from the model: {vol_l:.1f} L, so {PR.PACK_KWH * 1000 / vol_l:.0f} Wh/L "
             f"and {PR.MASS_BATTERY_KG / vol_l:.2f} kg/L at pack level",

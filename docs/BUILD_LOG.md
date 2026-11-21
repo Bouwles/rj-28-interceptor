@@ -94,19 +94,19 @@ On seeing the first detailed parts Paul also raised the bar: the model has to ca
 
 **Order of work.** Head and cap first (the signature part), then neck, legs and feet. Arms and hands, mount and backpack, and the three torso assemblies were built in parallel against the interface table in the modelling guide, then joined. Harness and markings last, because they attach to everything else.
 
-**Count.** 767 named parts in 17 assemblies:
+**Count.** 930 named parts in 17 assemblies (767 before the review pass below):
 
 | Assembly | Parts | | Assembly | Parts |
 |---|---|---|---|---|
-| 01 Head and cap | 44 | | 09 / 10 Hands | 34 each |
-| 02 Neck | 27 | | 11 / 12 Legs | 65 each |
-| 03 Thorax | 58 | | 13 / 14 Feet | 16 each |
-| 04 Abdomen and spine | 51 | | 15 Interceptor mount | 60 |
+| 01 Head and cap | 70 | | 09 / 10 Hands | 34 each |
+| 02 Neck | 27 | | 11 / 12 Legs | 85 / 82 |
+| 03 Thorax | 85 | | 13 / 14 Feet | 31 each |
+| 04 Abdomen and spine | 71 | | 15 Interceptor mount | 60 |
 | 05 Pelvis | 35 | | 16 Harness | 81 |
 | 06 Backpack | 38 | | 17 Markings | 19 |
-| 07 / 08 Arms | 63 / 61 | | | |
+| 07 / 08 Arms | 73 / 72 | | | |
 
-**Measured from the mesh** (mm, `measure.py`): crown 1,731.5; span over shoulder armour 779.6; overall width 912.1; stowed height 2,050.0. Mount sweep: 16.6 mm minimum clearance against 15 mm, over elevation −5° to 90° and traverse ±25° at both 0° and −5°.
+**Measured from the mesh** (mm, `measure.py`): crown 1,730; span over shoulder armour 780.0; stowed height 2,050. Mount sweep: 18.0 mm minimum clearance against 15 mm, over elevation −5° to 90° and traverse ±25° at both 0° and −5°.
 
 **Things that went wrong and what fixed them.**
 
@@ -116,6 +116,30 @@ On seeing the first detailed parts Paul also raised the bar: the model has to ca
 - *Wear on curved armour.* A pointiness mask marked every smoothly curved panel as an edge and blotched the cap. Edge wear now comes from the difference between the bevelled and the true normal, on convex edges only (D-028).
 - *Battery.* The mass roll-up pins the battery at 23 kg and reports the fill factor it needed. It came out at 1.98: the enclosure was half the size a 5.0 kWh pack needs. The enclosure is now a stepped casting of 8.3 litres that fills the tub round the waist reaction beam and under the shoulder actuators (D-033). The endurance note states the pack-level density that this still demands.
 
-**Design notes** are computed by `measure.py` from the built model and written to the site data: static knee torque in a 90° squat against the modelled lever arm, endurance from pack energy and draw, and the mass roll-up from part volumes (184.99 kg against 185).
+**Design notes** are computed by `measure.py` from the built model and written to the site data: static knee torque in a 90° squat against the modelled lever arm, endurance from pack energy and draw, and the mass roll-up from part volumes (185.0 kg against 185).
 
-**Known limits, carried forward.** Hip abduction stops about 11° beyond neutral and hip flexion near 90°, where the roll link meets the armour. The energy chain between breech and backpack is a linear morph between its two end shapes. Sector and pinion teeth on the elevation drive are not phase-aligned.
+**Known limits, carried forward.** Hip abduction stops about 11° beyond neutral and hip flexion near 90°, where the roll link meets the armour. Shoulder abduction stops about 15° beyond rest (D-038). Knee flexion is limited to 105° (D-039). The energy chain between breech and backpack is a linear morph between its two end shapes. Sector and pinion teeth on the elevation drive are not phase-aligned.
+
+## Review pass before Gate G2
+
+**Fresh eyes.** A reviewer who had seen nothing but the renders and section 5 of the brief was asked for the ten things that most gave the model away as computer-generated. The list, worst first: toy feet; a chest of three coplanar doors; an abdomen of four stacked boxes; a cap that read as a dome; single-hood pauldrons; a bare skeleton at the rear of the legs; a harness of crossing single cables; two uniform materials; clip-art gears and knife-edged bellows; raw boxes inside the chest.
+
+**What changed.**
+
+| Area | Before | After |
+|---|---|---|
+| Feet | Slab sole with straight sipes, bare ankle cube | Heel, arch and toe pads of rubber on screwed carrier plates with staggered lugs; ankle cross with bolted caps and two encoders; toe shell with a wrapped strike plate |
+| Chest | Sternum and two pectorals in one plane | Pectorals set back with a facet break; clavicle and rib plates lapping over them on their own carriers; T-shaped sternum keel |
+| Abdomen | Four stepped rings | Four tapered lames lapping 14 mm, rolled lower lips, slotted shoulder screws, two tie-rod links a side |
+| Cap | Faceted dome, flat brim, strap bar with hex studs | Six gores with raised seams and eyelet vents, a button, a brim with 12 mm camber and a rolled bead, ladder strap under one latch, mesh in the arch |
+| Head | Blank tub, lens bump | Three skull shells with gaps and screws, cheek intake, service door, machined three-lens cluster |
+| Pauldrons | One extruded hood | Cap, main plate and hinged skirt on a carrier; left larger with a rear cheek, right cut back |
+| Legs, rear | Open mechanism only | Hamstring and calf guards on brackets (hatch on the left, cooling slots on the right), strike plates on the fronts |
+| Harness | Leads crossing behind the pelvis | Leads leave the panel in a rank, pass a saddle clip, then fan out; nothing crosses the centreline |
+| Materials | Uniform per material | Part-to-part roughness and value variation; decals toned to paint |
+| Gears, bellows | Three-chord teeth, sawtooth folds | 20° involutes with relieved roots; rounded crests, beaded cuffs |
+| Lighting | Fixed rig | Rig turns with the camera; two strip boxes beside the lens |
+
+**Checks added.** `blender/tools/check_contact.py` reports any part that comes within 1.5 mm of nothing (floating) and any vertex more than 6 mm inside another part. Floating parts went from 19 to 1 (the frameless traverse motor, which has an air gap by design). The same pass caught the arm trunk cable running through the mount hardpoint and the neck connector standing in the yaw motor.
+
+**Still weak, said plainly.** Clevis bases of the knee and ankle actuators are sunk into their anchor blocks, not seated on machined pads. The arm and leg looms are single runs with clips, not bundled trunks. Cables do not sag under gravity. The traverse motor is a plain ring.
