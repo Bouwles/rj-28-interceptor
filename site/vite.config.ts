@@ -90,8 +90,8 @@ function htmlMeta(): Plugin {
         CARD_ALT:
           'A black humanoid robot seen from the front left, wearing a hard cap brim to the rear, with a thick cannon level over its right shoulder.',
         DESCRIPTION:
-          `Interactive engineering dossier for the ${spec.designation}, a fictional ${cm} cm autonomous humanoid: ` +
-          `scroll tour, part inspector, exploded view and drawing sheets, all measured from a scripted 3D model of ${parts.length} parts.`,
+          `RJ-28 Interceptor, a ${cm} cm autonomous humanoid: a live 3D model of ${parts.length} parts with a deployable cannon, ` +
+          `armour that comes off in stages, drawing sheets and a full specification, all measured from the model.`,
       };
       return html.replace(/%([A-Z_]+)%/g, (m, key: string) => values[key] ?? m);
     },
@@ -102,7 +102,7 @@ export default defineConfig({
   base: BASE,
   plugins: [assetManifest(), htmlMeta()],
   define: {
-    // The drawing set is written by the Blender build. Until it exists the
+    // The drawing set is written by the model build. Until it exists the
     // sheet viewer runs on a local stand-in, which this flag strips from the
     // bundle as soon as the real index is present.
     __HAS_SHEETS__: JSON.stringify(existsSync(resolve(root, 'src/data/sheets.json'))),

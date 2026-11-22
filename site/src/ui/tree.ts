@@ -52,7 +52,7 @@ export function buildTree(app: App): HTMLElement {
     h(
       'div.tree-head',
       null,
-      h('div.tree-title', null, h('h2.cap', null, 'Assemblies'), closeDrawer),
+      h('div.tree-title', null, h('h2', null, 'Parts'), closeDrawer),
       h('label.sr-only', { for: 'tree-q' }, 'Search parts by name, number, function or material'),
       input,
       h('div.tree-status', null, status, reset),
@@ -224,7 +224,7 @@ export function buildTree(app: App): HTMLElement {
     if (row.kind === 'assembly') toggle(row.a);
     else {
       select(app, row.p.number);
-      if (store.get().drawer) store.set({ drawer: null });
+      if (isPhone() && store.get().drawer) store.set({ drawer: null });
     }
   });
   list.addEventListener('dblclick', (e) => {
@@ -294,7 +294,7 @@ export function buildTree(app: App): HTMLElement {
 
   app.commands.on('step', step);
   app.commands.on('search', () => {
-    if (isPhone() && store.get().drawer !== 'parts') store.set({ drawer: 'parts' });
+    if (store.get().drawer !== 'parts') store.set({ drawer: 'parts' });
     requestAnimationFrame(() => input.focus());
   });
 
@@ -318,7 +318,7 @@ export function buildTree(app: App): HTMLElement {
     () => flatten(),
   );
   store.watch(
-    (s) => [s.tab, s.drawer, s.intro] as const,
+    (s) => [s.tab, s.drawer] as const,
     () => requestAnimationFrame(() => draw()),
   );
 

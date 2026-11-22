@@ -62,7 +62,7 @@ export function buildActions(app: App): HTMLElement {
   const cannon = h(
     'section.act',
     { 'aria-labelledby': 'act-cannon' },
-    h('h3.cap', { id: 'act-cannon' }, 'Cannon'),
+    h('h3', { id: 'act-cannon' }, 'Cannon'),
     h('div.act-row', null, mountToggle(app), h('kbd', null, 'M')),
     trav.row,
     elev.row,
@@ -112,7 +112,7 @@ export function buildActions(app: App): HTMLElement {
   const strip = h(
     'section.act',
     { 'aria-labelledby': 'act-strip' },
-    h('h3.cap', { id: 'act-strip' }, 'Strip-down'),
+    h('h3', { id: 'act-strip' }, 'Armour'),
     h(
       'div.strip-table',
       { role: 'group', 'aria-label': 'Strip-down stage' },
@@ -147,7 +147,7 @@ export function buildActions(app: App): HTMLElement {
   // ── Explode ───────────────────────────────────────────────────────────────
   const ex = slider('act-explode', 'Explode', 0, 100, 1, ['Assembled', 'Assemblies apart', 'Parts apart']);
   ex.input.addEventListener('input', () => setExplode(app, Number(ex.input.value) / 100));
-  const explode = h('section.act', { 'aria-labelledby': 'act-ex' }, h('h3.cap.sr-only', { id: 'act-ex' }, 'Explode'), ex.row);
+  const explode = h('section.act', { 'aria-labelledby': 'act-ex' }, h('h3.sr-only', { id: 'act-ex' }, 'Explode'), ex.row);
   store.watch(
     (s) => [s.explode, s.presentation] as const,
     ([amount]) => {
@@ -166,7 +166,7 @@ export function buildActions(app: App): HTMLElement {
   const view = h(
     'section.act',
     { 'aria-labelledby': 'act-view' },
-    h('h3.cap', { id: 'act-view' }, 'View'),
+    h('h3', { id: 'act-view' }, 'View'),
     h('div.act-row.act-wrap', null, xray, measure, reset),
     measureOut,
   );
@@ -184,7 +184,7 @@ export function buildActions(app: App): HTMLElement {
   store.watch((s) => s.measure, paintMeasure);
   app.measurement.subscribe(paintMeasure, false);
 
-  return h('div.actions-panel', { role: 'region', 'aria-label': 'Actions' }, cannon, strip, explode, view);
+  return h('div.actions-panel', { role: 'region', 'aria-label': 'Controls' }, cannon, strip, explode, view);
 }
 
 /** Part number and name beside the pointer while it is over a part. */

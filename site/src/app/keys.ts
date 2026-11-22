@@ -1,6 +1,5 @@
 import {
   clear,
-  dismissIntro,
   resetModel,
   setExplode,
   setHidden,
@@ -21,7 +20,7 @@ export interface KeyRow {
 
 /** Shown in the help overlay. Keep in step with the handler below. */
 export const KEY_ROWS: KeyRow[] = [
-  { keys: ['1', '2', '3', '4'], does: 'Model, dossier, blueprints, specification' },
+  { keys: ['1', '2', '3'], does: 'Model, blueprints, specification' },
   { keys: ['↑', '↓'], does: 'Step through parts in the tree' },
   { keys: ['F'], does: 'Frame the selection' },
   { keys: ['M'], does: 'Cannon: stow or deploy' },
@@ -60,9 +59,9 @@ export function bindKeys(app: App): void {
       return;
     }
     const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
-    const tabIndex = ['1', '2', '3', '4'].indexOf(key);
+    const tabIndex = ['1', '2', '3'].indexOf(key);
     if (tabIndex >= 0) {
-      setTab(app, TABS[tabIndex]!);
+      setTab(app, TABS[tabIndex + 1]!);
       return;
     }
     if (key === '?') {
@@ -85,7 +84,6 @@ export function bindKeys(app: App): void {
       case 'ArrowUp':
         if (onSlider) return;
         e.preventDefault();
-        dismissIntro(app);
         app.commands.emit('step', key === 'ArrowDown' ? 1 : -1);
         break;
       case 'f':
@@ -122,7 +120,6 @@ export function bindKeys(app: App): void {
         break;
       case '/':
         e.preventDefault();
-        dismissIntro(app);
         app.commands.emit('search');
         break;
       default:

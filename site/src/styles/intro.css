@@ -1,0 +1,238 @@
+/* The introduction. */
+
+.intro-page {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  overflow-y: auto;
+  background: var(--bg);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.45s ease,
+    visibility 0s linear 0.45s;
+}
+.intro-page.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.45s ease;
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(var(--top-h) + 40px) 0 64px;
+  overflow: hidden;
+}
+.hero-image,
+.hero-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-image img {
+  object-fit: cover;
+  object-position: 100% 30%;
+}
+/* Darkens only the side the text sits on, and the foot of the picture where the page continues. */
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgb(14 14 15 / 0.82) 0%, rgb(14 14 15 / 0.5) 34%, rgb(14 14 15 / 0) 58%),
+    linear-gradient(to top, var(--bg) 0%, rgb(14 14 15 / 0) 22%);
+}
+.hero-text {
+  position: relative;
+  width: 100%;
+  padding: 0 clamp(32px, 6.5vw, 128px);
+}
+.hero h1 {
+  max-width: 6em;
+  font-size: clamp(3rem, 6.2vw, 6.25rem);
+  font-weight: 700;
+  font-stretch: 112%;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+.hero-lead {
+  max-width: 24em;
+  margin-top: 28px;
+  font-size: 1.1875rem;
+  line-height: 1.5;
+  color: #c9c7c1;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 36px;
+}
+.hero-figures {
+  display: flex;
+  gap: 56px;
+  margin-top: 72px;
+}
+.hero-figures dd {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.hero-figures .unit {
+  font-size: 0.5em;
+  font-weight: 400;
+}
+.hero-figures dt {
+  margin-top: 6px;
+  font-size: var(--fs-small);
+  color: var(--text-2);
+}
+
+/* ── Features ────────────────────────────────────────────────────────────── */
+.features {
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  padding: 72px 56px 0;
+}
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 72px;
+  padding: 56px 0;
+}
+.feature.flip .feature-image {
+  order: 2;
+}
+.feature-image {
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+.feature-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.feature-text h2 {
+  font-size: 2.125rem;
+  font-weight: 650;
+  font-stretch: 108%;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+.feature-text p {
+  max-width: 34em;
+  margin-top: 18px;
+  color: #c9c7c1;
+}
+.feature-text p:empty {
+  display: none;
+}
+.feature-text .spec {
+  margin-top: 28px;
+  max-width: 30rem;
+}
+
+.closing {
+  padding: 120px 24px 128px;
+  text-align: center;
+}
+.closing h2 {
+  font-size: 2.5rem;
+  font-weight: 650;
+  font-stretch: 108%;
+  letter-spacing: -0.02em;
+}
+.closing p {
+  max-width: 34em;
+  margin: 16px auto 0;
+  color: var(--text-2);
+}
+.closing .hero-actions {
+  justify-content: center;
+}
+.site-footer {
+  padding: 28px 56px 36px;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-small);
+  color: var(--text-2);
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    display: block;
+    min-height: 0;
+    padding: 0 0 40px;
+  }
+  .hero-image {
+    position: relative;
+    display: block;
+    height: 62vh;
+  }
+  .hero-image img {
+    object-position: 50% 12%;
+  }
+  .hero-image::after {
+    background: linear-gradient(to top, var(--bg) 0%, rgb(14 14 15 / 0) 34%);
+  }
+  .hero-text {
+    margin-top: -56px;
+    padding: 0 20px;
+  }
+  .hero h1 {
+    font-size: 2.75rem;
+  }
+  .hero-lead {
+    margin-top: 16px;
+    font-size: 1.0625rem;
+  }
+  .hero-actions {
+    margin-top: 24px;
+  }
+  .hero-actions .btn-primary {
+    width: 100%;
+  }
+  .hero-figures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+    margin-top: 40px;
+  }
+  .hero-figures dd {
+    font-size: 1.5rem;
+  }
+  .features {
+    padding: 24px 20px 0;
+  }
+  .feature {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 0;
+  }
+  .feature.flip .feature-image {
+    order: 0;
+  }
+  .feature-text h2 {
+    font-size: 1.625rem;
+  }
+  .closing {
+    padding: 64px 20px 72px;
+  }
+  .closing h2 {
+    font-size: 1.75rem;
+  }
+  .site-footer {
+    padding: 24px 20px 28px;
+  }
+}

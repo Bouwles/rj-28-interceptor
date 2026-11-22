@@ -238,8 +238,8 @@ export function buildSpec(app: App): HTMLElement {
   const page = h(
     'main.spec-page',
     { hidden: true, id: 'specification', tabindex: '-1' },
-    h('div.spec-inner', null, h('header.spec-head', null, h('h1', null, 'Specification'), h('p', null, `${spec.designation}. ${spec.klass}.`)), nav, principal, joints, mass, notes, bom,
-      h('footer.colophon', null, h('p', null, 'Concept design. Fictional system. Design and build: Paul Nercessian.'))),
+    h('div.spec-inner', null, h('header.spec-head', null, h('h1', null, 'Specification'), h('p', null, `${spec.klass}.`)), nav, principal, joints, mass, notes, bom,
+      h('footer.site-footer', null, h('p', null, 'Design and build: Paul Nercessian.'))),
   );
   app.store.watch(
     (s) => s.tab,

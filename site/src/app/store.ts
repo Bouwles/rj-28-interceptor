@@ -1,8 +1,8 @@
-export type Tab = 'model' | 'dossier' | 'blueprints' | 'spec';
+export type Tab = 'intro' | 'model' | 'blueprints' | 'spec';
 export type MountState = 'stowed' | 'deployed';
 export type BlueprintView = 'front' | 'side' | 'rear' | 'top' | 'iso';
 
-export const TABS: readonly Tab[] = ['model', 'dossier', 'blueprints', 'spec'];
+export const TABS: readonly Tab[] = ['intro', 'model', 'blueprints', 'spec'];
 export const VIEWS: readonly BlueprintView[] = ['front', 'side', 'rear', 'top', 'iso'];
 
 export interface Isolation {
@@ -23,10 +23,6 @@ export interface AppState {
   presentation: 'loading' | 'live' | 'static';
   staticReason: StaticReason | null;
   tab: Tab;
-  /** Title block on the model tab, shown until the visitor first touches anything. */
-  intro: boolean;
-  /** Dossier section in view, 0-based. */
-  section: number;
   /** Selected part number. */
   selected: string | null;
   mount: MountState;
@@ -47,7 +43,7 @@ export interface AppState {
   hidden: ReadonlySet<string>;
   isolated: Isolation | null;
   help: boolean;
-  /** Which panel is open as a drawer, phone layout only. */
+  /** Open panel: the parts tree (any screen), or the controls sheet (phone). */
   drawer: 'parts' | 'actions' | null;
   /** Level of detail on screen, once the scene reports one. */
   lod: 0 | 1 | null;
@@ -56,9 +52,7 @@ export interface AppState {
 export const initialState: AppState = {
   presentation: 'loading',
   staticReason: null,
-  tab: 'model',
-  intro: true,
-  section: 0,
+  tab: 'intro',
   selected: null,
   mount: 'stowed',
   traverse: 0,

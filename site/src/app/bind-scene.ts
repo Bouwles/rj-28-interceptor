@@ -1,4 +1,4 @@
-import { dismissIntro, select, type App } from './context';
+import { select, type App } from './context';
 import type { SceneController } from '../scene/types';
 
 /**
@@ -12,7 +12,7 @@ export function bindScene(app: App, scene: SceneController): void {
   scene.setReducedMotion(app.reducedMotion());
   store.watch(
     (s) => s.tab,
-    (tab) => scene.setMode(tab === 'model' ? 'model' : tab === 'dossier' ? 'dossier' : 'idle'),
+    (tab) => scene.setMode(tab === 'model' ? 'model' : 'idle'),
   );
   store.watch((s) => s.selected, (part) => scene.setSelection(part));
   store.watch((s) => [s.hidden, s.isolated] as const, ([hidden, isolated]) => scene.setVisibility(hidden, isolated));
@@ -24,7 +24,6 @@ export function bindScene(app: App, scene: SceneController): void {
   store.watch((s) => s.explode, (amount) => scene.setExplode(amount));
   store.watch((s) => s.xray, (on) => scene.setXray(on));
   store.watch((s) => s.measure, (on) => scene.setMeasure(on));
-  app.tour.subscribe((u) => scene.setTour(u));
   first = false;
 
   scene.on('hover', (hit) => app.hover.set(hit));
@@ -43,7 +42,6 @@ export function bindScene(app: App, scene: SceneController): void {
   // The first level of detail is already on screen by the time this runs.
   store.set({ lod: scene.stats().lod });
   scene.on('lod', (lod) => store.set({ lod }));
-  scene.on('interact', () => dismissIntro(app));
   scene.on('lost', () => store.set({ presentation: 'static', staticReason: 'load-failed' }));
 
   app.commands.on('frame', () => {

@@ -76,7 +76,7 @@ export function buildSheetViewer(app: App): HTMLElement {
     h(
       'aside.sheets-index',
       null,
-      h('h2.cap', null, 'Drawing set'),
+      h('h2', null, 'Drawing set'),
       h('ol', null, indexButtons.map((b) => h('li', null, b))),
       app.sheets?.pdfUrl ? h('a.btn', { href: app.sheets.pdfUrl, download: '' }, 'Download the set, PDF') : null,
       h('p.advice', null, 'Drag to pan, scroll to zoom. Pick a part or a balloon to select it.'),

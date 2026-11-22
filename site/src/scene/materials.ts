@@ -75,6 +75,10 @@ const RECIPES: Record<MaterialKey, Recipe> = {
   },
   glass: {
     apply: (m) => {
+      // Smoked glass: dark at a glance, but the emitters and optics behind it show through.
+      m.transparent = true;
+      m.opacity = GLASS_OPACITY;
+      m.depthWrite = false;
       m.clearcoat = 1;
       m.clearcoatRoughness = 0.03;
       m.roughness = Math.max(m.roughness, 0.06);
@@ -254,6 +258,7 @@ totalEmissiveRadiance *= uDim;
  * and the environment is left to fill and to reflect.
  */
 export const IBL_DIFFUSE = { value: 1 };
+export const GLASS_OPACITY = 0.45;
 /** Environment light at floor level as a share of full, and the height in metres where it reaches full. */
 export const ENV_FALL = { value: new THREE.Vector2(1, 1.6) };
 

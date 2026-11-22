@@ -1,102 +1,37 @@
-import { setMount, setTab, type App } from '../app/context';
-import { TABS, type MountState, type Tab } from '../app/store';
-import { spec } from '../data';
-import { num, pad2 } from '../data/format';
+import { setMount, type App } from '../app/context';
+import type { AppStore, MountState, Tab } from '../app/store';
 import { h } from './dom';
 
-export const TAB_LABEL: Record<Tab, string> = {
-  model: 'Model',
-  dossier: 'Dossier',
-  blueprints: 'Blueprints',
-  spec: 'Specification',
-};
+const LINKS: [Tab, string][] = [
+  ['model', 'Model'],
+  ['blueprints', 'Blueprints'],
+  ['spec', 'Specification'],
+];
 
-/** Revision letter shown when the drawing set, which carries the real one, is absent. */
-const REVISION = 'C';
-
-function tabButtons(app: App, cls: string): HTMLElement {
-  const buttons = TABS.map((t, i) =>
-    h(
-      'button.tab',
-      { type: 'button', role: 'tab', id: `${cls}-${t}`, dataset: { tab: t }, title: `${TAB_LABEL[t]} (${i + 1})`, onclick: () => setTab(app, t) },
-      h('span.data', { 'aria-hidden': 'true' }, String(i + 1)),
-      TAB_LABEL[t],
-    ),
-  );
-  app.store.watch(
+/** Slim header: the name on the left, three places to go on the right. */
+export function header(store: AppStore): HTMLElement {
+  const go = (tab: Tab) => store.set({ tab, drawer: null, measure: false });
+  const links = LINKS.map(([tab, label]) => h('button.nav-link', { type: 'button', dataset: { tab }, onclick: () => go(tab) }, label));
+  const help = h('button.nav-help', { type: 'button', 'aria-label': 'Keyboard shortcuts', title: 'Keyboard shortcuts', onclick: () => store.set({ help: true }) }, '?');
+  store.watch(
     (s) => s.tab,
     (tab) => {
-      for (const b of buttons) {
-        const on = b.dataset.tab === tab;
-        b.setAttribute('aria-selected', String(on));
-        b.tabIndex = on ? 0 : -1;
+      for (const b of links) {
+        if (b.dataset.tab === tab) b.setAttribute('aria-current', 'page');
+        else b.removeAttribute('aria-current');
       }
+      help.hidden = tab !== 'model';
     },
   );
-  const list = h(`div.${cls}`, { role: 'tablist', 'aria-label': 'Sections of the dossier' }, buttons);
-  // Arrow keys move along the tabs, as a tab list should.
-  list.addEventListener('keydown', (e) => {
-    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-    const i = TABS.indexOf(app.store.get().tab);
-    const next = TABS[(i + (e.key === 'ArrowRight' ? 1 : -1) + TABS.length) % TABS.length]!;
-    setTab(app, next);
-    buttons.find((b) => b.dataset.tab === next)?.focus();
-    e.preventDefault();
-    e.stopPropagation();
-  });
-  return list;
-}
-
-/**
- * Top bar, laid out as the header strip of a drawing: designation, the four
- * tabs, what is in view, sheet number and revision, each in its own ruled cell.
- */
-export function topBar(app: App, sectionNames: readonly string[]): HTMLElement {
-  const ctxCap = h('span.cap');
-  const ctx = h('span.tb-val');
-  const sheetCap = h('span.cap');
-  const sheetVal = h('span.tb-val.data');
-  const last = sectionNames.length - 1;
-
-  const bar = h(
-    'header.topbar',
+  return h(
+    'header.site-header',
     null,
-    h('div.tb-corner', { 'aria-hidden': 'true' }, /\d+/.exec(spec.designation)?.[0] ?? ''),
-    h('div.tb-cell.tb-title', null, h('span.cap', null, 'Designation'), h('span.tb-val.tb-name', null, spec.designation)),
-    tabButtons(app, 'tb-tabs'),
-    h('div.tb-cell.tb-section', { 'aria-live': 'polite' }, ctxCap, ctx),
-    h('div.tb-cell.tb-serial', null, h('span.cap', null, 'Serial'), h('span.tb-val.data', null, spec.serial)),
-    h('div.tb-cell.tb-sheet', null, sheetCap, sheetVal),
-    h('div.tb-cell.tb-rev', null, h('span.cap', null, 'Rev'), h('span.tb-val.data', null, app.sheets?.revision ?? REVISION)),
+    h('button.wordmark', { type: 'button', onclick: () => go('intro'), 'aria-label': 'RJ-28 Interceptor, introduction' }, 'RJ-28 Interceptor'),
+    h('nav.site-nav', { 'aria-label': 'Sections' }, links, help),
   );
-
-  app.store.watch(
-    (s) => [s.tab, s.section, s.sheet, s.strip, s.mount] as const,
-    ([tab, index, sheetId, strip, mount]) => {
-      const sheets = app.sheets?.sheets ?? [];
-      const open = sheets.findIndex((x) => x.id === sheetId);
-      sheetCap.textContent = 'Sheet';
-      if (tab === 'blueprints' && open >= 0) {
-        ctxCap.textContent = 'Drawing';
-        ctx.textContent = sheets[open]!.title;
-        sheetVal.textContent = `${pad2(open + 1)} / ${pad2(sheets.length)}`;
-      } else if (tab === 'dossier') {
-        ctxCap.textContent = 'Section';
-        ctx.textContent = sectionNames[index] ?? '';
-        sheetVal.textContent = `${pad2(index)} / ${pad2(last)}`;
-      } else {
-        ctxCap.textContent = tab === 'model' ? 'Configuration' : 'Reference';
-        ctx.textContent =
-          tab === 'model' ? `${spec.strip?.[strip]?.title ?? 'Complete'}, cannon ${mount}` : 'Data, joints, mass and bill of materials';
-        sheetCap.textContent = 'Parts';
-        sheetVal.textContent = num(app.catalog.parts.length, 0);
-      }
-    },
-  );
-  return bar;
 }
 
-/** Stowed / deployed control. Used in the action panel and in the mount section of the dossier. */
+/** Stow / deploy control. */
 export function mountToggle(app: App): HTMLElement {
   const make = (state: MountState, label: string) =>
     h('button.btn', { type: 'button', onclick: () => setMount(app, state), dataset: { mount: state } }, label);
@@ -113,25 +48,12 @@ export function mountToggle(app: App): HTMLElement {
   return group;
 }
 
-/** Bottom bar: what is on screen, the camera readout, and on a phone the tabs. */
-export function bottomBar(app: App): HTMLElement {
-  const status = h('span.tb-val.data');
-  const az = h('dd.data');
-  const el = h('dd.data');
-  const dist = h('dd.data');
-  const signed = (v: number) => (v > 0 ? '+' : '') + num(v, 1) + '°';
-  const paint = () => {
-    const c = app.store.get().tab === 'blueprints' || app.store.get().tab === 'spec' ? null : app.camera.get();
-    az.textContent = c ? signed(c.azimuthDeg) : '—';
-    el.textContent = c ? signed(c.elevationDeg) : '—';
-    dist.textContent = !c ? '—' : c.distanceMm === null ? 'ortho' : `${num(c.distanceMm, 0)} mm`;
-  };
-  app.camera.subscribe(paint);
-
-  const drawer = (which: 'parts' | 'actions', label: string) => {
+/** Buttons over the stage: open the parts list, and on a phone the controls. */
+export function stageButtons(app: App): HTMLElement {
+  const make = (which: 'parts' | 'actions', label: string) => {
     const b = h(
-      'button.btn.bb-drawer',
-      { type: 'button', onclick: () => app.store.set({ drawer: app.store.get().drawer === which ? null : which, intro: false }) },
+      `button.btn.stage-btn.stage-btn-${which}`,
+      { type: 'button', onclick: () => app.store.set({ drawer: app.store.get().drawer === which ? null : which }) },
       label,
     );
     app.store.watch(
@@ -140,80 +62,40 @@ export function bottomBar(app: App): HTMLElement {
     );
     return b;
   };
-
-  app.store.watch(
-    (s) => [s.presentation, s.lod, s.tab] as const,
-    ([presentation, lod]) => {
-      paint();
-      const files = (app.manifest as { files?: Record<string, { triangles?: number }> } | null)?.files;
-      const tris = lod === null ? null : files?.[`lod${lod}`]?.triangles;
-      status.textContent =
-        presentation !== 'live'
-          ? 'Static edition: renders and drawings'
-          : lod === null
-            ? 'Loading the model'
-            : `Level of detail ${lod}${tris ? `, ${num(tris, 0)} triangles` : ''}`;
-    },
-  );
-
-  return h(
-    'nav.bottombar',
-    { 'aria-label': 'Status and camera' },
-    tabButtons(app, 'bb-tabs'),
-    h('div.bb-tools', null, drawer('actions', 'Actions'), drawer('parts', 'Parts')),
-    h('div.tb-cell.bb-status', null, h('span.cap', null, 'Model'), status),
-    h(
-      'dl.bb-cam',
-      { 'aria-label': 'Camera' },
-      h('div', null, h('dt.cap', { title: 'Azimuth' }, 'Az'), az),
-      h('div', null, h('dt.cap', { title: 'Elevation' }, 'El'), el),
-      h('div', null, h('dt.cap', { title: 'Distance to target' }, 'Dist'), dist),
-    ),
-    h(
-      'button.bb-help',
-      { type: 'button', 'aria-label': 'Keyboard shortcuts', onclick: () => app.store.set({ help: true }) },
-      h('span.cap', null, 'Keys'),
-      h('kbd', null, '?'),
-    ),
-  );
-}
-
-/** Four corner marks on the viewport. */
-export function registrationMarks(): HTMLElement {
-  return h(
-    'div.regmarks',
-    { 'aria-hidden': 'true' },
-    h('i.reg.reg-tl'),
-    h('i.reg.reg-tr'),
-    h('i.reg.reg-bl'),
-    h('i.reg.reg-br'),
-  );
+  return h('div.stage-buttons', null, make('parts', 'Parts'), make('actions', 'Controls'));
 }
 
 const REASONS: Record<string, string> = {
-  forced: 'Static edition: renders and drawings.',
-  'no-gpu': 'This browser has no WebGL 2. Showing renders and drawings.',
-  'no-model': 'The 3D model is not in this build. Showing renders and drawings.',
-  'no-renderer': 'The 3D viewer is not in this build. Showing renders and drawings.',
-  'load-failed': 'The 3D model did not load. Showing renders and drawings.',
+  forced: 'Static view: a drawing of the part envelopes stands in for the 3D model.',
+  'no-gpu': 'This browser has no WebGL 2, so a drawing of the part envelopes stands in for the 3D model.',
+  'no-model': 'The 3D model is not in this build. A drawing of the part envelopes stands in for it.',
+  'no-renderer': 'The 3D viewer is not in this build. A drawing of the part envelopes stands in for it.',
+  'load-failed': 'The 3D model did not load. A drawing of the part envelopes stands in for it.',
 };
 
-/** One line saying why the page is static, when it is. */
-export function staticNotice(app: App): HTMLElement {
-  const note = h('p.static-note.data', { role: 'status' });
-  app.store.watch(
-    (s) => [s.presentation, s.staticReason, s.tab] as const,
-    ([presentation, reason, tab]) => {
-      note.hidden = presentation !== 'static' || tab === 'blueprints' || tab === 'spec';
-      note.textContent = reason ? (REASONS[reason] ?? '') : '';
-    },
-  );
-  return note;
+/** What the model view says while the model loads, or when it cannot be shown. */
+export function modelStatus(app: App, progress: () => number): HTMLElement {
+  const text = h('p');
+  const bar = h('i');
+  const el = h('div.model-status', { role: 'status' }, text, h('div.progress', { 'aria-hidden': 'true' }, bar));
+  const paint = () => {
+    const s = app.store.get();
+    el.hidden = s.tab !== 'model' || s.presentation === 'live';
+    el.classList.toggle('is-note', s.presentation === 'static');
+    text.textContent = s.presentation === 'static' ? (REASONS[s.staticReason ?? ''] ?? '') : 'Loading the model';
+    bar.style.transform = `scaleX(${progress().toFixed(3)})`;
+  };
+  app.store.watch((s) => [s.tab, s.presentation, s.staticReason] as const, paint);
+  const timer = window.setInterval(() => {
+    paint();
+    if (app.store.get().presentation !== 'loading') window.clearInterval(timer);
+  }, 120);
+  return el;
 }
 
 /** Help overlay listing the keyboard map. */
-export function helpOverlay(app: App, rows: { keys: string[]; does: string }[]): HTMLElement {
-  const close = h('button.btn', { type: 'button', onclick: () => app.store.set({ help: false }) }, 'Close', h('kbd', null, 'Esc'));
+export function helpOverlay(store: AppStore, rows: { keys: string[]; does: string }[]): HTMLElement {
+  const close = h('button.btn', { type: 'button', onclick: () => store.set({ help: false }) }, 'Close');
   const dialog = h(
     'div.help-box',
     { role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'help-title', tabindex: '-1' },
@@ -221,15 +103,13 @@ export function helpOverlay(app: App, rows: { keys: string[]; does: string }[]):
     h(
       'dl.help-keys',
       null,
-      rows.map((r) =>
-        h('div', null, h('dt', null, r.keys.map((k) => h('kbd', null, k))), h('dd', null, r.does)),
-      ),
+      rows.map((r) => h('div', null, h('dt', null, r.keys.map((k) => h('kbd', null, k))), h('dd', null, r.does))),
     ),
-    h('p.help-note', null, 'Orbit: drag. Pan: right-drag or two fingers. Zoom: wheel or pinch. Double-click a part to frame it.'),
+    h('p.help-note', null, 'Drag to orbit, right-drag or two fingers to pan, wheel or pinch to zoom. Double-click a part to frame it.'),
   );
-  const overlay = h('div.help', { hidden: true, onclick: (e: Event) => e.target === overlay && app.store.set({ help: false }) }, dialog);
+  const overlay = h('div.help', { hidden: true, onclick: (e: Event) => e.target === overlay && store.set({ help: false }) }, dialog);
   let returnTo: Element | null = null;
-  app.store.watch(
+  store.watch(
     (s) => s.help,
     (open) => {
       overlay.hidden = !open;
@@ -242,7 +122,6 @@ export function helpOverlay(app: App, rows: { keys: string[]; does: string }[]):
       }
     },
   );
-  // Keep Tab inside the dialog while it is open.
   overlay.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
       e.preventDefault();

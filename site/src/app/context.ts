@@ -12,8 +12,6 @@ type CommandMap = {
   step: number;
   /** Put the keyboard focus in the tree search field. */
   search: void;
-  /** Scroll the dossier to a section index. */
-  goto: number;
 };
 
 export class Commands {
@@ -37,8 +35,6 @@ export interface App {
   stations: Station[] | null;
   /** `model.json`: what was exported, with counts. */
   manifest: ModelManifest | null;
-  /** Dossier scroll position: section index + progress through it. */
-  tour: Signal<number>;
   camera: Signal<CameraReadout | null>;
   measurement: Signal<Measurement | null>;
   hover: Signal<PointerHit>;
@@ -61,7 +57,6 @@ export function setTab(app: App, tab: Tab): void {
   const first = app.sheets?.sheets[0]?.id ?? null;
   app.store.set({
     tab,
-    intro: false,
     measure: false,
     drawer: null,
     sheet: tab === 'blueprints' ? (s.sheet ?? first) : s.sheet,
@@ -70,27 +65,22 @@ export function setTab(app: App, tab: Tab): void {
   app.measurement.set(null);
 }
 
-/** The visitor has touched the page: the title block makes way for the tools. */
-export function dismissIntro(app: App): void {
-  if (app.store.get().intro) app.store.set({ intro: false });
-}
-
 export function select(app: App, part: string | null): void {
   if (part && !app.catalog.byNumber.has(part)) return;
-  app.store.set({ selected: part, intro: false });
+  app.store.set({ selected: part });
 }
 
 /** Select from outside the model tab (a sheet, a link): the model is where a selection lives. */
 export function selectAndInspect(app: App, part: string): void {
   if (!app.catalog.byNumber.has(part)) return;
-  app.store.set({ selected: part, tab: 'model', intro: false, sheetFocus: null, drawer: null });
+  app.store.set({ selected: part, tab: 'model', sheetFocus: null });
 }
 
 // The sweep that produced the clearance figure covered the traverse with the
 // barrel level or below. Above level the traverse is held on centre, as an
 // interlock would hold it.
 export function setMount(app: App, mount: MountState): void {
-  app.store.set({ mount, intro: false });
+  app.store.set({ mount });
 }
 export function toggleMount(app: App): void {
   setMount(app, app.store.get().mount === 'stowed' ? 'deployed' : 'stowed');
@@ -98,30 +88,30 @@ export function toggleMount(app: App): void {
 export function setElevation(app: App, deg: number): void {
   const [lo, hi] = spec.mount.elevation;
   const elevation = Math.min(hi, Math.max(lo, deg));
-  app.store.set({ elevation, traverse: elevation > 0 ? 0 : app.store.get().traverse, intro: false });
+  app.store.set({ elevation, traverse: elevation > 0 ? 0 : app.store.get().traverse });
 }
 export function setTraverse(app: App, deg: number): void {
   const lim = spec.mount.traverse;
   const traverse = Math.min(lim, Math.max(-lim, deg));
   const s = app.store.get();
-  app.store.set({ traverse, elevation: traverse !== 0 && s.elevation > 0 ? 0 : s.elevation, intro: false });
+  app.store.set({ traverse, elevation: traverse !== 0 && s.elevation > 0 ? 0 : s.elevation });
 }
 
 export function setStrip(app: App, stage: number): void {
-  app.store.set({ strip: Math.min(STRIP_MAX, Math.max(0, Math.round(stage))), intro: false });
+  app.store.set({ strip: Math.min(STRIP_MAX, Math.max(0, Math.round(stage))) });
 }
 
 export function setExplode(app: App, amount: number): void {
-  app.store.set({ explode: Math.min(1, Math.max(0, amount)), intro: false });
+  app.store.set({ explode: Math.min(1, Math.max(0, amount)) });
 }
 
 export function toggleXray(app: App): void {
-  app.store.set({ xray: !app.store.get().xray, intro: false });
+  app.store.set({ xray: !app.store.get().xray });
 }
 
 export function toggleMeasure(app: App): void {
   const on = !app.store.get().measure;
-  app.store.set({ measure: on, intro: false });
+  app.store.set({ measure: on });
   if (!on) app.measurement.set(null);
 }
 
@@ -136,7 +126,7 @@ export function openSheet(app: App, id?: string, focus?: { part?: string; assemb
   const set = app.sheets;
   if (!set || set.sheets.length === 0) return;
   const sheet = set.sheets.find((s) => s.id === id) ?? set.sheets.find((s) => s.id === app.store.get().sheet) ?? set.sheets[0]!;
-  app.store.set({ tab: 'blueprints', sheet: sheet.id, sheetFocus: focus ?? null, help: false, drawer: null, intro: false });
+  app.store.set({ tab: 'blueprints', sheet: sheet.id, sheetFocus: focus ?? null, help: false, drawer: null });
 }
 
 export function setHidden(app: App, numbers: readonly string[], hidden: boolean): void {

@@ -4,10 +4,9 @@ import type { AppState, AppStore } from './store';
 // The view lives in the URL fragment so any state can be linked:
 //   #part=RJ28-15-006&mount=deployed&trav=-12&strip=2
 //   #explode=75&xray=1
-//   #tab=dossier&s=06
 //   #tab=blueprints&sheet=ga-003&at=RJ28-15-031
 //   #tab=spec
-// Defaults are left out, so the plain address is the model as it opens.
+// Defaults are left out, so the plain address is the introduction.
 
 const num = (q: URLSearchParams, key: string): number | null => {
   if (!q.has(key)) return null;
@@ -20,6 +19,8 @@ export function parseHash(hash: string): Partial<AppState> {
   const out: Partial<AppState> = {};
   const tab = q.get('tab');
   if (isTab(tab)) out.tab = tab;
+  // A link that states anything about the model is a link to the model.
+  else if ([...q.keys()].length) out.tab = 'model';
   const part = q.get('part');
   if (part) out.selected = part;
   const mount = q.get('mount');
@@ -41,15 +42,12 @@ export function parseHash(hash: string): Partial<AppState> {
   }
   const iso = q.get('iso');
   if (iso) out.isolated = /^\d\d$/.test(iso) ? { kind: 'assembly', id: iso } : { kind: 'part', id: iso };
-  const s = num(q, 's');
-  if (s !== null && Number.isInteger(s) && s >= 0) out.section = s;
   return out;
 }
 
 export function toHash(s: AppState): string {
   const q: [string, string][] = [];
-  if (s.tab !== 'model') q.push(['tab', s.tab]);
-  if (s.tab === 'dossier' && s.section > 0) q.push(['s', String(s.section).padStart(2, '0')]);
+  if (s.tab !== 'intro') q.push(['tab', s.tab]);
   if (s.selected) q.push(['part', s.selected]);
   if (s.mount !== 'stowed') {
     q.push(['mount', s.mount]);

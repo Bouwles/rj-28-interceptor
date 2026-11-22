@@ -25,7 +25,7 @@ svg.sheet-svg .cut {
   stroke: var(--text);
 }
 svg.sheet-svg .det {
-  stroke: #9aa7b0;
+  stroke: #b4b2ac;
 }
 svg.sheet-svg .ctx,
 svg.sheet-svg .hat,
@@ -39,7 +39,7 @@ svg.sheet-svg .fine {
 svg.sheet-svg .dim,
 svg.sheet-svg .rule,
 svg.sheet-svg .frame {
-  stroke: #9aa7b0;
+  stroke: #b4b2ac;
 }
 svg.sheet-svg text,
 svg.sheet-svg tspan {
@@ -73,7 +73,7 @@ svg.sheet-svg .sheet-marker {
 /* ── Viewer ──────────────────────────────────────────────────────────────── */
 .sheets {
   position: fixed;
-  inset: var(--top-h) 0 var(--bottom-h) 0;
+  inset: var(--top-h) 0 0 0;
   z-index: 30;
   display: grid;
   grid-template-columns: 300px minmax(0, 1fr);
@@ -98,7 +98,10 @@ svg.sheet-svg .sheet-marker {
 }
 .sheets-index ol {
   margin: 0;
-  border-top: 1px solid var(--line);
+}
+.sheets-index h2 {
+  font-size: var(--fs-h3);
+  font-weight: 600;
 }
 .sheet-index-item {
   position: relative;
@@ -116,11 +119,11 @@ svg.sheet-svg .sheet-marker {
   color: var(--text-2);
 }
 .sheet-index-item:hover {
-  background: #121a1f;
+  background: var(--raised);
 }
 .sheet-index-item[aria-current] {
-  color: var(--accent);
-  background: var(--accent-wash);
+  background: var(--raised);
+  font-weight: 600;
 }
 .sheet-index-item[aria-current]::before {
   content: '';

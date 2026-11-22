@@ -16,7 +16,6 @@ Design and build: Paul Nercessian.
 |---|---|---|
 | Blender 4.4 | Modelling, rendering, export, drawing sheets | GPL-2.0-or-later |
 | three.js 0.187.0 | Site: real-time rendering | MIT |
-| GSAP 3.15.1 with ScrollTrigger | Site: scroll-driven timing | GreenSock standard no-charge licence |
 | Vite 8.3.8, TypeScript 7.0.2 | Site build | MIT, Apache-2.0 |
 | Playwright 1.65.1 | Site screenshots for review | Apache-2.0 |
 | Microsoft Edge (as installed with Windows), headless | Rasterising the drawing sheets and printing the PDF set; needed only to rebuild those two outputs | Proprietary; not redistributed |

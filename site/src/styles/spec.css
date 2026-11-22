@@ -2,7 +2,7 @@
 
 .spec-page {
   position: fixed;
-  inset: var(--top-h) 0 var(--bottom-h) 0;
+  inset: var(--top-h) 0 0 0;
   z-index: 25;
   overflow-y: auto;
   background: var(--bg);
@@ -40,9 +40,6 @@
   border-right: 1px solid var(--line);
   font-size: var(--fs-label);
   font-weight: 500;
-  font-stretch: 92%;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
   text-decoration: none;
   color: var(--text-2);
 }
@@ -115,9 +112,6 @@
   padding-top: 20px;
   font-size: var(--fs-label);
   font-weight: 500;
-  font-stretch: 92%;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
   color: var(--text);
 }
 .spec-table th[scope='row'] {

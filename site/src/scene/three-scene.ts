@@ -21,7 +21,7 @@ import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import type { BlueprintView, Isolation, MountState } from '../app/store';
 import type { Part, Station, Vec3 } from '../data/types';
-import { ENV_FALL, IBL_DIFFUSE, MaterialLibrary, type MaterialKey, type PartMaterial } from './materials';
+import { ENV_FALL, GLASS_OPACITY, IBL_DIFFUSE, MaterialLibrary, type MaterialKey, type PartMaterial } from './materials';
 import type {
   CameraReadout,
   SceneAssets,
@@ -44,10 +44,10 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 // ── Look ────────────────────────────────────────────────────────────────────
 // Tuned against the offline hero renders from the same cameras (tests/shots/lookdev_*).
 const LOOK = {
-  exposure: 1.0,
+  exposure: 1.3,
   envIntensity: 0.9,
   iblDiffuse: 0.3,
-  envFloor: 0.2,
+  envFloor: 0.34,
   envFullHeight: 2.0,
   /**
    * Key light: the soft box of the offline rig, overhead, a little in front and
@@ -61,7 +61,7 @@ const LOOK = {
   /** The HDRI is authored with its centre on +Z; three puts an equirect centre on +X. */
   envRotationY: -Math.PI / 2,
   rimIntensity: 0.25,
-  background: 0x111213,
+  background: 0x0e0e0f,
   floor: 0x222324,
   gamma: 1.3,
   grain: 0.012,
@@ -167,8 +167,8 @@ const GradeShader = {
     tMask: { value: null as THREE.Texture | null },
     uTexel: { value: new THREE.Vector2(1, 1) },
     uOutline: { value: 0 },
-    uEdge: { value: new THREE.Color(0x5fd8f2).convertLinearToSRGB() },
-    uEdgeHidden: { value: new THREE.Color(0x1d5361).convertLinearToSRGB() },
+    uEdge: { value: new THREE.Color(0xeceae6).convertLinearToSRGB() },
+    uEdgeHidden: { value: new THREE.Color(0x5c5b58).convertLinearToSRGB() },
     uGamma: { value: 1 },
     uGrain: { value: 0 },
   },
@@ -380,6 +380,8 @@ class ThreeScene implements SceneController {
   private needRefine = false;
   private blobDirty = false;
   private lastBlob = 0;
+  private reframe = false;
+  private lift = [0, 0, 0];
   private drawCalls = 0;
   private intervals: number[] = [];
   private cpu: number[] = [];
@@ -888,6 +890,7 @@ class ThreeScene implements SceneController {
     const [e0, e1] = this.mountDef.elevRange;
     const [t0, t1] = this.mountDef.travRange;
     if (state !== this.mountState && state === 'deployed' && this.elev > 89.5) this.lockDwell = 0.3; // travel lock releases first
+    if (state !== this.mountState) this.reframe = animate;
     this.mountState = state;
     this.wantElev = Math.min(e1, Math.max(e0, elevationDeg));
     this.wantTrav = Math.min(t1, Math.max(t0, traverseDeg));
@@ -903,6 +906,7 @@ class ThreeScene implements SceneController {
   }
   setStrip(stage: number, animate: boolean): void {
     this.stripTarget = Math.min(4, Math.max(0, Math.round(stage)));
+    this.reframe = animate;
     if (!animate) {
       for (let s = 1; s <= 4; s++) this.stripP[s] = s <= this.stripTarget ? 1 : 0;
       this.poseDirty = true;
@@ -947,8 +951,9 @@ class ThreeScene implements SceneController {
         if (stage >= 2) v.add(p.explode);
         box.expandByPoint(v);
       }
+      this.lift[stage] = Math.max(0, 0.04 - box.min.y);
       const size = box.expandByScalar(0.1).getSize(new THREE.Vector3());
-      this.centreY[stage] = (box.min.y + box.max.y) / 2;
+      this.centreY[stage] = (box.min.y + box.max.y) / 2 + this.lift[stage]!;
       return [Math.max(size.x, size.z) / 2, size.y / 2] as [number, number];
     });
   }
@@ -1023,7 +1028,7 @@ class ThreeScene implements SceneController {
     // Tangent of the half angle the free area subtends, vertically and horizontally.
     const tv = Math.tan((this.camera.fov * DEG) / 2) * (h / this.canvas.clientHeight);
     const th = tv * (w / h);
-    return Math.max(halfHeight / tv, halfWidth / th) * 1.03 + halfWidth * 0.6;
+    return Math.max(halfHeight / tv, halfWidth / th) * 0.98 + halfWidth * 0.35;
   }
 
   private goHome(animate: boolean): void {
@@ -1315,6 +1320,7 @@ class ThreeScene implements SceneController {
     if (m.chain?.morphTargetInfluences) m.chain.morphTargetInfluences[0] = clamp01(this.elev / 90);
 
     const a = this.explodeAmt;
+    m.root.position.y = a <= 0.5 ? lerp(this.lift[0]!, this.lift[1]!, smooth(a / 0.5)) : lerp(this.lift[1]!, this.lift[2]!, smooth((a - 0.5) / 0.5));
     const n = Math.max(1, m.assemblies.length - 1);
     for (const asm of m.assemblies) {
       const s1 = smooth((a / 0.5) * 1.3 - (0.3 * asm.index) / n);
@@ -1369,7 +1375,7 @@ class ThreeScene implements SceneController {
         settling = true;
       } else p.dim = dim;
 
-      const transparent = alpha < 0.995 || p.decal;
+      const transparent = alpha < 0.995 || p.decal || p.keys.includes('glass');
       const seeThrough = xrayOn && p.cls === 'armour';
       // Plain parts share materials; a part gets its own only while it fades, dims or is seen through.
       const state = transparent || seeThrough ? 2 : p.dim === 1 ? 0 : p.dim === others ? 1 : 2;
@@ -1377,8 +1383,9 @@ class ThreeScene implements SceneController {
         p.own ??= p.sources.map((src, i) => this.library.create(p.keys[i]!, src, p.batch));
         p.own.forEach((mat, i) => {
           mat.userData.dim.value = p.dim;
-          if (mat.opacity !== alpha) mat.opacity = alpha;
-          if (!p.decal && mat.depthWrite === seeThrough) mat.depthWrite = !seeThrough;
+          const opacity = alpha * (p.keys[i] === 'glass' ? GLASS_OPACITY : 1);
+          if (mat.opacity !== opacity) mat.opacity = opacity;
+          if (!p.decal && p.keys[i] !== 'glass' && mat.depthWrite === seeThrough) mat.depthWrite = !seeThrough;
           if (mat.transparent !== transparent) {
             mat.transparent = transparent;
             mat.needsUpdate = true;
@@ -1421,9 +1428,9 @@ class ThreeScene implements SceneController {
     const mid = new THREE.Vector3(0, 1, 0).project(this.camera);
     const v = new THREE.Vector3();
     m.assemblies.forEach((asm, i) => {
-      v.copy(asm.centre).add(asm.node.position).project(this.camera);
-      const x = (v.x * 0.5 + 0.5) * w + this.shift.x;
-      const y = (-v.y * 0.5 + 0.5) * h + this.shift.y;
+      v.copy(asm.centre).add(asm.node.position).add(m.root.position).project(this.camera);
+      const x = (v.x * 0.5 + 0.5) * w;
+      const y = (-v.y * 0.5 + 0.5) * h;
       // The balloon stands off from the assembly, away from the middle of the figure.
       let dx = v.x - mid.x;
       let dy = -(v.y - mid.y);
@@ -1511,6 +1518,11 @@ class ThreeScene implements SceneController {
       this.shift.x = this.reduced ? sx : lerp(this.shift.x, sx, 1 - Math.exp(-dt * 8));
       this.shift.y = this.reduced ? sy : lerp(this.shift.y, sy, 1 - Math.exp(-dt * 8));
       this.dirty = true;
+    }
+    if (!busy && this.reframe) {
+      // The machine has changed shape: fit the view to what is there now.
+      this.reframe = false;
+      if (this.mode === 'model' && !this.selected && !this.frozenCamera) this.frame(null);
     }
     if (!busy && !this.dirty && !this.poseDirty) {
       // Nothing is moving. If the last frame was drawn at motion quality, draw the settled one in full.
