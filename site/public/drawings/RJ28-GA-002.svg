@@ -163,7 +163,7 @@
 <text class="tm" x="798.50" y="571.20" font-size="6.4">C</text>
 <path class="rule" d="M641.00 573.00L831.00 573.00"/>
 <text class="tl" x="642.50" y="577.40" font-size="2.5">GENERAL TOLERANCES ISO 2768-mK. DO NOT SCALE.</text>
-<text class="tl" x="642.50" y="581.80" font-size="2.5">CONCEPT DESIGN. FICTIONAL SYSTEM.  ALL DIMENSIONS FROM THE MODEL AS MEASURED.</text>
+<text class="tl" x="642.50" y="581.80" font-size="2.5">ALL DIMENSIONS FROM THE MODEL AS MEASURED.</text>
 <path class="rule" d="M641.00 526.00L641.00 507.60L831.00 507.60"/>
 <text class="tl" x="642.50" y="510.80" font-size="2.0">REV</text>
 <path class="fine" d="M653.00 507.60L653.00 526.00"/>

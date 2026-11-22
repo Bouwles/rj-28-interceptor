@@ -63,7 +63,6 @@ REVISIONS = [                                    # oldest first; the last one is
 ]
 TITLES = {1: "General arrangement", 2: "Head and cap assembly", 3: "Interceptor cannon and mount",
           4: "Leg mechanism", 5: "Exploded isometric"}
-NOTE = "Concept design. Fictional system."
 TOLERANCE = "GENERAL TOLERANCES ISO 2768-mK. DO NOT SCALE."
 
 # line weights and text, millimetres on paper
@@ -953,7 +952,7 @@ class Sheet:
         yd = yc + rows[2]
         self.line(x0, yd, x1, yd, "rule", o)
         self.text(x0 + 1.5, yd + 4.4, TOLERANCE, "tl", 2.5, to=o)
-        self.text(x0 + 1.5, yd + 8.8, NOTE.upper() + "  ALL DIMENSIONS FROM THE MODEL AS MEASURED.", "tl", 2.5, to=o)
+        self.text(x0 + 1.5, yd + 8.8, "ALL DIMENSIONS FROM THE MODEL AS MEASURED.", "tl", 2.5, to=o)
         # revision table, newest at the bottom, sitting on the title block
         rh = 4.6
         ry = y0 - rh * (len(REVISIONS) + 1)
