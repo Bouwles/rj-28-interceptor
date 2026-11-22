@@ -7,11 +7,11 @@
 // last value and applies it when it can.
 
 import type { BlueprintView, Isolation, MountState } from '../app/store';
-import type { ModelManifest, MountData, Part, Station } from '../data/types';
+import type { ModelManifest, MountData, Part } from '../data/types';
 import type { AssetLoader } from '../loader/assets';
 
-/** What the canvas is doing: free inspection, the scripted tour camera, or nothing (another tab). */
-export type SceneMode = 'model' | 'dossier' | 'idle';
+/** What the canvas is doing: the rendered model, the model as a drawing, or nothing (another page). */
+export type SceneMode = 'model' | 'blueprint' | 'idle';
 
 export interface CameraReadout {
   /** Degrees round the vertical axis; 0 looks at the robot's front, positive towards its left. */
@@ -96,7 +96,6 @@ export interface SceneAssets {
   /** `model.json`: file names, byte sizes and counts of the exported GLBs. */
   manifest: ModelManifest;
   parts: Part[];
-  stations: Station[] | null;
   mount: MountData | null;
   /** Resolves a path under `public/` to a URL with the deployment base. */
   url: (path: string) => string;
@@ -124,11 +123,6 @@ export interface SceneController {
 
   // ── State, pushed from the store ──────────────────────────────────────────
   setMode(mode: SceneMode): void;
-  /**
-   * Scroll tour position: `u = station index + progress through that section`,
-   * 0 ≤ u ≤ last index. The scene holds, travels and scrubs the mount from this.
-   */
-  setTour(u: number): void;
   setSelection(part: string | null): void;
   setVisibility(hidden: ReadonlySet<string>, isolated: Isolation | null): void;
   /** Stow or deploy. `traverseDeg` and `elevationDeg` are where the deployed cannon points. */
@@ -141,7 +135,7 @@ export interface SceneController {
   setMeasure(active: boolean): void;
   setInsets(insets: SceneInsets): void;
   setReducedMotion(on: boolean): void;
-  // Hooks for the blueprint treatment (line render, scan transition, snap views).
+  /** Which side the drawing view looks from. */
   setBlueprintView(view: BlueprintView | null, animate: boolean): void;
   setHiddenLines(on: boolean): void;
 

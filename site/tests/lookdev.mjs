@@ -23,9 +23,9 @@ const vite = join(site, 'node_modules', 'vite', 'bin', 'vite.js');
 
 // Offline cameras, in the model's own axes (mm, Z up, robot faces −Y), 36 mm sensor.
 const HEROES = [
-  { name: 'front_deployed', loc: [2250, -3800, 1150], target: [-20, -80, 1005], lens: 75, size: [960, 1200], hash: '#mount=deployed', patches: [['pauldron-top', 655, 292, 40, 14], ['chest', 420, 380, 70, 50], ['thigh', 420, 760, 50, 70], ['shin', 590, 950, 40, 60], ['toe-top', 340, 1140, 40, 12], ['barrel', 300, 215, 30, 14], ['floor', 150, 1050, 80, 40], ['backdrop', 100, 150, 80, 80]] },
-  { name: 'rear_stowed', loc: [-2550, 3650, 1520], target: [-40, 70, 1085], lens: 75, size: [900, 1200], hash: '', patches: [['pack', 540, 560, 60, 30], ['thigh-guard', 480, 800, 50, 20], ['barrel', 500, 180, 20, 80], ['floor', 150, 1000, 80, 40], ['backdrop', 100, 150, 80, 80]] },
-  { name: 'knee', loc: [1150, 840, 640], target: [176, 30, 505], lens: 105, size: [1200, 900], hash: '', patches: [['thigh-armour', 600, 150, 60, 60], ['bearing-ring', 580, 330, 14, 30], ['shin', 580, 720, 60, 60], ['backdrop', 60, 300, 60, 60]] },
+  { name: 'front_deployed', loc: [2250, -3800, 1150], target: [-20, -80, 1005], lens: 75, size: [960, 1200], hash: '#tab=model&mount=deployed', patches: [['pauldron-top', 655, 292, 40, 14], ['chest', 420, 380, 70, 50], ['thigh', 420, 760, 50, 70], ['shin', 590, 950, 40, 60], ['toe-top', 340, 1140, 40, 12], ['barrel', 300, 215, 30, 14], ['floor', 150, 1050, 80, 40], ['backdrop', 100, 150, 80, 80]] },
+  { name: 'rear_stowed', loc: [-2550, 3650, 1520], target: [-40, 70, 1085], lens: 75, size: [900, 1200], hash: '#tab=model', patches: [['pack', 540, 560, 60, 30], ['thigh-guard', 480, 800, 50, 20], ['barrel', 500, 180, 20, 80], ['floor', 150, 1000, 80, 40], ['backdrop', 100, 150, 80, 80]] },
+  { name: 'knee', loc: [1150, 840, 640], target: [176, 30, 505], lens: 105, size: [1200, 900], hash: '#tab=model', patches: [['thigh-armour', 600, 150, 60, 60], ['bearing-ring', 580, 330, 14, 30], ['shin', 580, 720, 60, 60], ['backdrop', 60, 300, 60, 60]] },
 ];
 const gltf = ([x, y, z]) => [x / 1000, z / 1000, -y / 1000];
 
@@ -58,8 +58,8 @@ try {
     page.on('pageerror', (e) => console.log('pageerror', e.message));
     page.on('console', (m) => m.type() === 'error' && !/kaspersky/.test(m.text()) && console.log('console error', m.text()));
     await page.goto(BASE + (look ? `?look=${encodeURIComponent(look)}` : '') + hero.hash);
-    await page.waitForSelector('.loader', { state: 'detached', timeout: 60000 });
-    await page.addStyleTag({ content: '.left-col,.side-panel,.topbar,.bottombar,.regmarks,.static-note,.hover-tag{display:none !important}' });
+
+    await page.addStyleTag({ content: '.left-col,.side-panel,.site-header,.stage-buttons,.model-status,.hover-tag{display:none !important}' });
     await page.waitForFunction(() => window.rj28?.state().lod === 0, null, { timeout: 60000 });
     await page.evaluate(([pos, target, lens]) => window.rj28.scene.debugCamera(pos, target, lens), [gltf(hero.loc), gltf(hero.target), hero.lens]);
     await page.waitForFunction(() => window.rj28.scene.idle(), null, { timeout: 30000 });

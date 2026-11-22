@@ -35,8 +35,10 @@ export interface AppState {
   explode: number;
   xray: boolean;
   measure: boolean;
-  /** Sheet shown on the blueprints tab. */
+  /** Sheet shown on the blueprints page, or `3d` for the model drawn as a drawing. */
   sheet: string | null;
+  /** Side the 3D drawing is seen from. */
+  view: BlueprintView;
   /** What the sheet viewer should centre on. Consumed by the viewer. */
   sheetFocus: SheetFocus | null;
   /** Part numbers switched off in the tree. */
@@ -62,6 +64,7 @@ export const initialState: AppState = {
   xray: false,
   measure: false,
   sheet: null,
+  view: 'iso',
   sheetFocus: null,
   hidden: new Set(),
   isolated: null,

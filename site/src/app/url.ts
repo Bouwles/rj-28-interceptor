@@ -1,5 +1,5 @@
 import { isTab } from './context';
-import type { AppState, AppStore } from './store';
+import { VIEWS, type AppState, type AppStore, type BlueprintView } from './store';
 
 // The view lives in the URL fragment so any state can be linked:
 //   #part=RJ28-15-006&mount=deployed&trav=-12&strip=2
@@ -7,6 +7,9 @@ import type { AppState, AppStore } from './store';
 //   #tab=blueprints&sheet=ga-003&at=RJ28-15-031
 //   #tab=spec
 // Defaults are left out, so the plain address is the introduction.
+
+/** The sheet id that stands for the 3D drawing view. */
+export const SHEET_3D = '3d';
 
 const num = (q: URLSearchParams, key: string): number | null => {
   if (!q.has(key)) return null;
@@ -40,6 +43,8 @@ export function parseHash(hash: string): Partial<AppState> {
     const at = q.get('at');
     if (at) out.sheetFocus = /^\d\d$/.test(at) ? { assembly: at } : { part: at };
   }
+  const view = q.get('view');
+  if (view && (VIEWS as readonly string[]).includes(view)) out.view = view as BlueprintView;
   const iso = q.get('iso');
   if (iso) out.isolated = /^\d\d$/.test(iso) ? { kind: 'assembly', id: iso } : { kind: 'part', id: iso };
   return out;
@@ -60,6 +65,7 @@ export function toHash(s: AppState): string {
   if (s.isolated) q.push(['iso', s.isolated.id]);
   if (s.tab === 'blueprints' && s.sheet) {
     q.push(['sheet', s.sheet]);
+    if (s.sheet === SHEET_3D) q.push(['view', s.view]);
     const at = s.sheetFocus?.part ?? s.sheetFocus?.assembly;
     if (at) q.push(['at', at]);
   }

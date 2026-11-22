@@ -19,12 +19,25 @@ const jointRow = (name: string): SpecRow => {
 const assembly = (id: string) => spec.mass.by_assembly.find((a) => a.assembly === id);
 const words = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
 
+const small = (file: string) => publicUrl(`renders/${file.replace(/\.jpg$/, '_1600.jpg')}`);
+
+/** A render at 1600 px, with the full-size original for screens wider than 2000 px. */
+function picture(file: string, attrs: Record<string, unknown>, cls = '', phoneFile?: string): HTMLElement {
+  return h(
+    `picture${cls}` as 'picture',
+    null,
+    phoneFile ? h('source', { media: '(max-width: 760px)', srcset: small(phoneFile) }) : null,
+    h('source', { media: '(min-width: 2001px)', srcset: publicUrl(`renders/${file}`) }),
+    h('img', { src: small(file), ...attrs }),
+  );
+}
+
 function feature(file: string, alt: string, title: string, text: string[], rows: SpecRow[], flip: boolean): HTMLElement {
   const size = imageSize(`renders/${file}`);
   return h(
     'section.feature',
     { class: flip ? 'flip' : '' },
-    h('div.feature-image', null, h('img', { src: publicUrl(`renders/${file}`), alt, loading: 'lazy', decoding: 'async', width: size?.width ?? null, height: size?.height ?? null })),
+    h('div.feature-image', null, picture(file, { alt, loading: 'lazy', decoding: 'async', width: size?.width ?? null, height: size?.height ?? null })),
     h('div.feature-text', null, h('h2', null, title), text.map((t) => h('p', null, t)), specTable(rows)),
   );
 }
@@ -44,11 +57,11 @@ export function buildIntro(store: AppStore): HTMLElement {
   const hero = h(
     'section.hero',
     null,
-    h(
-      'picture.hero-image',
-      null,
-      h('source', { media: '(max-width: 760px)', srcset: publicUrl('renders/front_deployed.jpg') }),
-      h('img', { src: publicUrl('renders/social_card.jpg'), alt: 'The robot from the front left: black armour over exposed actuators, a hard cap worn brim to the rear, the cannon level over its right shoulder.', decoding: 'async' }),
+    picture(
+      'social_card.jpg',
+      { alt: 'The robot from the front left: black armour over exposed actuators, a hard cap worn brim to the rear, the cannon level over its right shoulder.', decoding: 'async' },
+      '.hero-image',
+      'front_deployed.jpg',
     ),
     h(
       'div.hero-text',

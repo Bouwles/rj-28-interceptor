@@ -1,4 +1,5 @@
 import {
+  openBlueprint3d,
   resetModel,
   setElevation,
   setExplode,
@@ -167,7 +168,7 @@ export function buildActions(app: App): HTMLElement {
     'section.act',
     { 'aria-labelledby': 'act-view' },
     h('h3', { id: 'act-view' }, 'View'),
-    h('div.act-row.act-wrap', null, xray, measure, reset),
+    h('div.act-row.act-wrap', null, xray, measure, reset, h('button.btn', { type: 'button', onclick: () => openBlueprint3d(app) }, 'Blueprint view')),
     measureOut,
   );
   store.watch(

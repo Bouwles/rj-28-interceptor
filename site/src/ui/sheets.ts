@@ -1,4 +1,5 @@
-import { isolate, openSheet, select, selectAndInspect, setTab, type App } from '../app/context';
+import { isolate, openBlueprint3d, openSheet, select, selectAndInspect, setTab, type App } from '../app/context';
+import { VIEWS, type BlueprintView } from '../app/store';
 import { bestPlace } from '../data';
 import { num, pad2 } from '../data/format';
 import type { Sheet, SheetPlace } from '../data/types';
@@ -65,6 +66,21 @@ export function buildSheetViewer(app: App): HTMLElement {
       sh.scale ? h('span.data.sheet-scale', null, sh.scale) : null,
     ),
   );
+  const VIEW_LABEL: Record<BlueprintView, string> = { front: 'Front', side: 'Side', rear: 'Rear', top: 'Top', iso: 'Iso' };
+  const threeD = h(
+    'button.sheet-index-item.index-3d',
+    { type: 'button', onclick: () => openBlueprint3d(app) },
+    h('span.data', null, '3D'),
+    h('span', null, 'The model as a drawing'),
+  );
+  const viewButtons = VIEWS.map((v) => h('button.btn', { type: 'button', dataset: { view: v }, onclick: () => store.set({ view: v }) }, VIEW_LABEL[v]));
+  const viewBar = h('div.sheets-bar.view-bar', { hidden: true }, h('div.seg', { role: 'group', 'aria-label': 'View' }, viewButtons));
+  store.watch(
+    (st) => st.view,
+    (view) => {
+      for (const b of viewButtons) b.setAttribute('aria-pressed', String(b.dataset.view === view));
+    },
+  );
   const zoomOut = h('output.tool-readout.data', { 'aria-label': 'Zoom' });
   const canvas = h('div.sheet-canvas', { tabindex: '0', role: 'img', 'aria-label': 'Drawing sheet' });
   const message = h('p.sheet-message', { hidden: true });
@@ -77,7 +93,7 @@ export function buildSheetViewer(app: App): HTMLElement {
       'aside.sheets-index',
       null,
       h('h2', null, 'Drawing set'),
-      h('ol', null, indexButtons.map((b) => h('li', null, b))),
+      h('ol', null, h('li', null, threeD), indexButtons.map((b) => h('li', null, b))),
       app.sheets?.pdfUrl ? h('a.btn', { href: app.sheets.pdfUrl, download: '' }, 'Download the set, PDF') : null,
       h('p.advice', null, 'Drag to pan, scroll to zoom. Pick a part or a balloon to select it.'),
       app.sheets?.placeholder
@@ -103,6 +119,7 @@ export function buildSheetViewer(app: App): HTMLElement {
       message,
       callout,
     ),
+    viewBar,
   );
 
   // ── View ──────────────────────────────────────────────────────────────────
@@ -428,8 +445,13 @@ export function buildSheetViewer(app: App): HTMLElement {
   store.watch(
     (st) => [st.tab === 'blueprints', st.sheet, st.sheetFocus] as const,
     ([shown, id]) => {
-      const sheet = shown ? (sheets.find((x) => x.id === id) ?? sheets[0]) : undefined;
+      const drawing = shown && id === '3d';
+      const sheet = shown && !drawing ? (sheets.find((x) => x.id === id) ?? sheets[0]) : undefined;
       viewer.hidden = !shown;
+      viewer.classList.toggle('is-3d', drawing);
+      viewBar.hidden = !drawing;
+      if (drawing) threeD.setAttribute('aria-current', 'true');
+      else threeD.removeAttribute('aria-current');
       for (const b of indexButtons) {
         if (sheet && b.dataset.id === sheet.id) {
           b.setAttribute('aria-current', 'true');

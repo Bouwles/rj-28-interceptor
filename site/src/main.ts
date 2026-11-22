@@ -10,7 +10,7 @@ import { Commands, STRIP_MAX, type App } from './app/context';
 import { bindKeys, KEY_ROWS } from './app/keys';
 import { initialState, Signal, Store, type AppState } from './app/store';
 import { parseHash, syncUrl } from './app/url';
-import { loadCatalog, loadModelManifest, loadMount, loadSheets, loadStations, planData, publicUrl, spec, type Catalog } from './data';
+import { loadCatalog, loadModelManifest, loadMount, loadSheets, planData, publicUrl, spec, type Catalog } from './data';
 import type { SheetSet } from './data/types';
 import { AssetLoader } from './loader/assets';
 import { createScene, sceneUnavailable } from './scene';
@@ -29,7 +29,7 @@ import { buildTree } from './ui/tree';
 function sanitise(patch: Partial<AppState>, catalog: Catalog, sheets: SheetSet | null): Partial<AppState> {
   const out = { ...patch };
   if (out.selected && !catalog.byNumber.has(out.selected)) delete out.selected;
-  if (out.sheet && !sheets?.sheets.some((s) => s.id === out.sheet)) {
+  if (out.sheet && out.sheet !== '3d' && !sheets?.sheets.some((s) => s.id === out.sheet)) {
     delete out.sheet;
     delete out.sheetFocus;
   }
@@ -67,9 +67,8 @@ async function boot(): Promise<void> {
     loader.plan('hdri/studio.hdr');
   }
 
-  const [catalog, stations, mount, manifest, sheets] = await Promise.all([
+  const [catalog, mount, manifest, sheets] = await Promise.all([
     loadCatalog(loader),
-    loadStations(loader),
     loadMount(loader),
     loadModelManifest(loader),
     loadSheets(loader),
@@ -80,7 +79,6 @@ async function boot(): Promise<void> {
     store,
     catalog,
     sheets,
-    stations,
     manifest,
     camera: new Signal<CameraReadout | null>(null),
     measurement: new Signal<Measurement | null>(null),
@@ -100,13 +98,19 @@ async function boot(): Promise<void> {
     const p = loader.progress();
     return p.total > 0 ? p.loaded / p.total : 0;
   };
+  // On a phone the two panels are short sheets; the handle makes one tall and short again.
+  for (const panel of [tree, side]) {
+    panel.prepend(h('button.sheet-handle', { type: 'button', 'aria-label': 'Make the panel taller or shorter', onclick: () => document.body.classList.toggle('sheet-tall') }));
+  }
   root.prepend(stage);
   root.append(tree, side, stageButtons(app), modelStatus(app, progress), buildSheetViewer(app), buildSpec(app), buildHoverTag(app));
 
   store.watch(
-    (s) => [s.presentation, s.drawer, s.measure, s.selected] as const,
-    ([presentation, drawer, measure]) => {
+    (s) => [s.presentation, s.drawer, s.measure, s.selected, s.tab === 'blueprints' && s.sheet === '3d'] as const,
+    ([presentation, drawer, measure, , drawing]) => {
       const d = document.body.dataset;
+      d.drawing = String(drawing);
+      document.body.classList.remove('sheet-tall');
       d.presentation = presentation;
       d.drawer = drawer ?? 'none';
       d.measure = String(measure);
@@ -126,6 +130,7 @@ async function boot(): Promise<void> {
       explode: clean.explode ?? 0,
       xray: clean.xray ?? false,
       sheet: clean.sheet ?? store.get().sheet,
+      view: clean.view ?? store.get().view,
       sheetFocus: clean.sheetFocus ?? null,
       isolated: clean.isolated ?? null,
     });
@@ -135,7 +140,7 @@ async function boot(): Promise<void> {
   let scene: SceneController | null = null;
   let reason = unavailable;
   if (!unavailable) {
-    const result = await createScene(canvas, { loader, manifest, parts: catalog.parts, stations, mount, url: publicUrl, light });
+    const result = await createScene(canvas, { loader, manifest, parts: catalog.parts, mount, url: publicUrl, light });
     if (result.ok) scene = result.scene;
     else reason = result.reason;
   }
@@ -149,11 +154,14 @@ async function boot(): Promise<void> {
       const open = store.get().drawer === 'parts';
       const s = store.get();
       // On a phone a sheet covers the lower part of the screen when one is up.
-      const sheet = s.drawer ? 0.56 : s.selected ? 0.38 : 0;
-      const bottom = phone ? 66 + window.innerHeight * sheet : 0;
-      scene!.setInsets({ top, bottom, left: !phone && open ? tree.offsetWidth : 0, right: phone ? 0 : side.offsetWidth });
+      const sheet = s.drawer || s.selected ? 0.42 : 0;
+      const model = s.tab === 'model';
+      const bottom = phone && model ? 66 + window.innerHeight * sheet : 0;
+      // The drawing view sits beside the sheet list; the model beside its panels.
+      const left = phone ? 0 : model ? (open ? tree.offsetWidth : 0) : 300;
+      scene!.setInsets({ top: top + (model ? 0 : 60), bottom, left, right: phone || !model ? 0 : side.offsetWidth });
     };
-    store.watch((s) => [s.tab, s.drawer, !!s.selected] as const, () => requestAnimationFrame(insets));
+    store.watch((s) => [s.tab, s.drawer, !!s.selected, s.sheet === '3d'] as const, () => requestAnimationFrame(insets));
     window.addEventListener('resize', insets);
     // Read-only handle for the capture script and for the console.
     (window as unknown as { rj28: unknown }).rj28 = { scene, state: () => store.get() };

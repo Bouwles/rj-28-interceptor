@@ -9,14 +9,13 @@ import type {
   SheetPlace,
   SheetSet,
   Spec,
-  Station,
 } from './types';
 
 export const spec = specJson as unknown as Spec;
 
 // Every other data file is fetched at run time, so files that the Blender
 // build has not written yet are simply absent from this map.
-const dataUrls = import.meta.glob(['./*.json', '!./spec.json'], {
+const dataUrls = import.meta.glob(['./*.json', '!./spec.json', '!./stations.json'], {
   query: '?url',
   import: 'default',
   eager: true,
@@ -89,15 +88,6 @@ async function optional<T>(loader: AssetLoader, name: string): Promise<T | null>
   } catch {
     return null;
   }
-}
-
-export async function loadStations(loader: AssetLoader): Promise<Station[] | null> {
-  const raw = await optional<unknown>(loader, 'stations.json');
-  const list = Array.isArray(raw) ? raw : (raw as { stations?: unknown[] } | null)?.stations;
-  if (!Array.isArray(list)) return null;
-  return (list as Station[])
-    .map((s) => ({ ...s, id: String(s.id).padStart(2, '0') }))
-    .sort((a, b) => a.id.localeCompare(b.id));
 }
 
 export function loadMount(loader: AssetLoader): Promise<MountData | null> {

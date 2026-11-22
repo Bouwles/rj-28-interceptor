@@ -20,8 +20,10 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import type { BlueprintView, Isolation, MountState } from '../app/store';
-import type { Part, Station, Vec3 } from '../data/types';
-import { ENV_FALL, GLASS_OPACITY, IBL_DIFFUSE, MaterialLibrary, type MaterialKey, type PartMaterial } from './materials';
+import { spec } from '../data';
+import { mm } from '../data/format';
+import type { Part, Vec3 } from '../data/types';
+import { edgeMaterial, ENV_FALL, GLASS_OPACITY, IBL_DIFFUSE, MaterialLibrary, SCAN_Y, type MaterialKey, type PartMaterial } from './materials';
 import type {
   CameraReadout,
   SceneAssets,
@@ -44,10 +46,10 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 // ── Look ────────────────────────────────────────────────────────────────────
 // Tuned against the offline hero renders from the same cameras (tests/shots/lookdev_*).
 const LOOK = {
-  exposure: 1.3,
+  exposure: 1.08,
   envIntensity: 0.9,
   iblDiffuse: 0.3,
-  envFloor: 0.34,
+  envFloor: 0.19,
   envFullHeight: 2.0,
   /**
    * Key light: the soft box of the offline rig, overhead, a little in front and
@@ -332,8 +334,6 @@ class ThreeScene implements SceneController {
   // Requested state.
   private mode: SceneMode = 'model';
   private assets: SceneAssets | null = null;
-  private stations: Station[] = [];
-  private tourU = 0;
   private selected: string | null = null;
   private hovered: string | null = null;
   private hidden: ReadonlySet<string> = new Set();
@@ -359,11 +359,19 @@ class ThreeScene implements SceneController {
   private xrayT = 0;
   private shift = new THREE.Vector2();
   private tween: { t: number; dur: number; from: [THREE.Vector3, THREE.Vector3]; to: [THREE.Vector3, THREE.Vector3] } | null = null;
-  private tourCam = { pos: new THREE.Vector3(), target: new THREE.Vector3(), fov: LOOK.fov, ready: false };
-  private tourDim: Set<string> | null = null;
-  private tourXray = false;
   private measurePts: THREE.Vector3[] = [];
-  private measureLine: THREE.Line | null = null;
+  private overlay!: HTMLElement;
+  // Blueprint view.
+  private bpView: BlueprintView = 'iso';
+  private bpOn = false;
+  private sweep: { t: number } | null = null;
+  private edges: { name: string; line: THREE.LineSegments }[] | null = null;
+  private edgesLoading = false;
+  private edgeMat = edgeMaterial();
+  private grid: THREE.GridHelper | null = null;
+  private dims: THREE.LineSegments | null = null;
+  private dimLabels: { at: THREE.Vector3; text: string }[] = [];
+  private bloom: UnrealBloomPass | null = null;
   private frozenCamera = false;
 
   // Loop.
@@ -381,6 +389,7 @@ class ThreeScene implements SceneController {
   private blobDirty = false;
   private lastBlob = 0;
   private reframe = false;
+  private shiftMoving = false;
   private lift = [0, 0, 0];
   private drawCalls = 0;
   private intervals: number[] = [];
@@ -438,6 +447,11 @@ class ThreeScene implements SceneController {
     this.labels.className = 'scene-labels';
     this.labels.hidden = true;
     canvas.parentElement?.appendChild(this.labels);
+    // Measure line and dimension figures, drawn over the canvas from projected points.
+    this.overlay = document.createElement('div');
+    this.overlay.className = 'scene-overlay';
+    this.overlay.innerHTML = '<svg><path/></svg>';
+    canvas.parentElement?.appendChild(this.overlay);
 
     canvas.addEventListener('pointermove', this.onPointerMove);
     canvas.addEventListener('pointerdown', this.onPointerDown);
@@ -472,7 +486,6 @@ class ThreeScene implements SceneController {
   async load(assets: SceneAssets): Promise<void> {
     this.assets = assets;
     this.light = assets.light;
-    this.stations = assets.stations ?? [];
     this.readMount(assets.mount);
     const files = (assets.manifest as { files?: Record<string, { url?: string }>; hdri?: { url?: string } }) ?? {};
     const path = (key: string, fallback: string) => files.files?.[key]?.url ?? fallback;
@@ -515,6 +528,7 @@ class ThreeScene implements SceneController {
             old.root.traverse((o) => (o as THREE.Mesh).geometry?.dispose());
             for (const p of old.list) for (const m of p.own ?? []) m.dispose();
           }
+          this.attachEdges();
           this.poseDirty = true;
           this.shadowDirty = true;
           this.syncOutline();
@@ -641,7 +655,7 @@ class ThreeScene implements SceneController {
       this.gtao.updatePdMaterial({ lumaPhi: 10, depthPhi: 2, normalPhi: 3, radius: 6, rings: 2, samples: 12 });
       this.composer.addPass(this.gtao);
     }
-    const bloom = new UnrealBloomPass(size, LOOK.bloom.strength, LOOK.bloom.radius, LOOK.bloom.threshold);
+    const bloom = (this.bloom = new UnrealBloomPass(size, LOOK.bloom.strength, LOOK.bloom.radius, LOOK.bloom.threshold));
     // Only saturated light blooms: the cyan emitters do, a white glint on polished steel does not.
     const highPass = (bloom as unknown as { materialHighPassFilter: THREE.ShaderMaterial }).materialHighPassFilter;
     highPass.fragmentShader = highPass.fragmentShader.replace(
@@ -833,7 +847,7 @@ class ThreeScene implements SceneController {
   private canPick(p: PartRec): boolean {
     if (p.gone || !p.node.visible) return false;
     if (p.strip > 0 && this.stripP[p.strip]! > 0.02) return false;
-    if (this.effectiveXray() && p.cls === 'armour') return false;
+    if (this.xray && p.cls === 'armour') return false;
     return true;
   }
   stats(): SceneStats {
@@ -855,23 +869,15 @@ class ThreeScene implements SceneController {
     if (mode === this.mode) return;
     const was = this.mode;
     this.mode = mode;
-    this.controls.enabled = mode === 'model';
-    this.tourCam.ready = false;
+    this.controls.enabled = mode !== 'idle';
     this.setHover(null);
     this.syncOutline();
-    if (mode === 'model' && was === 'dossier') {
-      this.camera.fov = LOOK.fov;
-      this.camera.updateProjectionMatrix();
-      this.goHome(false);
-    }
+    if (was === 'blueprint') this.leaveBlueprint();
+    if (mode === 'blueprint') this.enterBlueprint(was === 'model');
     this.poseDirty = true;
     this.shadowDirty = true;
     if (mode !== 'idle') this.start();
     this.invalidate();
-  }
-  setTour(u: number): void {
-    this.tourU = u;
-    if (this.mode === 'dossier') this.invalidate();
   }
   setSelection(part: string | null): void {
     this.selected = part;
@@ -892,6 +898,7 @@ class ThreeScene implements SceneController {
     if (state !== this.mountState && state === 'deployed' && this.elev > 89.5) this.lockDwell = 0.3; // travel lock releases first
     if (state !== this.mountState) this.reframe = animate;
     this.mountState = state;
+    if (this.bpOn) this.buildDims();
     this.wantElev = Math.min(e1, Math.max(e0, elevationDeg));
     this.wantTrav = Math.min(t1, Math.max(t0, traverseDeg));
     if (!animate || this.reduced) {
@@ -951,7 +958,7 @@ class ThreeScene implements SceneController {
         if (stage >= 2) v.add(p.explode);
         box.expandByPoint(v);
       }
-      this.lift[stage] = Math.max(0, 0.04 - box.min.y);
+      this.lift[stage] = stage === 0 ? 0 : Math.max(0, 0.04 - box.min.y);
       const size = box.expandByScalar(0.1).getSize(new THREE.Vector3());
       this.centreY[stage] = (box.min.y + box.max.y) / 2 + this.lift[stage]!;
       return [Math.max(size.x, size.z) / 2, size.y / 2] as [number, number];
@@ -964,28 +971,212 @@ class ThreeScene implements SceneController {
   setMeasure(active: boolean): void {
     this.measuring = active;
     this.measurePts = [];
-    if (this.measureLine) {
-      this.scene.remove(this.measureLine);
-      this.measureLine.geometry.dispose();
-      this.measureLine = null;
-    }
     this.canvas.style.cursor = active ? 'crosshair' : '';
     this.invalidate();
   }
   setInsets(insets: SceneInsets): void {
+    const moved = Math.abs(insets.bottom - this.insets.bottom) + Math.abs(insets.left - this.insets.left) + Math.abs(insets.right - this.insets.right) > 40;
     this.insets = insets;
-    // Until the visitor takes the camera, keep the opening view fitted to the free area.
-    if (!this.interacted && this.mode === 'model' && !this.frozenCamera && this.model) this.goHome(false);
+    if (!this.model || this.frozenCamera) return;
+    if (this.mode === 'blueprint') {
+      if (this.bpOn) this.snapView(false);
+    } else if (!this.interacted) {
+      // Until the visitor takes the camera, keep the opening view fitted to the free area.
+      this.goHome(false);
+    } else if (moved) {
+      this.reframe = true; // a panel opened or closed: fit the model to what is left
+    }
     this.invalidate();
   }
   setReducedMotion(on: boolean): void {
     this.reduced = on;
   }
-  setBlueprintView(_view: BlueprintView | null, _animate: boolean): void {
-    // Blueprint treatment arrives with the feature-edge model.
+  // ── Blueprint view ────────────────────────────────────────────────────────
+  // The model drawn as a drawing: flat surfaces, feature edges, a long lens that
+  // is orthographic to the eye, a floor grid and the overall dimensions.
+  setBlueprintView(view: BlueprintView | null, animate: boolean): void {
+    this.bpView = view ?? 'iso';
+    if (this.bpOn) this.snapView(animate && !this.reduced);
   }
+
+  private enterBlueprint(fromModel: boolean): void {
+    void this.loadEdges();
+    this.setEdgesVisible(true);
+    if (fromModel && !this.reduced) {
+      // The scan plane starts above the cannon and comes down; above it the model is already a drawing.
+      this.sweep = { t: 0 };
+      SCAN_Y.value = 2.3;
+    } else {
+      this.finishBlueprint();
+    }
+  }
+
+  private finishBlueprint(): void {
+    this.sweep = null;
+    this.bpOn = true;
+    SCAN_Y.value = -100;
+    this.floor.visible = false;
+    if (this.gtao) this.gtao.enabled = false;
+    if (this.bloom) this.bloom.enabled = false;
+    if (!this.grid) {
+      // 100 mm squares, heavier every metre.
+      this.grid = new THREE.GridHelper(4, 40, new THREE.Color(0.09, 0.09, 0.09), new THREE.Color(0.03, 0.03, 0.03));
+      this.grid.layers.set(1);
+      this.scene.add(this.grid);
+    }
+    this.grid.visible = true;
+    this.buildDims();
+    this.camera.fov = 2;
+    this.controls.minDistance = 8;
+    this.controls.maxDistance = 600;
+    this.tween = null;
+    this.snapView(false);
+  }
+
+  private leaveBlueprint(): void {
+    this.sweep = null;
+    this.bpOn = false;
+    SCAN_Y.value = 100;
+    this.setEdgesVisible(false);
+    this.floor.visible = true;
+    if (this.gtao) this.gtao.enabled = true;
+    if (this.bloom) this.bloom.enabled = true;
+    if (this.grid) this.grid.visible = false;
+    if (this.dims) this.dims.visible = false;
+    this.dimLabels = [];
+    this.camera.fov = LOOK.fov;
+    this.camera.near = 0.05;
+    this.camera.far = 80;
+    this.camera.updateProjectionMatrix();
+    this.controls.minDistance = 0.35;
+    this.controls.maxDistance = 16;
+    this.tween = null;
+    this.goHome(false);
+  }
+
+  /** Put the camera square on to the model from the chosen side. */
+  private snapView(animate: boolean): void {
+    const dirs: Record<BlueprintView, [number, number, number]> = {
+      front: [0, 0, 1],
+      rear: [0, 0, -1],
+      side: [-1, 0, 0],
+      top: [0, 1, 0.0005],
+      iso: [-1, 0.8165, 1],
+    };
+    const env = this.envelope();
+    const size = env.getSize(new THREE.Vector3());
+    const v = this.bpView;
+    const halfW = (v === 'side' ? size.z : v === 'iso' ? Math.hypot(size.x, size.z) * 0.72 : size.x) / 2 + 0.3;
+    const halfH = (v === 'top' ? size.z : size.y) / 2 + 0.24;
+    const dist = this.fitDistance(halfW, halfH);
+    const target = env.getCenter(new THREE.Vector3());
+    const dir = new THREE.Vector3(...dirs[v]).normalize();
+    this.camera.near = Math.max(1, dist - 8);
+    this.camera.far = dist + 8;
+    this.camera.updateProjectionMatrix();
+    if (animate) this.tween = { t: 0, dur: 0.6, from: [this.camera.position.clone(), this.controls.target.clone()], to: [target.clone().addScaledVector(dir, dist), target] };
+    else {
+      this.tween = null;
+      this.controls.target.copy(target);
+      this.camera.position.copy(target).addScaledVector(dir, dist);
+      this.controls.update();
+    }
+    this.invalidate();
+  }
+
+  /** Overall envelope in this mount state, from the measured data (model mm → scene metres). */
+  private envelope(): THREE.Box3 {
+    const e = spec.envelope[this.mountState];
+    return new THREE.Box3(new THREE.Vector3(e.min[0] / 1000, 0, -e.max[1] / 1000), new THREE.Vector3(e.max[0] / 1000, e.max[2] / 1000, -e.min[1] / 1000));
+  }
+
+  /** Height, width and depth as dimension lines round the envelope, with their figures. */
+  private buildDims(): void {
+    const e = spec.envelope[this.mountState];
+    const { min, max } = this.envelope();
+    const off = 0.16;
+    const t = 0.03;
+    const x = max.x + off;
+    const z = max.z + off;
+    const xd = min.x - off;
+    const pts = [
+      // height, beside the robot's left
+      x, 0, 0, x, max.y, 0, x - t, 0, 0, x + t, 0, 0, x - t, max.y, 0, x + t, max.y, 0, max.x, max.y, 0, x, max.y, 0,
+      // width, on the floor in front
+      min.x, 0, z, max.x, 0, z, min.x, 0, z - t, min.x, 0, z + t, max.x, 0, z - t, max.x, 0, z + t, min.x, 0, max.z, min.x, 0, z, max.x, 0, max.z, max.x, 0, z,
+      // depth, on the floor at the robot's right
+      xd, 0, min.z, xd, 0, max.z, xd - t, 0, min.z, xd + t, 0, min.z, xd - t, 0, max.z, xd + t, 0, max.z, min.x, 0, min.z, xd, 0, min.z, min.x, 0, max.z, xd, 0, max.z,
+    ];
+    if (!this.dims) {
+      this.dims = new THREE.LineSegments(new THREE.BufferGeometry(), new THREE.LineBasicMaterial({ color: new THREE.Color(0.5, 0.49, 0.47) }));
+      this.dims.layers.set(1);
+      this.dims.frustumCulled = false;
+      this.scene.add(this.dims);
+    }
+    this.dims.geometry.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
+    this.dims.visible = true;
+    this.dimLabels = [
+      { at: new THREE.Vector3(x, max.y / 2, 0), text: mm(e.height) },
+      { at: new THREE.Vector3((min.x + max.x) / 2, 0, z), text: mm(e.width) },
+      { at: new THREE.Vector3(xd, 0, (min.z + max.z) / 2), text: mm(e.depth) },
+    ];
+  }
+
+  /** The feature-edge model: fetched the first time the drawing view is opened. */
+  private async loadEdges(): Promise<void> {
+    if (this.edges || this.edgesLoading || !this.assets) return;
+    this.edgesLoading = true;
+    try {
+      const files = (this.assets.manifest as { files?: Record<string, { url?: string }> }).files;
+      const res = await fetch(this.assets.url(files?.edges?.url ?? 'models/rj28_edges.glb'));
+      if (!res.ok) throw new Error(String(res.status));
+      const gltf = await this.parse(new Uint8Array(await res.arrayBuffer()));
+      const found: { name: string; line: THREE.LineSegments }[] = [];
+      gltf.scene.traverse((o) => {
+        if (!(o.userData as { number?: string }).number && !/^RJ28-\d\d-\d\d\d/.test(o.name)) return;
+        o.traverse((c) => {
+          if ((c as THREE.LineSegments).isLineSegments) found.push({ name: o.name, line: c as THREE.LineSegments });
+        });
+      });
+      for (const f of found) {
+        // The line work is drawn in the part's own frame; the part node supplies the pose.
+        f.line.position.set(0, 0, 0);
+        f.line.quaternion.identity();
+        f.line.scale.set(1, 1, 1);
+        f.line.material = this.edgeMat;
+        f.line.layers.set(1);
+      }
+      this.edges = found;
+      this.attachEdges();
+    } catch (err) {
+      console.warn('edge lines failed to load', err);
+    } finally {
+      this.edgesLoading = false;
+      this.poseDirty = true;
+      this.invalidate();
+    }
+  }
+
+  /** Hang each part's lines on that part's node, so they follow the mount, the strip-down and the explode. */
+  private attachEdges(): void {
+    if (!this.edges || !this.model) return;
+    const byName = new Map<string, PartRec>();
+    for (const p of this.model.list) byName.set(p.node.name, p);
+    const on = this.mode === 'blueprint';
+    for (const f of this.edges) {
+      const p = byName.get(f.name);
+      if (!p) continue;
+      p.node.add(f.line);
+      f.line.visible = on;
+    }
+  }
+
+  private setEdgesVisible(on: boolean): void {
+    for (const f of this.edges ?? []) f.line.visible = on;
+  }
+
   setHiddenLines(_on: boolean): void {
-    // As above.
+    // Hidden lines are not drawn in this view.
   }
 
   // ── Commands ──────────────────────────────────────────────────────────────
@@ -1132,41 +1323,18 @@ class ThreeScene implements SceneController {
   private addMeasurePoint(point: THREE.Vector3): void {
     if (this.measurePts.length >= 2) this.measurePts = [];
     this.measurePts.push(point.clone());
-    if (this.measureLine) {
-      this.scene.remove(this.measureLine);
-      this.measureLine.geometry.dispose();
-      this.measureLine = null;
-    }
     if (this.measurePts.length === 2) {
       const [a, b] = this.measurePts as [THREE.Vector3, THREE.Vector3];
-      const mat = new THREE.LineBasicMaterial({ color: 0xd7dee3, depthTest: false, transparent: true });
-      this.measureLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints([a, b]), mat);
-      this.measureLine.renderOrder = 10;
-      this.scene.add(this.measureLine);
       // glTF metres (x, y, z) → model millimetres (x, −z, y).
-      const mm = (v: THREE.Vector3): [number, number, number] => [v.x * 1000, -v.z * 1000, v.y * 1000];
-      this.emit('measure', { a: mm(a), b: mm(b), distanceMm: a.distanceTo(b) * 1000 });
+      const toMm = (v: THREE.Vector3): [number, number, number] => [v.x * 1000, -v.z * 1000, v.y * 1000];
+      this.emit('measure', { a: toMm(a), b: toMm(b), distanceMm: a.distanceTo(b) * 1000 });
     } else {
       this.emit('measure', null);
     }
     this.invalidate();
   }
 
-  // ── Tour camera ───────────────────────────────────────────────────────────
-  /** Camera for a station at progress t through its own move (position → position2). */
-  private stationPose(s: Station, t: number, out: { pos: THREE.Vector3; target: THREE.Vector3 }): void {
-    const a = new THREE.Vector3().fromArray(s.position);
-    const ta = new THREE.Vector3().fromArray(s.target);
-    if (!s.position2 || t <= 0) {
-      out.pos.copy(a);
-      out.target.copy(ta);
-      return;
-    }
-    const b = new THREE.Vector3().fromArray(s.position2);
-    const tb = new THREE.Vector3().fromArray(s.target2 ?? s.target);
-    this.arc(a, ta, b, tb, t, out);
-  }
-
+  // ── Camera paths ─────────────────────────────────────────────────────────
   /** Blend two cameras by turning about the target, so the path goes round the robot and never through it. */
   private arc(a: THREE.Vector3, ta: THREE.Vector3, b: THREE.Vector3, tb: THREE.Vector3, t: number, out: { pos: THREE.Vector3; target: THREE.Vector3 }): void {
     const oa = a.clone().sub(ta);
@@ -1188,73 +1356,10 @@ class ThreeScene implements SceneController {
     return (2 * (aspect >= 1 ? Math.atan(Math.tan(half) / aspect) : half)) / DEG;
   }
 
-  private solveTour(dt: number): void {
-    const n = this.stations.length;
-    if (!n) return;
-    const u = Math.min(n - 1, Math.max(0, this.tourU));
-    const i = Math.min(n - 1, Math.floor(u));
-    const p = u - i;
-    const s = this.stations[i]!;
-    const next = this.stations[i + 1];
-    const here = { pos: new THREE.Vector3(), target: new THREE.Vector3() };
-    // Within the section: the station's own move. Towards its end: travel to the next station.
-    const own = ramp(p, 0.06, 0.52);
-    const travel = next ? ramp(p, 0.6, 0.98) : 0;
-    this.stationPose(s, own, here);
-    let fov = this.lensFov(s.lens_mm, s.sensor_mm);
-    if (next && travel > 0) {
-      const there = { pos: new THREE.Vector3(), target: new THREE.Vector3() };
-      this.stationPose(next, 0, there);
-      this.arc(here.pos.clone(), here.target.clone(), there.pos, there.target, this.reduced ? Math.round(travel) : travel, here);
-      fov = lerp(fov, this.lensFov(next.lens_mm, next.sensor_mm), travel);
-    }
-    const k = this.tourCam.ready && !this.reduced ? 1 - Math.exp(-dt * 7) : 1;
-    this.tourCam.pos.lerp(here.pos, k);
-    this.tourCam.target.lerp(here.target, k);
-    this.tourCam.fov = lerp(this.tourCam.fov, fov, k);
-    this.tourCam.ready = true;
-    this.camera.position.copy(this.tourCam.pos);
-    this.camera.fov = this.tourCam.fov;
-    this.camera.lookAt(this.tourCam.target);
-    this.camera.updateProjectionMatrix();
-    if (this.tourCam.pos.distanceToSquared(here.pos) > 1e-6) this.dirty = true;
-
-    // The station in charge of what is lit: this one until the camera is half way to the next.
-    const lead = next && travel > 0.5 ? next : s;
-    const elevOf = (st: Station) => (st.mount === 'deployed' ? 0 : 90);
-    let elev = elevOf(s);
-    if (s.mount_from && s.mount_to) elev = lerp(s.mount_from === 'deployed' ? 0 : 90, s.mount_to === 'deployed' ? 0 : 90, ramp(p, 0.1, 0.5));
-    if (next) elev = lerp(elev, next.mount_from ? (next.mount_from === 'deployed' ? 0 : 90) : elevOf(next), travel);
-    // The armour station takes the outer armour and the panels off while it is read.
-    const stripFor = (st: Station) => (st.section === 'Armour and materials' ? 2 : 0);
-    const strip = stripFor(s) * ramp(p, 0.12, 0.5) * (1 - travel);
-    const want = [0, clamp01(strip), clamp01(strip - 1), 0, 0];
-    let changed = Math.abs(elev - this.elev) > 0.01 || this.trav !== 0;
-    for (let st = 1; st <= 4; st++) if (Math.abs(want[st]! - this.stripP[st]!) > 0.001) changed = true;
-    if (changed) {
-      this.elev = elev;
-      this.trav = 0;
-      this.stripP = want;
-      this.poseDirty = true;
-      this.shadowDirty = true;
-    }
-    const dimSet = lead.highlight?.length ? new Set(lead.highlight) : null;
-    const same = (dimSet?.size ?? 0) === (this.tourDim?.size ?? 0) && [...(dimSet ?? [])].every((x) => this.tourDim?.has(x));
-    if (!same || this.tourXray !== !!lead.xray) {
-      this.tourDim = dimSet;
-      this.tourXray = !!lead.xray;
-      this.poseDirty = true;
-    }
-  }
-
-  private effectiveXray(): boolean {
-    return this.mode === 'dossier' ? this.tourXray : this.xray;
-  }
-
   // ── Animation of the state numbers ────────────────────────────────────────
   private advance(dt: number): boolean {
     let busy = false;
-    if (this.mode === 'model') {
+    {
       // Mount: stowing recentres the traverse before the barrel comes up.
       const stow = this.mountState === 'stowed';
       const travGoal = stow ? 0 : this.wantTrav;
@@ -1290,17 +1395,21 @@ class ThreeScene implements SceneController {
           break;
         }
       }
-      if (this.tween) {
-        this.tween.t = Math.min(1, this.tween.t + dt / this.tween.dur);
-        const k = smooth(this.tween.t);
-        this.arc(this.tween.from[0], this.tween.from[1], this.tween.to[0], this.tween.to[1], k, { pos: this.camera.position, target: this.controls.target });
-        if (this.tween.t >= 1) this.tween = null;
-        busy = true;
-      }
-    } else if (this.mode === 'dossier') {
-      this.solveTour(dt);
     }
-    const xr = this.effectiveXray() ? 1 : 0;
+    if (this.tween) {
+      this.tween.t = Math.min(1, this.tween.t + dt / this.tween.dur);
+      const k = smooth(this.tween.t);
+      this.arc(this.tween.from[0], this.tween.from[1], this.tween.to[0], this.tween.to[1], k, { pos: this.camera.position, target: this.controls.target });
+      if (this.tween.t >= 1) this.tween = null;
+      busy = true;
+    }
+    if (this.sweep) {
+      this.sweep.t += dt / 1.2;
+      SCAN_Y.value = lerp(2.3, -0.05, clamp01(this.sweep.t));
+      busy = true;
+      if (this.sweep.t >= 1) this.finishBlueprint();
+    }
+    const xr = this.xray ? 1 : 0;
     if (Math.abs(xr - this.xrayT) > 0.001) {
       this.xrayT = this.reduced ? xr : lerp(this.xrayT, xr, 1 - Math.exp(-dt * 9));
       if (Math.abs(xr - this.xrayT) < 0.004) this.xrayT = xr;
@@ -1318,6 +1427,7 @@ class ThreeScene implements SceneController {
     this.poseTrav.makeTranslation(d.tp).multiply(new THREE.Matrix4().makeRotationAxis(d.ta, this.trav * DEG)).multiply(new THREE.Matrix4().makeTranslation(d.tp.clone().negate()));
     this.poseElev.multiplyMatrices(this.poseTrav, E);
     if (m.chain?.morphTargetInfluences) m.chain.morphTargetInfluences[0] = clamp01(this.elev / 90);
+    for (const f of this.edges ?? []) if (f.line.morphTargetInfluences?.length) f.line.morphTargetInfluences[0] = clamp01(this.elev / 90);
 
     const a = this.explodeAmt;
     m.root.position.y = a <= 0.5 ? lerp(this.lift[0]!, this.lift[1]!, smooth(a / 0.5)) : lerp(this.lift[1]!, this.lift[2]!, smooth((a - 0.5) / 0.5));
@@ -1328,9 +1438,8 @@ class ThreeScene implements SceneController {
     }
     const xrayOn = this.xrayT > 0;
     const selecting = this.mode === 'model' && !!this.selected;
-    // How bright everything that is not the subject is: the rest of the model beside a selection,
-    // or the assemblies a dossier station is not about.
-    const others = this.mode === 'dossier' ? 0.2 : 0.42;
+    // How bright the rest of the model is beside a selection.
+    const others = 0.42;
     this.library.othersDim.value = others;
     const off = new THREE.Vector3();
     const T = new THREE.Matrix4();
@@ -1369,7 +1478,6 @@ class ThreeScene implements SceneController {
 
       let dim = 1;
       if (selecting && lead.number !== this.selected) dim = others;
-      if (this.mode === 'dossier' && this.tourDim && !this.tourDim.has(p.assembly)) dim = others;
       if (Math.abs(dim - p.dim) > 0.003) {
         p.dim = lerp(p.dim, dim, kDim);
         settling = true;
@@ -1454,14 +1562,49 @@ class ThreeScene implements SceneController {
     });
   }
 
+  /** Measure line and dimension figures: projected each frame, so they hold their place as the view turns. */
+  private updateOverlay(): void {
+    const w = this.canvas.clientWidth;
+    const h = this.canvas.clientHeight;
+    const path = this.overlay.querySelector('path')!;
+    const v = new THREE.Vector3();
+    const px = (p: THREE.Vector3): [number, number] => {
+      v.copy(p).project(this.camera);
+      return [(v.x * 0.5 + 0.5) * w, (-v.y * 0.5 + 0.5) * h];
+    };
+    const labels: { x: number; y: number; text: string }[] = [];
+    let d = '';
+    if (this.mode === 'model' && this.measuring && this.measurePts.length) {
+      const a = px(this.measurePts[0]!);
+      if (this.measurePts.length === 1) d = `M${a[0] - 6} ${a[1]}h12M${a[0]} ${a[1] - 6}v12`;
+      else {
+        const b = px(this.measurePts[1]!);
+        const len = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1;
+        const nx = (-(b[1] - a[1]) / len) * 7;
+        const ny = ((b[0] - a[0]) / len) * 7;
+        d = `M${a[0]} ${a[1]}L${b[0]} ${b[1]}M${a[0] - nx} ${a[1] - ny}L${a[0] + nx} ${a[1] + ny}M${b[0] - nx} ${b[1] - ny}L${b[0] + nx} ${b[1] + ny}`;
+        labels.push({ x: (a[0] + b[0]) / 2, y: (a[1] + b[1]) / 2, text: mm(this.measurePts[0]!.distanceTo(this.measurePts[1]!) * 1000) });
+      }
+    }
+    if (this.bpOn) for (const l of this.dimLabels) labels.push({ x: px(l.at)[0], y: px(l.at)[1], text: l.text });
+    path.setAttribute('d', d);
+    const spans = this.overlay.querySelectorAll('span');
+    for (let i = spans.length; i < labels.length; i++) this.overlay.appendChild(document.createElement('span'));
+    this.overlay.querySelectorAll('span').forEach((el, i) => {
+      const l = labels[i];
+      el.hidden = !l;
+      if (!l) return;
+      el.textContent = l.text;
+      el.style.transform = `translate(${l.x.toFixed(1)}px, ${l.y.toFixed(1)}px) translate(-50%, -50%)`;
+    });
+  }
+
   private renderShadow(): void {
     const r = this.renderer;
     const [a, b] = this.shadowRT as [THREE.WebGLRenderTarget, THREE.WebGLRenderTarget];
     const bg = this.scene.background;
-    const labelsLine = this.measureLine;
     this.scene.background = null;
     this.floor.visible = false;
-    if (labelsLine) labelsLine.visible = false;
     this.scene.overrideMaterial = this.shadowDepth;
     const clear = r.getClearAlpha();
     r.setClearAlpha(0);
@@ -1484,7 +1627,6 @@ class ThreeScene implements SceneController {
     r.setClearAlpha(clear);
     this.scene.background = bg;
     this.floor.visible = true;
-    if (labelsLine) labelsLine.visible = true;
   }
 
   // ── Loop ──────────────────────────────────────────────────────────────────
@@ -1504,8 +1646,8 @@ class ThreeScene implements SceneController {
     const dt = Math.min(0.05, (now - this.last) / 1000);
     this.last = now;
     const busy = this.advance(dt);
+    if (!this.sweep && this.controls.update()) this.dirty = true;
     if (this.mode === 'model') {
-      if (this.controls.update()) this.dirty = true;
       if (this.pointer.moved && this.pointer.inside && !this.measuring) {
         this.pointer.moved = false;
         this.setHover(this.cast()?.part ?? null);
@@ -1514,7 +1656,8 @@ class ThreeScene implements SceneController {
     // Shift the picture so that its centre sits in the middle of the area the panels leave free.
     const sx = this.frozenCamera ? 0 : (this.insets.left - this.insets.right) / 2;
     const sy = this.frozenCamera ? 0 : (this.insets.top - this.insets.bottom) / 2;
-    if (Math.abs(sx - this.shift.x) > 0.5 || Math.abs(sy - this.shift.y) > 0.5) {
+    this.shiftMoving = Math.abs(sx - this.shift.x) > 0.5 || Math.abs(sy - this.shift.y) > 0.5;
+    if (this.shiftMoving) {
       this.shift.x = this.reduced ? sx : lerp(this.shift.x, sx, 1 - Math.exp(-dt * 8));
       this.shift.y = this.reduced ? sy : lerp(this.shift.y, sy, 1 - Math.exp(-dt * 8));
       this.dirty = true;
@@ -1523,6 +1666,10 @@ class ThreeScene implements SceneController {
       // The machine has changed shape: fit the view to what is there now.
       this.reframe = false;
       if (this.mode === 'model' && !this.selected && !this.frozenCamera) this.frame(null);
+      else if (this.bpOn) {
+        this.buildDims();
+        this.snapView(!this.reduced);
+      }
     }
     if (!busy && !this.dirty && !this.poseDirty) {
       // Nothing is moving. If the last frame was drawn at motion quality, draw the settled one in full.
@@ -1559,6 +1706,7 @@ class ThreeScene implements SceneController {
       this.blobDirty = true;
     }
     // The soft contact shadow changes slowly: a few times a second is enough while things move.
+    if (this.bpOn) this.blobDirty = false; // no floor in the drawing view
     if (this.blobDirty && (!moving || now - this.lastBlob > 130)) {
       this.blobDirty = false;
       this.lastBlob = now;
@@ -1569,6 +1717,7 @@ class ThreeScene implements SceneController {
     this.composer.render();
     this.drawCalls = this.renderer.info.render.calls;
     this.updateLabels();
+    this.updateOverlay();
     this.emit('camera', this.readout());
 
     // Frame pacing. The cost here is mostly draw calls, so the first thing to go is the floor
@@ -1599,8 +1748,7 @@ class ThreeScene implements SceneController {
   }
 
   private readout(): CameraReadout {
-    const target = this.mode === 'dossier' ? this.tourCam.target : this.controls.target;
-    const d = this.camera.position.clone().sub(target);
+    const d = this.camera.position.clone().sub(this.controls.target);
     const len = d.length() || 1;
     return {
       azimuthDeg: Math.atan2(d.x, d.z) / DEG,
@@ -1642,7 +1790,7 @@ class ThreeScene implements SceneController {
   /** Put the camera exactly where an offline render was taken from, for side-by-side comparison. */
   debugCamera(position: Vec3 | null, target?: Vec3, lensMm?: number): void {
     this.frozenCamera = !!position;
-    this.controls.enabled = !position && this.mode === 'model';
+    this.controls.enabled = !position && this.mode !== 'idle';
     if (position && target && lensMm) {
       this.tween = null;
       this.camera.position.fromArray(position);
@@ -1658,7 +1806,7 @@ class ThreeScene implements SceneController {
   /** True when nothing is animating and the last frame is the settled one. */
   idle(): boolean {
     if (this.mode === 'idle') return true;
-    return !this.dirty && !this.poseDirty && !this.needRefine && !this.blobDirty && !this.tween && this.lockDwell <= 0 && Math.abs(this.elevVel.v) < 0.01;
+    return !this.dirty && !this.poseDirty && !this.shiftMoving && !this.reframe && !this.sweep && !this.edgesLoading && !this.needRefine && !this.blobDirty && !this.tween && this.lockDwell <= 0 && Math.abs(this.elevVel.v) < 0.01;
   }
   /** Spin the camera for a while and report the frame pacing. */
   async benchmark(seconds: number): Promise<SceneStats> {
@@ -1684,6 +1832,7 @@ class ThreeScene implements SceneController {
     this.controls.dispose();
     this.library.dispose();
     this.labels.remove();
+    this.overlay.remove();
     this.renderer.dispose();
   }
 }

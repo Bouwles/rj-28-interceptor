@@ -179,6 +179,10 @@ varying vec3 vData;
 varying vec3 vObjPos;
 varying vec3 vObjNormal;
 varying mat3 vObjToView;
+varying float vWorldY;
+`;
+const VERT_WORLD = /* glsl */ `
+vWorldY = (modelMatrix * vec4(transformed, 1.0)).y;
 `;
 const VERT_MAIN = /* glsl */ `
 vData = aData;
@@ -194,6 +198,8 @@ uniform vec3 uEdgeCol;
 uniform float uDim;
 uniform float uIblDiffuse;
 uniform vec2 uEnvFall;
+uniform float uScanY;
+varying float vWorldY;
 varying vec3 vData;
 varying vec3 vObjPos;
 varying vec3 vObjNormal;
@@ -247,6 +253,11 @@ radiance *= rjEnv;
 clearcoatRadiance *= rjEnv;
 #endif
 `;
+// Above the scan plane the part is drawn as on a drawing: a flat fill, no shading. The cut itself is a bright line.
+const FRAG_SCAN = /* glsl */ `
+if (vWorldY > uScanY) gl_FragColor = vec4(vec3(0.011), gl_FragColor.a);
+if (abs(vWorldY - uScanY) < 0.007) gl_FragColor = vec4(vec3(2.5), 1.0);
+`;
 const FRAG_EMISSIVE = /* glsl */ `
 totalEmissiveRadiance *= uDim;
 `;
@@ -259,6 +270,23 @@ totalEmissiveRadiance *= uDim;
  */
 export const IBL_DIFFUSE = { value: 1 };
 export const GLASS_OPACITY = 0.45;
+/** Height of the scan plane, metres. Far above the model: everything is rendered. Far below: everything is drawn flat. */
+export const SCAN_Y = { value: 100 };
+
+/** Material for the feature-edge lines: off-white, and absent below the scan plane, where the model is still rendered. */
+export function edgeMaterial(): THREE.LineBasicMaterial {
+  const m = new THREE.LineBasicMaterial({ color: new THREE.Color(1.5, 1.47, 1.42) });
+  m.onBeforeCompile = (shader) => {
+    shader.uniforms.uScanY = SCAN_Y;
+    shader.vertexShader = shader.vertexShader
+      .replace('#include <common>', '#include <common>\nvarying float vWorldY;')
+      .replace('#include <project_vertex>', '#include <project_vertex>\nvWorldY = (modelMatrix * vec4(transformed, 1.0)).y;');
+    shader.fragmentShader = shader.fragmentShader
+      .replace('#include <common>', '#include <common>\nuniform float uScanY;\nvarying float vWorldY;')
+      .replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\nif (vWorldY < uScanY) discard;');
+  };
+  return m;
+}
 /** Environment light at floor level as a share of full, and the height in metres where it reaches full. */
 export const ENV_FALL = { value: new THREE.Vector2(1, 1.6) };
 
@@ -332,7 +360,13 @@ export class MaterialLibrary {
       m.polygonOffsetUnits = -2;
       m.roughness = 0.7;
       m.metalness = 0;
-    } else if (key === 'emissive') {
+    } else {
+      // Surfaces sit a hair behind the edge lines drawn over them.
+      m.polygonOffset = true;
+      m.polygonOffsetFactor = 1;
+      m.polygonOffsetUnits = 1;
+    }
+    if (key === 'emissive') {
       m.emissive.copy(source.emissive.getHex() ? source.emissive : source.color);
       // Enough for the bloom threshold to catch the emitters and nothing else.
       m.emissiveIntensity = 6;
@@ -355,18 +389,21 @@ export class MaterialLibrary {
       uDim: dim,
       uIblDiffuse: IBL_DIFFUSE,
       uEnvFall: ENV_FALL,
+      uScanY: SCAN_Y,
     };
     m.onBeforeCompile = (shader) => {
       Object.assign(shader.uniforms, uniforms);
       shader.vertexShader = shader.vertexShader
         .replace('#include <common>', `#include <common>\n${VERT_PARS}`)
-        .replace('#include <begin_vertex>', `#include <begin_vertex>\n${VERT_MAIN}`);
+        .replace('#include <begin_vertex>', `#include <begin_vertex>\n${VERT_MAIN}`)
+        .replace('#include <project_vertex>', `#include <project_vertex>\n${VERT_WORLD}`);
       shader.fragmentShader = shader.fragmentShader
         .replace('#include <common>', `#include <common>\n${FRAG_PARS}`)
         .replace('#include <color_fragment>', `#include <color_fragment>\n${FRAG_COLOUR}`)
         .replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>\n${FRAG_ROUGH}`)
         .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>\n${FRAG_NORMAL}`)
         .replace('#include <lights_fragment_maps>', `#include <lights_fragment_maps>\n${FRAG_IBL}`)
+        .replace('#include <dithering_fragment>', `#include <dithering_fragment>\n${FRAG_SCAN}`)
         .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>\n${FRAG_EMISSIVE}`);
     };
     // One compiled program per recipe, shared by every part that uses it.

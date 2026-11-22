@@ -1,5 +1,5 @@
 import { findOnSheets, spec, type Catalog } from '../data';
-import type { ModelManifest, Part, SheetSet, Station } from '../data/types';
+import type { ModelManifest, Part, SheetSet } from '../data/types';
 import type { CameraReadout, Measurement, MountPose, PointerHit, SceneController } from '../scene/types';
 import { TABS, type AppStore, type Isolation, type MountState, type Signal, type Tab } from './store';
 
@@ -32,7 +32,6 @@ export interface App {
   store: AppStore;
   catalog: Catalog;
   sheets: SheetSet | null;
-  stations: Station[] | null;
   /** `model.json`: what was exported, with counts. */
   manifest: ModelManifest | null;
   camera: Signal<CameraReadout | null>;
@@ -126,7 +125,13 @@ export function openSheet(app: App, id?: string, focus?: { part?: string; assemb
   const set = app.sheets;
   if (!set || set.sheets.length === 0) return;
   const sheet = set.sheets.find((s) => s.id === id) ?? set.sheets.find((s) => s.id === app.store.get().sheet) ?? set.sheets[0]!;
-  app.store.set({ tab: 'blueprints', sheet: sheet.id, sheetFocus: focus ?? null, help: false, drawer: null });
+  app.store.set({ tab: 'blueprints', measure: false, sheet: sheet.id, sheetFocus: focus ?? null, help: false, drawer: null });
+}
+
+/** The model as a drawing, on the blueprints page. */
+export function openBlueprint3d(app: App): void {
+  app.store.set({ tab: 'blueprints', sheet: '3d', sheetFocus: null, measure: false, help: false, drawer: null });
+  app.measurement.set(null);
 }
 
 export function setHidden(app: App, numbers: readonly string[], hidden: boolean): void {

@@ -188,6 +188,21 @@ async function capture(browser, viewport) {
     const picked = await page.evaluate(() => window.rj28.state().selected);
     expect(picked === hovered, `clicking the hovered part selects it (${hovered} / ${picked})`);
     await page.keyboard.press('Escape');
+    // Measure: two picks on the chest, then turn the model; the line stays on its points.
+    await page.keyboard.press('r');
+    await page.mouse.click(at.x - 70, at.y - 40);
+    await page.mouse.click(at.x + 70, at.y - 40);
+    await page.mouse.move(at.x, at.y + 200);
+    await page.mouse.down();
+    await page.mouse.move(at.x + 160, at.y + 190, { steps: 8 });
+    await page.mouse.up();
+    await settled(page, lod, 500);
+    const label = await page.locator('.scene-overlay span').first().textContent();
+    expect(/\d mm/.test(label ?? ''), `measure shows a distance on the line (got "${label}")`);
+    await shot(page, viewport, '47_measure');
+    await page.keyboard.press('r');
+    await page.keyboard.press('0');
+    await settled(page, lod);
     await page.keyboard.press('?');
     await page.waitForTimeout(300);
     await shot(page, viewport, '44_keys');
@@ -196,13 +211,25 @@ async function capture(browser, viewport) {
 
   // ── Blueprints and specification ──────────────────────────────────────────
   await go(page, '#tab=blueprints', lod);
-  const ids = await page.evaluate(() => [...document.querySelectorAll('.sheet-index-item')].map((b) => b.dataset.id));
+  const ids = await page.evaluate(() => [...document.querySelectorAll('.sheet-index-item[data-id]')].map((b) => b.dataset.id));
   for (const [i, id] of ids.entries()) {
     await go(page, `#tab=blueprints&sheet=${id}`, lod);
     await page.waitForFunction((n) => document.querySelector('.sheet-canvas svg')?.id?.endsWith(n) ?? true, String(i + 1).padStart(3, '0'));
     await page.waitForTimeout(500);
     await shot(page, viewport, `50_sheet_${String(i + 1).padStart(2, '0')}`);
   }
+  // The model as a drawing: from the model the scan plane plays; then each snap view.
+  await go(page, '#tab=model', lod);
+  await page.evaluate(() => (location.hash = '#tab=blueprints&sheet=3d&view=front'));
+  await page.waitForTimeout(650);
+  await shot(page, viewport, '55_blueprint_scan_mid_sweep');
+  await settled(page, lod, 600);
+  for (const view of ['front', 'side', 'rear', 'top', 'iso']) {
+    await go(page, `#tab=blueprints&sheet=3d&view=${view}`, lod);
+    await shot(page, viewport, `56_blueprint_3d_${view}`);
+  }
+  await go(page, '#tab=blueprints&sheet=3d&view=iso&mount=deployed&strip=2', lod);
+  await shot(page, viewport, '57_blueprint_3d_deployed_stripped');
   await go(page, '#tab=model&part=RJ28-15-031', lod);
   await page.keyboard.press('d');
   await page.waitForTimeout(900);

@@ -117,28 +117,6 @@ export interface Assembly {
   mass_kg: number;
 }
 
-/** Tour camera station, glTF axes (+Y up, robot faces +Z), metres. */
-export interface Station {
-  id: string;
-  position: Vec3;
-  target: Vec3;
-  lens_mm: number;
-  sensor_mm: number;
-  mount?: 'stowed' | 'deployed';
-  focus?: string;
-  highlight?: string[];
-  xray?: boolean;
-  /** Section name and the station's own title, as authored. */
-  section?: string;
-  title?: string;
-  position2?: Vec3;
-  target2?: Vec3;
-  /** How the camera goes from `position` to `position2` within the section: `orbit` or `dolly`. */
-  move?: string;
-  mount_from?: 'stowed' | 'deployed';
-  mount_to?: 'stowed' | 'deployed';
-}
-
 /** Loose on purpose: the scene module owns the reading of this file. */
 export type MountData = Record<string, unknown>;
 

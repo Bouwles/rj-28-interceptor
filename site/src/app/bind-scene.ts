@@ -11,8 +11,8 @@ export function bindScene(app: App, scene: SceneController): void {
 
   scene.setReducedMotion(app.reducedMotion());
   store.watch(
-    (s) => s.tab,
-    (tab) => scene.setMode(tab === 'model' ? 'model' : 'idle'),
+    (s) => (s.tab === 'model' ? 'model' : s.tab === 'blueprints' && s.sheet === '3d' ? 'blueprint' : 'idle'),
+    (mode) => scene.setMode(mode),
   );
   store.watch((s) => s.selected, (part) => scene.setSelection(part));
   store.watch((s) => [s.hidden, s.isolated] as const, ([hidden, isolated]) => scene.setVisibility(hidden, isolated));
@@ -24,6 +24,7 @@ export function bindScene(app: App, scene: SceneController): void {
   store.watch((s) => s.explode, (amount) => scene.setExplode(amount));
   store.watch((s) => s.xray, (on) => scene.setXray(on));
   store.watch((s) => s.measure, (on) => scene.setMeasure(on));
+  store.watch((s) => s.view, (view) => scene.setBlueprintView(view, !first));
   first = false;
 
   scene.on('hover', (hit) => app.hover.set(hit));

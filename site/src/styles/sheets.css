@@ -282,3 +282,30 @@ svg.sheet-svg .sheet-marker {
     flex: 1;
   }
 }
+
+/* 3D drawing view: the list stays, the stage shows through beside it. */
+.sheets.is-3d {
+  background: none;
+  pointer-events: none;
+}
+.sheets.is-3d .sheets-index,
+.sheets.is-3d .view-bar {
+  pointer-events: auto;
+}
+.sheets.is-3d .sheets-main {
+  display: none;
+}
+.view-bar {
+  grid-column: 2;
+  align-self: start;
+  border-bottom: 0;
+}
+body[data-presentation='static'] .index-3d {
+  display: none;
+}
+@media (max-width: 760px) {
+  .view-bar {
+    grid-column: 1;
+    justify-content: center;
+  }
+}

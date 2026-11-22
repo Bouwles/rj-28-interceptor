@@ -343,3 +343,40 @@ body[data-drawer='parts'] .stage-btn-parts {
     gap: 10px;
   }
 }
+
+/* The drawing view on the blueprints page uses the stage too. */
+body[data-drawing='true'] .stage {
+  visibility: visible;
+}
+
+/* Measure line and dimension figures over the canvas. */
+.scene-overlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.scene-overlay svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.scene-overlay path {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 1.5px;
+}
+.scene-overlay span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--bg);
+  font-family: var(--mono);
+  font-size: var(--fs-data);
+  line-height: 1.4;
+  white-space: nowrap;
+  color: var(--text);
+}
