@@ -75,6 +75,8 @@ export interface SceneEvents {
   measure: (m: Measurement | null) => void;
   /** The mount moved. */
   mount: (pose: MountPose) => void;
+  /** A movement started (its id) or ended (null). */
+  clip: (id: string | null) => void;
   /** A level of detail finished loading and is on screen. */
   lod: (level: 0 | 1) => void;
   /** The visitor touched the model for the first time. */
@@ -140,6 +142,8 @@ export interface SceneController {
   setHiddenLines(on: boolean): void;
 
   // ── Commands ──────────────────────────────────────────────────────────────
+  /** Play a movement by id, or stop the one that is playing (null). */
+  play(id: string | null): void;
   /** Frame a part, an assembly, or the whole model as it now stands (null). */
   frame(target: { part: string } | { assembly: string } | null): void;
   /** Back to the opening view. */

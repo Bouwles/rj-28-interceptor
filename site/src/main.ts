@@ -20,7 +20,7 @@ import { buildDetail } from './ui/detail';
 import { h, isPhone, prefersReducedMotion } from './ui/dom';
 import { buildIntro } from './ui/intro';
 import { buildSheetViewer } from './ui/sheets';
-import { header, helpOverlay, modelStatus, stageButtons } from './ui/shell';
+import { header, helpOverlay, modelStatus, motionBar, stageButtons } from './ui/shell';
 import { buildSpec } from './ui/spec';
 import { buildStaticStage, canvasSummary } from './ui/stage';
 import { buildTree } from './ui/tree';
@@ -103,7 +103,7 @@ async function boot(): Promise<void> {
     panel.prepend(h('button.sheet-handle', { type: 'button', 'aria-label': 'Make the panel taller or shorter', onclick: () => document.body.classList.toggle('sheet-tall') }));
   }
   root.prepend(stage);
-  root.append(tree, side, stageButtons(app), modelStatus(app, progress), buildSheetViewer(app), buildSpec(app), buildHoverTag(app));
+  root.append(tree, side, stageButtons(app), motionBar(app), modelStatus(app, progress), buildSheetViewer(app), buildSpec(app), buildHoverTag(app));
 
   store.watch(
     (s) => [s.presentation, s.drawer, s.measure, s.selected, s.tab === 'blueprints' && s.sheet === '3d'] as const,

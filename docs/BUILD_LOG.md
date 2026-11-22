@@ -239,3 +239,18 @@ Annotation is scripted. Dimensions, tables and notes read `spec.json`, `parts.js
 - Sheet 4: the view from behind is tilted by the abduction because it is square to the knee axis (D-066). The flexed shin is not drawn; only the crank pin at 110°. Ankle roll is not shown.
 - Sheet 5: the harness is displaced forwards and lies over the left leg and pelvis, as the explode data has it. Three leaders pass over the right arm. No trace lines join the assemblies.
 - Rebuilding the PNG and PDF needs Microsoft Edge at its usual path; without it the SVG files and the index are still written and a warning is printed.
+
+## Movements on the site
+
+`blender/rj28/rig.py` (target `rig`) writes `site/src/data/rig.json` from `parts.json`, the joint axes and the hand chain: 70 links, 808 rigid parts, 12 actuators, 63 parts that bend. `site/src/scene/rig.ts` turns joint angles into a matrix per part; `animate.ts` plays keyed movements from `clips.ts`; `fx.ts` draws the engagement for the intercept.
+
+Seven movements from the Animations button at the foot of the model: look around, function check, squat, wave, fist bump, fist to palm, intercept. They play at any strip-down stage.
+
+**Checked by looking.** Contact sheets of each movement mid-play (`tests/pose.mjs`), armour on and off; fist contact placed with `tests/reach.mjs`, which searches the right arm's angles for the left palm. Capture run clean.
+
+**Still weak.**
+
+- No collision check while moving: poses were placed by eye and by the reach search. The cannon is only swept in its own two axes.
+- Coupling bars of the fingers and the lame guide links ride one link instead of working as linkages.
+- Tracker tilt and the toe hinge are not driven. The energy chain follows elevation only.
+- The drawing view shows the rest pose; movements stop when the model tab is left.

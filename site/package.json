@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Interactive technical dossier for the RJ-28 INTERCEPTOR concept model.",
+  "description": "RJ-28 Interceptor: interactive 3D model, drawings and specification.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

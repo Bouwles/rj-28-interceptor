@@ -15,7 +15,7 @@ export const spec = specJson as unknown as Spec;
 
 // Every other data file is fetched at run time, so files that the Blender
 // build has not written yet are simply absent from this map.
-const dataUrls = import.meta.glob(['./*.json', '!./spec.json', '!./stations.json'], {
+const dataUrls = import.meta.glob(['./*.json', '!./spec.json', '!./stations.json', '!./rig.json'], {
   query: '?url',
   import: 'default',
   eager: true,

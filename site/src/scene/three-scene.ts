@@ -19,6 +19,10 @@ import { FullScreenQuad, Pass } from 'three/addons/postprocessing/Pass.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { Player } from './animate';
+import { CLIPS } from './clips';
+import { Intercept } from './fx';
+import { Rig, type Bound } from './rig';
 import type { BlueprintView, Isolation, MountState } from '../app/store';
 import { spec } from '../data';
 import { mm } from '../data/format';
@@ -95,6 +99,8 @@ const XRAY_ALPHA = 0.07;
 
 interface PartRec {
   number: string;
+  /** How the rig carries it. */
+  rig: Bound;
   node: THREE.Object3D;
   meshes: THREE.Mesh[];
   /** Per mesh: the GLB material it came with and its material key. */
@@ -320,6 +326,12 @@ class ThreeScene implements SceneController {
   });
   private outlineParts: PartRec[] = [];
   private library: MaterialLibrary;
+  private rig = new Rig();
+  private player = new Player(this.rig);
+  private fx: Intercept | null = null;
+  /** Camera to go back to after a movement that brought its own view. */
+  private shotFrom: { pos: THREE.Vector3; target: THREE.Vector3 } | null = null;
+  private fovGoal = LOOK.fov;
   private model: Model | null = null;
   private floor!: Reflector;
   private mirrorOn = false;
@@ -698,6 +710,7 @@ class ThreeScene implements SceneController {
 
   private buildModel(gltf: GLTF, lod: 0 | 1): Model {
     const root = gltf.scene;
+    this.rig.reset();
     const info = new Map<string, Part>();
     for (const p of this.assets?.parts ?? []) info.set(p.number, p);
     const parts = new Map<string, PartRec>();
@@ -748,6 +761,7 @@ class ThreeScene implements SceneController {
       const key = (u.material_key ?? 'alu') as MaterialKey;
       const rec: PartRec = {
         number: u.number,
+        rig: this.rig.bind(u.number, o, meshes),
         node: o,
         meshes,
         sources,
@@ -778,7 +792,7 @@ class ThreeScene implements SceneController {
       };
       // Smallest extent of a screw set is along the screws.
       rec.axis.set(size.x <= size.y && size.x <= size.z ? 1 : 0, size.y < size.x && size.y <= size.z ? 1 : 0, size.z < size.x && size.z < size.y ? 1 : 0);
-      if (rec.group) o.matrixAutoUpdate = false;
+      o.matrixAutoUpdate = false;
       if (rec.fastener || rec.decal || rec.radius < 0.03) for (const mesh of meshes) mesh.layers.set(1);
       parts.set(rec.number, rec);
       byNode.set(o.name, rec);
@@ -824,6 +838,7 @@ class ThreeScene implements SceneController {
       const host = hostName ? byNode.get(hostName) : undefined;
       if (!host) continue;
       p.host = host;
+      p.rig = host.rig;
       p.dir.copy(host.dir);
       p.lift = host.lift;
       p.delay = host.delay;
@@ -870,6 +885,11 @@ class ThreeScene implements SceneController {
     const was = this.mode;
     this.mode = mode;
     this.controls.enabled = mode !== 'idle';
+    if (this.player.current !== null || this.rig.active) {
+      this.player.reset();
+      this.endShot(false);
+      this.emit('clip', null);
+    }
     this.setHover(null);
     this.syncOutline();
     if (was === 'blueprint') this.leaveBlueprint();
@@ -1212,6 +1232,65 @@ class ThreeScene implements SceneController {
     this.goHome(true);
   }
 
+  play(id: string | null): void {
+    const clip = CLIPS.find((c) => c.id === id);
+    if (!clip || this.mode !== 'model') {
+      this.player.stop();
+      this.endShot(true);
+      this.emit('clip', null);
+    } else {
+      this.player.onEnd = () => {
+        this.endShot(true);
+        this.emit('clip', null);
+      };
+      this.endShot(false);
+      if (clip.fx === 'intercept') {
+        this.fx ??= new Intercept(this.scene, { camera: this.camera, muzzle: (pos, dir) => this.muzzle(pos, dir) });
+        this.player.effect = this.fx;
+        if (!this.frozenCamera) {
+          // The meeting point is far off and high: step back to where both it and the robot are in view.
+          const shot = Intercept.shot();
+          this.shotFrom = { pos: this.camera.position.clone(), target: this.controls.target.clone() };
+          this.tween = { t: 0, dur: 2.2, from: [this.shotFrom.pos.clone(), this.shotFrom.target.clone()], to: [shot.pos, shot.target] };
+          // Wide enough that the free part of the picture takes in both, whatever its shape.
+          const w = this.canvas.clientWidth;
+          const h = this.canvas.clientHeight;
+          const fw = Math.max(0.2, (w - this.insets.left - this.insets.right) / w);
+          const fh = Math.max(0.2, (h - this.insets.top - this.insets.bottom) / h);
+          const tan = Math.max(Math.tan((shot.up / 2) * DEG) / fh, Math.tan((shot.across / 2) * DEG) / (this.camera.aspect * fw));
+          this.fovGoal = Math.min(84, (2 * Math.atan(tan)) / DEG);
+        }
+      }
+      this.player.play(clip, { elev: this.elev, trav: this.trav });
+      this.emit('clip', clip.id);
+    }
+    this.start();
+    this.invalidate();
+  }
+
+  private endShot(animate: boolean): void {
+    const from = this.shotFrom;
+    this.shotFrom = null;
+    this.fovGoal = LOOK.fov;
+    if (!from) return;
+    if (animate) this.tween = { t: 0, dur: 1.6, from: [this.camera.position.clone(), this.controls.target.clone()], to: [from.pos, from.target] };
+    else {
+      this.tween = null;
+      this.camera.position.copy(from.pos);
+      this.controls.target.copy(from.target);
+    }
+  }
+
+  /** Muzzle face and bore direction as the cannon stands now. */
+  private muzzle(pos: THREE.Vector3, dir: THREE.Vector3): void {
+    const mesh = this.model?.parts.get(this.rig.muzzle)?.meshes[0];
+    if (!mesh) return;
+    mesh.updateWorldMatrix(true, false);
+    const box = mesh.geometry.boundingBox ?? new THREE.Box3();
+    box.getCenter(pos).setZ(box.max.z).applyMatrix4(mesh.matrixWorld);
+    dir.set(0, 0, 1).transformDirection(mesh.matrixWorld);
+  }
+
   /** Distance at which a box of the given half width and half height fills the area the panels leave free. */
   private fitDistance(halfWidth: number, halfHeight = halfWidth): number {
     const w = Math.max(200, this.canvas.clientWidth - this.insets.left - this.insets.right);
@@ -1364,7 +1443,14 @@ class ThreeScene implements SceneController {
       const stow = this.mountState === 'stowed';
       const travGoal = stow ? 0 : this.wantTrav;
       const elevGoal = stow ? (Math.abs(this.trav) > 0.4 ? this.elev : this.mountDef.elevRange[1]) : this.wantElev;
-      if (this.lockDwell > 0) {
+      const driven = this.player.mount;
+      if (driven) {
+        // A movement is driving the cannon; the controls get it back when it ends.
+        this.elev = driven.elev;
+        this.trav = driven.trav;
+        this.elevVel.v = this.travVel.v = 0;
+        this.emit('mount', { elevationDeg: this.elev, traverseDeg: this.trav, moving: true });
+      } else if (this.lockDwell > 0) {
         this.lockDwell -= dt;
         busy = true;
       } else if (Math.abs(elevGoal - this.elev) > 0.004 || Math.abs(travGoal - this.trav) > 0.004 || Math.abs(this.elevVel.v) > 0.01) {
@@ -1401,6 +1487,11 @@ class ThreeScene implements SceneController {
       const k = smooth(this.tween.t);
       this.arc(this.tween.from[0], this.tween.from[1], this.tween.to[0], this.tween.to[1], k, { pos: this.camera.position, target: this.controls.target });
       if (this.tween.t >= 1) this.tween = null;
+      busy = true;
+    }
+    if (Math.abs(this.camera.fov - this.fovGoal) > 0.02 && !this.frozenCamera && !this.bpOn) {
+      this.camera.fov = Math.abs(this.camera.fov - this.fovGoal) < 0.1 ? this.fovGoal : lerp(this.camera.fov, this.fovGoal, 1 - Math.exp(-dt * 2.4));
+      this.camera.updateProjectionMatrix();
       busy = true;
     }
     if (this.sweep) {
@@ -1464,12 +1555,14 @@ class ThreeScene implements SceneController {
           alpha = 1 - ramp(u, 0.62, 0.96);
         }
       }
-      if (p.group) {
-        p.node.matrix.copy(p.group === 'elev' ? this.poseElev : this.poseTrav).multiply(T.makeTranslation(off));
-        p.node.matrixWorldNeedsUpdate = true;
-      } else {
-        p.node.position.copy(off);
-      }
+      if (p.rig.recoil) off.z -= this.rig.recoil;
+      T.makeTranslation(off);
+      if (p.group) T.premultiply(p.group === 'elev' ? this.poseElev : this.poseTrav);
+      // A bent part is rewritten vertex by vertex; everything else rides its link.
+      if (p.rig.flex && !p.host) p.node.matrix.copy(T);
+      else if (this.rig.matrix(p.rig, p.node.matrix)) p.node.matrix.multiply(T);
+      else p.node.matrix.copy(T);
+      p.node.matrixWorldNeedsUpdate = true;
 
       const hiddenByUser = this.hidden.has(p.number) || (this.isolated !== null && (this.isolated.kind === 'part' ? this.isolated.id !== lead.number : this.isolated.id !== p.assembly));
       p.gone = alpha <= 0.004;
@@ -1645,7 +1738,8 @@ class ThreeScene implements SceneController {
     this.raf = requestAnimationFrame(this.tick);
     const dt = Math.min(0.05, (now - this.last) / 1000);
     this.last = now;
-    const busy = this.advance(dt);
+    let busy = this.advance(dt);
+    if (this.mode === 'model' && this.player.step(dt)) this.poseDirty = this.shadowDirty = busy = true;
     if (!this.sweep && this.controls.update()) this.dirty = true;
     if (this.mode === 'model') {
       if (this.pointer.moved && this.pointer.inside && !this.measuring) {
@@ -1803,10 +1897,21 @@ class ThreeScene implements SceneController {
     this.camera.updateProjectionMatrix();
     this.invalidate();
   }
+  /** Hold a pose: joint angles in degrees, by joint name. */
+  debugPose(angles: Record<string, number>): void {
+    this.player.hold(angles);
+    this.poseDirty = this.shadowDirty = true;
+    this.invalidate();
+  }
+  /** Hold a pose and report where link pivots end up: [carrier link, link whose pivot]. */
+  debugProbe(angles: Record<string, number>, items: [string, string][]): number[][] {
+    this.debugPose(angles);
+    return items.map(([on, of]) => this.rig.probe(on, of));
+  }
   /** True when nothing is animating and the last frame is the settled one. */
   idle(): boolean {
     if (this.mode === 'idle') return true;
-    return !this.dirty && !this.poseDirty && !this.shiftMoving && !this.reframe && !this.sweep && !this.edgesLoading && !this.needRefine && !this.blobDirty && !this.tween && this.lockDwell <= 0 && Math.abs(this.elevVel.v) < 0.01;
+    return this.player.current === null && !this.dirty && !this.poseDirty && !this.shiftMoving && !this.reframe && !this.sweep && !this.edgesLoading && !this.needRefine && !this.blobDirty && !this.tween && this.lockDwell <= 0 && Math.abs(this.elevVel.v) < 0.01;
   }
   /** Spin the camera for a while and report the frame pacing. */
   async benchmark(seconds: number): Promise<SceneStats> {

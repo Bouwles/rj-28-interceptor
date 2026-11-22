@@ -46,6 +46,9 @@ def main():
     elif target == "export":
         from rj28 import export
         export.run(opts)
+    elif target == "rig":
+        from rj28 import rig
+        rig.build()
     else:
         raise SystemExit(f"unknown target {target!r}")
     print(f"BUILD {target} done in {time.time() - t0:.1f} s")

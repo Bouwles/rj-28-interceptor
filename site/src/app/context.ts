@@ -104,6 +104,14 @@ export function setExplode(app: App, amount: number): void {
   app.store.set({ explode: Math.min(1, Math.max(0, amount)) });
 }
 
+/** Start a movement, or stop the one that is playing (null or the same id again). */
+export function playClip(app: App, id: string | null): void {
+  const s = app.store.get();
+  const next = id === s.clip ? null : id;
+  if (next) app.store.set({ explode: 0, measure: false, selected: null });
+  app.scene?.play(next);
+}
+
 export function toggleXray(app: App): void {
   app.store.set({ xray: !app.store.get().xray });
 }

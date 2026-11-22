@@ -1,4 +1,5 @@
-import { setMount, type App } from '../app/context';
+import { playClip, setMount, type App } from '../app/context';
+import { CLIPS } from '../scene/clips';
 import type { AppStore, MountState, Tab } from '../app/store';
 import { h } from './dom';
 
@@ -63,6 +64,40 @@ export function stageButtons(app: App): HTMLElement {
     return b;
   };
   return h('div.stage-buttons', null, make('parts', 'Parts'), make('actions', 'Controls'));
+}
+
+/** Bottom of the stage: the movements the robot can be asked to make. */
+export function motionBar(app: App): HTMLElement {
+  const tray = h('div.motion-tray', { id: 'motion-tray', role: 'group', 'aria-label': 'Animations', hidden: true });
+  const buttons = CLIPS.map((c) => {
+    const b = h('button.btn.motion-clip', { type: 'button', onclick: () => playClip(app, c.id) }, c.label);
+    tray.appendChild(b);
+    return b;
+  });
+  const toggle = h(
+    'button.btn.motion-toggle',
+    { type: 'button', 'aria-expanded': 'false', 'aria-controls': 'motion-tray', onclick: () => open(tray.hasAttribute('hidden')) },
+    'Animations',
+  );
+  const stop = h('button.btn.motion-stop', { type: 'button', hidden: true, onclick: () => playClip(app, null) }, 'Stop');
+  const open = (on: boolean) => {
+    tray.hidden = !on;
+    toggle.setAttribute('aria-expanded', String(on));
+  };
+  app.store.watch(
+    (s) => s.clip,
+    (clip) => {
+      buttons.forEach((b, i) => b.setAttribute('aria-pressed', String(CLIPS[i]!.id === clip)));
+      stop.hidden = !clip;
+      if (clip) open(false); // out of the way of what it started
+    },
+  );
+  const bar = h('div.motion', null, tray, h('div.motion-row', null, toggle, stop));
+  app.store.watch(
+    (s) => s.presentation,
+    (p) => (bar.hidden = p !== 'live'),
+  );
+  return bar;
 }
 
 const REASONS: Record<string, string> = {

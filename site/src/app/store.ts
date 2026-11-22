@@ -35,6 +35,8 @@ export interface AppState {
   explode: number;
   xray: boolean;
   measure: boolean;
+  /** Movement the robot is making, by id. */
+  clip: string | null;
   /** Sheet shown on the blueprints page, or `3d` for the model drawn as a drawing. */
   sheet: string | null;
   /** Side the 3D drawing is seen from. */
@@ -63,6 +65,7 @@ export const initialState: AppState = {
   explode: 0,
   xray: false,
   measure: false,
+  clip: null,
   sheet: null,
   view: 'iso',
   sheetFocus: null,

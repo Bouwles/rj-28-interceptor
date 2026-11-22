@@ -43,6 +43,7 @@ export function bindScene(app: App, scene: SceneController): void {
   // The first level of detail is already on screen by the time this runs.
   store.set({ lod: scene.stats().lod });
   scene.on('lod', (lod) => store.set({ lod }));
+  scene.on('clip', (clip) => store.set({ clip }));
   scene.on('lost', () => store.set({ presentation: 'static', staticReason: 'load-failed' }));
 
   app.commands.on('frame', () => {

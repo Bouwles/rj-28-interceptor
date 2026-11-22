@@ -95,6 +95,48 @@ body[data-drawer='parts'] .stage-btn-parts {
   display: none;
 }
 
+/* Movements: one button at the foot of the stage, the list opens above it. */
+.motion {
+  position: fixed;
+  left: calc((100vw - var(--side-w)) / 2);
+  bottom: 24px;
+  z-index: 22;
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  max-width: calc(100vw - var(--side-w) - 48px);
+}
+body:not([data-tab='model']) .motion,
+.motion[hidden] {
+  display: none;
+}
+.motion-row,
+.motion-tray {
+  display: flex;
+  gap: 8px;
+}
+.motion-tray {
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.motion-tray[hidden],
+.motion-stop[hidden] {
+  display: none;
+}
+.motion-row .btn {
+  background: var(--panel);
+}
+.motion .btn[aria-pressed='true'],
+.motion-toggle[aria-expanded='true'] {
+  background: var(--text);
+  color: var(--bg);
+}
+
 .model-status {
   position: fixed;
   left: 50%;
@@ -330,6 +372,16 @@ body[data-drawer='parts'] .stage-btn-parts {
   }
   .stage-btn-actions {
     display: inline-flex;
+  }
+  .motion {
+    left: 12px;
+    right: 12px;
+    transform: none;
+    bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+    max-width: none;
+  }
+  body:not([data-drawer='none']) .motion {
+    display: none;
   }
   body[data-drawer='parts'] .stage-btn-parts {
     display: inline-flex;
