@@ -1,8 +1,8 @@
-export type Mode = 'tour' | 'inspect' | 'explode' | 'blueprint';
+export type Tab = 'model' | 'dossier' | 'blueprints' | 'spec';
 export type MountState = 'stowed' | 'deployed';
 export type BlueprintView = 'front' | 'side' | 'rear' | 'top' | 'iso';
 
-export const MODES: readonly Mode[] = ['tour', 'inspect', 'explode', 'blueprint'];
+export const TABS: readonly Tab[] = ['model', 'dossier', 'blueprints', 'spec'];
 export const VIEWS: readonly BlueprintView[] = ['front', 'side', 'rear', 'top', 'iso'];
 
 export interface Isolation {
@@ -22,48 +22,58 @@ export interface AppState {
   /** `loading` until the first assets are in; then the live 3D scene or the static edition. */
   presentation: 'loading' | 'live' | 'static';
   staticReason: StaticReason | null;
-  mode: Mode;
-  /** Tour section in view, 0-based. */
+  tab: Tab;
+  /** Title block on the model tab, shown until the visitor first touches anything. */
+  intro: boolean;
+  /** Dossier section in view, 0-based. */
   section: number;
   /** Selected part number. */
   selected: string | null;
   mount: MountState;
+  /** Where the deployed cannon points, degrees. */
+  traverse: number;
+  elevation: number;
+  /** Strip-down stage, 0 complete to 4 bare. */
+  strip: number;
   /** 0 to 1. Below 0.5 assemblies separate, above it parts separate. */
   explode: number;
   xray: boolean;
   measure: boolean;
-  view: BlueprintView;
-  hiddenLines: boolean;
-  /** Id of the sheet open in the viewer, or null when it is closed. */
+  /** Sheet shown on the blueprints tab. */
   sheet: string | null;
-  /** What the viewer should centre on when it opens. Consumed by the viewer. */
+  /** What the sheet viewer should centre on. Consumed by the viewer. */
   sheetFocus: SheetFocus | null;
   /** Part numbers switched off in the tree. */
   hidden: ReadonlySet<string>;
   isolated: Isolation | null;
   help: boolean;
-  /** Assembly tree drawer, phone layout only. */
-  drawer: boolean;
+  /** Which panel is open as a drawer, phone layout only. */
+  drawer: 'parts' | 'actions' | null;
+  /** Level of detail on screen, once the scene reports one. */
+  lod: 0 | 1 | null;
 }
 
 export const initialState: AppState = {
   presentation: 'loading',
   staticReason: null,
-  mode: 'tour',
+  tab: 'model',
+  intro: true,
   section: 0,
   selected: null,
   mount: 'stowed',
+  traverse: 0,
+  elevation: 0,
+  strip: 0,
   explode: 0,
   xray: false,
   measure: false,
-  view: 'iso',
-  hiddenLines: false,
   sheet: null,
   sheetFocus: null,
   hidden: new Set(),
   isolated: null,
   help: false,
-  drawer: false,
+  drawer: null,
+  lod: null,
 };
 
 type Listener<S> = (state: S, prev: S) => void;

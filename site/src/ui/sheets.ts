@@ -1,4 +1,4 @@
-import { closeSheet, isolate, openSheet, select, selectAndInspect, setMode, type App } from '../app/context';
+import { isolate, openSheet, select, selectAndInspect, setTab, type App } from '../app/context';
 import { bestPlace } from '../data';
 import { num, pad2 } from '../data/format';
 import type { Sheet, SheetPlace } from '../data/types';
@@ -69,11 +69,10 @@ export function buildSheetViewer(app: App): HTMLElement {
   const canvas = h('div.sheet-canvas', { tabindex: '0', role: 'img', 'aria-label': 'Drawing sheet' });
   const message = h('p.sheet-message', { hidden: true });
   const callout = h('div.sheet-callout', { hidden: true, 'aria-live': 'polite' });
-  const closeBtn = h('button.btn', { type: 'button', onclick: () => closeSheet(app) }, 'Close', h('kbd', null, 'Esc'));
 
   const viewer = h(
     'section.sheets',
-    { hidden: true, role: 'dialog', 'aria-label': 'Drawing sheets' },
+    { hidden: true, role: 'region', 'aria-label': 'Drawing sheets' },
     h(
       'aside.sheets-index',
       null,
@@ -99,8 +98,6 @@ export function buildSheetViewer(app: App): HTMLElement {
           h('button.btn', { type: 'button', onclick: () => fit() }, 'Fit', h('kbd', null, '0')),
         ),
         zoomOut,
-        h('span.sheets-bar-gap'),
-        closeBtn,
       ),
       canvas,
       message,
@@ -291,8 +288,7 @@ export function buildSheetViewer(app: App): HTMLElement {
             onclick: () => {
               const iso = store.get().isolated;
               if (!(iso?.kind === 'assembly' && iso.id === assembly.id)) isolate(app, { kind: 'assembly', id: assembly.id });
-              closeSheet(app);
-              if (store.get().mode === 'tour') setMode(app, 'inspect');
+              setTab(app, 'model');
             },
           },
           'Show in model',
@@ -411,14 +407,6 @@ export function buildSheetViewer(app: App): HTMLElement {
         if (next) openSheet(app, next.id);
         break;
       }
-      case 'Tab': {
-        // Keep the keyboard inside the viewer while it is open.
-        const stops = [...viewer.querySelectorAll<HTMLElement>('button, a[href], [tabindex="0"]')].filter((el) => el.offsetParent !== null);
-        const at = stops.indexOf(document.activeElement as HTMLElement);
-        const next = stops[(at + (e.shiftKey ? -1 : 1) + stops.length) % stops.length];
-        next?.focus();
-        break;
-      }
       default:
         return;
     }
@@ -433,31 +421,27 @@ export function buildSheetViewer(app: App): HTMLElement {
   }).observe(canvas);
 
   // ── Store ─────────────────────────────────────────────────────────────────
-  let returnTo: Element | null = null;
+  if (!sheets.length) {
+    message.hidden = false;
+    message.textContent = 'The drawing set is not in this build.';
+  }
   store.watch(
-    (st) => [st.sheet, st.sheetFocus] as const,
-    ([id], prev) => {
-      const sheet = id ? sheets.find((x) => x.id === id) : undefined;
-      const wasOpen = !viewer.hidden;
-      viewer.hidden = !sheet;
-      document.body.dataset.sheet = sheet ? 'open' : 'closed';
+    (st) => [st.tab === 'blueprints', st.sheet, st.sheetFocus] as const,
+    ([shown, id]) => {
+      const sheet = shown ? (sheets.find((x) => x.id === id) ?? sheets[0]) : undefined;
+      viewer.hidden = !shown;
       for (const b of indexButtons) {
-        if (b.dataset.id === id) {
+        if (sheet && b.dataset.id === sheet.id) {
           b.setAttribute('aria-current', 'true');
-          if (sheet) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+          b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
         } else b.removeAttribute('aria-current');
       }
       if (!sheet) {
         clearHover();
-        if (wasOpen && returnTo instanceof HTMLElement && returnTo.isConnected) returnTo.focus();
-        returnTo = null;
         return;
       }
-      if (!wasOpen) {
-        returnTo = document.activeElement;
-        requestAnimationFrame(() => canvas.focus());
-      }
-      if (wasOpen && current?.sheet.id === sheet.id && prev && prev[0] === id) focusOn();
+      // Coming back to a sheet that is already drawn only needs it re-aimed.
+      if (current?.sheet.id === sheet.id) focusOn();
       else void show(sheet);
     },
   );

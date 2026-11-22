@@ -51,7 +51,7 @@ export function buildTour(app: App): Tour {
 
   const progress = new Array<number>(sections.length).fill(0);
   const publish = () => {
-    if (app.store.get().mode !== 'tour') return;
+    if (app.store.get().tab !== 'dossier') return;
     let u = 0;
     for (let i = 0; i < progress.length; i++) {
       if (progress[i]! > 0) u = i + Math.min(progress[i]!, 1);
@@ -83,7 +83,7 @@ export function buildTour(app: App): Tour {
           start: 'top 60%',
           end: 'bottom 60%',
           onToggle: (self) => {
-            if (self.isActive && app.store.get().mode === 'tour') app.store.set({ section: i });
+            if (self.isActive && app.store.get().tab === 'dossier') app.store.set({ section: i });
           },
         }),
       );
@@ -115,7 +115,7 @@ export function buildTour(app: App): Tour {
   let armed = false;
   const start = () =>
     app.store.watch(
-    (s) => s.mode === 'tour',
+    (s) => s.tab === 'dossier',
     (inTour, was) => {
       if (inTour) {
         document.documentElement.classList.remove('locked');

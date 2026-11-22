@@ -1,14 +1,13 @@
 // The ten tour sections: copy, tables and figures. Every figure in the text is
 // read from spec.json or parts.json at run time; nothing numeric is typed here.
 
-import { openSheet, setMode, type App } from '../app/context';
+import { openSheet, setTab, type App } from '../app/context';
 import { KEY_ROWS } from '../app/keys';
 import { spec } from '../data';
 import { deg, dims, jointLabel, kg, mm, num, range, trim1 } from '../data/format';
 import type { Joint, Part } from '../data/types';
 import { barChart, designNote, heightLadder, momentArmPlot, specTable, type SpecRow } from './charts';
 import { h, type Child } from './dom';
-import { mountToggle } from './shell';
 
 export interface PlateDef {
   /** File under `renders/`. */
@@ -365,7 +364,6 @@ export const SECTIONS: SectionDef[] = [
         p(
           `The cannon rides above the trunnion on a swing arm, ${trim1(m.bore_rise)} mm from axis to bore. That puts the stowed barrel behind the shoulder and not beside the head. A slewing ring under the yoke gives traverse once deployed, and the barrel runs in a cradle on two guide rods with the recoil cylinder between them.`,
         ),
-        h('div.inline-control', null, h('span.cap', null, 'Mount position'), mountToggle(app)),
         specTable(
           [
             ['Elevation', range(m.elevation)],
@@ -374,6 +372,7 @@ export const SECTIONS: SectionDef[] = [
             ['Barrel', `Ø${trim1(m.barrel_od)} × ${trim1(m.barrel_length)} mm`],
             ['Trunnion axis, height from floor', mm(m.trunnion[2])],
             ['Bore above trunnion', mm(m.bore_rise)],
+            m.min_clearance_mm !== undefined && ['Least clearance through the travel', mm(m.min_clearance_mm)],
             ['Elevating mass', kg(sum(elevating))],
             ['Traversing mass', kg(sum(traversing))],
             assemblyRow(app, '15'),
@@ -506,7 +505,6 @@ export const SECTIONS: SectionDef[] = [
           null,
           n ? h('button.btn', { type: 'button', onclick: () => openSheet(app) }, 'Open the sheet viewer') : null,
           set?.pdfUrl ? h('a.btn', { href: set.pdfUrl, download: '' }, 'Download the set, PDF') : null,
-          h('button.btn', { type: 'button', onclick: () => setMode(app, 'blueprint') }, 'Blueprint mode'),
         ),
       );
     },
@@ -528,15 +526,15 @@ export const SECTIONS: SectionDef[] = [
         panel(
           { id: '09', title: 'Inspect' },
           p(
-            `The tour ends here. The inspector is the same model with the controls unlocked: pick any of the ${num(app.catalog.parts.length, 0)} parts to read its function, material, mass and size, hide or isolate it, and find it on a drawing.`,
+            `The dossier ends here. The Model tab is the same machine with the controls unlocked: pick any of the ${num(app.catalog.parts.length, 0)} parts to read its function, material, mass and size, hide or isolate it, and find it on a drawing.`,
           ),
-          p('The exploded view separates the assemblies and then the parts within them. Blueprint mode shows the model as line work with its overall dimensions.'),
+          p('Strip-down takes the armour, the carriers and the harness off in stages, down to the frame and the drives. The exploded view separates the assemblies and then the parts within them.'),
           h(
             'div.actions',
             null,
-            h('button.btn', { type: 'button', onclick: () => setMode(app, 'inspect') }, 'Open the inspector'),
-            h('button.btn', { type: 'button', onclick: () => setMode(app, 'explode') }, 'Exploded view'),
-            h('button.btn', { type: 'button', onclick: () => setMode(app, 'blueprint') }, 'Blueprint'),
+            h('button.btn', { type: 'button', onclick: () => setTab(app, 'model') }, 'Open the model'),
+            h('button.btn', { type: 'button', onclick: () => setTab(app, 'blueprints') }, 'Blueprints'),
+            h('button.btn', { type: 'button', onclick: () => setTab(app, 'spec') }, 'Specification'),
           ),
           h(
             'section.block',
@@ -545,7 +543,7 @@ export const SECTIONS: SectionDef[] = [
             h(
               'dl.keys',
               null,
-              KEY_ROWS.slice(0, 7).map((r) => h('div', null, h('dt', null, r.keys.map((k) => h('kbd', null, k))), h('dd', null, r.does))),
+              KEY_ROWS.slice(1, 8).map((r) => h('div', null, h('dt', null, r.keys.map((k) => h('kbd', null, k))), h('dd', null, r.does))),
             ),
           ),
         ),

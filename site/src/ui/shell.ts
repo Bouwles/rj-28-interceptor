@@ -1,32 +1,60 @@
-import { setMode, setMount, type App } from '../app/context';
-import { MODES, type Mode, type MountState } from '../app/store';
+import { setMount, setTab, type App } from '../app/context';
+import { TABS, type MountState, type Tab } from '../app/store';
 import { spec } from '../data';
 import { num, pad2 } from '../data/format';
 import { h } from './dom';
 
-const MODE_LABEL: Record<Mode, string> = {
-  tour: 'Tour',
-  inspect: 'Inspect',
-  explode: 'Explode',
-  blueprint: 'Blueprint',
-};
-
-const MODE_SECTION: Record<Exclude<Mode, 'tour'>, string> = {
-  inspect: 'Inspect',
-  explode: 'Inspect: exploded view',
-  blueprint: 'Inspect: blueprint',
+export const TAB_LABEL: Record<Tab, string> = {
+  model: 'Model',
+  dossier: 'Dossier',
+  blueprints: 'Blueprints',
+  spec: 'Specification',
 };
 
 /** Revision letter shown when the drawing set, which carries the real one, is absent. */
 const REVISION = 'C';
 
+function tabButtons(app: App, cls: string): HTMLElement {
+  const buttons = TABS.map((t, i) =>
+    h(
+      'button.tab',
+      { type: 'button', role: 'tab', id: `${cls}-${t}`, dataset: { tab: t }, title: `${TAB_LABEL[t]} (${i + 1})`, onclick: () => setTab(app, t) },
+      h('span.data', { 'aria-hidden': 'true' }, String(i + 1)),
+      TAB_LABEL[t],
+    ),
+  );
+  app.store.watch(
+    (s) => s.tab,
+    (tab) => {
+      for (const b of buttons) {
+        const on = b.dataset.tab === tab;
+        b.setAttribute('aria-selected', String(on));
+        b.tabIndex = on ? 0 : -1;
+      }
+    },
+  );
+  const list = h(`div.${cls}`, { role: 'tablist', 'aria-label': 'Sections of the dossier' }, buttons);
+  // Arrow keys move along the tabs, as a tab list should.
+  list.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const i = TABS.indexOf(app.store.get().tab);
+    const next = TABS[(i + (e.key === 'ArrowRight' ? 1 : -1) + TABS.length) % TABS.length]!;
+    setTab(app, next);
+    buttons.find((b) => b.dataset.tab === next)?.focus();
+    e.preventDefault();
+    e.stopPropagation();
+  });
+  return list;
+}
+
 /**
- * Top bar, laid out as the header strip of a drawing: designation, the
- * section in view, sheet number and revision, each in its own ruled cell.
+ * Top bar, laid out as the header strip of a drawing: designation, the four
+ * tabs, what is in view, sheet number and revision, each in its own ruled cell.
  */
 export function topBar(app: App, sectionNames: readonly string[]): HTMLElement {
-  const sectionCap = h('span.cap', null, 'Section');
-  const section = h('span.tb-val');
+  const ctxCap = h('span.cap');
+  const ctx = h('span.tb-val');
+  const sheetCap = h('span.cap');
   const sheetVal = h('span.tb-val.data');
   const last = sectionNames.length - 1;
 
@@ -35,42 +63,46 @@ export function topBar(app: App, sectionNames: readonly string[]): HTMLElement {
     null,
     h('div.tb-corner', { 'aria-hidden': 'true' }, /\d+/.exec(spec.designation)?.[0] ?? ''),
     h('div.tb-cell.tb-title', null, h('span.cap', null, 'Designation'), h('span.tb-val.tb-name', null, spec.designation)),
-    h('div.tb-cell.tb-section', { 'aria-live': 'polite' }, sectionCap, section),
+    tabButtons(app, 'tb-tabs'),
+    h('div.tb-cell.tb-section', { 'aria-live': 'polite' }, ctxCap, ctx),
     h('div.tb-cell.tb-serial', null, h('span.cap', null, 'Serial'), h('span.tb-val.data', null, spec.serial)),
-    h('div.tb-cell.tb-sheet', null, h('span.cap', null, 'Sheet'), sheetVal),
+    h('div.tb-cell.tb-sheet', null, sheetCap, sheetVal),
     h('div.tb-cell.tb-rev', null, h('span.cap', null, 'Rev'), h('span.tb-val.data', null, app.sheets?.revision ?? REVISION)),
   );
 
   app.store.watch(
-    (s) => [s.mode, s.section, s.sheet] as const,
-    ([mode, index, sheetId]) => {
+    (s) => [s.tab, s.section, s.sheet, s.strip, s.mount] as const,
+    ([tab, index, sheetId, strip, mount]) => {
       const sheets = app.sheets?.sheets ?? [];
-      const open = sheetId ? sheets.findIndex((x) => x.id === sheetId) : -1;
-      if (open >= 0) {
-        sectionCap.textContent = 'Drawing';
-        section.textContent = sheets[open]!.title;
+      const open = sheets.findIndex((x) => x.id === sheetId);
+      sheetCap.textContent = 'Sheet';
+      if (tab === 'blueprints' && open >= 0) {
+        ctxCap.textContent = 'Drawing';
+        ctx.textContent = sheets[open]!.title;
         sheetVal.textContent = `${pad2(open + 1)} / ${pad2(sheets.length)}`;
-      } else if (mode === 'tour') {
-        sectionCap.textContent = 'Section';
-        section.textContent = sectionNames[index] ?? '';
+      } else if (tab === 'dossier') {
+        ctxCap.textContent = 'Section';
+        ctx.textContent = sectionNames[index] ?? '';
         sheetVal.textContent = `${pad2(index)} / ${pad2(last)}`;
       } else {
-        sectionCap.textContent = 'Section';
-        section.textContent = MODE_SECTION[mode];
-        sheetVal.textContent = `${pad2(last)} / ${pad2(last)}`;
+        ctxCap.textContent = tab === 'model' ? 'Configuration' : 'Reference';
+        ctx.textContent =
+          tab === 'model' ? `${spec.strip?.[strip]?.title ?? 'Complete'}, cannon ${mount}` : 'Data, joints, mass and bill of materials';
+        sheetCap.textContent = 'Parts';
+        sheetVal.textContent = num(app.catalog.parts.length, 0);
       }
     },
   );
   return bar;
 }
 
-/** Stowed / deployed control. Used in the bottom bar and in the mount section of the tour. */
+/** Stowed / deployed control. Used in the action panel and in the mount section of the dossier. */
 export function mountToggle(app: App): HTMLElement {
   const make = (state: MountState, label: string) =>
     h('button.btn', { type: 'button', onclick: () => setMount(app, state), dataset: { mount: state } }, label);
-  const stowed = make('stowed', 'Stowed');
-  const deployed = make('deployed', 'Deployed');
-  const group = h('div.seg', { role: 'group', 'aria-label': 'Mount position' }, stowed, deployed);
+  const stowed = make('stowed', 'Stow');
+  const deployed = make('deployed', 'Deploy');
+  const group = h('div.seg', { role: 'group', 'aria-label': 'Cannon' }, stowed, deployed);
   app.store.watch(
     (s) => s.mount,
     (m) => {
@@ -81,50 +113,55 @@ export function mountToggle(app: App): HTMLElement {
   return group;
 }
 
-/** Bottom bar: mode switch, mount toggle, camera readout. */
+/** Bottom bar: what is on screen, the camera readout, and on a phone the tabs. */
 export function bottomBar(app: App): HTMLElement {
-  const modes = MODES.map((m) =>
-    h(
-      'button.bb-mode',
-      { type: 'button', onclick: () => setMode(app, m), dataset: { mode: m } },
-      MODE_LABEL[m],
-    ),
-  );
-  app.store.watch(
-    (s) => s.mode,
-    (mode) => {
-      for (const b of modes) {
-        if (b.dataset.mode === mode) b.setAttribute('aria-current', 'page');
-        else b.removeAttribute('aria-current');
-      }
-    },
-  );
-
+  const status = h('span.tb-val.data');
   const az = h('dd.data');
   const el = h('dd.data');
   const dist = h('dd.data');
   const signed = (v: number) => (v > 0 ? '+' : '') + num(v, 1) + '°';
-  app.camera.subscribe((c) => {
+  const paint = () => {
+    const c = app.store.get().tab === 'blueprints' || app.store.get().tab === 'spec' ? null : app.camera.get();
     az.textContent = c ? signed(c.azimuthDeg) : '—';
     el.textContent = c ? signed(c.elevationDeg) : '—';
     dist.textContent = !c ? '—' : c.distanceMm === null ? 'ortho' : `${num(c.distanceMm, 0)} mm`;
-  });
+  };
+  app.camera.subscribe(paint);
 
-  const drawer = h(
-    'button.btn.bb-drawer',
-    { type: 'button', onclick: () => app.store.set({ drawer: !app.store.get().drawer }) },
-    'Parts',
-  );
+  const drawer = (which: 'parts' | 'actions', label: string) => {
+    const b = h(
+      'button.btn.bb-drawer',
+      { type: 'button', onclick: () => app.store.set({ drawer: app.store.get().drawer === which ? null : which, intro: false }) },
+      label,
+    );
+    app.store.watch(
+      (s) => s.drawer,
+      (open) => b.setAttribute('aria-pressed', String(open === which)),
+    );
+    return b;
+  };
+
   app.store.watch(
-    (s) => s.drawer,
-    (open) => drawer.setAttribute('aria-pressed', String(open)),
+    (s) => [s.presentation, s.lod, s.tab] as const,
+    ([presentation, lod]) => {
+      paint();
+      const files = (app.manifest as { files?: Record<string, { triangles?: number }> } | null)?.files;
+      const tris = lod === null ? null : files?.[`lod${lod}`]?.triangles;
+      status.textContent =
+        presentation !== 'live'
+          ? 'Static edition: renders and drawings'
+          : lod === null
+            ? 'Loading the model'
+            : `Level of detail ${lod}${tris ? `, ${num(tris, 0)} triangles` : ''}`;
+    },
   );
 
   return h(
     'nav.bottombar',
-    { 'aria-label': 'View controls' },
-    h('div.bb-modes', { role: 'group', 'aria-label': 'Mode' }, modes),
-    h('div.bb-mount', null, h('span.cap', null, 'Mount'), mountToggle(app), drawer),
+    { 'aria-label': 'Status and camera' },
+    tabButtons(app, 'bb-tabs'),
+    h('div.bb-tools', null, drawer('actions', 'Actions'), drawer('parts', 'Parts')),
+    h('div.tb-cell.bb-status', null, h('span.cap', null, 'Model'), status),
     h(
       'dl.bb-cam',
       { 'aria-label': 'Camera' },
@@ -155,9 +192,9 @@ export function registrationMarks(): HTMLElement {
 
 const REASONS: Record<string, string> = {
   forced: 'Static edition: renders and drawings.',
-  'no-gpu': 'This browser has no WebGL 2 or WebGPU. Showing renders and drawings.',
+  'no-gpu': 'This browser has no WebGL 2. Showing renders and drawings.',
   'no-model': 'The 3D model is not in this build. Showing renders and drawings.',
-  'no-renderer': 'The 3D viewer is not in this build yet. Showing renders and drawings.',
+  'no-renderer': 'The 3D viewer is not in this build. Showing renders and drawings.',
   'load-failed': 'The 3D model did not load. Showing renders and drawings.',
 };
 
@@ -165,9 +202,9 @@ const REASONS: Record<string, string> = {
 export function staticNotice(app: App): HTMLElement {
   const note = h('p.static-note.data', { role: 'status' });
   app.store.watch(
-    (s) => [s.presentation, s.staticReason] as const,
-    ([presentation, reason]) => {
-      note.hidden = presentation !== 'static';
+    (s) => [s.presentation, s.staticReason, s.tab] as const,
+    ([presentation, reason, tab]) => {
+      note.hidden = presentation !== 'static' || tab === 'blueprints' || tab === 'spec';
       note.textContent = reason ? (REASONS[reason] ?? '') : '';
     },
   );

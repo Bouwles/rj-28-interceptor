@@ -62,7 +62,7 @@
   --rail: 56px;
   --panel-w: clamp(420px, 29vw, 520px);
   --tree-w: 372px;
-  --detail-w: 372px;
+  --side-w: 372px;
   --pad: 28px;
 
   color-scheme: dark;

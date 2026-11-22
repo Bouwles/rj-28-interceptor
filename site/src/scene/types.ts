@@ -6,9 +6,12 @@
 // and may be called before the model has finished loading: the scene keeps the
 // last value and applies it when it can.
 
-import type { BlueprintView, Isolation, Mode, MountState } from '../app/store';
-import type { ModelManifest, MountData, Station } from '../data/types';
+import type { BlueprintView, Isolation, MountState } from '../app/store';
+import type { ModelManifest, MountData, Part, Station } from '../data/types';
 import type { AssetLoader } from '../loader/assets';
+
+/** What the canvas is doing: free inspection, the scripted tour camera, or nothing (another tab). */
+export type SceneMode = 'model' | 'dossier' | 'idle';
 
 export interface CameraReadout {
   /** Degrees round the vertical axis; 0 looks at the robot's front, positive towards its left. */
@@ -35,19 +38,47 @@ export interface PointerHit {
   clientY: number;
 }
 
+export interface MountPose {
+  /** Degrees, as the mount stands right now. */
+  elevationDeg: number;
+  traverseDeg: number;
+  /** True while the mount is moving. */
+  moving: boolean;
+}
+
+export interface SceneStats {
+  /** Level of detail on screen. */
+  lod: 0 | 1;
+  triangles: number;
+  drawCalls: number;
+  /** Device pixels per CSS pixel while the picture is moving (at rest it is always the full ratio). */
+  pixelRatio: number;
+  /** True once slow frames have made the scene leave the floor mirror out while moving. */
+  reduced: boolean;
+  /** Mean and worst interval between rendered frames over the last second of animation, ms. */
+  frameMs: number;
+  worstMs: number;
+  /** Mean time spent issuing one frame, ms. */
+  cpuMs: number;
+}
+
 export interface SceneEvents {
   /** Pointer moved over a part or off the model. */
   hover: (hit: PointerHit) => void;
   /** Click on a part, or on empty space (part: null). */
   pick: (hit: PointerHit) => void;
+  /** Double-click on a part. */
+  activate: (hit: PointerHit) => void;
   /** Camera changed. Emitted at most once per rendered frame. */
   camera: (readout: CameraReadout) => void;
   /** Measure tool: null while fewer than two points are placed. */
   measure: (m: Measurement | null) => void;
-  /** Mount animation position, 0 stowed to 1 deployed. */
-  mount: (t: number) => void;
+  /** The mount moved. */
+  mount: (pose: MountPose) => void;
   /** A level of detail finished loading and is on screen. */
   lod: (level: 0 | 1) => void;
+  /** The visitor touched the model for the first time. */
+  interact: () => void;
   /** The context was lost and could not be restored; the app falls back to the static edition. */
   lost: () => void;
 }
@@ -64,27 +95,35 @@ export interface SceneAssets {
   loader: AssetLoader;
   /** `model.json`: file names, byte sizes and counts of the exported GLBs. */
   manifest: ModelManifest;
+  parts: Part[];
   stations: Station[] | null;
   mount: MountData | null;
   /** Resolves a path under `public/` to a URL with the deployment base. */
   url: (path: string) => string;
+  /** Stay on LOD1 and the light post chain (phones). */
+  light: boolean;
 }
 
 export interface SceneController {
   readonly backend: 'webgpu' | 'webgl2';
 
   /**
-   * Load LOD1, the HDRI and the edge lines; resolve when the first real frame
-   * is on screen. LOD0 streams afterwards on capable devices and announces
-   * itself through the `lod` event. Reject if the model cannot be shown.
+   * Load LOD1 and the HDRI; resolve when the first real frame is on screen.
+   * LOD0 streams afterwards on capable devices and announces itself through
+   * the `lod` event. Reject if the model cannot be shown.
    */
   load(assets: SceneAssets): Promise<void>;
   /** Number of part nodes found in the loaded GLB (checked against the tree). */
   partCount(): number;
+  /** Part numbers that have a node in the loaded GLB. */
+  partNumbers(): string[];
+  /** Can this part be picked right now (drawn, not stripped, not hidden)? */
+  pickable(part: string): boolean;
+  stats(): SceneStats;
   dispose(): void;
 
   // ── State, pushed from the store ──────────────────────────────────────────
-  setMode(mode: Mode, animate: boolean): void;
+  setMode(mode: SceneMode): void;
   /**
    * Scroll tour position: `u = station index + progress through that section`,
    * 0 ≤ u ≤ last index. The scene holds, travels and scrubs the mount from this.
@@ -92,19 +131,25 @@ export interface SceneController {
   setTour(u: number): void;
   setSelection(part: string | null): void;
   setVisibility(hidden: ReadonlySet<string>, isolated: Isolation | null): void;
-  setMount(state: MountState, animate: boolean): void;
+  /** Stow or deploy. `traverseDeg` and `elevationDeg` are where the deployed cannon points. */
+  setMount(state: MountState, traverseDeg: number, elevationDeg: number, animate: boolean): void;
+  /** Strip-down stage 0 to 4: every stage up to this one is removed. */
+  setStrip(stage: number, animate: boolean): void;
   /** 0 to 1; 0 to 0.5 separates assemblies, 0.5 to 1 separates parts. */
   setExplode(amount: number): void;
   setXray(on: boolean): void;
   setMeasure(active: boolean): void;
-  setBlueprintView(view: BlueprintView, animate: boolean): void;
-  setHiddenLines(on: boolean): void;
   setInsets(insets: SceneInsets): void;
   setReducedMotion(on: boolean): void;
+  // Hooks for the blueprint treatment (line render, scan transition, snap views).
+  setBlueprintView(view: BlueprintView | null, animate: boolean): void;
+  setHiddenLines(on: boolean): void;
 
   // ── Commands ──────────────────────────────────────────────────────────────
-  /** Frame a part, an assembly, or the whole model (null). */
+  /** Frame a part, an assembly, or the whole model as it now stands (null). */
   frame(target: { part: string } | { assembly: string } | null): void;
+  /** Back to the opening view. */
+  resetView(): void;
 
   on<K extends keyof SceneEvents>(type: K, fn: SceneEvents[K]): () => void;
 }

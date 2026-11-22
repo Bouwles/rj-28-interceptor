@@ -1,14 +1,18 @@
 import {
   clear,
-  cycleMode,
+  dismissIntro,
+  resetModel,
+  setExplode,
   setHidden,
-  setMode,
+  setStrip,
+  setTab,
   showInDrawing,
   toggleMeasure,
   toggleMount,
   toggleXray,
   type App,
 } from './context';
+import { TABS } from './store';
 
 export interface KeyRow {
   keys: string[];
@@ -17,17 +21,17 @@ export interface KeyRow {
 
 /** Shown in the help overlay. Keep in step with the handler below. */
 export const KEY_ROWS: KeyRow[] = [
+  { keys: ['1', '2', '3', '4'], does: 'Model, dossier, blueprints, specification' },
   { keys: ['↑', '↓'], does: 'Step through parts in the tree' },
   { keys: ['F'], does: 'Frame the selection' },
+  { keys: ['M'], does: 'Cannon: stow or deploy' },
+  { keys: ['[', ']'], does: 'Strip-down: put a layer back, take one off' },
+  { keys: ['E'], does: 'Explode: assembled, or assemblies apart' },
   { keys: ['X'], does: 'X-ray armour' },
-  { keys: ['E'], does: 'Exploded view' },
-  { keys: ['B'], does: 'Blueprint' },
-  { keys: ['M'], does: 'Mount: stowed or deployed' },
-  { keys: ['T'], does: 'Tour' },
-  { keys: ['I'], does: 'Inspector' },
   { keys: ['R'], does: 'Measure' },
   { keys: ['H'], does: 'Hide the selected part' },
   { keys: ['D'], does: 'Show the selected part in the drawings' },
+  { keys: ['0'], does: 'Reset the model and the view' },
   { keys: ['/'], does: 'Search parts' },
   { keys: ['Esc'], does: 'Close, then clear the selection' },
   { keys: ['?'], does: 'This list' },
@@ -35,6 +39,7 @@ export const KEY_ROWS: KeyRow[] = [
 
 function typing(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
+  if (target instanceof HTMLInputElement && target.type === 'range') return false;
   return target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName);
 }
 
@@ -50,60 +55,75 @@ export function bindKeys(app: App): void {
       return;
     }
     if (typing(e.target)) return;
-    // The sheet viewer and the help overlay take the keyboard while open.
     if (s.help) {
       if (e.key === '?') app.store.set({ help: false });
       return;
     }
-    if (s.sheet) return;
+    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    const tabIndex = ['1', '2', '3', '4'].indexOf(key);
+    if (tabIndex >= 0) {
+      setTab(app, TABS[tabIndex]!);
+      return;
+    }
+    if (key === '?') {
+      app.store.set({ help: true });
+      return;
+    }
+    // The sheet viewer takes the rest of the keyboard on its own tab.
+    if (s.tab !== 'model') {
+      if (key === 'd' && s.selected) {
+        const part = app.catalog.byNumber.get(s.selected);
+        if (part) showInDrawing(app, part);
+      }
+      return;
+    }
+    // Range sliders use the arrow keys themselves.
+    const onSlider = e.target instanceof HTMLInputElement && e.target.type === 'range';
 
-    const inTour = s.mode === 'tour';
-    switch (e.key.length === 1 ? e.key.toLowerCase() : e.key) {
+    switch (key) {
       case 'ArrowDown':
       case 'ArrowUp':
-        if (inTour) return;
+        if (onSlider) return;
         e.preventDefault();
-        app.commands.emit('step', e.key === 'ArrowDown' ? 1 : -1);
+        dismissIntro(app);
+        app.commands.emit('step', key === 'ArrowDown' ? 1 : -1);
         break;
       case 'f':
-        if (!inTour) app.commands.emit('frame');
+        app.commands.emit('frame');
         break;
       case 'x':
         toggleXray(app);
         break;
       case 'e':
-        cycleMode(app, 'explode');
-        break;
-      case 'b':
-        cycleMode(app, 'blueprint');
+        setExplode(app, s.explode > 0 ? 0 : 0.5);
         break;
       case 'm':
         toggleMount(app);
         break;
-      case 't':
-        setMode(app, 'tour');
+      case '[':
+        setStrip(app, s.strip - 1);
         break;
-      case 'i':
-        setMode(app, 'inspect');
+      case ']':
+        setStrip(app, s.strip + 1);
         break;
       case 'r':
-        if (!inTour) toggleMeasure(app);
+        toggleMeasure(app);
         break;
       case 'h':
-        if (!inTour && s.selected) setHidden(app, [s.selected], !s.hidden.has(s.selected));
+        if (s.selected) setHidden(app, [s.selected], !s.hidden.has(s.selected));
         break;
       case 'd': {
         const part = s.selected ? app.catalog.byNumber.get(s.selected) : undefined;
         if (part) showInDrawing(app, part);
         break;
       }
-      case '/':
-        if (inTour) setMode(app, 'inspect');
-        e.preventDefault();
-        app.commands.emit('search');
+      case '0':
+        resetModel(app);
         break;
-      case '?':
-        app.store.set({ help: true });
+      case '/':
+        e.preventDefault();
+        dismissIntro(app);
+        app.commands.emit('search');
         break;
       default:
         return;

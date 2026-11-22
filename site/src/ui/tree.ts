@@ -1,4 +1,4 @@
-import { isVisible, isolate, select, setHidden, showAll, type App } from '../app/context';
+import { isStripped, isVisible, isolate, select, setHidden, showAll, type App } from '../app/context';
 import { num } from '../data/format';
 import type { Assembly, Part } from '../data/types';
 import { clearNode, h, isPhone } from './dom';
@@ -45,7 +45,7 @@ export function buildTree(app: App): HTMLElement {
   // What the search looks through: number, name, function and material.
   const haystack = new Map<Part, string>();
   for (const p of catalog.parts) haystack.set(p, `${p.number}\n${p.name}\n${p.function}\n${p.material}`.toLowerCase());
-  const closeDrawer = h('button.btn.tree-close', { type: 'button', onclick: () => store.set({ drawer: false }) }, 'Close');
+  const closeDrawer = h('button.btn.tree-close', { type: 'button', onclick: () => store.set({ drawer: null }) }, 'Close');
   const panel = h(
     'aside.tree-panel',
     { 'aria-label': 'Assembly tree' },
@@ -126,7 +126,7 @@ export function buildTree(app: App): HTMLElement {
       );
     }
     const p = row.p;
-    const on = isVisible(app, p);
+    const on = isVisible(app, p) && !isStripped(app, p);
     return h(
       'div.tree-row.tree-part',
       {
@@ -224,7 +224,7 @@ export function buildTree(app: App): HTMLElement {
     if (row.kind === 'assembly') toggle(row.a);
     else {
       select(app, row.p.number);
-      if (store.get().drawer) store.set({ drawer: false });
+      if (store.get().drawer) store.set({ drawer: null });
     }
   });
   list.addEventListener('dblclick', (e) => {
@@ -294,7 +294,7 @@ export function buildTree(app: App): HTMLElement {
 
   app.commands.on('step', step);
   app.commands.on('search', () => {
-    if (isPhone() && !store.get().drawer) store.set({ drawer: true });
+    if (isPhone() && store.get().drawer !== 'parts') store.set({ drawer: 'parts' });
     requestAnimationFrame(() => input.focus());
   });
 
@@ -314,11 +314,11 @@ export function buildTree(app: App): HTMLElement {
     },
   );
   store.watch(
-    (s) => [s.hidden, s.isolated] as const,
+    (s) => [s.hidden, s.isolated, s.strip] as const,
     () => flatten(),
   );
   store.watch(
-    (s) => [s.mode !== 'tour', s.drawer] as const,
+    (s) => [s.tab, s.drawer, s.intro] as const,
     () => requestAnimationFrame(() => draw()),
   );
 

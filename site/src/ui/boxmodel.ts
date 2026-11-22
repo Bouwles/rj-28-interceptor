@@ -3,7 +3,7 @@
 // parts can still be located, picked and measured without a GPU. Boxes are
 // drawn far to near with an opaque fill, which hides what is behind them.
 
-import { isVisible, select, type App } from '../app/context';
+import { isStripped, isVisible, select, type App } from '../app/context';
 import type { BlueprintView, MountState } from '../app/store';
 import { spec } from '../data';
 import { mm, trim1 } from '../data/format';
@@ -182,7 +182,7 @@ export class BoxModel {
 
     const { store } = app;
     store.watch(
-      (st) => [st.mount, st.xray, st.hidden, st.isolated] as const,
+      (st) => [st.mount, st.xray, st.hidden, st.isolated, st.strip] as const,
       () => this.rebuild(),
     );
     store.watch(
@@ -229,7 +229,7 @@ export class BoxModel {
     const b = BASES[this.view];
     const shapes: Shape[] = [];
     for (const part of this.app.catalog.parts) {
-      if (!isVisible(this.app, part)) continue;
+      if (!isVisible(this.app, part) || isStripped(this.app, part)) continue;
       if (part.material_key === 'decal') continue; // no thickness: nothing to box
       const [lo, hi] = posedBox(part, mount, this.measured);
       const corners: P2[] = [];

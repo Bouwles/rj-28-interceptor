@@ -55,6 +55,9 @@ export interface Spec {
     traverse: number;
     trunnion: Vec3;
     bore_rise: number;
+    /** Smallest gap found by the swept-volume check, and the gap it had to beat. */
+    min_clearance_mm?: number;
+    required_clearance_mm?: number;
   };
   targets: {
     power: string;
@@ -76,6 +79,8 @@ export interface Spec {
     by_class: Record<string, number>;
   };
   part_count: number;
+  /** Strip-down stages: what each one removes. Stage 0 is what stays. */
+  strip?: { stage: number; title: string; parts: number; mass_kg: number }[];
   design_notes: DesignNote[];
 }
 
@@ -101,6 +106,8 @@ export interface Part {
   explode_stage: number;
   explode_offset: Vec3;
   mass_kg: number;
+  /** Strip-down stage that removes the part; 0 stays to the end. */
+  strip?: number;
 }
 
 export interface Assembly {

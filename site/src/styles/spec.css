@@ -1,0 +1,206 @@
+/* Specification tab: a reference page of ruled tables. */
+
+.spec-page {
+  position: fixed;
+  inset: var(--top-h) 0 var(--bottom-h) 0;
+  z-index: 25;
+  overflow-y: auto;
+  background: var(--bg);
+  scrollbar-color: var(--line-2) var(--bg);
+}
+.spec-page:focus {
+  outline: none;
+}
+.spec-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 56px 56px 72px;
+}
+.spec-head h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  font-stretch: 120%;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.spec-head p {
+  margin-top: 14px;
+  color: var(--text-2);
+}
+.spec-nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  border-top: 1px solid var(--line-2);
+  border-bottom: 1px solid var(--line-2);
+}
+.spec-nav a {
+  padding: 11px 22px 10px 0;
+  margin-right: 22px;
+  border-right: 1px solid var(--line);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  font-stretch: 92%;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-2);
+}
+.spec-nav a:last-child {
+  border-right: 0;
+}
+.spec-nav a:hover {
+  color: var(--text);
+}
+.spec-section {
+  margin-top: 64px;
+  scroll-margin-top: 24px;
+}
+.spec-section > h2 {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-2);
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-stretch: 114%;
+  letter-spacing: -0.01em;
+}
+.spec-lead,
+.spec-foot {
+  max-width: 78ch;
+  margin-top: 16px;
+  font-size: var(--fs-small);
+  color: var(--text-2);
+}
+.spec-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 56px;
+}
+.spec-cols .block {
+  margin-top: 28px;
+}
+.spec-cols.notes {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 24px;
+  align-items: start;
+}
+.spec-cols.notes .note {
+  margin-top: 28px;
+  background: var(--panel);
+}
+.spec-scroll {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+.spec-table th,
+.spec-table td {
+  padding: 6px 0 5px 20px;
+  white-space: nowrap;
+}
+.spec-table th:first-child {
+  padding-left: 0;
+}
+.spec-table thead th {
+  text-align: right;
+}
+.spec-table thead th:first-child,
+.spec-table .left {
+  text-align: left;
+}
+.spec-table td.left {
+  color: var(--text-2);
+  white-space: normal;
+}
+.spec-table tr.group th {
+  padding-top: 20px;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  font-stretch: 92%;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.spec-table th[scope='row'] {
+  color: var(--text);
+}
+.bom-asm {
+  border-bottom: 1px solid var(--line);
+}
+.bom-asm:first-of-type {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.bom-asm summary {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 110px 110px;
+  align-items: baseline;
+  padding: 9px 0 8px;
+  font-size: var(--fs-small);
+  cursor: pointer;
+  list-style: none;
+}
+.bom-asm summary::-webkit-details-marker {
+  display: none;
+}
+.bom-asm summary .data {
+  font-size: 0.75rem;
+  color: var(--text-2);
+  text-align: right;
+}
+.bom-asm summary .data:first-child {
+  color: var(--text);
+  text-align: left;
+}
+.bom-name {
+  font-weight: 550;
+}
+.bom-asm summary:hover {
+  background: var(--panel);
+}
+.bom-asm[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+.bom-asm .spec-scroll {
+  margin: 0 0 24px 34px;
+}
+.bom .link {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--line-2);
+  text-underline-offset: 3px;
+}
+.bom .link:hover {
+  text-decoration-color: var(--text);
+}
+.spec-page .colophon {
+  width: auto;
+  margin-top: 64px;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 1100px) {
+  .spec-cols.notes {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 760px) {
+  .spec-inner {
+    padding: 28px 18px 48px;
+  }
+  .spec-head h1 {
+    font-size: 2rem;
+  }
+  .spec-cols {
+    grid-template-columns: 1fr;
+  }
+  .spec-section {
+    margin-top: 44px;
+  }
+  .bom-asm summary {
+    grid-template-columns: 30px minmax(0, 1fr) 76px 76px;
+  }
+  .bom-asm .spec-scroll {
+    margin-left: 0;
+  }
+}

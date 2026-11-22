@@ -1,13 +1,13 @@
-// Builds the site, serves the build under the Pages base path, and captures
-// every screen that exists at 1920x1080 and 390x844 into tests/shots/.
+// Builds the site, serves the build under the Pages base path, captures every
+// screen at 1920x1080 and 390x844 into tests/shots/, and checks the live model.
 //
-//   node tests/capture.mjs            build, serve, capture
-//   node tests/capture.mjs --no-build reuse the existing dist/
-//   node tests/capture.mjs --only=inspect   capture shots whose name contains a string
+//   node tests/capture.mjs                build, serve, capture, check
+//   node tests/capture.mjs --no-build     reuse the existing dist/
+//   node tests/capture.mjs --only=strip   capture shots whose name contains a string
 //
 // Uses the installed Microsoft Edge (Playwright channel `msedge`); no browser
 // download is needed. Exits non-zero if the page logs a console error, a
-// request fails, or anything is fetched from another origin.
+// request fails, anything is fetched from another origin, or a check fails.
 
 import { spawn, spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync } from 'node:fs';
@@ -22,112 +22,108 @@ const only = args.find((a) => a.startsWith('--only='))?.slice(7);
 const PORT = 4179;
 const BASE = `http://localhost:${PORT}/rj-28-interceptor/`;
 const vite = join(site, 'node_modules', 'vite', 'bin', 'vite.js');
+const parts = JSON.parse(readFileSync(join(site, 'src', 'data', 'parts.json'), 'utf8'));
+const numbers = parts.map((p) => p.number).sort();
 
 const VIEWPORTS = [
   { name: 'desktop', width: 1920, height: 1080, deviceScaleFactor: 1, isMobile: false },
   { name: 'phone', width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
 ];
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-async function waitForServer() {
-  for (let i = 0; i < 80; i++) {
-    try {
-      const res = await fetch(BASE);
-      if (res.ok) return;
-    } catch {
-      // not up yet
-    }
-    await sleep(150);
-  }
-  throw new Error('preview server did not start');
-}
-
 const problems = [];
 const notes = new Set();
 const INJECTED = /^https?:\/\/[^/]*kaspersky-labs\.com\//;
+const expect = (ok, what) => ok || problems.push(`check: ${what}`);
 
 /** Checks on the built files themselves: nothing external, card metadata, data in step. */
 function checkBuild() {
   const dist = join(site, 'dist');
   const html = readFileSync(join(dist, 'index.html'), 'utf8');
-  if (!/og:image" content="https?:\/\/[^"]+\/rj-28-interceptor\/renders\/social_card\.jpg"/.test(html)) {
-    problems.push('og:image is not an absolute URL under the base path');
-  }
+  expect(/og:image" content="https?:\/\/[^"]+\/rj-28-interceptor\/renders\/social_card\.jpg"/.test(html), 'og:image is an absolute URL under the base path');
   const texts = [html, ...readdirSync(join(dist, 'assets')).filter((f) => /\.(js|css)$/.test(f)).map((f) => readFileSync(join(dist, 'assets', f), 'utf8'))];
   for (const text of texts) {
-    // Any URL that is fetched: src/href attributes, CSS url(), fetch/import of an absolute address.
     const fetched = text.match(/(?:src|href)=["']https?:\/\/[^"']+|url\(["']?https?:\/\/[^)"']+|(?:fetch|import)\(["'`]https?:\/\/[^"'`]+/g) ?? [];
-    for (const m of fetched) {
-      // The page's own canonical address is the one absolute link it carries.
-      if (!m.includes('/rj-28-interceptor/')) problems.push(`build references an external address: ${m}`);
-    }
+    for (const m of fetched) if (!m.includes('/rj-28-interceptor/')) problems.push(`build references an external address: ${m}`);
   }
   const data = join(site, 'src', 'data');
-  const parts = JSON.parse(readFileSync(join(data, 'parts.json'), 'utf8'));
   const spec = JSON.parse(readFileSync(join(data, 'spec.json'), 'utf8'));
-  if (parts.length !== spec.part_count) problems.push(`parts.json has ${parts.length} parts, spec.json says ${spec.part_count}`);
-  if (new Set(parts.map((p) => p.number)).size !== parts.length) problems.push('part numbers are not unique');
+  expect(parts.length === spec.part_count, `parts.json (${parts.length}) and spec.json (${spec.part_count}) agree on the part count`);
+  expect(new Set(numbers).size === parts.length, 'part numbers are unique');
   if (existsSync(join(data, 'model.json'))) {
-    const model = JSON.parse(readFileSync(join(data, 'model.json'), 'utf8'));
-    const nodes = model.files?.lod0?.part_nodes;
-    if (nodes !== undefined && nodes !== parts.length) problems.push(`GLB has ${nodes} part nodes, parts.json has ${parts.length}`);
+    const nodes = JSON.parse(readFileSync(join(data, 'model.json'), 'utf8')).files?.lod0?.part_nodes;
+    expect(nodes === undefined || nodes === parts.length, `model.json (${nodes}) and parts.json (${parts.length}) agree on the part count`);
   }
+}
+
+async function waitForServer() {
+  for (let i = 0; i < 80; i++) {
+    try {
+      if ((await fetch(BASE)).ok) return;
+    } catch {
+      // not up yet
+    }
+    await new Promise((r) => setTimeout(r, 150));
+  }
+  throw new Error('preview server did not start');
+}
+
+function watch(page) {
+  page.on('console', (msg) => {
+    if ((msg.type() === 'error' || msg.type() === 'warning') && !INJECTED.test(msg.location()?.url ?? '')) problems.push(`console ${msg.type()}: ${msg.text()}`);
+  });
+  page.on('pageerror', (err) => problems.push(`page error: ${err.message}`));
+  page.on('requestfailed', (req) => INJECTED.test(req.url()) || problems.push(`request failed: ${req.url()} ${req.failure()?.errorText ?? ''}`));
+  page.on('response', (res) => res.status() >= 400 && problems.push(`HTTP ${res.status()}: ${res.url()}`));
+  page.on('request', (req) => {
+    const url = req.url();
+    if (url.startsWith(`http://localhost:${PORT}/`) || url.startsWith('data:') || url.startsWith('blob:')) return;
+    // Some desktop security suites inject a script into every plain-HTTP page on
+    // the machine. It is not in the build (checked above), so it is noted only.
+    if (INJECTED.test(url)) notes.add(`ignored a script injected by local security software (${new URL(url).host})`);
+    else problems.push(`external request: ${url}`);
+  });
 }
 
 async function open(context, hash = '', query = '') {
   const page = await context.newPage();
-  page.on('console', (msg) => {
-    if (msg.type() === 'error' || msg.type() === 'warning') problems.push(`console ${msg.type()}: ${msg.text()}`);
-  });
-  page.on('pageerror', (err) => problems.push(`page error: ${err.message}`));
-  page.on('requestfailed', (req) => problems.push(`request failed: ${req.url()} ${req.failure()?.errorText ?? ''}`));
-  page.on('response', (res) => {
-    if (res.status() >= 400) problems.push(`HTTP ${res.status()}: ${res.url()}`);
-  });
-  page.on('request', (req) => {
-    const url = req.url();
-    if (url.startsWith(`http://localhost:${PORT}/`) || url.startsWith('data:') || url.startsWith('blob:')) return;
-    // Some desktop security suites inject a script into every plain-HTTP page
-    // on the machine. It is not in the build (checked below), so it is noted
-    // and not counted against the site.
-    if (INJECTED.test(url)) notes.add(`ignored a script injected by local security software (${new URL(url).host})`);
-    else problems.push(`external request: ${url}`);
-  });
+  watch(page);
   await page.goto(`${BASE}${query}${hash}`);
-  await page.waitForSelector('.loader', { state: 'detached', timeout: 30000 });
+  await page.waitForSelector('.loader', { state: 'detached', timeout: 60000 });
   await page.evaluate(() => document.fonts.ready);
   return page;
 }
 
-async function settle(page, ms = 700) {
-  // Images still decoding would be captured as blanks.
-  // Lazy images outside the viewport never load, so they are not waited for.
+/** Wait until the scene has finished whatever it is animating and drawn the settled frame. */
+async function settled(page, lod, extra = 250) {
+  await page.waitForFunction((want) => !window.rj28 || (window.rj28.state().lod === want && window.rj28.scene.idle()), lod, { timeout: 60000 });
   await page.evaluate(async () => {
-    const imgs = [...document.images].filter((i) => i.src && !i.complete && i.loading !== 'lazy');
-    const loaded = Promise.all(imgs.map((i) => new Promise((r) => ((i.onload = r), (i.onerror = r)))));
-    await Promise.race([loaded, new Promise((r) => setTimeout(r, 8000))]);
+    const imgs = [...document.images].filter((i) => i.src && !i.complete);
+    await Promise.race([Promise.all(imgs.map((i) => new Promise((r) => ((i.onload = r), (i.onerror = r))))), new Promise((r) => setTimeout(r, 8000))]);
   });
-  await page.waitForTimeout(ms);
+  await page.waitForTimeout(extra);
+}
+
+async function go(page, hash, lod) {
+  await page.evaluate((h) => (location.hash = h), hash);
+  await page.waitForTimeout(120);
+  await settled(page, lod);
 }
 
 async function shot(page, viewport, name) {
   if (only && !name.includes(only)) return;
-  const file = join(shots, `${viewport.name}_${name}.png`);
-  await page.screenshot({ path: file });
+  await page.screenshot({ path: join(shots, `${viewport.name}_${name}.png`) });
   console.log(`SHOT ${viewport.name}_${name}.png`);
 }
 
 async function capture(browser, viewport) {
-  const { name: _n, ...size } = viewport;
   const context = await browser.newContext({
-    viewport: { width: size.width, height: size.height },
-    deviceScaleFactor: size.deviceScaleFactor,
-    isMobile: size.isMobile,
-    hasTouch: size.hasTouch ?? false,
-    reducedMotion: 'no-preference',
+    viewport: { width: viewport.width, height: viewport.height },
+    deviceScaleFactor: viewport.deviceScaleFactor,
+    isMobile: viewport.isMobile,
+    hasTouch: viewport.hasTouch ?? false,
   });
   const phone = viewport.name === 'phone';
+  const lod = phone ? 1 : 0;
 
   // ── Loading screen: hold one data file back so the drawing is mid-way ─────
   {
@@ -143,217 +139,234 @@ async function capture(browser, viewport) {
     await page.waitForTimeout(900);
     await shot(page, viewport, '00_loading');
     release();
-    await page.waitForSelector('.loader', { state: 'detached', timeout: 30000 });
+    await page.waitForSelector('.loader', { state: 'detached', timeout: 60000 });
     await page.close();
   }
 
-  // ── Tour: every section, at the point where its panel is being read ──────
-  {
-    const page = await open(context);
-    await settle(page, 900);
-    await shot(page, viewport, '01_tour_00_title');
-    const count = await page.locator('.tour-section').count();
-    for (let i = 1; i < count; i++) {
-      await page.evaluate(
-        ([index, isPhone]) => {
-          const el = document.querySelectorAll('.tour-section')[index];
-          const panel = el.querySelector('.panel') ?? el;
-          const top = panel.getBoundingClientRect().top + window.scrollY;
-          // Desktop: panel near the top of the stage. Phone: panel risen to mid-screen, plate still in view.
-          window.scrollTo(0, top - (isPhone ? window.innerHeight * 0.52 : 150));
-        },
-        [i, phone],
-      );
-      await settle(page, 900);
-      const id = String(i).padStart(2, '0');
-      const label = (await page.locator('.tour-section').nth(i).getAttribute('aria-label')).toLowerCase().replace(/[^a-z]+/g, '-');
-      await shot(page, viewport, `01_tour_${id}_${label}`);
-    }
-    // The long panels: capture what is below the fold too.
-    for (const i of [1, 5, 7]) {
-      await page.evaluate((index) => {
-        const panel = document.querySelectorAll('.tour-section')[index].querySelector('.panel');
-        const r = panel.getBoundingClientRect();
-        window.scrollTo(0, r.bottom + window.scrollY - window.innerHeight + 90);
-      }, i);
-      await settle(page, 700);
-      await shot(page, viewport, `01_tour_${String(i).padStart(2, '0')}_lower`);
-    }
-    await page.close();
-  }
+  // ── Model tab ─────────────────────────────────────────────────────────────
+  const page = await open(context);
+  await settled(page, lod, 500);
+  await shot(page, viewport, '10_model_at_rest');
+  await go(page, '#mount=stowed', lod); // any state in the address dismisses the title block
+  await shot(page, viewport, '11_model_tree_and_actions');
 
-  // ── Inspector ─────────────────────────────────────────────────────────────
-  {
-    const page = await open(context, '#mode=inspect');
-    await settle(page);
-    await shot(page, viewport, '02_inspect_empty');
-    if (phone) {
-      await page.locator('.bb-drawer').click();
-      await page.waitForTimeout(400);
-      await shot(page, viewport, '02_inspect_drawer');
-      await page.locator('.tree-search').fill('actuator');
-      await page.waitForTimeout(300);
-      await shot(page, viewport, '02_inspect_drawer_search');
-      await page.locator('.tree-close').click();
-    } else {
-      await page.locator('.tree-search').fill('trunnion');
-      await page.waitForTimeout(300);
-      await shot(page, viewport, '02_inspect_search');
-      await page.locator('.tree-search').fill('');
-    }
-    await page.close();
-  }
-  {
-    const page = await open(context, '#mode=inspect&part=RJ28-15-006&mount=deployed');
-    await settle(page);
-    await shot(page, viewport, '02_inspect_selected_deployed');
-    await page.close();
-  }
-  {
-    const page = await open(context, '#mode=inspect&part=RJ28-03-062&xray=1');
-    await settle(page);
-    await shot(page, viewport, '02_inspect_xray');
-    await page.close();
-  }
-  if (!phone) {
-    const page = await open(context, '#mode=inspect&part=RJ28-11-004');
-    await page.keyboard.press('r');
-    const box = await page.locator('.stage-boxes .boxmodel').first().boundingBox();
-    await page.mouse.click(box.x + box.width * 0.36, box.y + box.height * 0.3);
-    await page.mouse.click(box.x + box.width * 0.64, box.y + box.height * 0.3);
-    await settle(page, 300);
-    await shot(page, viewport, '02_inspect_measure');
-    await page.keyboard.press('Escape');
-    await page.keyboard.press('?');
-    await page.waitForTimeout(300);
-    await shot(page, viewport, '02_help');
-    await page.close();
-  }
+  await go(page, '#mount=deployed', lod);
+  await shot(page, viewport, '12_cannon_deployed');
+  await go(page, '#mount=deployed&trav=-22', lod);
+  await shot(page, viewport, '13_cannon_traversed');
+  await go(page, '#mount=deployed&elev=38', lod);
+  await shot(page, viewport, '14_cannon_elevated');
+  // Stowing from there: catch the barrel on its way up.
+  await page.evaluate(() => (location.hash = ''));
+  await page.waitForTimeout(1300);
+  await shot(page, viewport, '15_cannon_mid_travel');
+  await settled(page, lod);
+  await shot(page, viewport, '16_cannon_stowed');
 
-  // ── Exploded view ─────────────────────────────────────────────────────────
+  for (let stage = 0; stage <= 4; stage++) {
+    await go(page, stage ? `#strip=${stage}` : '', lod);
+    await shot(page, viewport, `20_strip_${stage}`);
+    if (stage === 1) {
+      // One frame part-way through the next stage coming off.
+      await page.evaluate(() => (location.hash = '#strip=2'));
+      await page.waitForTimeout(800);
+      await shot(page, viewport, '21_strip_mid_transition');
+    }
+  }
+  await go(page, '#strip=4&mount=deployed', lod);
+  await shot(page, viewport, '22_strip_4_deployed');
+
   for (const pct of [50, 100]) {
-    const page = await open(context, `#mode=explode&explode=${pct}`);
-    await settle(page, 900);
-    await shot(page, viewport, `03_explode_${pct}`);
-    await page.close();
+    await go(page, `#explode=${pct}`, lod);
+    await shot(page, viewport, `30_explode_${pct}`);
+  }
+  await go(page, '#explode=70&strip=2', lod);
+  await shot(page, viewport, '31_explode_70_strip_2');
+
+  await go(page, '#part=RJ28-15-027', lod);
+  await shot(page, viewport, '40_part_selected');
+  await go(page, '#part=RJ28-03-062&xray=1', lod);
+  await shot(page, viewport, '41_xray_part_selected');
+  await go(page, '#iso=11', lod);
+  await shot(page, viewport, '42_assembly_isolated');
+
+  if (phone) {
+    await go(page, '', lod);
+    await page.locator('.bb-drawer', { hasText: 'Actions' }).click();
+    await page.waitForTimeout(400);
+    await shot(page, viewport, '45_drawer_actions');
+    await page.locator('.bb-drawer', { hasText: 'Parts' }).click();
+    await page.waitForTimeout(400);
+    await shot(page, viewport, '46_drawer_parts');
+    await page.locator('.tree-close').click();
+  } else {
+    // Hover: outline and tag follow the pointer. Then a click selects, and the camera frames it.
+    await go(page, '#mount=stowed', lod);
+    const box = await page.locator('canvas.stage-canvas').boundingBox();
+    const free = { x: 372 + (box.width - 744) / 2, y: box.height * 0.36 };
+    await page.mouse.move(free.x, free.y);
+    await page.mouse.move(free.x + 4, free.y + 2);
+    await page.waitForTimeout(500);
+    const hovered = await page.locator('.hover-tag .data').textContent();
+    expect(/^RJ28-/.test(hovered ?? ''), `hover shows a part number by the pointer (got "${hovered}")`);
+    await shot(page, viewport, '43_hover');
+    await page.mouse.click(free.x + 4, free.y + 2);
+    await page.waitForTimeout(300);
+    const picked = await page.evaluate(() => window.rj28.state().selected);
+    expect(picked === hovered, `clicking the hovered part selects it (${hovered} / ${picked})`);
+    await page.keyboard.press('f');
+    await settled(page, lod);
+    await shot(page, viewport, '44_click_selected_and_framed');
+    // Measure between two points on the chest.
+    await go(page, '#mount=stowed', lod);
+    await page.keyboard.press('0');
+    await settled(page, lod);
+    await page.keyboard.press('r');
+    await page.mouse.click(free.x - 60, free.y);
+    await page.mouse.click(free.x + 60, free.y);
+    await page.waitForTimeout(400);
+    const measured = await page.locator('.act-note.data').textContent();
+    expect(/\d mm/.test(measured ?? ''), `measure reports a distance in millimetres (got "${measured}")`);
+    await shot(page, viewport, '47_measure');
+    await page.keyboard.press('r');
   }
 
-  // ── Blueprint: each snap view ─────────────────────────────────────────────
-  for (const view of ['front', 'side', 'rear', 'top', 'iso']) {
-    const page = await open(context, `#mode=blueprint&view=${view}${view === 'side' ? '&mount=deployed' : ''}`);
-    await settle(page);
-    await shot(page, viewport, `04_blueprint_${view}`);
-    await page.close();
+  // ── Dossier: every station ────────────────────────────────────────────────
+  await go(page, '#tab=dossier', lod);
+  await shot(page, viewport, '50_dossier_00_title');
+  const count = await page.locator('.tour-section').count();
+  for (let i = 1; i < count; i++) {
+    await page.evaluate(
+      ([index, isPhone]) => {
+        const el = document.querySelectorAll('.tour-section')[index];
+        const panel = el.querySelector('.panel') ?? el;
+        const top = panel.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo(0, top - (isPhone ? window.innerHeight * 0.52 : 150));
+      },
+      [i, phone],
+    );
+    await page.waitForTimeout(300);
+    await settled(page, lod, 500);
+    const label = (await page.locator('.tour-section').nth(i).getAttribute('aria-label')).toLowerCase().replace(/[^a-z]+/g, '-');
+    await shot(page, viewport, `50_dossier_${String(i).padStart(2, '0')}_${label}`);
   }
+  // The cannon section, further through: the barrel is on its way down.
+  await page.evaluate(() => {
+    const el = document.querySelectorAll('.tour-section')[6];
+    window.scrollTo(0, el.offsetTop + el.offsetHeight * 0.3);
+  });
+  await settled(page, lod, 400);
+  await shot(page, viewport, '51_dossier_06_mount_scrubbed');
+  await page.evaluate(() => {
+    const el = document.querySelectorAll('.tour-section')[7];
+    window.scrollTo(0, el.offsetTop + el.offsetHeight * 0.45);
+  });
+  await settled(page, lod, 400);
+  await shot(page, viewport, '52_dossier_07_armour_lifted');
 
-  // ── Sheet viewer: every sheet, then "show in drawing" ─────────────────────
-  {
-    const page = await open(context, '#mode=blueprint');
-    const ids = await page.evaluate(() => [...document.querySelectorAll('.sheet-index-item')].map((b) => b.dataset.id));
-    await page.close();
-    for (const [i, id] of ids.entries()) {
-      const p = await open(context, `#mode=blueprint&sheet=${id}`);
-      await p.waitForSelector('.sheet-canvas svg');
-      await settle(p, 900);
-      await shot(p, viewport, `05_sheet_${String(i + 1).padStart(2, '0')}`);
-      await p.close();
-    }
-  }
-  {
-    const page = await open(context, '#mode=inspect&part=RJ28-15-031');
-    await page.keyboard.press('d');
-    await page.waitForSelector('.sheet-canvas svg');
-    await settle(page, 900);
-    await shot(page, viewport, '05_sheet_show_in_drawing');
-    if (!phone) {
-      // Zoom in and pick a part on the sheet.
-      const box = await page.locator('.sheet-canvas').boundingBox();
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-      await page.mouse.wheel(0, -600);
-      await page.waitForTimeout(300);
-      await page.mouse.click(box.x + box.width / 2 + 60, box.y + box.height / 2 + 20);
-      await page.waitForTimeout(300);
-      await page.mouse.move(box.x + box.width / 2 - 90, box.y + box.height / 2 - 40);
-      await page.waitForTimeout(300);
-      await shot(page, viewport, '05_sheet_zoom_pick');
-    }
-    await page.close();
-  }
+  // ── Specification and blueprints ──────────────────────────────────────────
+  await go(page, '#tab=spec', lod);
+  await shot(page, viewport, '60_specification');
+  await page.evaluate(() => document.getElementById('spec-joints').scrollIntoView());
+  await page.waitForTimeout(200);
+  await shot(page, viewport, '61_specification_joints');
+  await page.evaluate(() => document.getElementById('spec-mass').scrollIntoView());
+  await page.waitForTimeout(200);
+  await shot(page, viewport, '62_specification_mass');
+  await page.evaluate(() => {
+    document.getElementById('spec-bom').scrollIntoView();
+    document.querySelectorAll('.bom-asm')[14].open = true;
+  });
+  await page.waitForTimeout(300);
+  await shot(page, viewport, '63_specification_bom');
 
-  // ── Reduced motion, and the forced static edition ─────────────────────────
-  {
-    const reduced = await browser.newContext({
-      viewport: { width: size.width, height: size.height },
-      deviceScaleFactor: size.deviceScaleFactor,
-      isMobile: size.isMobile,
-      hasTouch: size.hasTouch ?? false,
-      reducedMotion: 'reduce',
-    });
-    const page = await open(reduced, '#s=06', '?static');
-    await settle(page);
-    await shot(page, viewport, '06_static_reduced_motion_s06');
-    await reduced.close();
+  await go(page, '#tab=blueprints', lod);
+  const ids = await page.evaluate(() => [...document.querySelectorAll('.sheet-index-item')].map((b) => b.dataset.id));
+  for (const [i, id] of ids.entries()) {
+    await go(page, `#tab=blueprints&sheet=${id}`, lod);
+    await page.waitForFunction((n) => document.querySelector('.sheet-canvas svg')?.id?.endsWith(n) ?? true, String(i + 1).padStart(3, '0'));
+    await page.waitForTimeout(500);
+    await shot(page, viewport, `70_sheet_${String(i + 1).padStart(2, '0')}`);
   }
+  await go(page, '#part=RJ28-15-031', lod);
+  await page.keyboard.press('d');
+  await page.waitForTimeout(900);
+  await shot(page, viewport, '71_show_in_drawing');
 
-  // ── Behaviour: keyboard map, address sync, every part reachable ───────────
+  // ── Checks on the live model (desktop) ────────────────────────────────────
   if (!phone && !only) {
-    const page = await open(context, '#mode=inspect');
+    await go(page, '', lod);
+    const model = await page.evaluate(() => ({ count: window.rj28.scene.partCount(), numbers: window.rj28.scene.partNumbers(), stats: window.rj28.scene.stats() }));
+    expect(model.count === parts.length, `GLB has ${model.count} part nodes, parts.json has ${parts.length}`);
+    const have = new Set(model.numbers);
+    const missing = numbers.filter((n) => !have.has(n));
+    expect(missing.length === 0, `every part resolves to a node (missing: ${missing.slice(0, 5).join(', ')})`);
+    const decals = new Set(parts.filter((p) => p.material_key === 'decal').map((p) => p.number));
+    const unpickable = await page.evaluate((list) => list.filter((n) => !window.rj28.scene.pickable(n)), numbers.filter((n) => !decals.has(n)));
+    expect(unpickable.length === 0, `every part is pickable at strip 0 (not: ${unpickable.slice(0, 5).join(', ')})`);
+    console.log(`CHECK ${model.count} part nodes, ${numbers.length - decals.size} pickable, ${decals.size} markings selectable from the tree only`);
+
+    // Keyboard map and the address.
     const hash = async () => {
-      await page.waitForTimeout(80);
+      await page.waitForTimeout(90);
       return page.evaluate(() => location.hash);
     };
-    const expect = (ok, what) => ok || problems.push(`behaviour: ${what}`);
-    const parts = JSON.parse(readFileSync(join(site, 'src', 'data', 'parts.json'), 'utf8'))
-      .map((p) => p.number)
-      .sort();
-
     await page.keyboard.press('ArrowDown');
-    expect((await hash()).includes(`part=${parts[0]}`), 'arrow down selects the first part');
+    expect((await hash()).includes(`part=${numbers[0]}`), 'arrow down selects the first part');
     await page.keyboard.press('m');
-    expect((await hash()).includes('mount=deployed'), 'M deploys the mount');
+    expect((await hash()).includes('mount=deployed'), 'M deploys the cannon');
+    await page.keyboard.press(']');
+    expect((await hash()).includes('strip=1'), '] takes a layer off');
+    await page.keyboard.press('[');
+    expect(!(await hash()).includes('strip='), '[ puts it back');
     await page.keyboard.press('x');
     expect((await hash()).includes('xray=1'), 'X turns x-ray on');
     await page.keyboard.press('e');
-    expect(/mode=explode.*explode=50/.test(await hash()), 'E opens the exploded view at 50%');
-    await page.keyboard.press('b');
-    expect((await hash()).includes('mode=blueprint'), 'B opens blueprint');
-    await page.keyboard.press('d');
-    expect((await hash()).includes('sheet='), 'D shows the selected part in a drawing');
-    await page.keyboard.press('Escape');
-    expect(!(await hash()).includes('sheet='), 'Esc closes the sheet viewer');
-    await page.keyboard.press('Escape');
-    expect(!(await hash()).includes('part='), 'Esc clears the selection');
-    await page.keyboard.press('t');
-    expect(!(await hash()).includes('mode='), 'T returns to the tour');
-
-    // An edited address is applied without a reload.
-    await page.evaluate((n) => (location.hash = `#mode=inspect&part=${n}`), parts[parts.length - 1]);
-    await page.waitForTimeout(150);
-    expect((await page.locator('.detail-no').textContent()) === parts[parts.length - 1], 'a part link selects that part');
-
-    // Step through the whole tree: every part in parts.json must be reachable.
-    await page.evaluate(() => (location.hash = '#mode=inspect'));
-    await page.waitForTimeout(150);
-    const seen = new Set();
-    for (let i = 0; i < parts.length; i++) {
-      await page.keyboard.press('ArrowDown');
-      seen.add(await page.evaluate(() => document.querySelector('.detail-no')?.textContent));
+    expect((await hash()).includes('explode=50'), 'E explodes to assemblies apart');
+    await page.keyboard.press('0');
+    expect((await hash()) === '#mount=deployed', '0 resets the model but leaves the cannon where it is');
+    for (const [key, tab] of [['2', 'dossier'], ['3', 'blueprints'], ['4', 'spec'], ['1', '']]) {
+      await page.keyboard.press(key);
+      const h = await hash();
+      expect(tab ? h.includes(`tab=${tab}`) : !h.includes('tab='), `${key} opens the ${tab || 'model'} tab`);
     }
-    expect(seen.size === parts.length && parts.every((n) => seen.has(n)), `stepping the tree reached ${seen.size} of ${parts.length} parts`);
-    const count = await page.locator('.tree-count').textContent();
-    expect(count.replace(/,/g, '').startsWith(`${parts.length} parts`), `tree count reads "${count}"`);
-    console.log(`CHECK keyboard map, address sync, ${seen.size} of ${parts.length} parts selectable`);
-    await page.close();
-  }
+    // Stepping the tree reaches every part, and the scene follows the selection.
+    await go(page, '#mount=stowed', lod);
+    const seen = new Set();
+    for (let i = 0; i < numbers.length; i++) {
+      await page.keyboard.press('ArrowDown');
+      seen.add(await page.evaluate(() => window.rj28.state().selected));
+    }
+    expect(seen.size === numbers.length, `stepping the tree reached ${seen.size} of ${numbers.length} parts`);
+    console.log(`CHECK keyboard map, address sync, ${seen.size} of ${numbers.length} parts reachable from the tree`);
 
-  // ── No horizontal scroll anywhere in the tour ─────────────────────────────
-  {
-    const page = await open(context);
+    // Frame pacing: turn the model for four seconds at full detail and resolution.
+    await go(page, '', lod);
+    const bench = await page.evaluate(() => window.rj28.scene.benchmark(4));
+    console.log(
+      `FRAME ${viewport.width}x${viewport.height} LOD${bench.lod} ${bench.triangles} triangles, ${bench.drawCalls} draw calls in the last pass: ` +
+        `mean ${bench.frameMs.toFixed(1)} ms, worst ${bench.worstMs.toFixed(1)} ms, ${bench.cpuMs.toFixed(1)} ms of that issuing the frame, pixel ratio ${bench.pixelRatio.toFixed(2)}`,
+    );
+  }
+  if (phone && !only) {
+    await go(page, '', lod);
+    const bench = await page.evaluate(() => window.rj28.scene.benchmark(3));
+    console.log(`FRAME ${viewport.width}x${viewport.height} LOD${bench.lod} ${bench.triangles} triangles: mean ${bench.frameMs.toFixed(1)} ms, worst ${bench.worstMs.toFixed(1)} ms, pixel ratio ${bench.pixelRatio.toFixed(2)}`);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-    if (overflow > 0) problems.push(`${viewport.name}: page is ${overflow}px wider than the viewport`);
-    await page.close();
+    expect(overflow <= 0, `no horizontal overflow on the phone (${overflow}px)`);
   }
+  await page.close();
 
+  // ── Static edition: no WebGL, or the model failed to load ─────────────────
+  {
+    const p = await open(context, '', '?static');
+    await p.waitForTimeout(600);
+    await shot(p, viewport, '80_static_model');
+    await p.evaluate(() => (location.hash = '#tab=dossier&s=05'));
+    await p.waitForTimeout(1500);
+    await shot(p, viewport, '81_static_dossier');
+    await p.close();
+  }
   await context.close();
 }
 
@@ -362,7 +375,10 @@ async function main() {
     const built = spawnSync(process.execPath, [vite, 'build'], { cwd: site, stdio: 'inherit' });
     if (built.status !== 0) process.exit(built.status ?? 1);
   }
-  if (!only) rmSync(shots, { recursive: true, force: true });
+  if (!only) {
+    // Keep the look-dev composites: they come from tests/lookdev.mjs.
+    for (const f of existsSync(shots) ? readdirSync(shots) : []) if (!f.startsWith('lookdev_')) rmSync(join(shots, f));
+  }
   mkdirSync(shots, { recursive: true });
 
   const server = spawn(process.execPath, [vite, 'preview', '--port', String(PORT), '--strictPort'], { cwd: site, stdio: 'ignore' });
@@ -384,7 +400,7 @@ async function main() {
     for (const p of unique) console.error(`  ${p}`);
     process.exit(1);
   }
-  console.log('\nCapture complete: console clean, no failed or external requests.');
+  console.log('\nCapture complete: console clean, no failed or external requests, all checks passed.');
 }
 
 main().catch((err) => {

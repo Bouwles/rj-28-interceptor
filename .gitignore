@@ -21,3 +21,7 @@ Thumbs.db
 
 # site test captures
 site/tests/shots/
+
+# concept reference stays local
+reference/
+docs/review/phase2/G1_vs_reference.jpg

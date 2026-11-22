@@ -15,7 +15,7 @@ const capital = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
 export function buildDetail(app: App): HTMLElement {
   const { store, catalog } = app;
   const body = h('div.detail-body');
-  const panel = h('aside.detail-panel', { 'aria-label': 'Selected part', hidden: true }, body);
+  const panel = h('section.detail', { 'aria-label': 'Selected part', hidden: true }, body);
 
   const render = () => {
     const { selected, hidden, isolated } = store.get();

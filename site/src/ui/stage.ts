@@ -1,9 +1,8 @@
 import type { App } from '../app/context';
-import type { Mode } from '../app/store';
 import { publicUrl, spec } from '../data';
 import { num, pad2 } from '../data/format';
 import { imageSize } from '../loader/assets';
-import { BoxModel, GRID_MM, VIEW_TITLE, viewReadout } from './boxmodel';
+import { BoxModel, VIEW_TITLE } from './boxmodel';
 import { h } from './dom';
 import { SECTIONS, type PlateDef } from './tour-content';
 
@@ -79,14 +78,12 @@ function arm(fig: HTMLElement): void {
 }
 
 /**
- * The static edition of the stage: hero renders for the tour, a box model for
- * the inspector and blueprint modes, the exploded render for the exploded
- * view. It reads the same store the 3D scene would.
+ * The static edition of the stage, for a browser with no WebGL 2 or a model
+ * that did not load: hero renders behind the dossier, and a drawing of the
+ * part bounding boxes on the model tab so parts can still be found and picked.
  */
 export function buildStaticStage(app: App): HTMLElement {
   const { store } = app;
-
-  // Tour plates, one per section.
   const exploded = SECTIONS.find((x) => x.plate !== 'sheet' && x.plate.file === 'exploded.jpg')!.plate as PlateDef;
   const plates: HTMLElement[] = SECTIONS.map((def, i) => {
     if (def.plate === 'sheet') return sheetPlate(app, i) ?? plateFigure(exploded, i);
@@ -94,62 +91,29 @@ export function buildStaticStage(app: App): HTMLElement {
   });
   const plateLayer = h('div.stage-plates', null, plates);
 
-  // Exploded view: the render, and a plain statement of what the slider does not do here.
-  const explodedIndex = SECTIONS.findIndex((x) => x.plate !== 'sheet' && x.plate.file === exploded.file);
-  const explodedFig = plateFigure({ ...exploded, caption: 'Exploded by assembly. The slider drives the 3D model only.' }, explodedIndex);
-  const explodeLayer = h('div.stage-plates.stage-explode', null, explodedFig);
-
-  // Inspector: front and side elevations. Blueprint: one dimensioned view.
   const front = new BoxModel(app, 'front', { dimensions: false });
   const side = new BoxModel(app, 'side', { dimensions: false });
-  const caption = (title: string) =>
-    h('figcaption', null, h('span.cap', null, title), h('span', null, 'Part bounding boxes from the measured data'));
-  const inspectLayer = h(
+  const caption = (title: string, note: string) => h('figcaption', null, h('span.cap', null, title), h('span', null, note));
+  const boxLayer = h(
     'div.stage-boxes',
     null,
-    h('figure.boxfig', null, front.el, caption(VIEW_TITLE.front)),
-    h('figure.boxfig', null, side.el, caption(VIEW_TITLE.side)),
-  );
-  const print = new BoxModel(app, store.get().view, { dimensions: true });
-  const printCap = h('span.cap');
-  const printNote = h('span');
-  const printLayer = h(
-    'div.stage-boxes.stage-print',
-    null,
-    h('figure.boxfig', null, print.el, h('figcaption', null, printCap, printNote)),
+    h('figure.boxfig', null, front.el, caption(VIEW_TITLE.front, 'Part bounding boxes from the measured data')),
+    h('figure.boxfig', null, side.el, caption(VIEW_TITLE.side, 'Pick a box to select the part')),
   );
 
-  const root = h('div.static-stage', null, plateLayer, explodeLayer, inspectLayer, printLayer);
-
-  const layers: Record<Mode, HTMLElement> = {
-    tour: plateLayer,
-    explode: explodeLayer,
-    inspect: inspectLayer,
-    blueprint: printLayer,
-  };
-
+  const root = h('div.static-stage', null, plateLayer, boxLayer);
   store.watch(
-    (s) => [s.mode, s.section, s.view] as const,
-    ([mode, section, view]) => {
-      for (const [m, layer] of Object.entries(layers)) layer.hidden = m !== mode;
-      if (mode === 'tour') {
+    (s) => [s.tab, s.section] as const,
+    ([tab, section]) => {
+      plateLayer.hidden = tab !== 'dossier';
+      boxLayer.hidden = tab !== 'model';
+      if (tab === 'dossier') {
         plates.forEach((fig, i) => {
           if (Math.abs(i - section) <= 1) arm(fig);
           fig.classList.toggle('on', i === section);
         });
-      } else if (mode === 'explode') {
-        arm(explodedFig);
-        explodedFig.classList.add('on');
-      } else if (mode === 'blueprint') {
-        print.setView(view);
-        printCap.textContent = VIEW_TITLE[view];
-        printNote.textContent =
-          view === 'iso'
-            ? 'Part bounding boxes, seen from the front right'
-            : `Part bounding boxes on a ${GRID_MM} mm grid. Overall dimensions in mm, from the measured envelope.`;
       }
-      // A flat view has real angles; a render has no camera to read.
-      app.camera.set(mode === 'blueprint' ? viewReadout(view) : null);
+      app.camera.set(null); // a render or a flat drawing has no camera to read
     },
   );
   return root;
