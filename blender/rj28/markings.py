@@ -12,6 +12,37 @@ from .lib import fittings as F
 from .lib.core import MM
 
 SRGB_WHITE = (0.56, 0.56, 0.55)             # paint, not paper: bright enough to read, never the brightest thing
+FLAG_RED, FLAG_GREEN = (0.36, 0.007, 0.010), (0.0, 0.17, 0.04)   # the flag's red and green, toned to paint like the white
+
+# Cedar of the Lebanese flag, right half, in a unit box (x from the axis, y up): tiers of
+# upswept boughs over a short trunk. It stands the full height of the white band.
+_CEDAR = [(0.0, 1.0), (0.05, 0.93), (0.03, 0.905), (0.17, 0.80), (0.07, 0.775), (0.31, 0.61), (0.12, 0.575),
+          (0.43, 0.41), (0.15, 0.365), (0.50, 0.215), (0.47, 0.155), (0.055, 0.15), (0.05, 0.0)]
+
+
+def _poly(sc, pts, mat, z=0.0):
+    me = bpy.data.meshes.new("_p")
+    me.from_pydata([(x * MM, y * MM, z) for x, y in pts], [], [list(range(len(pts)))])
+    me.materials.append(mat)
+    ob = bpy.data.objects.new("_p", me)
+    sc.collection.objects.link(ob)
+    return ob
+
+
+def _flag_lebanon(sc, x, y, w, h, mats):
+    """Red, white, red in 1 : 2 : 1 with the green cedar centred on the white band, one third of the fly wide."""
+    out = [_poly(sc, [(x, y + h * 0.75), (x + w, y + h * 0.75), (x + w, y + h), (x, y + h)], mats["flag_red"]),
+           _poly(sc, [(x, y + h * 0.25), (x + w, y + h * 0.25), (x + w, y + h * 0.75), (x, y + h * 0.75)], mats["white"]),
+           _poly(sc, [(x, y), (x + w, y), (x + w, y + h * 0.25), (x, y + h * 0.25)], mats["flag_red"])]
+    cw, ch, cx, cy = w / 3, h * 0.5, x + w / 2, y + h * 0.25
+    for a, b in zip(_CEDAR, _CEDAR[1:]):             # strips out from the axis: every piece is convex
+        for sgn in (1, -1):
+            out.append(_poly(sc, [(cx, cy + a[1] * ch), (cx + sgn * a[0] * cw, cy + a[1] * ch),
+                                  (cx + sgn * b[0] * cw, cy + b[1] * ch), (cx, cy + b[1] * ch)], mats["flag_green"], 0.001))
+    return out
+
+
+PICTURES = {"@flag_lebanon": _flag_lebanon}
 
 
 def _pack(items, side, margin):
@@ -53,7 +84,8 @@ def build_atlas(path, size=2048):
     sc.collection.objects.link(cam)
     sc.camera = cam
     mats = {}
-    for name, col in (("white", SRGB_WHITE), ("cyan", tuple(c * 0.62 for c in M.CYAN)), ("dark", (0.012, 0.012, 0.013))):
+    for name, col in (("white", SRGB_WHITE), ("cyan", tuple(c * 0.62 for c in M.CYAN)), ("dark", (0.012, 0.012, 0.013)),
+                      ("flag_red", FLAG_RED), ("flag_green", FLAG_GREEN)):
         m = bpy.data.materials.new("_atlas_" + name)
         m.use_nodes = True
         nt = m.node_tree
@@ -67,6 +99,9 @@ def build_atlas(path, size=2048):
     for k in keys:
         d = uniq[k]
         x, y, w, h = rects[k]
+        if d["text"] in PICTURES:
+            made += [(ob, x, y, w, h) for ob in PICTURES[d["text"]](sc, x, y, w, h, mats)]
+            continue
         tw, th, cx, cy = F.text_metrics(d["text"])
         s = d["cap"] / th * MM
         cu = bpy.data.curves.new("_t", "FONT")
@@ -95,9 +130,9 @@ def build_atlas(path, size=2048):
     sc.render.filepath = str(path)
     bpy.ops.render.render(write_still=True, scene=sc.name)
     for ob, *_ in made:
-        cu = ob.data
+        data = ob.data
         bpy.data.objects.remove(ob)
-        bpy.data.curves.remove(cu)
+        (bpy.data.curves if isinstance(data, bpy.types.Curve) else bpy.data.meshes).remove(data)
     bpy.data.objects.remove(cam)
     bpy.data.scenes.remove(sc)
 

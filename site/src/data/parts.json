@@ -28,13 +28,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0147
   ],
-  "mass_kg": 0.093
+  "mass_kg": 0.094
  },
  {
   "number": "RJ28-01-002",
@@ -65,13 +66,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
    -0.0791,
    -0.0131
   ],
-  "mass_kg": 0.098
+  "mass_kg": 0.1
  },
  {
   "number": "RJ28-01-003",
@@ -102,13 +104,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0703,
    -0.0261
   ],
-  "mass_kg": 0.075
+  "mass_kg": 0.076
  },
  {
   "number": "RJ28-01-004",
@@ -139,13 +142,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
    0.0904,
    -0.0196
   ],
-  "mass_kg": 0.152
+  "mass_kg": 0.155
  },
  {
   "number": "RJ28-01-005",
@@ -176,13 +180,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0172
   ],
-  "mass_kg": 0.058
+  "mass_kg": 0.06
  },
  {
   "number": "RJ28-01-006",
@@ -213,6 +218,7 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1191,
@@ -250,13 +256,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1147,
    -0.0532,
    -0.0097
   ],
-  "mass_kg": 0.001
+  "mass_kg": 0.002
  },
  {
   "number": "RJ28-01-008",
@@ -287,13 +294,14 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.106,
    -0.0541,
    -0.0095
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-01-009",
@@ -324,6 +332,7 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1196,
@@ -361,6 +370,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1251,
@@ -398,6 +408,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1163,
@@ -435,6 +446,7 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -472,6 +484,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0346,
@@ -509,6 +522,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0207,
@@ -546,6 +560,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -583,6 +598,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -620,6 +636,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
@@ -657,6 +674,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -694,13 +712,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
    -0.145,
    -0.0156
   ],
-  "mass_kg": 0.083
+  "mass_kg": 0.085
  },
  {
   "number": "RJ28-01-020",
@@ -731,6 +750,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -768,6 +788,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -805,6 +826,7 @@
   "density": 2500,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -842,6 +864,7 @@
   "density": 1200,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -879,6 +902,7 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -916,6 +940,7 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.054,
@@ -953,6 +978,7 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.054,
@@ -990,6 +1016,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0601,
@@ -1027,6 +1054,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0608,
@@ -1064,6 +1092,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0509,
@@ -1101,6 +1130,7 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0733,
@@ -1138,6 +1168,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0602,
@@ -1175,6 +1206,7 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0534,
@@ -1212,6 +1244,7 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0641,
@@ -1249,6 +1282,7 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0759,
@@ -1286,6 +1320,7 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0113,
@@ -1323,6 +1358,7 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1360,6 +1396,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1397,6 +1434,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1434,13 +1472,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0648,
    0.0084
   ],
-  "mass_kg": 0.063
+  "mass_kg": 0.064
  },
  {
   "number": "RJ28-01-040",
@@ -1471,6 +1510,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0386,
@@ -1508,6 +1548,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0404,
@@ -1545,6 +1586,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0034,
@@ -1582,13 +1624,14 @@
   "density": 1600,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.012
   ],
-  "mass_kg": 0.269
+  "mass_kg": 0.274
  },
  {
   "number": "RJ28-01-044",
@@ -1619,6 +1662,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1656,6 +1700,7 @@
   "density": 1600,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1693,6 +1738,7 @@
   "density": 1600,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1730,6 +1776,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1767,13 +1814,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0008
   ],
-  "mass_kg": 0.029
+  "mass_kg": 0.03
  },
  {
   "number": "RJ28-01-049",
@@ -1804,6 +1852,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1841,6 +1890,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1878,6 +1928,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1911,17 +1962,18 @@
    33.1,
    56.7
   ],
-  "volume_cm3": 1399.8,
+  "volume_cm3": 1.65,
   "density": 2700,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.127,
    0.01
   ],
-  "mass_kg": 1.993
+  "mass_kg": 0.002
  },
  {
   "number": "RJ28-01-053",
@@ -1952,6 +2004,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -1989,6 +2042,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0307,
@@ -2026,6 +2080,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.046,
@@ -2063,6 +2118,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0054,
@@ -2100,6 +2156,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0098,
@@ -2137,6 +2194,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0764,
@@ -2174,6 +2232,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0764,
@@ -2211,13 +2270,14 @@
   "density": 1600,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.1703,
    -0.008
   ],
-  "mass_kg": 0.061
+  "mass_kg": 0.062
  },
  {
   "number": "RJ28-01-061",
@@ -2248,13 +2308,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.1491,
    -0.0032
   ],
-  "mass_kg": 0.033
+  "mass_kg": 0.034
  },
  {
   "number": "RJ28-01-062",
@@ -2285,6 +2346,7 @@
   "density": 7850,
   "count": 5,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -2322,6 +2384,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -2359,6 +2422,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -2396,6 +2460,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -2433,6 +2498,7 @@
   "density": 2500,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.04,
@@ -2470,6 +2536,7 @@
   "density": 2500,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -2507,6 +2574,7 @@
   "density": 2500,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.04,
@@ -2544,6 +2612,7 @@
   "density": 1200,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0597,
@@ -2581,6 +2650,7 @@
   "density": 1200,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0597,
@@ -2618,13 +2688,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0071
   ],
-  "mass_kg": 0.107
+  "mass_kg": 0.109
  },
  {
   "number": "RJ28-02-002",
@@ -2655,13 +2726,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0062
   ],
-  "mass_kg": 0.134
+  "mass_kg": 0.137
  },
  {
   "number": "RJ28-02-003",
@@ -2692,6 +2764,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -2729,6 +2802,7 @@
   "density": 7850,
   "count": 12,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -2766,6 +2840,7 @@
   "density": 7850,
   "count": 12,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -2803,13 +2878,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0424,
    0.0014
   ],
-  "mass_kg": 0.102
+  "mass_kg": 0.104
  },
  {
   "number": "RJ28-02-007",
@@ -2840,13 +2916,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.1131,
    0.007
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
   "number": "RJ28-02-008",
@@ -2877,6 +2954,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -2914,6 +2992,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -2951,13 +3030,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.0028
   ],
-  "mass_kg": 0.118
+  "mass_kg": 0.12
  },
  {
   "number": "RJ28-02-011",
@@ -2988,13 +3068,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.0046
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-02-012",
@@ -3025,6 +3106,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -3062,6 +3144,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -3099,13 +3182,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.07,
    0.0691,
    0.0071
   ],
-  "mass_kg": 0.02
+  "mass_kg": 0.021
  },
  {
   "number": "RJ28-02-015",
@@ -3136,6 +3220,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0693,
@@ -3173,6 +3258,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0702,
@@ -3210,6 +3296,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0707,
@@ -3247,6 +3334,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0704,
@@ -3284,6 +3372,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0711,
@@ -3321,6 +3410,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0696,
@@ -3358,13 +3448,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.07,
    0.0691,
    0.0071
   ],
-  "mass_kg": 0.02
+  "mass_kg": 0.021
  },
  {
   "number": "RJ28-02-022",
@@ -3395,6 +3486,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0693,
@@ -3432,6 +3524,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0702,
@@ -3469,6 +3562,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0684,
@@ -3506,6 +3600,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0704,
@@ -3543,6 +3638,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0687,
@@ -3580,6 +3676,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0696,
@@ -3617,13 +3714,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0003
   ],
-  "mass_kg": 15.784
+  "mass_kg": 16.084
  },
  {
   "number": "RJ28-03-002",
@@ -3654,6 +3752,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -3691,13 +3790,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1982,
    0.0267,
    0.028
   ],
-  "mass_kg": 2.283
+  "mass_kg": 2.326
  },
  {
   "number": "RJ28-03-004",
@@ -3728,13 +3828,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2337,
    0.0261,
    0.028
   ],
-  "mass_kg": 0.146
+  "mass_kg": 0.149
  },
  {
   "number": "RJ28-03-005",
@@ -3765,13 +3866,14 @@
   "density": 7850,
   "count": 12,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2275,
    0.0262,
    0.028
   ],
-  "mass_kg": 0.03
+  "mass_kg": 0.031
  },
  {
   "number": "RJ28-03-006",
@@ -3802,6 +3904,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1668,
@@ -3839,13 +3942,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1784,
    0.0245,
    0.0563
   ],
-  "mass_kg": 0.12
+  "mass_kg": 0.122
  },
  {
   "number": "RJ28-03-008",
@@ -3876,6 +3980,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1784,
@@ -3913,6 +4018,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1734,
@@ -3950,13 +4056,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1982,
    0.0267,
    0.028
   ],
-  "mass_kg": 2.283
+  "mass_kg": 2.326
  },
  {
   "number": "RJ28-03-011",
@@ -3987,13 +4094,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2337,
    0.0261,
    0.028
   ],
-  "mass_kg": 0.146
+  "mass_kg": 0.149
  },
  {
   "number": "RJ28-03-012",
@@ -4024,13 +4132,14 @@
   "density": 7850,
   "count": 12,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2275,
    0.0262,
    0.028
   ],
-  "mass_kg": 0.03
+  "mass_kg": 0.031
  },
  {
   "number": "RJ28-03-013",
@@ -4061,6 +4170,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1668,
@@ -4098,13 +4208,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1784,
    0.0245,
    0.0563
   ],
-  "mass_kg": 0.12
+  "mass_kg": 0.122
  },
  {
   "number": "RJ28-03-015",
@@ -4135,6 +4246,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1784,
@@ -4172,6 +4284,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1734,
@@ -4209,13 +4322,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1658,
    -0.1863,
    0.0026
   ],
-  "mass_kg": 0.351
+  "mass_kg": 0.357
  },
  {
   "number": "RJ28-03-018",
@@ -4246,6 +4360,7 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1226,
@@ -4283,6 +4398,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1755,
@@ -4320,13 +4436,14 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0805,
    -0.2029,
    -0.0014
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-03-021",
@@ -4357,13 +4474,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1663,
    -0.179,
    0.0026
   ],
-  "mass_kg": 0.041
+  "mass_kg": 0.042
  },
  {
   "number": "RJ28-03-022",
@@ -4394,6 +4512,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1274,
@@ -4431,6 +4550,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1694,
@@ -4468,13 +4588,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.2062,
    -0.1977,
    0.0359
   ],
-  "mass_kg": 0.132
+  "mass_kg": 0.135
  },
  {
   "number": "RJ28-03-025",
@@ -4505,6 +4626,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.2061,
@@ -4542,6 +4664,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1705,
@@ -4579,6 +4702,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.2099,
@@ -4616,13 +4740,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.148,
    -0.2054,
    -0.0292
   ],
-  "mass_kg": 0.078
+  "mass_kg": 0.08
  },
  {
   "number": "RJ28-03-029",
@@ -4653,6 +4778,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1379,
@@ -4690,6 +4816,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.1402,
@@ -4727,13 +4854,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.2333,
    -0.0026,
    -0.0175
   ],
-  "mass_kg": 0.137
+  "mass_kg": 0.14
  },
  {
   "number": "RJ28-03-032",
@@ -4764,13 +4892,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.238,
    -0.0026,
    -0.0175
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-03-033",
@@ -4797,17 +4926,18 @@
    111.4,
    35.4
   ],
-  "volume_cm3": 238.09,
+  "volume_cm3": 1.18,
   "density": 2700,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.2367,
    -0.0026,
    -0.0175
   ],
-  "mass_kg": 0.339
+  "mass_kg": 0.002
  },
  {
   "number": "RJ28-03-034",
@@ -4838,6 +4968,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2295,
@@ -4875,6 +5006,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.2282,
@@ -4912,13 +5044,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1658,
    -0.1863,
    0.0026
   ],
-  "mass_kg": 0.357
+  "mass_kg": 0.364
  },
  {
   "number": "RJ28-03-037",
@@ -4949,13 +5082,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1251,
    -0.2027,
    -0.0014
   ],
-  "mass_kg": 0.016
+  "mass_kg": 0.017
  },
  {
   "number": "RJ28-03-038",
@@ -4986,6 +5120,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.1706,
@@ -5023,6 +5158,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0908,
@@ -5060,13 +5196,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.1663,
    -0.179,
    0.0026
   ],
-  "mass_kg": 0.041
+  "mass_kg": 0.042
  },
  {
   "number": "RJ28-03-041",
@@ -5097,6 +5234,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1274,
@@ -5134,6 +5272,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1694,
@@ -5171,13 +5310,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.2062,
    -0.1977,
    0.0359
   ],
-  "mass_kg": 0.132
+  "mass_kg": 0.135
  },
  {
   "number": "RJ28-03-044",
@@ -5208,6 +5348,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.2061,
@@ -5245,6 +5386,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1705,
@@ -5282,6 +5424,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.2099,
@@ -5319,13 +5462,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.148,
    -0.2054,
    -0.0292
   ],
-  "mass_kg": 0.078
+  "mass_kg": 0.08
  },
  {
   "number": "RJ28-03-048",
@@ -5356,6 +5500,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1379,
@@ -5393,6 +5538,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.1402,
@@ -5430,13 +5576,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.2333,
    -0.0026,
    -0.0175
   ],
-  "mass_kg": 0.137
+  "mass_kg": 0.14
  },
  {
   "number": "RJ28-03-051",
@@ -5467,13 +5614,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.238,
    -0.0026,
    -0.0175
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-03-052",
@@ -5500,17 +5648,18 @@
    111.4,
    35.4
   ],
-  "volume_cm3": 238.09,
+  "volume_cm3": 1.18,
   "density": 2700,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.2367,
    -0.0026,
    -0.0175
   ],
-  "mass_kg": 0.339
+  "mass_kg": 0.002
  },
  {
   "number": "RJ28-03-053",
@@ -5541,6 +5690,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2295,
@@ -5578,6 +5728,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.2282,
@@ -5615,13 +5766,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.2097,
    0.007
   ],
-  "mass_kg": 0.499
+  "mass_kg": 0.508
  },
  {
   "number": "RJ28-03-056",
@@ -5652,13 +5804,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.1942,
    0.0049
   ],
-  "mass_kg": 0.237
+  "mass_kg": 0.241
  },
  {
   "number": "RJ28-03-057",
@@ -5689,6 +5842,7 @@
   "density": 7850,
   "count": 5,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -5726,6 +5880,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -5763,6 +5918,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -5800,13 +5956,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.0581
   ],
-  "mass_kg": 0.619
+  "mass_kg": 0.63
  },
  {
   "number": "RJ28-03-061",
@@ -5837,6 +5994,7 @@
   "density": 7850,
   "count": 5,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -5874,6 +6032,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -5911,13 +6070,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0464,
    -0.0417
   ],
-  "mass_kg": 0.075
+  "mass_kg": 0.077
  },
  {
   "number": "RJ28-03-064",
@@ -5948,13 +6108,14 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0464,
    -0.0456
   ],
-  "mass_kg": 0.025
+  "mass_kg": 0.026
  },
  {
   "number": "RJ28-03-065",
@@ -5985,13 +6146,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.1177,
    -0.0059
   ],
-  "mass_kg": 0.009
+  "mass_kg": 0.01
  },
  {
   "number": "RJ28-03-066",
@@ -6022,13 +6184,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0522,
    0.0223
   ],
-  "mass_kg": 0.259
+  "mass_kg": 0.264
  },
  {
   "number": "RJ28-03-067",
@@ -6059,13 +6222,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0522,
    0.021
   ],
-  "mass_kg": 0.003
+  "mass_kg": 0.004
  },
  {
   "number": "RJ28-03-068",
@@ -6096,6 +6260,7 @@
   "density": 7850,
   "count": 13,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -6133,6 +6298,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0933,
@@ -6170,6 +6336,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0933,
@@ -6207,13 +6374,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0971,
    -0.1057,
    0.0243
   ],
-  "mass_kg": 0.01
+  "mass_kg": 0.011
  },
  {
   "number": "RJ28-03-072",
@@ -6244,13 +6412,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1143,
    -0.1729,
    0.0007
   ],
-  "mass_kg": 0.032
+  "mass_kg": 0.033
  },
  {
   "number": "RJ28-03-073",
@@ -6281,6 +6450,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1149,
@@ -6318,6 +6488,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -6355,13 +6526,14 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0865,
    -0.0717,
    0.0307
   ],
-  "mass_kg": 0.517
+  "mass_kg": 0.527
  },
  {
   "number": "RJ28-03-076",
@@ -6392,13 +6564,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0878,
    -0.0622,
    0.0257
   ],
-  "mass_kg": 0.095
+  "mass_kg": 0.097
  },
  {
   "number": "RJ28-03-077",
@@ -6429,13 +6602,14 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0865,
    -0.0717,
    0.0412
   ],
-  "mass_kg": 0.517
+  "mass_kg": 0.527
  },
  {
   "number": "RJ28-03-078",
@@ -6466,13 +6640,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0878,
    -0.0622,
    0.0362
   ],
-  "mass_kg": 0.095
+  "mass_kg": 0.097
  },
  {
   "number": "RJ28-03-079",
@@ -6503,13 +6678,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0923,
    -0.0615,
    0.032
   ],
-  "mass_kg": 0.011
+  "mass_kg": 0.012
  },
  {
   "number": "RJ28-03-080",
@@ -6540,13 +6716,14 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.101,
    -0.0719,
    0.0358
   ],
-  "mass_kg": 0.851
+  "mass_kg": 0.867
  },
  {
   "number": "RJ28-03-081",
@@ -6577,6 +6754,7 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1026,
@@ -6614,6 +6792,7 @@
   "density": 3200.0,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1026,
@@ -6651,13 +6830,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.1856,
    0.0319
   ],
-  "mass_kg": 0.123
+  "mass_kg": 0.126
  },
  {
   "number": "RJ28-03-084",
@@ -6688,6 +6868,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -6725,6 +6906,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -6762,13 +6944,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.051,
    -0.0249
   ],
-  "mass_kg": 0.136
+  "mass_kg": 0.139
  },
  {
   "number": "RJ28-04-002",
@@ -6799,13 +6982,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.051,
    -0.0244
   ],
-  "mass_kg": 0.182
+  "mass_kg": 0.186
  },
  {
   "number": "RJ28-04-003",
@@ -6836,6 +7020,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -6873,6 +7058,7 @@
   "density": 7850,
   "count": 16,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -6910,6 +7096,7 @@
   "density": 7850,
   "count": 16,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -6947,13 +7134,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0471,
    -0.0161
   ],
-  "mass_kg": 0.446
+  "mass_kg": 0.455
  },
  {
   "number": "RJ28-04-007",
@@ -6984,13 +7172,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0289,
    0.1346,
    -0.0018
   ],
-  "mass_kg": 0.232
+  "mass_kg": 0.236
  },
  {
   "number": "RJ28-04-008",
@@ -7021,13 +7210,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0289,
    0.1346,
    -0.0123
   ],
-  "mass_kg": 0.012
+  "mass_kg": 0.013
  },
  {
   "number": "RJ28-04-009",
@@ -7058,6 +7248,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0289,
@@ -7095,6 +7286,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0876,
@@ -7132,13 +7324,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0289,
    0.1346,
    -0.0185
   ],
-  "mass_kg": 0.066
+  "mass_kg": 0.067
  },
  {
   "number": "RJ28-04-012",
@@ -7169,13 +7362,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0059
   ],
-  "mass_kg": 0.171
+  "mass_kg": 0.174
  },
  {
   "number": "RJ28-04-013",
@@ -7206,6 +7400,7 @@
   "density": 7850,
   "count": 10,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -7243,13 +7438,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.0126
   ],
-  "mass_kg": 0.201
+  "mass_kg": 0.205
  },
  {
   "number": "RJ28-04-015",
@@ -7280,13 +7476,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.0154
   ],
-  "mass_kg": 0.109
+  "mass_kg": 0.111
  },
  {
   "number": "RJ28-04-016",
@@ -7317,13 +7514,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.0171
   ],
-  "mass_kg": 0.108
+  "mass_kg": 0.11
  },
  {
   "number": "RJ28-04-017",
@@ -7354,6 +7552,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -7391,6 +7590,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0783,
@@ -7428,13 +7628,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1201,
    0.0521,
    0.0386
   ],
-  "mass_kg": 0.179
+  "mass_kg": 0.182
  },
  {
   "number": "RJ28-04-020",
@@ -7465,13 +7666,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1161,
    0.0634,
    0.0065
   ],
-  "mass_kg": 0.184
+  "mass_kg": 0.188
  },
  {
   "number": "RJ28-04-021",
@@ -7502,6 +7704,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.117,
@@ -7539,13 +7742,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1225,
    0.0552,
    0.0525
   ],
-  "mass_kg": 0.063
+  "mass_kg": 0.064
  },
  {
   "number": "RJ28-04-023",
@@ -7576,6 +7780,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1244,
@@ -7613,13 +7818,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1137,
    0.0644,
    -0.0049
   ],
-  "mass_kg": 0.063
+  "mass_kg": 0.064
  },
  {
   "number": "RJ28-04-025",
@@ -7650,6 +7856,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1164,
@@ -7687,13 +7894,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1201,
    0.0521,
    0.0386
   ],
-  "mass_kg": 0.179
+  "mass_kg": 0.182
  },
  {
   "number": "RJ28-04-027",
@@ -7724,13 +7932,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1161,
    0.0634,
    0.0065
   ],
-  "mass_kg": 0.184
+  "mass_kg": 0.188
  },
  {
   "number": "RJ28-04-028",
@@ -7761,6 +7970,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.117,
@@ -7798,13 +8008,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1225,
    0.0552,
    0.0525
   ],
-  "mass_kg": 0.063
+  "mass_kg": 0.064
  },
  {
   "number": "RJ28-04-030",
@@ -7835,6 +8046,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1198,
@@ -7872,13 +8084,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1137,
    0.0644,
    -0.0049
   ],
-  "mass_kg": 0.063
+  "mass_kg": 0.064
  },
  {
   "number": "RJ28-04-032",
@@ -7909,6 +8122,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1118,
@@ -7946,13 +8160,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.045,
    0.111,
    0.0015
   ],
-  "mass_kg": 0.067
+  "mass_kg": 0.069
  },
  {
   "number": "RJ28-04-034",
@@ -7983,6 +8198,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0444,
@@ -8020,6 +8236,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1223,
@@ -8057,13 +8274,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0888,
    0.1368,
    0.0308
   ],
-  "mass_kg": 0.014
+  "mass_kg": 0.015
  },
  {
   "number": "RJ28-04-037",
@@ -8094,6 +8312,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.09,
@@ -8131,13 +8350,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0882,
    0.1441,
    0.0369
   ],
-  "mass_kg": 0.038
+  "mass_kg": 0.039
  },
  {
   "number": "RJ28-04-039",
@@ -8168,6 +8388,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.09,
@@ -8205,6 +8426,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.09,
@@ -8242,6 +8464,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.1201,
@@ -8279,6 +8502,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1201,
@@ -8316,13 +8540,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
    -0.1095,
    -0.0109
   ],
-  "mass_kg": 0.12
+  "mass_kg": 0.122
  },
  {
   "number": "RJ28-04-044",
@@ -8353,13 +8578,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0079
   ],
-  "mass_kg": 0.074
+  "mass_kg": 0.075
  },
  {
   "number": "RJ28-04-045",
@@ -8390,6 +8616,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -8427,6 +8654,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0013,
@@ -8464,6 +8692,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
@@ -8501,13 +8730,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
    -0.1157,
    0.0001
   ],
-  "mass_kg": 0.13
+  "mass_kg": 0.133
  },
  {
   "number": "RJ28-04-049",
@@ -8538,6 +8768,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -8575,13 +8806,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.004
   ],
-  "mass_kg": 0.074
+  "mass_kg": 0.075
  },
  {
   "number": "RJ28-04-051",
@@ -8612,13 +8844,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0617,
    -0.0009
   ],
-  "mass_kg": 0.022
+  "mass_kg": 0.023
  },
  {
   "number": "RJ28-04-052",
@@ -8649,6 +8882,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0013,
@@ -8686,6 +8920,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
@@ -8723,13 +8958,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.1219,
    0.0111
   ],
-  "mass_kg": 0.142
+  "mass_kg": 0.144
  },
  {
   "number": "RJ28-04-055",
@@ -8760,6 +8996,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -8797,13 +9034,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0002
   ],
-  "mass_kg": 0.074
+  "mass_kg": 0.075
  },
  {
   "number": "RJ28-04-057",
@@ -8834,13 +9072,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0617,
    0.0066
   ],
-  "mass_kg": 0.025
+  "mass_kg": 0.026
  },
  {
   "number": "RJ28-04-058",
@@ -8871,6 +9110,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0013,
@@ -8908,6 +9148,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -8945,13 +9186,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
    -0.128,
    0.0221
   ],
-  "mass_kg": 0.153
+  "mass_kg": 0.156
  },
  {
   "number": "RJ28-04-061",
@@ -8982,6 +9224,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -9019,13 +9262,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.0046
   ],
-  "mass_kg": 0.074
+  "mass_kg": 0.075
  },
  {
   "number": "RJ28-04-063",
@@ -9056,13 +9300,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0617,
    0.0144
   ],
-  "mass_kg": 0.028
+  "mass_kg": 0.029
  },
  {
   "number": "RJ28-04-064",
@@ -9093,6 +9338,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0013,
@@ -9130,6 +9376,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
@@ -9167,13 +9414,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
    -0.1231,
    0.0406
   ],
-  "mass_kg": 0.065
+  "mass_kg": 0.066
  },
  {
   "number": "RJ28-04-067",
@@ -9204,6 +9452,7 @@
   "density": 7850,
   "count": 9,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -9241,6 +9490,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -9278,6 +9528,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0051,
@@ -9315,6 +9566,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -9352,6 +9604,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -9389,13 +9642,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0003
   ],
-  "mass_kg": 2.909
+  "mass_kg": 2.964
  },
  {
   "number": "RJ28-05-002",
@@ -9426,13 +9680,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0452,
    0.035
   ],
-  "mass_kg": 1.144
+  "mass_kg": 1.166
  },
  {
   "number": "RJ28-05-003",
@@ -9463,13 +9718,14 @@
   "density": 7850,
   "count": 10,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0441,
    0.0331
   ],
-  "mass_kg": 0.025
+  "mass_kg": 0.026
  },
  {
   "number": "RJ28-05-004",
@@ -9500,13 +9756,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.1539,
    0.0187
   ],
-  "mass_kg": 0.285
+  "mass_kg": 0.29
  },
  {
   "number": "RJ28-05-005",
@@ -9537,13 +9794,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.1571,
    -0.0138
   ],
-  "mass_kg": 0.138
+  "mass_kg": 0.14
  },
  {
   "number": "RJ28-05-006",
@@ -9574,6 +9832,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -9611,6 +9870,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -9648,6 +9908,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -9685,6 +9946,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -9722,13 +9984,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1832,
    0.0,
    0.029
   ],
-  "mass_kg": 0.59
+  "mass_kg": 0.602
  },
  {
   "number": "RJ28-05-011",
@@ -9759,13 +10022,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1832,
    -0.0,
    0.0241
   ],
-  "mass_kg": 0.089
+  "mass_kg": 0.091
  },
  {
   "number": "RJ28-05-012",
@@ -9796,13 +10060,14 @@
   "density": 7850,
   "count": 10,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1832,
    -0.0,
    0.026
   ],
-  "mass_kg": 0.025
+  "mass_kg": 0.026
  },
  {
   "number": "RJ28-05-013",
@@ -9833,6 +10098,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1365,
@@ -9870,6 +10136,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2084,
@@ -9907,13 +10174,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2083,
    0.1496,
    0.0116
   ],
-  "mass_kg": 0.117
+  "mass_kg": 0.119
  },
  {
   "number": "RJ28-05-016",
@@ -9944,6 +10212,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2125,
@@ -9981,6 +10250,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2478,
@@ -10018,13 +10288,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2266,
    0.0099,
    0.011
   ],
-  "mass_kg": 0.106
+  "mass_kg": 0.108
  },
  {
   "number": "RJ28-05-019",
@@ -10055,6 +10326,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2273,
@@ -10092,13 +10364,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.1894,
    -0.0385,
    0.0282
   ],
-  "mass_kg": 0.064
+  "mass_kg": 0.065
  },
  {
   "number": "RJ28-05-021",
@@ -10129,6 +10402,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.1865,
@@ -10166,13 +10440,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2871,
    0.0081,
    0.0265
   ],
-  "mass_kg": 0.005
+  "mass_kg": 0.006
  },
  {
   "number": "RJ28-05-023",
@@ -10203,13 +10478,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1832,
    0.0,
    0.029
   ],
-  "mass_kg": 0.59
+  "mass_kg": 0.602
  },
  {
   "number": "RJ28-05-024",
@@ -10240,13 +10516,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1832,
    -0.0,
    0.0241
   ],
-  "mass_kg": 0.089
+  "mass_kg": 0.091
  },
  {
   "number": "RJ28-05-025",
@@ -10277,13 +10554,14 @@
   "density": 7850,
   "count": 10,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1832,
    -0.0,
    0.026
   ],
-  "mass_kg": 0.025
+  "mass_kg": 0.026
  },
  {
   "number": "RJ28-05-026",
@@ -10314,6 +10592,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1365,
@@ -10351,6 +10630,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2084,
@@ -10388,13 +10668,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2083,
    0.1496,
    0.0116
   ],
-  "mass_kg": 0.117
+  "mass_kg": 0.119
  },
  {
   "number": "RJ28-05-029",
@@ -10425,6 +10706,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2125,
@@ -10462,6 +10744,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2478,
@@ -10499,13 +10782,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2266,
    0.0099,
    0.011
   ],
-  "mass_kg": 0.106
+  "mass_kg": 0.108
  },
  {
   "number": "RJ28-05-032",
@@ -10536,6 +10820,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2273,
@@ -10573,13 +10858,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.1894,
    -0.0385,
    0.0282
   ],
-  "mass_kg": 0.064
+  "mass_kg": 0.065
  },
  {
   "number": "RJ28-05-034",
@@ -10610,6 +10896,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.1865,
@@ -10647,13 +10934,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2871,
    0.0081,
    0.0265
   ],
-  "mass_kg": 0.005
+  "mass_kg": 0.006
  },
  {
   "number": "RJ28-06-001",
@@ -10684,13 +10972,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.0
   ],
-  "mass_kg": 0.817
+  "mass_kg": 0.833
  },
  {
   "number": "RJ28-06-002",
@@ -10721,13 +11010,14 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0959,
    -0.0007
   ],
-  "mass_kg": 0.054
+  "mass_kg": 0.055
  },
  {
   "number": "RJ28-06-003",
@@ -10758,13 +11048,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0872,
    0.0
   ],
-  "mass_kg": 1.064
+  "mass_kg": 1.084
  },
  {
   "number": "RJ28-06-004",
@@ -10795,13 +11086,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.0509
   ],
-  "mass_kg": 0.437
+  "mass_kg": 0.446
  },
  {
   "number": "RJ28-06-005",
@@ -10832,13 +11124,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    -0.0509
   ],
-  "mass_kg": 0.446
+  "mass_kg": 0.455
  },
  {
   "number": "RJ28-06-006",
@@ -10869,13 +11162,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.212,
    -0.0099,
    0.0
   ],
-  "mass_kg": 0.256
+  "mass_kg": 0.261
  },
  {
   "number": "RJ28-06-007",
@@ -10906,13 +11200,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.212,
    -0.0099,
    -0.0
   ],
-  "mass_kg": 0.284
+  "mass_kg": 0.289
  },
  {
   "number": "RJ28-06-008",
@@ -10943,13 +11238,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0,
    0.0
   ],
-  "mass_kg": 0.12
+  "mass_kg": 0.123
  },
  {
   "number": "RJ28-06-009",
@@ -10980,6 +11276,7 @@
   "density": 7850,
   "count": 7,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -11017,6 +11314,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -11054,6 +11352,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -11091,6 +11390,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.2069,
@@ -11128,6 +11428,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.2069,
@@ -11165,6 +11466,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1139,
@@ -11202,6 +11504,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.115,
@@ -11239,13 +11542,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1149,
    0.0334,
    -0.0185
   ],
-  "mass_kg": 0.167
+  "mass_kg": 0.17
  },
  {
   "number": "RJ28-06-017",
@@ -11276,6 +11580,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1139,
@@ -11313,6 +11618,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.115,
@@ -11350,13 +11656,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1149,
    0.0334,
    -0.0185
   ],
-  "mass_kg": 0.167
+  "mass_kg": 0.17
  },
  {
   "number": "RJ28-06-020",
@@ -11387,13 +11694,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1158,
    0.0721,
    0.0256
   ],
-  "mass_kg": 0.104
+  "mass_kg": 0.106
  },
  {
   "number": "RJ28-06-021",
@@ -11424,6 +11732,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1148,
@@ -11461,6 +11770,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1132,
@@ -11498,13 +11808,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1158,
    0.0721,
    0.0256
   ],
-  "mass_kg": 0.104
+  "mass_kg": 0.106
  },
  {
   "number": "RJ28-06-024",
@@ -11535,6 +11846,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1151,
@@ -11572,6 +11884,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1132,
@@ -11609,13 +11922,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0568,
    0.0289
   ],
-  "mass_kg": 0.324
+  "mass_kg": 0.331
  },
  {
   "number": "RJ28-06-027",
@@ -11646,6 +11960,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -11683,6 +11998,7 @@
   "density": 2500,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -11720,6 +12036,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -11757,6 +12074,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0969,
@@ -11794,6 +12112,7 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.2158,
@@ -11831,6 +12150,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.2187,
@@ -11868,6 +12188,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.2206,
@@ -11905,13 +12226,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.043,
    -0.0185
   ],
-  "mass_kg": 0.104
+  "mass_kg": 0.106
  },
  {
   "number": "RJ28-06-035",
@@ -11942,13 +12264,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0659,
    -0.0387
   ],
-  "mass_kg": 0.082
+  "mass_kg": 0.083
  },
  {
   "number": "RJ28-06-036",
@@ -11979,6 +12302,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -12016,13 +12340,14 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1041,
    -0.0669,
    0.0417
   ],
-  "mass_kg": 0.137
+  "mass_kg": 0.139
  },
  {
   "number": "RJ28-06-038",
@@ -12053,13 +12378,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.22,
    -0.0092,
    -0.0143
   ],
-  "mass_kg": 0.082
+  "mass_kg": 0.084
  },
  {
   "number": "RJ28-07-001",
@@ -12090,13 +12416,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0213,
    0.0085,
    0.1003
   ],
-  "mass_kg": 3.347
+  "mass_kg": 3.41
  },
  {
   "number": "RJ28-07-002",
@@ -12127,13 +12454,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0226,
    -0.0881,
    0.1064
   ],
-  "mass_kg": 0.116
+  "mass_kg": 0.118
  },
  {
   "number": "RJ28-07-003",
@@ -12164,13 +12492,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1249,
    0.0195,
    0.0827
   ],
-  "mass_kg": 0.082
+  "mass_kg": 0.083
  },
  {
   "number": "RJ28-07-004",
@@ -12201,13 +12530,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0201,
    -0.0506,
    0.1067
   ],
-  "mass_kg": 0.05
+  "mass_kg": 0.051
  },
  {
   "number": "RJ28-07-005",
@@ -12238,13 +12568,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.017,
    -0.05,
    0.1416
   ],
-  "mass_kg": 0.002
+  "mass_kg": 0.003
  },
  {
   "number": "RJ28-07-006",
@@ -12275,6 +12606,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0198,
@@ -12312,13 +12644,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0199,
    0.1142,
    0.0936
   ],
-  "mass_kg": 0.089
+  "mass_kg": 0.09
  },
  {
   "number": "RJ28-07-008",
@@ -12349,13 +12682,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0192,
    0.0077,
    0.0905
   ],
-  "mass_kg": 1.067
+  "mass_kg": 1.088
  },
  {
   "number": "RJ28-07-009",
@@ -12386,13 +12720,14 @@
   "density": 7850,
   "count": 10,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0227,
    -0.0979,
    0.107
   ],
-  "mass_kg": 0.025
+  "mass_kg": 0.026
  },
  {
   "number": "RJ28-07-010",
@@ -12423,13 +12758,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0619,
    -0.0116,
    0.1488
   ],
-  "mass_kg": 0.846
+  "mass_kg": 0.862
  },
  {
   "number": "RJ28-07-011",
@@ -12460,13 +12796,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.1298,
    0.0001,
    0.1274
   ],
-  "mass_kg": 0.413
+  "mass_kg": 0.421
  },
  {
   "number": "RJ28-07-012",
@@ -12497,13 +12834,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.1366,
    0.0087,
    0.0928
   ],
-  "mass_kg": 0.251
+  "mass_kg": 0.256
  },
  {
   "number": "RJ28-07-013",
@@ -12534,13 +12872,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1465,
    0.0047,
    0.1115
   ],
-  "mass_kg": 0.015
+  "mass_kg": 0.016
  },
  {
   "number": "RJ28-07-014",
@@ -12571,6 +12910,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1421,
@@ -12608,6 +12948,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1412,
@@ -12645,6 +12986,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.1269,
@@ -12682,13 +13024,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0315,
    -0.1378,
    0.1341
   ],
-  "mass_kg": 0.122
+  "mass_kg": 0.125
  },
  {
   "number": "RJ28-07-018",
@@ -12719,13 +13062,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.037,
    0.133,
    0.118
   ],
-  "mass_kg": 0.122
+  "mass_kg": 0.125
  },
  {
   "number": "RJ28-07-019",
@@ -12756,13 +13100,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0404,
    -0.0092,
    0.1259
   ],
-  "mass_kg": 0.372
+  "mass_kg": 0.379
  },
  {
   "number": "RJ28-07-020",
@@ -12793,6 +13138,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0468,
@@ -12830,6 +13176,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0198,
@@ -12867,13 +13214,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0754,
    -0.0065,
    0.1362
   ],
-  "mass_kg": 0.013
+  "mass_kg": 0.014
  },
  {
   "number": "RJ28-07-023",
@@ -12904,6 +13252,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0565,
@@ -12941,6 +13290,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.1341,
@@ -12978,6 +13328,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0363,
@@ -13015,6 +13366,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0422,
@@ -13052,13 +13404,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0055,
    0.046,
    0.0475
   ],
-  "mass_kg": 3.134
+  "mass_kg": 3.193
  },
  {
   "number": "RJ28-07-028",
@@ -13089,13 +13442,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0069,
    0.0493,
    0.0302
   ],
-  "mass_kg": 0.138
+  "mass_kg": 0.141
  },
  {
   "number": "RJ28-07-029",
@@ -13126,6 +13480,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1011,
@@ -13163,13 +13518,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0246,
    0.0502,
    0.007
   ],
-  "mass_kg": 0.345
+  "mass_kg": 0.352
  },
  {
   "number": "RJ28-07-031",
@@ -13200,6 +13556,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0037,
@@ -13237,13 +13594,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0894,
    0.029,
    0.0501
   ],
-  "mass_kg": 0.265
+  "mass_kg": 0.27
  },
  {
   "number": "RJ28-07-033",
@@ -13274,6 +13632,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0869,
@@ -13311,6 +13670,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0852,
@@ -13348,6 +13708,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1038,
@@ -13385,13 +13746,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0021,
    0.0569,
    -0.0098
   ],
-  "mass_kg": 2.936
+  "mass_kg": 2.991
  },
  {
   "number": "RJ28-07-037",
@@ -13422,13 +13784,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0049,
    0.0596,
    -0.0244
   ],
-  "mass_kg": 0.368
+  "mass_kg": 0.375
  },
  {
   "number": "RJ28-07-038",
@@ -13459,13 +13822,14 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0049,
    0.0575,
    -0.0128
   ],
-  "mass_kg": 0.054
+  "mass_kg": 0.055
  },
  {
   "number": "RJ28-07-039",
@@ -13496,6 +13860,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0589,
@@ -13533,6 +13898,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0027,
@@ -13570,13 +13936,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0028,
    0.0406,
    -0.0367
   ],
-  "mass_kg": 0.751
+  "mass_kg": 0.766
  },
  {
   "number": "RJ28-07-042",
@@ -13607,13 +13974,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1138,
    0.0378,
    0.0156
   ],
-  "mass_kg": 0.049
+  "mass_kg": 0.05
  },
  {
   "number": "RJ28-07-043",
@@ -13644,6 +14012,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1072,
@@ -13681,13 +14050,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1213,
    0.0372,
    0.0171
   ],
-  "mass_kg": 0.03
+  "mass_kg": 0.031
  },
  {
   "number": "RJ28-07-045",
@@ -13718,13 +14088,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1083,
    0.0645,
    -0.0337
   ],
-  "mass_kg": 0.029
+  "mass_kg": 0.03
  },
  {
   "number": "RJ28-07-046",
@@ -13755,6 +14126,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1149,
@@ -13792,13 +14164,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.013,
    -0.0052,
    -0.0609
   ],
-  "mass_kg": 0.358
+  "mass_kg": 0.364
  },
  {
   "number": "RJ28-07-048",
@@ -13829,13 +14202,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0154,
    -0.0061,
    -0.0723
   ],
-  "mass_kg": 0.004
+  "mass_kg": 0.005
  },
  {
   "number": "RJ28-07-049",
@@ -13866,13 +14240,14 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0879,
    0.0138,
    -0.0468
   ],
-  "mass_kg": 0.134
+  "mass_kg": 0.136
  },
  {
   "number": "RJ28-07-050",
@@ -13903,13 +14278,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0181,
    -0.0072,
    -0.0849
   ],
-  "mass_kg": 0.56
+  "mass_kg": 0.571
  },
  {
   "number": "RJ28-07-051",
@@ -13940,13 +14316,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0198,
    -0.0079,
    -0.0931
   ],
-  "mass_kg": 0.042
+  "mass_kg": 0.043
  },
  {
   "number": "RJ28-07-052",
@@ -13977,6 +14354,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0194,
@@ -14014,6 +14392,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0189,
@@ -14051,13 +14430,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0197,
    -0.0078,
    -0.0925
   ],
-  "mass_kg": 0.029
+  "mass_kg": 0.03
  },
  {
   "number": "RJ28-07-055",
@@ -14088,13 +14468,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.02,
    -0.008,
    -0.0942
   ],
-  "mass_kg": 0.155
+  "mass_kg": 0.158
  },
  {
   "number": "RJ28-07-056",
@@ -14125,13 +14506,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0814,
    0.0288,
    -0.0549
   ],
-  "mass_kg": 0.522
+  "mass_kg": 0.532
  },
  {
   "number": "RJ28-07-057",
@@ -14162,13 +14544,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0609,
    0.0264,
    -0.0821
   ],
-  "mass_kg": 0.578
+  "mass_kg": 0.589
  },
  {
   "number": "RJ28-07-058",
@@ -14199,13 +14582,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.1395,
    0.0142,
    -0.042
   ],
-  "mass_kg": 0.111
+  "mass_kg": 0.113
  },
  {
   "number": "RJ28-07-059",
@@ -14232,17 +14616,18 @@
    86.3,
    75.2
   ],
-  "volume_cm3": 4.11,
+  "volume_cm3": 3.15,
   "density": 2700,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1308,
    0.0098,
    -0.0433
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.005
  },
  {
   "number": "RJ28-07-060",
@@ -14273,6 +14658,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1351,
@@ -14310,6 +14696,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.1351,
@@ -14347,13 +14734,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0629,
    -0.11,
    -0.0392
   ],
-  "mass_kg": 0.063
+  "mass_kg": 0.064
  },
  {
   "number": "RJ28-07-063",
@@ -14384,6 +14772,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0157,
@@ -14421,13 +14810,14 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0883,
    -0.1087,
    -0.0339
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-07-065",
@@ -14458,13 +14848,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0335,
    0.13,
    -0.0856
   ],
-  "mass_kg": 0.063
+  "mass_kg": 0.064
  },
  {
   "number": "RJ28-07-066",
@@ -14495,6 +14886,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0113,
@@ -14532,13 +14924,14 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0582,
    0.1314,
    -0.0913
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-07-068",
@@ -14569,13 +14962,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.077,
    0.1304,
    -0.0678
   ],
-  "mass_kg": 0.037
+  "mass_kg": 0.038
  },
  {
   "number": "RJ28-07-069",
@@ -14606,6 +15000,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0725,
@@ -14643,13 +15038,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0033,
    0.0426,
    -0.0726
   ],
-  "mass_kg": 0.053
+  "mass_kg": 0.054
  },
  {
   "number": "RJ28-07-071",
@@ -14680,6 +15076,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0141,
@@ -14717,6 +15114,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1152,
@@ -14754,6 +15152,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0887,
@@ -14791,13 +15190,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0213,
    0.0085,
    0.1003
   ],
-  "mass_kg": 3.347
+  "mass_kg": 3.41
  },
  {
   "number": "RJ28-08-002",
@@ -14828,13 +15228,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0226,
    -0.0881,
    0.1064
   ],
-  "mass_kg": 0.116
+  "mass_kg": 0.118
  },
  {
   "number": "RJ28-08-003",
@@ -14865,13 +15266,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1249,
    0.0195,
    0.0827
   ],
-  "mass_kg": 0.082
+  "mass_kg": 0.083
  },
  {
   "number": "RJ28-08-004",
@@ -14902,13 +15304,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0201,
    -0.0506,
    0.1067
   ],
-  "mass_kg": 0.05
+  "mass_kg": 0.051
  },
  {
   "number": "RJ28-08-005",
@@ -14939,13 +15342,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.017,
    -0.05,
    0.1416
   ],
-  "mass_kg": 0.002
+  "mass_kg": 0.003
  },
  {
   "number": "RJ28-08-006",
@@ -14976,6 +15380,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0198,
@@ -15013,13 +15418,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0199,
    0.1116,
    0.0938
   ],
-  "mass_kg": 0.059
+  "mass_kg": 0.06
  },
  {
   "number": "RJ28-08-008",
@@ -15050,13 +15456,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0192,
    0.0077,
    0.0905
   ],
-  "mass_kg": 1.067
+  "mass_kg": 1.088
  },
  {
   "number": "RJ28-08-009",
@@ -15087,13 +15494,14 @@
   "density": 7850,
   "count": 10,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0227,
    -0.0979,
    0.107
   ],
-  "mass_kg": 0.025
+  "mass_kg": 0.026
  },
  {
   "number": "RJ28-08-010",
@@ -15124,13 +15532,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0529,
    -0.0754,
    0.1445
   ],
-  "mass_kg": 0.385
+  "mass_kg": 0.393
  },
  {
   "number": "RJ28-08-011",
@@ -15161,13 +15570,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.1074,
    -0.0673,
    0.127
   ],
-  "mass_kg": 0.148
+  "mass_kg": 0.151
  },
  {
   "number": "RJ28-08-012",
@@ -15198,13 +15608,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.1223,
    -0.0495,
    0.108
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-08-013",
@@ -15235,6 +15646,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.128,
@@ -15272,13 +15684,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1235,
    -0.0518,
    0.1193
   ],
-  "mass_kg": 0.011
+  "mass_kg": 0.012
  },
  {
   "number": "RJ28-08-015",
@@ -15309,6 +15722,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1226,
@@ -15346,6 +15760,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.1166,
@@ -15383,13 +15798,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0301,
    -0.128,
    0.1305
   ],
-  "mass_kg": 0.06
+  "mass_kg": 0.061
  },
  {
   "number": "RJ28-08-018",
@@ -15420,13 +15836,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0348,
    -0.0734,
    0.1295
   ],
-  "mass_kg": 0.167
+  "mass_kg": 0.17
  },
  {
   "number": "RJ28-08-019",
@@ -15457,6 +15874,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0468,
@@ -15494,13 +15912,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0198,
    0.119,
    0.0933
   ],
-  "mass_kg": 0.019
+  "mass_kg": 0.02
  },
  {
   "number": "RJ28-08-021",
@@ -15531,6 +15950,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0199,
@@ -15568,13 +15988,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0572,
    -0.0702,
    0.1342
   ],
-  "mass_kg": 0.009
+  "mass_kg": 0.01
  },
  {
   "number": "RJ28-08-023",
@@ -15605,6 +16026,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0337,
@@ -15642,6 +16064,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.1116,
@@ -15679,6 +16102,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0306,
@@ -15716,13 +16140,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0055,
    0.046,
    0.0475
   ],
-  "mass_kg": 3.134
+  "mass_kg": 3.193
  },
  {
   "number": "RJ28-08-027",
@@ -15753,13 +16178,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0069,
    0.0493,
    0.0302
   ],
-  "mass_kg": 0.138
+  "mass_kg": 0.141
  },
  {
   "number": "RJ28-08-028",
@@ -15790,6 +16216,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1011,
@@ -15827,13 +16254,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0322,
    0.0332,
    0.0066
   ],
-  "mass_kg": 0.347
+  "mass_kg": 0.354
  },
  {
   "number": "RJ28-08-030",
@@ -15864,6 +16292,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0037,
@@ -15901,13 +16330,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0918,
    0.0281,
    0.0532
   ],
-  "mass_kg": 0.323
+  "mass_kg": 0.329
  },
  {
   "number": "RJ28-08-032",
@@ -15938,6 +16368,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0898,
@@ -15975,6 +16406,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0881,
@@ -16012,6 +16444,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1095,
@@ -16049,13 +16482,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0021,
    0.0569,
    -0.0098
   ],
-  "mass_kg": 2.936
+  "mass_kg": 2.991
  },
  {
   "number": "RJ28-08-036",
@@ -16086,13 +16520,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0049,
    0.0596,
    -0.0244
   ],
-  "mass_kg": 0.368
+  "mass_kg": 0.375
  },
  {
   "number": "RJ28-08-037",
@@ -16123,13 +16558,14 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0049,
    0.0575,
    -0.0128
   ],
-  "mass_kg": 0.054
+  "mass_kg": 0.055
  },
  {
   "number": "RJ28-08-038",
@@ -16160,6 +16596,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0589,
@@ -16197,6 +16634,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0027,
@@ -16234,13 +16672,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0125,
    0.0357,
    -0.0444
   ],
-  "mass_kg": 0.605
+  "mass_kg": 0.617
  },
  {
   "number": "RJ28-08-041",
@@ -16271,13 +16710,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.1138,
    0.0378,
    0.0156
   ],
-  "mass_kg": 0.049
+  "mass_kg": 0.05
  },
  {
   "number": "RJ28-08-042",
@@ -16308,6 +16748,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.1072,
@@ -16345,13 +16786,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1213,
    0.0372,
    0.0171
   ],
-  "mass_kg": 0.03
+  "mass_kg": 0.031
  },
  {
   "number": "RJ28-08-044",
@@ -16382,13 +16824,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1083,
    0.0645,
    -0.0337
   ],
-  "mass_kg": 0.029
+  "mass_kg": 0.03
  },
  {
   "number": "RJ28-08-045",
@@ -16419,6 +16862,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1149,
@@ -16456,13 +16900,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.013,
    -0.0052,
    -0.0609
   ],
-  "mass_kg": 0.358
+  "mass_kg": 0.364
  },
  {
   "number": "RJ28-08-047",
@@ -16493,13 +16938,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0154,
    -0.0061,
    -0.0723
   ],
-  "mass_kg": 0.004
+  "mass_kg": 0.005
  },
  {
   "number": "RJ28-08-048",
@@ -16530,13 +16976,14 @@
   "density": 3200.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0879,
    0.0138,
    -0.0468
   ],
-  "mass_kg": 0.134
+  "mass_kg": 0.136
  },
  {
   "number": "RJ28-08-049",
@@ -16567,13 +17014,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0181,
    -0.0072,
    -0.0849
   ],
-  "mass_kg": 0.56
+  "mass_kg": 0.571
  },
  {
   "number": "RJ28-08-050",
@@ -16604,13 +17052,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0198,
    -0.0079,
    -0.0931
   ],
-  "mass_kg": 0.042
+  "mass_kg": 0.043
  },
  {
   "number": "RJ28-08-051",
@@ -16641,6 +17090,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0194,
@@ -16678,6 +17128,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0189,
@@ -16715,13 +17166,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0197,
    -0.0078,
    -0.0925
   ],
-  "mass_kg": 0.029
+  "mass_kg": 0.03
  },
  {
   "number": "RJ28-08-054",
@@ -16752,13 +17204,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.02,
    -0.008,
    -0.0942
   ],
-  "mass_kg": 0.155
+  "mass_kg": 0.158
  },
  {
   "number": "RJ28-08-055",
@@ -16789,13 +17242,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0814,
    0.0288,
    -0.0549
   ],
-  "mass_kg": 0.522
+  "mass_kg": 0.532
  },
  {
   "number": "RJ28-08-056",
@@ -16826,13 +17280,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0609,
    0.0264,
    -0.0821
   ],
-  "mass_kg": 0.578
+  "mass_kg": 0.589
  },
  {
   "number": "RJ28-08-057",
@@ -16863,13 +17318,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.1395,
    0.0141,
    -0.042
   ],
-  "mass_kg": 0.111
+  "mass_kg": 0.113
  },
  {
   "number": "RJ28-08-058",
@@ -16896,17 +17352,18 @@
    86.3,
    75.2
   ],
-  "volume_cm3": 4.11,
+  "volume_cm3": 3.15,
   "density": 2700,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.1308,
    0.0098,
    -0.0433
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.005
  },
  {
   "number": "RJ28-08-059",
@@ -16937,6 +17394,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1351,
@@ -16974,6 +17432,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.1351,
@@ -17011,13 +17470,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0629,
    -0.11,
    -0.0392
   ],
-  "mass_kg": 0.063
+  "mass_kg": 0.064
  },
  {
   "number": "RJ28-08-062",
@@ -17048,6 +17508,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0157,
@@ -17085,13 +17546,14 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0883,
    -0.1087,
    -0.0339
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-08-064",
@@ -17122,13 +17584,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0335,
    0.13,
    -0.0856
   ],
-  "mass_kg": 0.063
+  "mass_kg": 0.064
  },
  {
   "number": "RJ28-08-065",
@@ -17159,6 +17622,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0113,
@@ -17196,13 +17660,14 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0582,
    0.1314,
    -0.0913
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-08-067",
@@ -17233,13 +17698,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.077,
    0.1304,
    -0.0678
   ],
-  "mass_kg": 0.037
+  "mass_kg": 0.038
  },
  {
   "number": "RJ28-08-068",
@@ -17270,6 +17736,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0725,
@@ -17307,13 +17774,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0033,
    0.0426,
    -0.0726
   ],
-  "mass_kg": 0.053
+  "mass_kg": 0.054
  },
  {
   "number": "RJ28-08-070",
@@ -17344,6 +17812,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0141,
@@ -17381,6 +17850,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1152,
@@ -17418,6 +17888,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0887,
@@ -17455,13 +17926,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.007,
    0.006,
    0.0331
   ],
-  "mass_kg": 0.081
+  "mass_kg": 0.082
  },
  {
   "number": "RJ28-09-002",
@@ -17492,6 +17964,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0079,
@@ -17529,13 +18002,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0068,
    0.0058,
    0.032
   ],
-  "mass_kg": 0.226
+  "mass_kg": 0.23
  },
  {
   "number": "RJ28-09-004",
@@ -17566,13 +18040,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0059,
    0.005,
    0.028
   ],
-  "mass_kg": 0.088
+  "mass_kg": 0.09
  },
  {
   "number": "RJ28-09-005",
@@ -17603,13 +18078,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0641,
    0.0058,
    0.047
   ],
-  "mass_kg": 0.011
+  "mass_kg": 0.012
  },
  {
   "number": "RJ28-09-006",
@@ -17640,13 +18116,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0094,
    -0.0657,
    0.0443
   ],
-  "mass_kg": 0.011
+  "mass_kg": 0.012
  },
  {
   "number": "RJ28-09-007",
@@ -17677,13 +18154,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0061,
    0.0052,
    0.0287
   ],
-  "mass_kg": 0.043
+  "mass_kg": 0.044
  },
  {
   "number": "RJ28-09-008",
@@ -17714,13 +18192,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0061,
    0.0052,
    0.0287
   ],
-  "mass_kg": 0.03
+  "mass_kg": 0.031
  },
  {
   "number": "RJ28-09-009",
@@ -17751,13 +18230,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0016,
    0.0014,
    0.0076
   ],
-  "mass_kg": 0.338
+  "mass_kg": 0.345
  },
  {
   "number": "RJ28-09-010",
@@ -17788,6 +18268,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0051,
@@ -17825,13 +18306,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0664,
    0.0015,
    0.0229
   ],
-  "mass_kg": 0.094
+  "mass_kg": 0.096
  },
  {
   "number": "RJ28-09-012",
@@ -17862,6 +18344,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0637,
@@ -17899,6 +18382,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0591,
@@ -17936,6 +18420,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.058,
@@ -17973,13 +18458,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0185,
    -0.0707,
    0.0008
   ],
-  "mass_kg": 0.052
+  "mass_kg": 0.053
  },
  {
   "number": "RJ28-09-016",
@@ -18010,13 +18496,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0559,
    -0.0658,
    -0.0177
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-09-017",
@@ -18047,13 +18534,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0894,
    -0.0612,
    -0.0281
   ],
-  "mass_kg": 0.024
+  "mass_kg": 0.025
  },
  {
   "number": "RJ28-09-018",
@@ -18084,6 +18572,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0385,
@@ -18121,6 +18610,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0806,
@@ -18158,13 +18648,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0016,
    -0.0013,
    -0.0075
   ],
-  "mass_kg": 0.052
+  "mass_kg": 0.053
  },
  {
   "number": "RJ28-09-021",
@@ -18195,13 +18686,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0625,
    -0.002,
    -0.0306
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-09-022",
@@ -18232,13 +18724,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0915,
    -0.0035,
    -0.039
   ],
-  "mass_kg": 0.024
+  "mass_kg": 0.025
  },
  {
   "number": "RJ28-09-023",
@@ -18269,6 +18762,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.05,
@@ -18306,6 +18800,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0838,
@@ -18343,13 +18838,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0133,
    0.0689,
    -0.0233
   ],
-  "mass_kg": 0.052
+  "mass_kg": 0.053
  },
  {
   "number": "RJ28-09-026",
@@ -18380,13 +18876,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.051,
    0.0612,
    -0.0395
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-09-027",
@@ -18417,13 +18914,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0852,
    0.0542,
    -0.048
   ],
-  "mass_kg": 0.024
+  "mass_kg": 0.025
  },
  {
   "number": "RJ28-09-028",
@@ -18454,6 +18952,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0337,
@@ -18491,6 +18990,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0764,
@@ -18528,13 +19028,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0123,
    -0.0827,
    0.034
   ],
-  "mass_kg": 0.085
+  "mass_kg": 0.087
  },
  {
   "number": "RJ28-09-031",
@@ -18565,13 +19066,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0352,
    -0.097,
    0.0268
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-09-032",
@@ -18602,6 +19104,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0655,
@@ -18639,6 +19142,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0271,
@@ -18676,6 +19180,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.079,
@@ -18713,13 +19218,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.007,
    0.006,
    0.0331
   ],
-  "mass_kg": 0.081
+  "mass_kg": 0.082
  },
  {
   "number": "RJ28-10-002",
@@ -18750,6 +19256,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0079,
@@ -18787,13 +19294,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0068,
    0.0058,
    0.032
   ],
-  "mass_kg": 0.226
+  "mass_kg": 0.23
  },
  {
   "number": "RJ28-10-004",
@@ -18824,13 +19332,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0059,
    0.005,
    0.028
   ],
-  "mass_kg": 0.088
+  "mass_kg": 0.09
  },
  {
   "number": "RJ28-10-005",
@@ -18861,13 +19370,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0641,
    0.0058,
    0.047
   ],
-  "mass_kg": 0.011
+  "mass_kg": 0.012
  },
  {
   "number": "RJ28-10-006",
@@ -18898,13 +19408,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0094,
    -0.0657,
    0.0443
   ],
-  "mass_kg": 0.011
+  "mass_kg": 0.012
  },
  {
   "number": "RJ28-10-007",
@@ -18935,13 +19446,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0061,
    0.0052,
    0.0287
   ],
-  "mass_kg": 0.043
+  "mass_kg": 0.044
  },
  {
   "number": "RJ28-10-008",
@@ -18972,13 +19484,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0061,
    0.0052,
    0.0287
   ],
-  "mass_kg": 0.03
+  "mass_kg": 0.031
  },
  {
   "number": "RJ28-10-009",
@@ -19009,13 +19522,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0016,
    0.0014,
    0.0076
   ],
-  "mass_kg": 0.339
+  "mass_kg": 0.346
  },
  {
   "number": "RJ28-10-010",
@@ -19046,6 +19560,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0051,
@@ -19083,13 +19598,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0664,
    0.0015,
    0.0229
   ],
-  "mass_kg": 0.094
+  "mass_kg": 0.096
  },
  {
   "number": "RJ28-10-012",
@@ -19120,6 +19636,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0637,
@@ -19157,6 +19674,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0591,
@@ -19194,6 +19712,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.058,
@@ -19231,13 +19750,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0185,
    -0.0707,
    0.0008
   ],
-  "mass_kg": 0.052
+  "mass_kg": 0.053
  },
  {
   "number": "RJ28-10-016",
@@ -19268,13 +19788,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0559,
    -0.0658,
    -0.0177
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-10-017",
@@ -19305,13 +19826,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0894,
    -0.0612,
    -0.0281
   ],
-  "mass_kg": 0.024
+  "mass_kg": 0.025
  },
  {
   "number": "RJ28-10-018",
@@ -19342,6 +19864,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0385,
@@ -19379,6 +19902,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0806,
@@ -19416,13 +19940,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0016,
    -0.0013,
    -0.0075
   ],
-  "mass_kg": 0.052
+  "mass_kg": 0.053
  },
  {
   "number": "RJ28-10-021",
@@ -19453,13 +19978,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0625,
    -0.002,
    -0.0306
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-10-022",
@@ -19490,13 +20016,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0915,
    -0.0035,
    -0.039
   ],
-  "mass_kg": 0.024
+  "mass_kg": 0.025
  },
  {
   "number": "RJ28-10-023",
@@ -19527,6 +20054,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.05,
@@ -19564,6 +20092,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0838,
@@ -19601,13 +20130,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0133,
    0.0689,
    -0.0233
   ],
-  "mass_kg": 0.052
+  "mass_kg": 0.053
  },
  {
   "number": "RJ28-10-026",
@@ -19638,13 +20168,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.051,
    0.0612,
    -0.0395
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-10-027",
@@ -19675,13 +20206,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0852,
    0.0542,
    -0.048
   ],
-  "mass_kg": 0.024
+  "mass_kg": 0.025
  },
  {
   "number": "RJ28-10-028",
@@ -19712,6 +20244,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0337,
@@ -19749,6 +20282,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0764,
@@ -19786,13 +20320,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0123,
    -0.0827,
    0.034
   ],
-  "mass_kg": 0.085
+  "mass_kg": 0.087
  },
  {
   "number": "RJ28-10-031",
@@ -19823,13 +20358,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0352,
    -0.097,
    0.0268
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-10-032",
@@ -19860,6 +20396,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0655,
@@ -19897,6 +20434,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0271,
@@ -19934,6 +20472,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.079,
@@ -19971,13 +20510,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0136,
    -0.0014,
    0.1421
   ],
-  "mass_kg": 5.617
+  "mass_kg": 5.724
  },
  {
   "number": "RJ28-11-002",
@@ -20008,13 +20548,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1074,
    0.0111,
    0.1534
   ],
-  "mass_kg": 0.156
+  "mass_kg": 0.159
  },
  {
   "number": "RJ28-11-003",
@@ -20045,6 +20586,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0986,
@@ -20082,13 +20624,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0036,
    0.0683,
    0.0751
   ],
-  "mass_kg": 3.123
+  "mass_kg": 3.183
  },
  {
   "number": "RJ28-11-005",
@@ -20119,13 +20662,14 @@
   "density": 7850,
   "count": 12,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1128,
    0.0127,
    0.1542
   ],
-  "mass_kg": 0.03
+  "mass_kg": 0.031
  },
  {
   "number": "RJ28-11-006",
@@ -20156,6 +20700,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1293,
@@ -20193,6 +20738,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1258,
@@ -20230,13 +20776,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1292,
    -0.0143,
    0.1304
   ],
-  "mass_kg": 0.137
+  "mass_kg": 0.14
  },
  {
   "number": "RJ28-11-009",
@@ -20267,6 +20814,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1286,
@@ -20304,13 +20852,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0157,
    -0.0785,
    0.0909
   ],
-  "mass_kg": 0.505
+  "mass_kg": 0.514
  },
  {
   "number": "RJ28-11-011",
@@ -20341,13 +20890,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0039,
    -0.0834,
    0.0473
   ],
-  "mass_kg": 0.759
+  "mass_kg": 0.774
  },
  {
   "number": "RJ28-11-012",
@@ -20378,13 +20928,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.006,
    -0.0755,
    0.0616
   ],
-  "mass_kg": 0.033
+  "mass_kg": 0.034
  },
  {
   "number": "RJ28-11-013",
@@ -20415,13 +20966,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0179,
    -0.1161,
    0.0615
   ],
-  "mass_kg": 0.037
+  "mass_kg": 0.038
  },
  {
   "number": "RJ28-11-014",
@@ -20452,6 +21004,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0136,
@@ -20489,6 +21042,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0137,
@@ -20526,13 +21080,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1447,
    -0.024,
    0.0986
   ],
-  "mass_kg": 0.021
+  "mass_kg": 0.022
  },
  {
   "number": "RJ28-11-017",
@@ -20563,6 +21118,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1507,
@@ -20600,6 +21156,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1387,
@@ -20637,13 +21194,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0141,
    -0.1658,
    0.0604
   ],
-  "mass_kg": 0.288
+  "mass_kg": 0.293
  },
  {
   "number": "RJ28-11-020",
@@ -20674,6 +21232,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0152,
@@ -20711,13 +21270,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0212,
    0.1639,
    0.0832
   ],
-  "mass_kg": 0.418
+  "mass_kg": 0.426
  },
  {
   "number": "RJ28-11-022",
@@ -20748,13 +21308,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0298,
    0.2029,
    0.0871
   ],
-  "mass_kg": 0.02
+  "mass_kg": 0.021
  },
  {
   "number": "RJ28-11-023",
@@ -20785,6 +21346,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0937,
@@ -20822,6 +21384,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0213,
@@ -20859,13 +21422,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0181,
    0.0998,
    0.0789
   ],
-  "mass_kg": 0.064
+  "mass_kg": 0.065
  },
  {
   "number": "RJ28-11-026",
@@ -20896,6 +21460,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0154,
@@ -20933,6 +21498,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0223,
@@ -20970,13 +21536,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0046,
    -0.0441,
    0.0
   ],
-  "mass_kg": 0.533
+  "mass_kg": 0.543
  },
  {
   "number": "RJ28-11-029",
@@ -21007,13 +21574,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1334,
    -0.0072,
    0.0126
   ],
-  "mass_kg": 0.554
+  "mass_kg": 0.565
  },
  {
   "number": "RJ28-11-030",
@@ -21044,13 +21612,14 @@
   "density": 7850,
   "count": 10,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1317,
    -0.0062,
    0.0127
   ],
-  "mass_kg": 0.025
+  "mass_kg": 0.026
  },
  {
   "number": "RJ28-11-031",
@@ -21081,13 +21650,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1508,
    -0.0043,
    0.0144
   ],
-  "mass_kg": 0.066
+  "mass_kg": 0.067
  },
  {
   "number": "RJ28-11-032",
@@ -21118,13 +21688,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1516,
    0.0057,
    0.0145
   ],
-  "mass_kg": 0.024
+  "mass_kg": 0.025
  },
  {
   "number": "RJ28-11-033",
@@ -21155,13 +21726,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1273,
    -0.034,
    -0.0125
   ],
-  "mass_kg": 0.331
+  "mass_kg": 0.337
  },
  {
   "number": "RJ28-11-034",
@@ -21192,6 +21764,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1273,
@@ -21229,6 +21802,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0954,
@@ -21266,13 +21840,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0423,
    0.1355,
    0.0892
   ],
-  "mass_kg": 0.759
+  "mass_kg": 0.774
  },
  {
   "number": "RJ28-11-037",
@@ -21303,13 +21878,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0636,
    0.0577,
    0.0117
   ],
-  "mass_kg": 0.699
+  "mass_kg": 0.713
  },
  {
   "number": "RJ28-11-038",
@@ -21340,6 +21916,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0558,
@@ -21377,13 +21954,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0326,
    0.1657,
    0.1245
   ],
-  "mass_kg": 0.051
+  "mass_kg": 0.052
  },
  {
   "number": "RJ28-11-040",
@@ -21414,13 +21992,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0732,
    0.0333,
    -0.0151
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-11-041",
@@ -21451,13 +22030,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0765,
    0.1238,
    0.0778
   ],
-  "mass_kg": 0.759
+  "mass_kg": 0.774
  },
  {
   "number": "RJ28-11-042",
@@ -21488,13 +22068,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0772,
    0.0425,
    -0.0019
   ],
-  "mass_kg": 0.699
+  "mass_kg": 0.713
  },
  {
   "number": "RJ28-11-043",
@@ -21525,6 +22106,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0763,
@@ -21562,13 +22144,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0817,
    0.1541,
    0.1135
   ],
-  "mass_kg": 0.051
+  "mass_kg": 0.052
  },
  {
   "number": "RJ28-11-045",
@@ -21599,13 +22182,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0742,
    0.0178,
    -0.0294
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-11-046",
@@ -21636,13 +22220,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0177,
    -0.1688,
    0.0024
   ],
-  "mass_kg": 0.362
+  "mass_kg": 0.369
  },
  {
   "number": "RJ28-11-047",
@@ -21673,6 +22258,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0111,
@@ -21710,13 +22296,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0143,
    -0.1175,
    -0.0206
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-11-049",
@@ -21747,6 +22334,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.011,
@@ -21784,6 +22372,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.017,
@@ -21821,6 +22410,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0184,
@@ -21858,13 +22448,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.042,
    -0.024,
    -0.0677
   ],
-  "mass_kg": 2.614
+  "mass_kg": 2.663
  },
  {
   "number": "RJ28-11-053",
@@ -21895,13 +22486,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0012,
    0.0732,
    -0.0917
   ],
-  "mass_kg": 0.013
+  "mass_kg": 0.014
  },
  {
   "number": "RJ28-11-054",
@@ -21932,6 +22524,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0007,
@@ -21969,13 +22562,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.02,
    -0.1283,
    -0.0671
   ],
-  "mass_kg": 0.475
+  "mass_kg": 0.484
  },
  {
   "number": "RJ28-11-056",
@@ -22006,13 +22600,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1224,
    -0.0397,
    -0.0568
   ],
-  "mass_kg": 0.459
+  "mass_kg": 0.468
  },
  {
   "number": "RJ28-11-057",
@@ -22043,13 +22638,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.101,
    -0.0601,
    -0.0777
   ],
-  "mass_kg": 0.459
+  "mass_kg": 0.468
  },
  {
   "number": "RJ28-11-058",
@@ -22076,17 +22672,18 @@
    14.5,
    62.9
   ],
-  "volume_cm3": 123.63,
+  "volume_cm3": 1.44,
   "density": 2700,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0196,
    -0.1374,
    -0.0533
   ],
-  "mass_kg": 0.176
+  "mass_kg": 0.002
  },
  {
   "number": "RJ28-11-059",
@@ -22117,13 +22714,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0018,
    -0.0579,
    -0.0859
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-11-060",
@@ -22154,13 +22752,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0189,
    -0.1009,
    -0.086
   ],
-  "mass_kg": 0.033
+  "mass_kg": 0.034
  },
  {
   "number": "RJ28-11-061",
@@ -22191,6 +22790,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0182,
@@ -22228,6 +22828,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1257,
@@ -22265,6 +22866,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0993,
@@ -22302,13 +22904,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0213,
    -0.1304,
    -0.0883
   ],
-  "mass_kg": 0.186
+  "mass_kg": 0.19
  },
  {
   "number": "RJ28-11-065",
@@ -22339,6 +22942,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0236,
@@ -22376,13 +22980,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0515,
    0.1266,
    -0.0661
   ],
-  "mass_kg": 0.23
+  "mass_kg": 0.234
  },
  {
   "number": "RJ28-11-067",
@@ -22413,13 +23018,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0524,
    0.1494,
    -0.1185
   ],
-  "mass_kg": 0.226
+  "mass_kg": 0.23
  },
  {
   "number": "RJ28-11-068",
@@ -22450,6 +23056,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0523,
@@ -22487,13 +23094,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0541,
    0.11,
    -0.0456
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-11-070",
@@ -22524,6 +23132,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.054,
@@ -22561,13 +23170,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0541,
    0.1523,
    -0.1424
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-11-072",
@@ -22598,6 +23208,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0557,
@@ -22635,13 +23246,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0614,
    0.1149,
    -0.0771
   ],
-  "mass_kg": 0.23
+  "mass_kg": 0.234
  },
  {
   "number": "RJ28-11-074",
@@ -22672,13 +23284,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0587,
    0.138,
    -0.1279
   ],
-  "mass_kg": 0.217
+  "mass_kg": 0.222
  },
  {
   "number": "RJ28-11-075",
@@ -22709,6 +23322,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0603,
@@ -22746,13 +23360,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0647,
    0.0977,
    -0.0571
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-11-077",
@@ -22783,6 +23398,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0627,
@@ -22820,13 +23436,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0566,
    0.1406,
    -0.1504
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-11-079",
@@ -22857,6 +23474,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0551,
@@ -22894,13 +23512,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0083,
    0.1561,
    -0.0969
   ],
-  "mass_kg": 0.344
+  "mass_kg": 0.351
  },
  {
   "number": "RJ28-11-081",
@@ -22931,13 +23550,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0027,
    0.1165,
    -0.0974
   ],
-  "mass_kg": 0.081
+  "mass_kg": 0.082
  },
  {
   "number": "RJ28-11-082",
@@ -22968,6 +23588,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0003,
@@ -23005,6 +23626,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0094,
@@ -23042,13 +23664,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0136,
    -0.0014,
    0.1421
   ],
-  "mass_kg": 5.617
+  "mass_kg": 5.724
  },
  {
   "number": "RJ28-12-002",
@@ -23079,13 +23702,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1074,
    0.0111,
    0.1534
   ],
-  "mass_kg": 0.156
+  "mass_kg": 0.159
  },
  {
   "number": "RJ28-12-003",
@@ -23116,6 +23740,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0986,
@@ -23153,13 +23778,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0036,
    0.0683,
    0.0751
   ],
-  "mass_kg": 3.123
+  "mass_kg": 3.183
  },
  {
   "number": "RJ28-12-005",
@@ -23190,13 +23816,14 @@
   "density": 7850,
   "count": 12,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1128,
    0.0127,
    0.1542
   ],
-  "mass_kg": 0.03
+  "mass_kg": 0.031
  },
  {
   "number": "RJ28-12-006",
@@ -23227,6 +23854,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1293,
@@ -23264,6 +23892,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1258,
@@ -23301,13 +23930,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1292,
    -0.0143,
    0.1304
   ],
-  "mass_kg": 0.137
+  "mass_kg": 0.14
  },
  {
   "number": "RJ28-12-009",
@@ -23338,6 +23968,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1286,
@@ -23375,13 +24006,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0157,
    -0.0785,
    0.0909
   ],
-  "mass_kg": 0.505
+  "mass_kg": 0.514
  },
  {
   "number": "RJ28-12-011",
@@ -23412,13 +24044,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0039,
    -0.0834,
    0.0473
   ],
-  "mass_kg": 0.759
+  "mass_kg": 0.774
  },
  {
   "number": "RJ28-12-012",
@@ -23449,13 +24082,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.006,
    -0.0755,
    0.0616
   ],
-  "mass_kg": 0.033
+  "mass_kg": 0.034
  },
  {
   "number": "RJ28-12-013",
@@ -23486,13 +24120,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0179,
    -0.1161,
    0.0615
   ],
-  "mass_kg": 0.037
+  "mass_kg": 0.038
  },
  {
   "number": "RJ28-12-014",
@@ -23523,6 +24158,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0136,
@@ -23560,6 +24196,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0137,
@@ -23597,13 +24234,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1447,
    -0.024,
    0.0986
   ],
-  "mass_kg": 0.021
+  "mass_kg": 0.022
  },
  {
   "number": "RJ28-12-017",
@@ -23634,6 +24272,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.1507,
@@ -23671,6 +24310,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.1387,
@@ -23708,13 +24348,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0141,
    -0.1658,
    0.0604
   ],
-  "mass_kg": 0.288
+  "mass_kg": 0.293
  },
  {
   "number": "RJ28-12-020",
@@ -23745,6 +24386,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0152,
@@ -23782,13 +24424,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0212,
    0.1639,
    0.0832
   ],
-  "mass_kg": 0.413
+  "mass_kg": 0.421
  },
  {
   "number": "RJ28-12-022",
@@ -23819,13 +24462,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0181,
    0.0998,
    0.0789
   ],
-  "mass_kg": 0.064
+  "mass_kg": 0.065
  },
  {
   "number": "RJ28-12-023",
@@ -23856,6 +24500,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0154,
@@ -23893,6 +24538,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0223,
@@ -23930,13 +24576,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0046,
    -0.0441,
    0.0
   ],
-  "mass_kg": 0.533
+  "mass_kg": 0.543
  },
  {
   "number": "RJ28-12-026",
@@ -23967,13 +24614,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1334,
    -0.0072,
    0.0126
   ],
-  "mass_kg": 0.554
+  "mass_kg": 0.565
  },
  {
   "number": "RJ28-12-027",
@@ -24004,13 +24652,14 @@
   "density": 7850,
   "count": 10,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1317,
    -0.0062,
    0.0127
   ],
-  "mass_kg": 0.025
+  "mass_kg": 0.026
  },
  {
   "number": "RJ28-12-028",
@@ -24041,13 +24690,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1508,
    -0.0043,
    0.0144
   ],
-  "mass_kg": 0.066
+  "mass_kg": 0.067
  },
  {
   "number": "RJ28-12-029",
@@ -24078,13 +24728,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1516,
    0.0057,
    0.0145
   ],
-  "mass_kg": 0.024
+  "mass_kg": 0.025
  },
  {
   "number": "RJ28-12-030",
@@ -24115,13 +24766,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1273,
    -0.034,
    -0.0125
   ],
-  "mass_kg": 0.331
+  "mass_kg": 0.337
  },
  {
   "number": "RJ28-12-031",
@@ -24152,6 +24804,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1273,
@@ -24189,6 +24842,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0954,
@@ -24226,13 +24880,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0423,
    0.1355,
    0.0892
   ],
-  "mass_kg": 0.759
+  "mass_kg": 0.774
  },
  {
   "number": "RJ28-12-034",
@@ -24263,13 +24918,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0636,
    0.0577,
    0.0117
   ],
-  "mass_kg": 0.699
+  "mass_kg": 0.713
  },
  {
   "number": "RJ28-12-035",
@@ -24300,6 +24956,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0558,
@@ -24337,13 +24994,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0251,
    0.1658,
    0.1239
   ],
-  "mass_kg": 0.051
+  "mass_kg": 0.052
  },
  {
   "number": "RJ28-12-037",
@@ -24374,13 +25032,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0732,
    0.0333,
    -0.0151
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-12-038",
@@ -24411,13 +25070,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0765,
    0.1238,
    0.0778
   ],
-  "mass_kg": 0.759
+  "mass_kg": 0.774
  },
  {
   "number": "RJ28-12-039",
@@ -24448,13 +25108,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0772,
    0.0425,
    -0.0019
   ],
-  "mass_kg": 0.699
+  "mass_kg": 0.713
  },
  {
   "number": "RJ28-12-040",
@@ -24485,6 +25146,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0763,
@@ -24522,13 +25184,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0891,
    0.1534,
    0.1129
   ],
-  "mass_kg": 0.051
+  "mass_kg": 0.052
  },
  {
   "number": "RJ28-12-042",
@@ -24559,13 +25222,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0742,
    0.0178,
    -0.0294
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-12-043",
@@ -24596,13 +25260,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0178,
    -0.1687,
    0.0024
   ],
-  "mass_kg": 0.363
+  "mass_kg": 0.37
  },
  {
   "number": "RJ28-12-044",
@@ -24633,6 +25298,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0111,
@@ -24670,13 +25336,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0143,
    -0.1175,
    -0.0206
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-12-046",
@@ -24707,6 +25374,7 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.011,
@@ -24744,6 +25412,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.017,
@@ -24781,6 +25450,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0184,
@@ -24818,13 +25488,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.042,
    -0.024,
    -0.0677
   ],
-  "mass_kg": 2.614
+  "mass_kg": 2.663
  },
  {
   "number": "RJ28-12-050",
@@ -24855,13 +25526,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0012,
    0.0732,
    -0.0917
   ],
-  "mass_kg": 0.013
+  "mass_kg": 0.014
  },
  {
   "number": "RJ28-12-051",
@@ -24892,6 +25564,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0007,
@@ -24929,13 +25602,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.02,
    -0.1283,
    -0.0671
   ],
-  "mass_kg": 0.475
+  "mass_kg": 0.484
  },
  {
   "number": "RJ28-12-053",
@@ -24966,13 +25640,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1224,
    -0.0397,
    -0.0568
   ],
-  "mass_kg": 0.459
+  "mass_kg": 0.468
  },
  {
   "number": "RJ28-12-054",
@@ -25003,13 +25678,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.101,
    -0.0601,
    -0.0777
   ],
-  "mass_kg": 0.459
+  "mass_kg": 0.468
  },
  {
   "number": "RJ28-12-055",
@@ -25036,17 +25712,18 @@
    14.5,
    62.9
   ],
-  "volume_cm3": 123.63,
+  "volume_cm3": 1.44,
   "density": 2700,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0196,
    -0.1374,
    -0.0533
   ],
-  "mass_kg": 0.176
+  "mass_kg": 0.002
  },
  {
   "number": "RJ28-12-056",
@@ -25077,13 +25754,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.0018,
    -0.0579,
    -0.0859
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-12-057",
@@ -25114,13 +25792,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0189,
    -0.1009,
    -0.086
   ],
-  "mass_kg": 0.033
+  "mass_kg": 0.034
  },
  {
   "number": "RJ28-12-058",
@@ -25151,6 +25830,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0182,
@@ -25188,6 +25868,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1257,
@@ -25225,6 +25906,7 @@
   "density": 7850,
   "count": 3,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0993,
@@ -25262,13 +25944,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0213,
    -0.1304,
    -0.0883
   ],
-  "mass_kg": 0.186
+  "mass_kg": 0.19
  },
  {
   "number": "RJ28-12-062",
@@ -25299,6 +25982,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0236,
@@ -25336,13 +26020,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0515,
    0.1266,
    -0.0661
   ],
-  "mass_kg": 0.23
+  "mass_kg": 0.234
  },
  {
   "number": "RJ28-12-064",
@@ -25373,13 +26058,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0524,
    0.1494,
    -0.1185
   ],
-  "mass_kg": 0.226
+  "mass_kg": 0.23
  },
  {
   "number": "RJ28-12-065",
@@ -25410,6 +26096,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0523,
@@ -25447,13 +26134,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0541,
    0.11,
    -0.0456
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-12-067",
@@ -25484,6 +26172,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0487,
@@ -25521,13 +26210,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0541,
    0.1523,
    -0.1424
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-12-069",
@@ -25558,6 +26248,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0506,
@@ -25595,13 +26286,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0614,
    0.1149,
    -0.0771
   ],
-  "mass_kg": 0.23
+  "mass_kg": 0.234
  },
  {
   "number": "RJ28-12-071",
@@ -25632,13 +26324,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0587,
    0.138,
    -0.1279
   ],
-  "mass_kg": 0.217
+  "mass_kg": 0.222
  },
  {
   "number": "RJ28-12-072",
@@ -25669,6 +26362,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0603,
@@ -25706,13 +26400,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0647,
    0.0977,
    -0.0571
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-12-074",
@@ -25743,6 +26438,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0678,
@@ -25780,13 +26476,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0566,
    0.1406,
    -0.1504
   ],
-  "mass_kg": 0.048
+  "mass_kg": 0.049
  },
  {
   "number": "RJ28-12-076",
@@ -25817,6 +26514,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0601,
@@ -25854,13 +26552,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0083,
    0.1561,
    -0.0969
   ],
-  "mass_kg": 0.344
+  "mass_kg": 0.351
  },
  {
   "number": "RJ28-12-078",
@@ -25891,13 +26590,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0027,
    0.1165,
    -0.0974
   ],
-  "mass_kg": 0.081
+  "mass_kg": 0.082
  },
  {
   "number": "RJ28-12-079",
@@ -25928,6 +26628,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0003,
@@ -25965,6 +26666,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0094,
@@ -26002,13 +26704,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0192,
    0.074
   ],
-  "mass_kg": 0.727
+  "mass_kg": 0.74
  },
  {
   "number": "RJ28-13-002",
@@ -26039,13 +26742,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
    0.0192,
    0.074
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-13-003",
@@ -26076,6 +26780,7 @@
   "density": 7850,
   "count": 12,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -26113,6 +26818,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.126,
@@ -26150,13 +26856,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0242,
    0.0207,
    0.0394
   ],
-  "mass_kg": 1.214
+  "mass_kg": 1.237
  },
  {
   "number": "RJ28-13-006",
@@ -26187,6 +26894,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
@@ -26224,13 +26932,14 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0192,
    0.074
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-13-008",
@@ -26261,6 +26970,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0245,
@@ -26298,6 +27008,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.024,
@@ -26335,13 +27046,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0156,
    0.0171,
    -0.0769
   ],
-  "mass_kg": 0.242
+  "mass_kg": 0.247
  },
  {
   "number": "RJ28-13-011",
@@ -26372,13 +27084,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0042,
    0.0417,
    -0.086
   ],
-  "mass_kg": 0.053
+  "mass_kg": 0.054
  },
  {
   "number": "RJ28-13-012",
@@ -26409,13 +27122,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0149,
    0.0017,
    -0.0857
   ],
-  "mass_kg": 0.097
+  "mass_kg": 0.098
  },
  {
   "number": "RJ28-13-013",
@@ -26446,6 +27160,7 @@
   "density": 7850,
   "count": 10,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0003,
@@ -26483,13 +27198,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0286,
    -0.038,
    -0.0566
   ],
-  "mass_kg": 0.384
+  "mass_kg": 0.392
  },
  {
   "number": "RJ28-13-015",
@@ -26520,13 +27236,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0251,
    -0.0395,
    -0.076
   ],
-  "mass_kg": 0.103
+  "mass_kg": 0.105
  },
  {
   "number": "RJ28-13-016",
@@ -26557,13 +27274,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0238,
    -0.0395,
    -0.085
   ],
-  "mass_kg": 0.066
+  "mass_kg": 0.068
  },
  {
   "number": "RJ28-13-017",
@@ -26594,6 +27312,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0321,
@@ -26631,13 +27350,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0382,
    -0.0211,
    -0.022
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
   "number": "RJ28-13-019",
@@ -26668,13 +27388,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0488,
    -0.0411,
    0.001
   ],
-  "mass_kg": 0.222
+  "mass_kg": 0.226
  },
  {
   "number": "RJ28-13-020",
@@ -26705,6 +27426,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0476,
@@ -26742,6 +27464,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0443,
@@ -26779,13 +27502,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0474,
    -0.0545,
    -0.0376
   ],
-  "mass_kg": 0.046
+  "mass_kg": 0.047
  },
  {
   "number": "RJ28-13-023",
@@ -26816,6 +27540,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.044,
@@ -26853,13 +27578,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0127,
    0.0
   ],
-  "mass_kg": 0.183
+  "mass_kg": 0.187
  },
  {
   "number": "RJ28-13-025",
@@ -26890,13 +27616,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.01,
    -0.0032,
    0.076
   ],
-  "mass_kg": 0.114
+  "mass_kg": 0.117
  },
  {
   "number": "RJ28-13-026",
@@ -26927,6 +27654,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.022,
@@ -26964,6 +27692,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0155,
@@ -27001,6 +27730,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -27038,6 +27768,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -27075,6 +27806,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1222,
@@ -27112,6 +27844,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1185,
@@ -27149,13 +27882,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0,
    0.0192,
    0.074
   ],
-  "mass_kg": 0.727
+  "mass_kg": 0.74
  },
  {
   "number": "RJ28-14-002",
@@ -27186,13 +27920,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0192,
    0.074
   ],
-  "mass_kg": 0.036
+  "mass_kg": 0.037
  },
  {
   "number": "RJ28-14-003",
@@ -27223,6 +27958,7 @@
   "density": 7850,
   "count": 12,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -27260,6 +27996,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.126,
@@ -27297,13 +28034,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0242,
    0.0207,
    0.0394
   ],
-  "mass_kg": 1.214
+  "mass_kg": 1.237
  },
  {
   "number": "RJ28-14-006",
@@ -27334,6 +28072,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -27371,13 +28110,14 @@
   "density": 7850,
   "count": 8,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0192,
    0.074
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-14-008",
@@ -27408,6 +28148,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0245,
@@ -27445,6 +28186,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.024,
@@ -27482,13 +28224,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0156,
    0.0171,
    -0.0769
   ],
-  "mass_kg": 0.242
+  "mass_kg": 0.247
  },
  {
   "number": "RJ28-14-011",
@@ -27519,13 +28262,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0042,
    0.0417,
    -0.086
   ],
-  "mass_kg": 0.053
+  "mass_kg": 0.054
  },
  {
   "number": "RJ28-14-012",
@@ -27556,13 +28300,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0149,
    0.0017,
    -0.0857
   ],
-  "mass_kg": 0.097
+  "mass_kg": 0.098
  },
  {
   "number": "RJ28-14-013",
@@ -27593,6 +28338,7 @@
   "density": 7850,
   "count": 10,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0003,
@@ -27630,13 +28376,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0286,
    -0.038,
    -0.0566
   ],
-  "mass_kg": 0.384
+  "mass_kg": 0.392
  },
  {
   "number": "RJ28-14-015",
@@ -27667,13 +28414,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0251,
    -0.0395,
    -0.076
   ],
-  "mass_kg": 0.103
+  "mass_kg": 0.105
  },
  {
   "number": "RJ28-14-016",
@@ -27704,13 +28452,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0238,
    -0.0395,
    -0.085
   ],
-  "mass_kg": 0.066
+  "mass_kg": 0.068
  },
  {
   "number": "RJ28-14-017",
@@ -27741,6 +28490,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0321,
@@ -27778,13 +28528,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0382,
    -0.0211,
    -0.022
   ],
-  "mass_kg": 0.047
+  "mass_kg": 0.048
  },
  {
   "number": "RJ28-14-019",
@@ -27815,13 +28566,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0488,
    -0.0411,
    0.0013
   ],
-  "mass_kg": 0.222
+  "mass_kg": 0.226
  },
  {
   "number": "RJ28-14-020",
@@ -27852,6 +28604,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0476,
@@ -27889,6 +28642,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0443,
@@ -27926,13 +28680,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0474,
    -0.0545,
    -0.0376
   ],
-  "mass_kg": 0.046
+  "mass_kg": 0.047
  },
  {
   "number": "RJ28-14-023",
@@ -27963,6 +28718,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.044,
@@ -28000,13 +28756,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0127,
    0.0
   ],
-  "mass_kg": 0.183
+  "mass_kg": 0.187
  },
  {
   "number": "RJ28-14-025",
@@ -28037,13 +28794,14 @@
   "density": 2300,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.01,
    -0.0032,
    0.076
   ],
-  "mass_kg": 0.114
+  "mass_kg": 0.117
  },
  {
   "number": "RJ28-14-026",
@@ -28074,6 +28832,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.022,
@@ -28111,6 +28870,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    -0.0155,
@@ -28148,6 +28908,7 @@
   "density": 1550,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -28185,6 +28946,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -28222,6 +28984,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1222,
@@ -28259,6 +29022,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1185,
@@ -28296,13 +29060,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0796,
    0.0
   ],
-  "mass_kg": 8.138
+  "mass_kg": 8.293
  },
  {
   "number": "RJ28-15-002",
@@ -28333,13 +29098,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "elev",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.1118,
    0.0
   ],
-  "mass_kg": 0.059
+  "mass_kg": 0.06
  },
  {
   "number": "RJ28-15-003",
@@ -28370,6 +29136,7 @@
   "density": 7850,
   "count": 6,
   "mount_group": "elev",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -28407,6 +29174,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "elev",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1206,
@@ -28444,6 +29212,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "elev",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1177,
@@ -28481,13 +29250,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.032,
    0.0
   ],
-  "mass_kg": 3.563
+  "mass_kg": 3.631
  },
  {
   "number": "RJ28-15-007",
@@ -28518,13 +29288,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.044,
    0.0
   ],
-  "mass_kg": 0.239
+  "mass_kg": 0.244
  },
  {
   "number": "RJ28-15-008",
@@ -28555,13 +29326,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0251,
    0.0
   ],
-  "mass_kg": 0.442
+  "mass_kg": 0.45
  },
  {
   "number": "RJ28-15-009",
@@ -28592,13 +29364,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.1034,
    0.0
   ],
-  "mass_kg": 0.384
+  "mass_kg": 0.392
  },
  {
   "number": "RJ28-15-010",
@@ -28629,13 +29402,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0505,
    0.0124,
    0.113
   ],
-  "mass_kg": 0.54
+  "mass_kg": 0.55
  },
  {
   "number": "RJ28-15-011",
@@ -28666,13 +29440,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0505,
    0.0124,
    0.113
   ],
-  "mass_kg": 0.54
+  "mass_kg": 0.55
  },
  {
   "number": "RJ28-15-012",
@@ -28703,13 +29478,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0376,
    0.1499
   ],
-  "mass_kg": 0.417
+  "mass_kg": 0.424
  },
  {
   "number": "RJ28-15-013",
@@ -28740,13 +29516,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    -0.0233,
    0.1499
   ],
-  "mass_kg": 0.11
+  "mass_kg": 0.112
  },
  {
   "number": "RJ28-15-014",
@@ -28777,13 +29554,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0016,
    -0.0383,
    0.097
   ],
-  "mass_kg": 0.302
+  "mass_kg": 0.308
  },
  {
   "number": "RJ28-15-015",
@@ -28814,6 +29592,7 @@
   "density": 7850,
   "count": 4,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -28851,6 +29630,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -28888,13 +29668,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1487,
    0.0639,
    0.0
   ],
-  "mass_kg": 0.348
+  "mass_kg": 0.355
  },
  {
   "number": "RJ28-15-018",
@@ -28925,6 +29706,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "elev",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1735,
@@ -28962,13 +29744,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "elev",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.177,
    0.0528,
    0.0055
   ],
-  "mass_kg": 0.001
+  "mass_kg": 0.002
  },
  {
   "number": "RJ28-15-020",
@@ -28999,6 +29782,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "elev",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.1715,
@@ -29036,13 +29820,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1532,
    0.0402,
    0.0343
   ],
-  "mass_kg": 0.081
+  "mass_kg": 0.083
  },
  {
   "number": "RJ28-15-022",
@@ -29073,13 +29858,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1637,
    0.0275,
    0.0083
   ],
-  "mass_kg": 0.761
+  "mass_kg": 0.776
  },
  {
   "number": "RJ28-15-023",
@@ -29110,6 +29896,7 @@
   "density": 2500,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1637,
@@ -29147,6 +29934,7 @@
   "density": 1200,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1382,
@@ -29184,6 +29972,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1594,
@@ -29221,13 +30010,14 @@
   "density": 1550,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1587,
    0.0184,
    0.1103
   ],
-  "mass_kg": 0.045
+  "mass_kg": 0.046
  },
  {
   "number": "RJ28-15-027",
@@ -29258,13 +30048,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1354,
    0.0779,
    -0.0981
   ],
-  "mass_kg": 1.186
+  "mass_kg": 1.209
  },
  {
   "number": "RJ28-15-028",
@@ -29295,13 +30086,14 @@
   "density": 7850,
   "count": 6,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1355,
    0.0779,
    -0.0116
   ],
-  "mass_kg": 0.067
+  "mass_kg": 0.068
  },
  {
   "number": "RJ28-15-029",
@@ -29332,13 +30124,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1183,
    0.0786,
    -0.2369
   ],
-  "mass_kg": 0.121
+  "mass_kg": 0.123
  },
  {
   "number": "RJ28-15-030",
@@ -29369,6 +30162,7 @@
   "density": 7850,
   "count": 5,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1175,
@@ -29406,13 +30200,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1475,
    0.0744,
    -0.1646
   ],
-  "mass_kg": 0.621
+  "mass_kg": 0.633
  },
  {
   "number": "RJ28-15-032",
@@ -29443,13 +30238,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1658,
    0.0744,
    -0.1865
   ],
-  "mass_kg": 0.488
+  "mass_kg": 0.497
  },
  {
   "number": "RJ28-15-033",
@@ -29480,13 +30276,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1648,
    0.0744,
    -0.1635
   ],
-  "mass_kg": 0.397
+  "mass_kg": 0.404
  },
  {
   "number": "RJ28-15-034",
@@ -29517,13 +30314,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.188,
    0.0744,
    -0.162
   ],
-  "mass_kg": 0.363
+  "mass_kg": 0.37
  },
  {
   "number": "RJ28-15-035",
@@ -29554,13 +30352,14 @@
   "density": 7850,
   "count": 10,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1802,
    0.0744,
    -0.1625
   ],
-  "mass_kg": 0.025
+  "mass_kg": 0.026
  },
  {
   "number": "RJ28-15-036",
@@ -29591,6 +30390,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1988,
@@ -29628,6 +30428,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2011,
@@ -29665,13 +30466,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.034,
    0.0677,
    -0.3245
   ],
-  "mass_kg": 0.457
+  "mass_kg": 0.465
  },
  {
   "number": "RJ28-15-039",
@@ -29702,6 +30504,7 @@
   "density": 7850,
   "count": 7,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -29739,6 +30542,7 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0544,
@@ -29776,13 +30580,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0528,
    0.0569,
    -0.269
   ],
-  "mass_kg": 0.329
+  "mass_kg": 0.336
  },
  {
   "number": "RJ28-15-042",
@@ -29813,6 +30618,7 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.102,
@@ -29850,6 +30656,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0177,
@@ -29887,6 +30694,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.117,
@@ -29924,6 +30732,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1145,
@@ -29961,13 +30770,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0744,
    -0.3582
   ],
-  "mass_kg": 0.331
+  "mass_kg": 0.337
  },
  {
   "number": "RJ28-15-047",
@@ -29998,13 +30808,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "trav",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0744,
    -0.3533
   ],
-  "mass_kg": 0.567
+  "mass_kg": 0.578
  },
  {
   "number": "RJ28-15-048",
@@ -30035,13 +30846,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0744,
    -0.3558
   ],
-  "mass_kg": 0.006
+  "mass_kg": 0.007
  },
  {
   "number": "RJ28-15-049",
@@ -30072,13 +30884,14 @@
   "density": 7850,
   "count": 12,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0744,
    -0.3541
   ],
-  "mass_kg": 0.03
+  "mass_kg": 0.031
  },
  {
   "number": "RJ28-15-050",
@@ -30109,13 +30922,14 @@
   "density": 4300.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
    0.0744,
    -0.3673
   ],
-  "mass_kg": 0.18
+  "mass_kg": 0.183
  },
  {
   "number": "RJ28-15-051",
@@ -30146,13 +30960,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.019,
    0.0744,
    -0.45
   ],
-  "mass_kg": 1.816
+  "mass_kg": 1.85
  },
  {
   "number": "RJ28-15-052",
@@ -30183,13 +30998,14 @@
   "density": 7850,
   "count": 6,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.1492,
    0.0772,
    -0.4729
   ],
-  "mass_kg": 0.067
+  "mass_kg": 0.068
  },
  {
   "number": "RJ28-15-053",
@@ -30220,13 +31036,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0544,
    0.0772,
    -0.4703
   ],
-  "mass_kg": 0.219
+  "mass_kg": 0.223
  },
  {
   "number": "RJ28-15-054",
@@ -30257,13 +31074,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1855,
    0.0898,
    -0.1945
   ],
-  "mass_kg": 0.031
+  "mass_kg": 0.032
  },
  {
   "number": "RJ28-15-055",
@@ -30294,6 +31112,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1634,
@@ -30331,6 +31150,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.163,
@@ -30368,6 +31188,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1846,
@@ -30405,13 +31226,14 @@
   "density": 4430,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1392,
    0.0716,
    -0.2593
   ],
-  "mass_kg": 0.016
+  "mass_kg": 0.017
  },
  {
   "number": "RJ28-15-059",
@@ -30442,6 +31264,7 @@
   "density": 4430,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1463,
@@ -30479,6 +31302,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.1385,
@@ -30516,6 +31340,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0545,
@@ -30553,6 +31378,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0412,
@@ -30590,6 +31416,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0273,
@@ -30627,13 +31454,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0446,
    0.0904,
    0.1699
   ],
-  "mass_kg": 0.003
+  "mass_kg": 0.004
  },
  {
   "number": "RJ28-16-005",
@@ -30664,13 +31492,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0433,
    0.0836,
    0.1698
   ],
-  "mass_kg": 0.018
+  "mass_kg": 0.019
  },
  {
   "number": "RJ28-16-006",
@@ -30701,13 +31530,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1245,
    0.0751,
    -0.169
   ],
-  "mass_kg": 0.019
+  "mass_kg": 0.02
  },
  {
   "number": "RJ28-16-007",
@@ -30738,6 +31568,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0811,
@@ -30775,6 +31606,7 @@
   "density": 1400,
   "count": 4,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0924,
@@ -30812,6 +31644,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1045,
@@ -30849,6 +31682,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1591,
@@ -30886,6 +31720,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.1453,
@@ -30923,6 +31758,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1941,
@@ -30960,6 +31796,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.1552,
@@ -30997,6 +31834,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.2314,
@@ -31034,6 +31872,7 @@
   "density": 1400,
   "count": 3,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.1822,
@@ -31071,6 +31910,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2595,
@@ -31108,6 +31948,7 @@
   "density": 1400,
   "count": 2,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.2584,
@@ -31145,6 +31986,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2457,
@@ -31182,6 +32024,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.2328,
@@ -31219,6 +32062,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.227,
@@ -31256,6 +32100,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.2475,
@@ -31293,6 +32138,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.3623,
@@ -31330,6 +32176,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.2501,
@@ -31367,6 +32214,7 @@
   "density": 1400,
   "count": 4,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.3129,
@@ -31404,13 +32252,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.3454,
    0.0575,
    0.0795
   ],
-  "mass_kg": 0.004
+  "mass_kg": 0.005
  },
  {
   "number": "RJ28-16-026",
@@ -31441,6 +32290,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.3366,
@@ -31478,6 +32328,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.3083,
@@ -31515,6 +32366,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.3792,
@@ -31552,6 +32404,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    0.439,
@@ -31589,6 +32442,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.4473,
@@ -31626,6 +32480,7 @@
   "density": 1400,
   "count": 3,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.4006,
@@ -31663,13 +32518,14 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.349,
    0.088,
    0.0449
   ],
-  "mass_kg": 0.029
+  "mass_kg": 0.03
  },
  {
   "number": "RJ28-16-033",
@@ -31700,13 +32556,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.3472,
    0.0776,
    0.0445
   ],
-  "mass_kg": 0.035
+  "mass_kg": 0.036
  },
  {
   "number": "RJ28-16-034",
@@ -31737,6 +32594,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.3983,
@@ -31774,13 +32632,14 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1245,
    0.0751,
    -0.169
   ],
-  "mass_kg": 0.019
+  "mass_kg": 0.02
  },
  {
   "number": "RJ28-16-036",
@@ -31811,6 +32670,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0811,
@@ -31848,6 +32708,7 @@
   "density": 1400,
   "count": 4,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0936,
@@ -31885,6 +32746,7 @@
   "density": 7850,
   "count": 2,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1045,
@@ -31922,6 +32784,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1591,
@@ -31959,6 +32822,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.1453,
@@ -31996,6 +32860,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1941,
@@ -32033,6 +32898,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.1552,
@@ -32070,6 +32936,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.2314,
@@ -32107,6 +32974,7 @@
   "density": 1400,
   "count": 3,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.1832,
@@ -32144,6 +33012,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2595,
@@ -32181,6 +33050,7 @@
   "density": 1400,
   "count": 2,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.2606,
@@ -32218,6 +33088,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2457,
@@ -32255,6 +33126,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.2328,
@@ -32292,6 +33164,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.227,
@@ -32329,6 +33202,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.2475,
@@ -32366,6 +33240,7 @@
   "density": 2810,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.3623,
@@ -32403,6 +33278,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2501,
@@ -32440,6 +33316,7 @@
   "density": 1400,
   "count": 4,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.314,
@@ -32477,13 +33354,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.3586,
    0.0573,
    0.0802
   ],
-  "mass_kg": 0.004
+  "mass_kg": 0.005
  },
  {
   "number": "RJ28-16-055",
@@ -32514,6 +33392,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.3456,
@@ -32551,6 +33430,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.2992,
@@ -32588,6 +33468,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.3717,
@@ -32625,6 +33506,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 3,
   "explode_stage": 2,
   "explode_offset": [
    -0.439,
@@ -32662,6 +33544,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.4472,
@@ -32699,6 +33582,7 @@
   "density": 1400,
   "count": 3,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.4063,
@@ -32736,6 +33620,7 @@
   "density": 1150,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.3497,
@@ -32773,13 +33658,14 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.3475,
    0.0727,
    0.0447
   ],
-  "mass_kg": 0.035
+  "mass_kg": 0.036
  },
  {
   "number": "RJ28-16-063",
@@ -32810,6 +33696,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.4114,
@@ -32847,6 +33734,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0351,
@@ -32884,6 +33772,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0636,
@@ -32921,6 +33810,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0351,
@@ -32958,6 +33848,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0794,
@@ -32995,6 +33886,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0775,
@@ -33032,6 +33924,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0162,
@@ -33069,6 +33962,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.162,
@@ -33106,6 +34000,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0351,
@@ -33143,6 +34038,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0636,
@@ -33180,6 +34076,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0351,
@@ -33217,6 +34114,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.0795,
@@ -33254,6 +34152,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0775,
@@ -33291,6 +34190,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.0162,
@@ -33328,6 +34228,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.162,
@@ -33365,6 +34266,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0481,
@@ -33402,6 +34304,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    0.0955,
@@ -33439,6 +34342,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.2717,
@@ -33476,6 +34380,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.321,
@@ -33513,6 +34418,7 @@
   "density": 7850,
   "count": 1,
   "mount_group": "elev",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.4288,
@@ -33550,6 +34456,7 @@
   "density": 1400,
   "count": 1,
   "mount_group": "elev",
+  "strip": 4,
   "explode_stage": 2,
   "explode_offset": [
    -0.4644,
@@ -33587,6 +34494,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -33624,6 +34532,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 1,
   "explode_stage": 2,
   "explode_offset": [
    0.1298,
@@ -33634,8 +34543,46 @@
  },
  {
   "number": "RJ28-17-003",
-  "name": "Shin Designation 03",
-  "node": "RJ28-17-003_Shin_Designation_03",
+  "name": "Arm Flag 03",
+  "node": "RJ28-17-003_Arm_Flag_03",
+  "assembly": "17",
+  "assembly_name": "Markings",
+  "material": "decal",
+  "material_key": "decal",
+  "material_class": "structure",
+  "function": "National flag of Lebanon on the right upper-arm armour.",
+  "bbox_min": [
+   -395.2,
+   -53.7,
+   1257.6
+  ],
+  "bbox_max": [
+   -386.0,
+   -5.3,
+   1290.0
+  ],
+  "size": [
+   9.2,
+   48.4,
+   32.3
+  ],
+  "volume_cm3": 0.0,
+  "density": 2700.0,
+  "count": 1,
+  "mount_group": "",
+  "strip": 2,
+  "explode_stage": 2,
+  "explode_offset": [
+   -0.0918,
+   0.0281,
+   0.0532
+  ],
+  "mass_kg": 0.0
+ },
+ {
+  "number": "RJ28-17-004",
+  "name": "Shin Designation 04",
+  "node": "RJ28-17-004_Shin_Designation_04",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -33661,6 +34608,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.1224,
@@ -33670,9 +34618,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-004",
-  "name": "Sternum Type Name 04",
-  "node": "RJ28-17-004_Sternum_Type_Name_04",
+  "number": "RJ28-17-005",
+  "name": "Sternum Type Name 05",
+  "node": "RJ28-17-005_Sternum_Type_Name_05",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -33698,6 +34646,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -33707,9 +34656,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-005",
-  "name": "Mark NO STEP 05",
-  "node": "RJ28-17-005_Mark_NO_STEP_05",
+  "number": "RJ28-17-006",
+  "name": "Mark NO STEP 06",
+  "node": "RJ28-17-006_Mark_NO_STEP_06",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -33735,6 +34684,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0488,
@@ -33744,9 +34694,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-006",
-  "name": "Mark PINCH POINT 06",
-  "node": "RJ28-17-006_Mark_PINCH_POINT_06",
+  "number": "RJ28-17-007",
+  "name": "Mark PINCH POINT 07",
+  "node": "RJ28-17-007_Mark_PINCH_POINT_07",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -33772,6 +34722,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0039,
@@ -33781,9 +34732,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-007",
-  "name": "Panel Ref Thigh 07",
-  "node": "RJ28-17-007_Panel_Ref_Thigh_07",
+  "number": "RJ28-17-008",
+  "name": "Panel Ref Thigh 08",
+  "node": "RJ28-17-008_Panel_Ref_Thigh_08",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -33809,6 +34760,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0157,
@@ -33818,9 +34770,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-008",
-  "name": "Mark NO STEP 08",
-  "node": "RJ28-17-008_Mark_NO_STEP_08",
+  "number": "RJ28-17-009",
+  "name": "Mark NO STEP 09",
+  "node": "RJ28-17-009_Mark_NO_STEP_09",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -33846,6 +34798,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0488,
@@ -33855,9 +34808,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-009",
-  "name": "Mark PINCH POINT 09",
-  "node": "RJ28-17-009_Mark_PINCH_POINT_09",
+  "number": "RJ28-17-010",
+  "name": "Mark PINCH POINT 10",
+  "node": "RJ28-17-010_Mark_PINCH_POINT_10",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -33883,6 +34836,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0039,
@@ -33892,9 +34846,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-010",
-  "name": "Panel Ref Thigh 10",
-  "node": "RJ28-17-010_Panel_Ref_Thigh_10",
+  "number": "RJ28-17-011",
+  "name": "Panel Ref Thigh 11",
+  "node": "RJ28-17-011_Panel_Ref_Thigh_11",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -33920,6 +34874,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0157,
@@ -33929,9 +34884,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-011",
-  "name": "Mark PINCH POINT 11",
-  "node": "RJ28-17-011_Mark_PINCH_POINT_11",
+  "number": "RJ28-17-012",
+  "name": "Mark PINCH POINT 12",
+  "node": "RJ28-17-012_Mark_PINCH_POINT_12",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -33957,6 +34912,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0814,
@@ -33966,9 +34922,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-012",
-  "name": "Mark PINCH POINT 12",
-  "node": "RJ28-17-012_Mark_PINCH_POINT_12",
+  "number": "RJ28-17-013",
+  "name": "Mark PINCH POINT 13",
+  "node": "RJ28-17-013_Mark_PINCH_POINT_13",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -33994,6 +34950,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    -0.0814,
@@ -34003,9 +34960,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-013",
-  "name": "Mark LIFT POINT 13",
-  "node": "RJ28-17-013_Mark_LIFT_POINT_13",
+  "number": "RJ28-17-014",
+  "name": "Mark LIFT POINT 14",
+  "node": "RJ28-17-014_Mark_LIFT_POINT_14",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -34031,6 +34988,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.1784,
@@ -34040,9 +34998,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-014",
-  "name": "Mark LIFT POINT 14",
-  "node": "RJ28-17-014_Mark_LIFT_POINT_14",
+  "number": "RJ28-17-015",
+  "name": "Mark LIFT POINT 15",
+  "node": "RJ28-17-015_Mark_LIFT_POINT_15",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -34068,6 +35026,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    -0.1784,
@@ -34077,9 +35036,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-015",
-  "name": "Mark HV 96 V 15",
-  "node": "RJ28-17-015_Mark_HV_96_V_15",
+  "number": "RJ28-17-016",
+  "name": "Mark HV 96 V 16",
+  "node": "RJ28-17-016_Mark_HV_96_V_16",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -34105,6 +35064,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.2158,
@@ -34114,9 +35074,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-016",
-  "name": "Mark HOT SURFACE 16",
-  "node": "RJ28-17-016_Mark_HOT_SURFACE_16",
+  "number": "RJ28-17-017",
+  "name": "Mark HOT SURFACE 17",
+  "node": "RJ28-17-017_Mark_HOT_SURFACE_17",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -34142,6 +35102,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 2,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -34151,9 +35112,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-017",
-  "name": "Data Plate Line 17",
-  "node": "RJ28-17-017_Data_Plate_Line_17",
+  "number": "RJ28-17-018",
+  "name": "Data Plate Line 18",
+  "node": "RJ28-17-018_Data_Plate_Line_18",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -34179,6 +35140,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -34188,9 +35150,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-018",
-  "name": "Data Plate Line 18",
-  "node": "RJ28-17-018_Data_Plate_Line_18",
+  "number": "RJ28-17-019",
+  "name": "Data Plate Line 19",
+  "node": "RJ28-17-019_Data_Plate_Line_19",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -34216,6 +35178,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,
@@ -34225,9 +35188,9 @@
   "mass_kg": 0.0
  },
  {
-  "number": "RJ28-17-019",
-  "name": "Data Plate Line 19",
-  "node": "RJ28-17-019_Data_Plate_Line_19",
+  "number": "RJ28-17-020",
+  "name": "Data Plate Line 20",
+  "node": "RJ28-17-020_Data_Plate_Line_20",
   "assembly": "17",
   "assembly_name": "Markings",
   "material": "decal",
@@ -34253,6 +35216,7 @@
   "density": 2700.0,
   "count": 1,
   "mount_group": "",
+  "strip": 0,
   "explode_stage": 2,
   "explode_offset": [
    0.0,

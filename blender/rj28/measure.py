@@ -53,6 +53,11 @@ def volume_m3(ob):
     return v
 
 
+def sheet_m3(ob, gauge=0.6, open_area=0.5):
+    """Volume of a woven screen: an open sheet has no enclosed volume, so take its area at wire gauge."""
+    return sum(f.area for f in ob.data.polygons) * gauge * C.MM * (1 - open_area)
+
+
 def part_class(ob):
     """Material class used for the mass roll-up; a part can override it with rj28_class."""
     if "rj28_class" in ob:
@@ -69,8 +74,60 @@ def part_class(ob):
     return M.INFO.get(key, ("", "structure", 2700))[1]
 
 
+STRIP = ["Complete", "Outer armour off", "Armour panels off", "Carriers and covers off", "Harness and boots off"]
+_OUTER = ("Strike_Plate", "Pauldron", "Guard", "Clavicle_Plate", "Rib_Plate", "Outer_Plate", "Knuckle_Plate", "Groin_Plate",
+          "Cap_")
+_COVER = ("Cover", "Hatch", "Door", "Screen", "Shroud", "Liner", "Sweatband", "Grommet")
+_KEEP_SOFT = ("Sole", "Pad", "Lug", "Tread", "Bumper", "Gasket", "Seal", "Isolator", "Tendon")
+_HELD = ("Screw", "Bolt", "Stud", "Quarter_Turn", "Hinge", "Latch")      # hardware that leaves with what it holds
+
+
+def _strip_own(ob, cls, key):
+    """Stage at which a part comes off in the strip-down, by what it is. 0: it stays (frame, drives, electronics)."""
+    n = ob.name
+    if "Blower" in n or "Radar_Panel" in n or "Processor" in n or "Battery_Cover" in n:
+        return 0
+    if cls in ("armour", "soft") and key not in ("cfrp", "mesh") and any(k in n for k in _OUTER):
+        return 1                                     # outer plates with their straps and rub strips
+    if cls == "armour" and key != "cfrp":
+        return 2
+    if (cls == "armour" and key == "cfrp") or key == "mesh" or any(k in n for k in _COVER):
+        return 3
+    if cls == "harness" or (key == "rubber" and not any(k in n for k in _KEEP_SOFT)):
+        return 4
+    return 0
+
+
+def strip_stages(obs):
+    """{object name: stage}. Screws, hinges and markings go with the outermost removable part they sit on."""
+    from mathutils.bvhtree import BVHTree
+    dg = bpy.context.evaluated_depsgraph_get()
+    dg.update()
+    own = {ob.name: _strip_own(ob, part_class(ob), ob.get("rj28_material", "")) for ob in obs}
+    hosts = [(ob, BVHTree.FromObject(ob, dg), *C.bounds_mm([ob])) for ob in obs if 0 < own[ob.name] < 4]
+    out = dict(own)
+    for ob in obs:
+        key = ob.get("rj28_material", "")
+        if own[ob.name] or not (key == "decal" or (key == "fastener" and any(k in ob.name for k in _HELD))):
+            continue
+        if key == "decal":
+            out[ob.name] = own.get(ob.get("rj28_host", ""), 0)
+            continue
+        lo, hi = C.bounds_mm([ob])
+        vs = [v.co for v in ob.data.vertices][::max(1, len(ob.data.vertices) // 400)]
+        best = 0
+        for host, bvh, hlo, hhi in hosts:
+            if any(lo[i] > hhi[i] + 2 or hi[i] < hlo[i] - 2 for i in range(3)):
+                continue
+            if any(bvh.find_nearest(v, 0.0006)[0] is not None for v in vs):       # seated on it (0.6 mm)
+                best = own[host.name] if not best else min(best, own[host.name])
+        out[ob.name] = best
+    return out
+
+
 def part_rows():
     rows = []
+    strip = strip_stages([ob for ob in parts.all_parts() if ob.type == "MESH" and len(ob.data.vertices)])
     for ob in parts.all_parts():
         if ob.type != "MESH" or len(ob.data.vertices) == 0:
             continue
@@ -85,8 +142,9 @@ def part_rows():
             material_class=cls, function=ob["rj28_function"],
             bbox_min=[round(v, 1) for v in lo], bbox_max=[round(v, 1) for v in hi],
             size=[round(v, 1) for v in (hi - lo)],
-            volume_cm3=0.0 if decal else round(volume_m3(ob) * 1e6, 2), density=dens,
-            count=int(ob.get("rj28_count", 1)), mount_group=ob.get("mount_group", ""),
+            volume_cm3=0.0 if decal else round(sheet_m3(ob) * 1e6, 2) if key == "mesh" else round(volume_m3(ob) * 1e6, 2),
+            density=dens,
+            count=int(ob.get("rj28_count", 1)), mount_group=ob.get("mount_group", ""), strip=strip[ob.name],
             explode_stage=int(ob.get("explode_stage", 2)),
             explode_offset=[round(v, 4) for v in ob.get("explode_offset", (0, 0, 0))],
         ))
@@ -244,7 +302,14 @@ def run(write=True):
     rows = part_rows()
     mass = roll_up(rows)
     spec["mass"] = mass
+    sweep = ROOT / "blender" / "out" / "mount_sweep_model.json"       # written by poses.sweep_check
+    if sweep.exists():
+        r = json.loads(sweep.read_text())
+        spec["mount"]["min_clearance_mm"] = r["min_clearance_mm"]
+        spec["mount"]["required_clearance_mm"] = r["required_mm"]
     spec["part_count"] = len(rows)
+    spec["strip"] = [dict(stage=i, title=t, parts=sum(1 for r in rows if r["strip"] == i),
+                          mass_kg=round(sum(r["mass_kg"] for r in rows if r["strip"] == i), 2)) for i, t in enumerate(STRIP)]
     spec["design_notes"] = [knee_note(), endurance_note(), dict(
         title="Mass roll-up from part volumes",
         working=[f"{len(rows)} parts; mass = mesh volume x material density x class fill factor",

@@ -1,6 +1,7 @@
 """Assembly 17: markings. Sparse and functional, like real equipment.
 
-White and ice cyan only (plus dark engraving on the data plate), set in
+White and ice cyan only (plus dark engraving on the data plate and the one
+national flag, in its own colours toned to paint), set in
 Saira Stencil One. Every label sits on the part it describes, is draped onto
 that part's surface, and carries rj28_host so it travels with the part in
 the exploded view. All text that states a number takes it from params or
@@ -29,7 +30,7 @@ class Marks:
         self.a = a
         self.n = 0
 
-    def put(self, host, text, height, point, normal, reading, color="white", what=None, name=None):
+    def put(self, host, text, height, point, normal, reading, color="white", what=None, name=None, aspect=None):
         """Drape `text` onto host at `point` (mm). normal: outward direction at that spot;
         reading: the direction the text reads in."""
         if host is None:
@@ -39,7 +40,7 @@ class Marks:
         if not seats:
             print("MARK MISS", text, host.name)
             return None
-        ob = F.label("_m", text, height, seats[0], color, target=host)
+        ob = F.label("_m", text, height, seats[0], color, target=host, aspect=aspect)
         ob["rj28_host"] = host.name
         ob["rj28_material"] = "decal"
         ob["rj28_text"] = text
@@ -64,6 +65,14 @@ def build():
     skirt = find("07", "Pauldron_Shell")
     mk.put(skirt, "RJ-28", 34.0, W @ Vector((PR.PAULDRON_L_OUT + 60, -6, 1438)), (1, 0, 0), (0, 1, 0),
            what="Unit designation on the left shoulder armour.", name="Shoulder_Designation")
+    # national flag on the right arm, on the upper-arm plate under the shoulder armour: the right shoulder plates
+    # are cut back for the mount and have no clear field for it
+    plate = find("08", "Upper_Arm_Armour")
+    if plate is not None:
+        lo, hi = C.bounds_mm([plate])
+        mk.put(plate, "@flag_lebanon", 32.0, Vector((lo.x - 60, (lo.y + hi.y) / 2, lo.z + (hi.z - lo.z) * 0.66)),
+               (-1, 0, 0), (0, -1, 0), "flag", aspect=1.5, what="National flag of Lebanon on the right upper-arm armour.",
+               name="Arm_Flag")
     hip, thigh, knee, shin, ankle, foot = FR.leg(-1)
     shin_o = find("12", "Shin_Armour_Outer")
     # reads down the shin: the outer panel is taller than it is deep

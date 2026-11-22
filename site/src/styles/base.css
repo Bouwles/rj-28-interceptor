@@ -1,0 +1,287 @@
+/* ── Fonts ─────────────────────────────────────────────────────────────────
+   Self-hosted. `block` plus a preload in index.html, and the loading screen
+   waits for all three faces, so text is never seen in a fallback face and
+   nothing moves when the fonts arrive. */
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/Archivo-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+/* Metric-matched stand-in for the rare case the face fails to load. */
+@font-face {
+  font-family: 'Archivo Fallback';
+  src: local('Arial');
+  size-adjust: 101%;
+  ascent-override: 88%;
+  descent-override: 21%;
+  line-gap-override: 0%;
+}
+
+/* ── Tokens ──────────────────────────────────────────────────────────────── */
+:root {
+  --bg: #07090b;
+  --panel: #0d1114;
+  --line: #1c242b;
+  --line-2: #2f3c46; /* control outlines: one step above a hairline */
+  --text: #d7dee3;
+  --text-2: #7c8a94;
+  --accent: #5fd8f2;
+  --accent-wash: rgb(95 216 242 / 0.09);
+
+  --sans: 'Archivo', 'Archivo Fallback', Arial, Helvetica, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  /* Type scale, 15 px body, ratio near 1.2 */
+  --fs-label: 0.6875rem;
+  --fs-data: 0.8125rem;
+  --fs-small: 0.84375rem;
+  --fs-body: 0.9375rem;
+  --fs-h3: 1.0625rem;
+  --fs-h2: 1.75rem;
+
+  /* Frame */
+  --top-h: 48px;
+  --bottom-h: 52px;
+  --rail: 56px;
+  --panel-w: clamp(420px, 29vw, 520px);
+  --tree-w: 372px;
+  --detail-w: 372px;
+  --pad: 28px;
+
+  color-scheme: dark;
+}
+
+/* ── Reset ───────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 100%;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-color: var(--line-2) var(--bg);
+  scrollbar-width: thin;
+}
+/* `hidden` always wins, whatever display a component sets. */
+[hidden] {
+  display: none !important;
+}
+html.locked,
+html.locked body {
+  overflow: hidden;
+  height: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  font-size: var(--fs-body);
+  font-stretch: 100%;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+h1,
+h2,
+h3,
+p,
+dl,
+dd,
+ol,
+ul,
+figure {
+  margin: 0;
+  padding: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+img,
+svg {
+  display: block;
+}
+button,
+input {
+  font: inherit;
+  color: inherit;
+  border-radius: 0;
+}
+button {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+a {
+  color: inherit;
+}
+::selection {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Focus: a plain light outline. The accent is kept for "this is the active item". */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 1px solid var(--text);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── Type roles ──────────────────────────────────────────────────────────── */
+/* Small label: the only place uppercase and tracking are used. */
+.cap {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  font-stretch: 92%;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  line-height: 1.2;
+}
+/* Data: part numbers, dimensions, anything measured. */
+.data {
+  font-family: var(--mono);
+  font-size: var(--fs-data);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* ── Controls ────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  font-stretch: 92%;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn:hover {
+  border-color: var(--text-2);
+}
+.btn[aria-pressed='true'] {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+.btn[disabled],
+.btn[aria-disabled='true'] {
+  color: var(--text-2);
+  border-color: var(--line);
+  cursor: default;
+}
+.btn kbd {
+  font-family: var(--mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0;
+  color: var(--text-2);
+}
+.btn[aria-pressed='true'] kbd {
+  color: inherit;
+}
+/* Joined buttons share their inner borders. */
+.seg {
+  display: inline-flex;
+}
+.seg > .btn + .btn {
+  margin-left: -1px;
+}
+.seg > .btn[aria-pressed='true'] {
+  position: relative;
+}
+
+kbd {
+  font-family: var(--mono);
+  font-size: var(--fs-data);
+}
+
+/* ── Spec tables ─────────────────────────────────────────────────────────── */
+.spec {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  border-top: 1px solid var(--line);
+}
+.spec > div {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  align-items: baseline;
+  column-gap: 20px;
+  padding: 7px 0 6px;
+  border-bottom: 1px solid var(--line);
+}
+.spec dt {
+  font-size: var(--fs-small);
+  color: var(--text-2);
+}
+.spec dd {
+  font-family: var(--mono);
+  font-size: var(--fs-data);
+  text-align: right;
+  white-space: nowrap;
+}
+.spec dd.wrap {
+  white-space: normal;
+  max-width: 30ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

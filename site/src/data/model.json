@@ -1,0 +1,142 @@
+{
+ "axes": "glTF: +Y up, the robot faces +Z, its left is +X; metres",
+ "pose": "stowed",
+ "parts": 927,
+ "position_grid_m": 0.000030517578125,
+ "vertex_color": {
+  "attribute": "COLOR_0",
+  "note": "Data, not colour. Do not multiply it into the base colour.",
+  "r": "edge mask: 1 on the faces of convex bevels and chamfers, 0 elsewhere; per face corner. All 0 in lod1, which has no bevels.",
+  "g": "unused, 0",
+  "b": "cavity: short-range occlusion (40 mm) on the assembled robot, mount stowed; 0 open, 1 buried. Marks crevices and packed mechanism; wide flat faces are left at 0."
+ },
+ "uv": "TEXCOORD_0 only on parts with a decal, mesh or braid material",
+ "files": {
+  "lod0": {
+   "file": "rj28_lod0.glb",
+   "url": "models/rj28_lod0.glb",
+   "bytes": 14437536,
+   "nodes": 991,
+   "part_nodes": 927,
+   "assembly_nodes": 17,
+   "axis_nodes": 46,
+   "meshes": 927,
+   "primitives": 1084,
+   "triangles": 1318984,
+   "vertices": 1169374,
+   "materials": [
+    "RJ28_alu",
+    "RJ28_armour",
+    "RJ28_braid",
+    "RJ28_cap",
+    "RJ28_cavity",
+    "RJ28_cfrp",
+    "RJ28_decal",
+    "RJ28_emissive",
+    "RJ28_fastener",
+    "RJ28_glass",
+    "RJ28_mesh",
+    "RJ28_rubber",
+    "RJ28_steel",
+    "RJ28_ti"
+   ],
+   "texture": {
+    "name": "rj28_decals",
+    "mime": "image/webp",
+    "size": [
+     2048,
+     2048
+    ],
+    "bytes": 340312
+   },
+   "extensions": [
+    "EXT_meshopt_compression",
+    "EXT_texture_webp",
+    "KHR_materials_emissive_strength",
+    "KHR_mesh_quantization"
+   ]
+  },
+  "lod1": {
+   "file": "rj28_lod1.glb",
+   "url": "models/rj28_lod1.glb",
+   "bytes": 3443140,
+   "nodes": 991,
+   "part_nodes": 927,
+   "assembly_nodes": 17,
+   "axis_nodes": 46,
+   "meshes": 927,
+   "primitives": 1084,
+   "triangles": 193071,
+   "vertices": 245672,
+   "materials": [
+    "RJ28_alu",
+    "RJ28_armour",
+    "RJ28_braid",
+    "RJ28_cap",
+    "RJ28_cavity",
+    "RJ28_cfrp",
+    "RJ28_decal",
+    "RJ28_emissive",
+    "RJ28_fastener",
+    "RJ28_glass",
+    "RJ28_mesh",
+    "RJ28_rubber",
+    "RJ28_steel",
+    "RJ28_ti"
+   ],
+   "texture": {
+    "name": "rj28_decals",
+    "mime": "image/webp",
+    "size": [
+     1024,
+     1024
+    ],
+    "bytes": 164364
+   },
+   "extensions": [
+    "EXT_meshopt_compression",
+    "EXT_texture_webp",
+    "KHR_materials_emissive_strength",
+    "KHR_mesh_quantization"
+   ]
+  },
+  "edges": {
+   "file": "rj28_edges.glb",
+   "url": "models/rj28_edges.glb",
+   "bytes": 2736444,
+   "nodes": 944,
+   "part_nodes": 927,
+   "assembly_nodes": 17,
+   "meshes": 907,
+   "primitives": 907,
+   "segments": 450441,
+   "vertices": 436504,
+   "extensions": [
+    "EXT_meshopt_compression"
+   ]
+  }
+ },
+ "hdri": {
+  "file": "studio.hdr",
+  "url": "hdri/studio.hdr",
+  "bytes": 1201356,
+  "width": 2048,
+  "height": 1024
+ },
+ "materials": [
+  "RJ28_alu",
+  "RJ28_armour",
+  "RJ28_braid",
+  "RJ28_cap",
+  "RJ28_cavity",
+  "RJ28_cfrp",
+  "RJ28_decal",
+  "RJ28_emissive",
+  "RJ28_fastener",
+  "RJ28_glass",
+  "RJ28_mesh",
+  "RJ28_rubber",
+  "RJ28_steel",
+  "RJ28_ti"
+ ]
+}

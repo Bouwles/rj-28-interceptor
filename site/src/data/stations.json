@@ -1,0 +1,270 @@
+[
+ {
+  "id": "00",
+  "section": "Title",
+  "title": "RJ-28 INTERCEPTOR",
+  "position": [
+   2.9,
+   0.42,
+   5.9
+  ],
+  "target": [
+   -0.03,
+   1.01,
+   0.0
+  ],
+  "lens_mm": 55,
+  "sensor_mm": 36.0,
+  "mount": "stowed",
+  "focus": "03",
+  "highlight": [],
+  "xray": false
+ },
+ {
+  "id": "01",
+  "section": "Overview",
+  "title": "General arrangement",
+  "position": [
+   3.5,
+   1.35,
+   5.6
+  ],
+  "target": [
+   -0.03,
+   1.01,
+   -0.02
+  ],
+  "lens_mm": 55,
+  "sensor_mm": 36.0,
+  "mount": "stowed",
+  "focus": "03",
+  "highlight": [],
+  "xray": false,
+  "position2": [
+   -5.1,
+   1.35,
+   4.2
+  ],
+  "target2": [
+   -0.03,
+   1.01,
+   -0.02
+  ],
+  "move": "orbit"
+ },
+ {
+  "id": "02",
+  "section": "Head and cap",
+  "title": "Sensor head and cap",
+  "position": [
+   0.52,
+   1.7,
+   1.01
+  ],
+  "target": [
+   0.0,
+   1.638,
+   0.045
+  ],
+  "lens_mm": 85,
+  "sensor_mm": 36.0,
+  "mount": "stowed",
+  "focus": "01",
+  "highlight": [
+   "01"
+  ],
+  "xray": false,
+  "position2": [
+   0.64,
+   1.79,
+   -0.96
+  ],
+  "target2": [
+   0.0,
+   1.65,
+   -0.02
+  ],
+  "move": "orbit"
+ },
+ {
+  "id": "03",
+  "section": "Thorax",
+  "title": "Power, compute and cooling",
+  "position": [
+   0.33,
+   1.465,
+   2.5
+  ],
+  "target": [
+   0.0,
+   1.37,
+   0.04
+  ],
+  "lens_mm": 70,
+  "sensor_mm": 36.0,
+  "mount": "stowed",
+  "focus": "RJ28-03-062_Battery_Enclosure",
+  "highlight": [
+   "03"
+  ],
+  "xray": true
+ },
+ {
+  "id": "04",
+  "section": "Arms and hands",
+  "title": "Arms and hands",
+  "position": [
+   2.655,
+   1.19,
+   2.615
+  ],
+  "target": [
+   0.345,
+   1.095,
+   0.04
+  ],
+  "lens_mm": 70,
+  "sensor_mm": 36.0,
+  "mount": "stowed",
+  "focus": "07",
+  "highlight": [
+   "07",
+   "09"
+  ],
+  "xray": false,
+  "position2": [
+   1.11,
+   0.79,
+   0.94
+  ],
+  "target2": [
+   0.385,
+   0.745,
+   0.07
+  ],
+  "move": "dolly"
+ },
+ {
+  "id": "05",
+  "section": "Legs",
+  "title": "Knee and ankle drive",
+  "position": [
+   2.56,
+   0.4,
+   -0.76
+  ],
+  "target": [
+   0.19,
+   0.3,
+   -0.03
+  ],
+  "lens_mm": 68,
+  "sensor_mm": 36.0,
+  "mount": "stowed",
+  "focus": "RJ28-11-028_Knee_Shaft",
+  "highlight": [
+   "11",
+   "13"
+  ],
+  "xray": false
+ },
+ {
+  "id": "06",
+  "section": "Interceptor cannon",
+  "title": "Interceptor mount",
+  "position": [
+   -2.65,
+   2.05,
+   -2.25
+  ],
+  "target": [
+   -0.24,
+   1.64,
+   0.02
+  ],
+  "lens_mm": 66,
+  "sensor_mm": 36.0,
+  "mount": "stowed",
+  "focus": "15",
+  "highlight": [
+   "15"
+  ],
+  "xray": false,
+  "position2": [
+   -2.95,
+   1.9,
+   -1.5
+  ],
+  "target2": [
+   -0.24,
+   1.6,
+   0.06
+  ],
+  "move": "orbit",
+  "mount_from": "stowed",
+  "mount_to": "deployed"
+ },
+ {
+  "id": "07",
+  "section": "Armour and materials",
+  "title": "Armour and materials",
+  "position": [
+   2.6,
+   0.2,
+   2.6
+  ],
+  "target": [
+   0.2,
+   0.775,
+   0.04
+  ],
+  "lens_mm": 47,
+  "sensor_mm": 36.0,
+  "mount": "deployed",
+  "focus": "RJ28-11-055_Shin_Armour_Front",
+  "highlight": [],
+  "xray": false
+ },
+ {
+  "id": "08",
+  "section": "Drawings",
+  "title": "Drawings",
+  "position": [
+   0.0,
+   1.025,
+   18.0
+  ],
+  "target": [
+   0.0,
+   1.025,
+   0.0
+  ],
+  "lens_mm": 150,
+  "sensor_mm": 36.0,
+  "mount": "stowed",
+  "focus": "03",
+  "highlight": [],
+  "xray": false
+ },
+ {
+  "id": "09",
+  "section": "Inspect",
+  "title": "Inspector",
+  "position": [
+   3.4,
+   1.5,
+   6.6
+  ],
+  "target": [
+   0.0,
+   1.0,
+   -0.02
+  ],
+  "lens_mm": 55,
+  "sensor_mm": 36.0,
+  "mount": "stowed",
+  "focus": "03",
+  "highlight": [],
+  "xray": false
+ }
+]

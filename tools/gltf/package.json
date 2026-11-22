@@ -1,0 +1,18 @@
+{
+  "name": "rj28-gltf-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Post-processing of the RJ-28 GLB exports: dedup, prune, meshopt compression, checks and manifest.",
+  "type": "module",
+  "scripts": {
+    "optimize": "node optimize.mjs",
+    "verify": "node verify.mjs"
+  },
+  "dependencies": {
+    "@gltf-transform/core": "4.5.1",
+    "@gltf-transform/extensions": "4.5.1",
+    "@gltf-transform/functions": "4.5.1",
+    "meshoptimizer": "1.3.0",
+    "sharp": "0.35.5"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "rj-28-interceptor-site",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Interactive technical dossier for the RJ-28 INTERCEPTOR concept model.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "placeholder": "node src/dev/make-placeholder.mjs",
+    "capture": "node tests/capture.mjs"
+  },
+  "dependencies": {
+    "gsap": "3.15.1",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.187.0",
+    "playwright": "1.65.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.8"
+  }
+}

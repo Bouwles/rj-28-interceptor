@@ -961,7 +961,9 @@
    160.0,
    1515.0
   ],
-  "bore_rise": 125.0
+  "bore_rise": 125.0,
+  "min_clearance_mm": 18.0,
+  "required_clearance_mm": 15.0
  },
  "targets": {
   "power": "96 V nominal lithium-ion pack, 5.0 kWh, liquid cooled",
@@ -978,134 +980,166 @@
   "target_kg": 185.0,
   "error_pct": 0.01,
   "fill_factors": {
-   "structure": 0.3626,
-   "armour": 0.5933,
-   "mechanism": 0.4615,
-   "optic": 0.3956,
-   "electronics": 0.5933,
-   "harness": 0.3626,
-   "soft": 0.5274,
-   "actuator": 0.3956,
+   "structure": 0.3695,
+   "armour": 0.6046,
+   "mechanism": 0.4702,
+   "optic": 0.4031,
+   "electronics": 0.6046,
+   "harness": 0.3695,
+   "soft": 0.5374,
+   "actuator": 0.4031,
    "battery": 1.0302
   },
-  "common_scale": 0.6593,
+  "common_scale": 0.6718,
   "by_assembly": [
    {
     "assembly": "01",
     "name": "Head and cap",
     "parts": 70,
-    "mass_kg": 3.32
+    "mass_kg": 1.35
    },
    {
     "assembly": "02",
     "name": "Neck",
     "parts": 27,
-    "mass_kg": 0.72
+    "mass_kg": 0.73
    },
    {
     "assembly": "03",
     "name": "Thorax",
     "parts": 85,
-    "mass_kg": 50.54
+    "mass_kg": 50.38
    },
    {
     "assembly": "04",
     "name": "Abdomen and spine",
     "parts": 71,
-    "mass_kg": 4.25
+    "mass_kg": 4.32
    },
    {
     "assembly": "05",
     "name": "Pelvis",
     "parts": 35,
-    "mass_kg": 6.68
+    "mass_kg": 6.81
    },
    {
     "assembly": "06",
     "name": "Backpack",
     "parts": 38,
-    "mass_kg": 5.02
+    "mass_kg": 5.11
    },
    {
     "assembly": "07",
     "name": "Arm, left",
     "parts": 73,
-    "mass_kg": 18.06
+    "mass_kg": 18.4
    },
    {
     "assembly": "08",
     "name": "Arm, right",
     "parts": 72,
-    "mass_kg": 16.6
+    "mass_kg": 16.92
    },
    {
     "assembly": "09",
     "name": "Hand, left",
     "parts": 34,
-    "mass_kg": 1.49
+    "mass_kg": 1.52
    },
    {
     "assembly": "10",
     "name": "Hand, right",
     "parts": 34,
-    "mass_kg": 1.49
+    "mass_kg": 1.52
    },
    {
     "assembly": "11",
     "name": "Leg, left",
     "parts": 83,
-    "mass_kg": 22.63
+    "mass_kg": 22.88
    },
    {
     "assembly": "12",
     "name": "Leg, right",
     "parts": 80,
-    "mass_kg": 22.6
+    "mass_kg": 22.85
    },
    {
     "assembly": "13",
     "name": "Foot, left",
     "parts": 31,
-    "mass_kg": 3.7
+    "mass_kg": 3.77
    },
    {
     "assembly": "14",
     "name": "Foot, right",
     "parts": 31,
-    "mass_kg": 3.7
+    "mass_kg": 3.77
    },
    {
     "assembly": "15",
     "name": "Interceptor mount",
     "parts": 60,
-    "mass_kg": 23.63
+    "mass_kg": 24.08
    },
    {
     "assembly": "16",
     "name": "Harness",
     "parts": 83,
-    "mass_kg": 0.59
+    "mass_kg": 0.6
    },
    {
     "assembly": "17",
     "name": "Markings",
-    "parts": 19,
+    "parts": 20,
     "mass_kg": 0.0
    }
   ],
   "by_class": {
-   "structure": 65.66,
-   "armour": 23.26,
-   "mechanism": 12.35,
+   "structure": 66.92,
+   "armour": 23.71,
+   "mechanism": 12.56,
    "optic": 0.02,
-   "electronics": 2.4,
+   "electronics": 2.44,
    "harness": 0.14,
-   "soft": 4.02,
-   "actuator": 54.17,
+   "soft": 1.02,
+   "actuator": 55.2,
    "battery": 23.0
   }
  },
- "part_count": 926,
+ "part_count": 927,
+ "strip": [
+  {
+   "stage": 0,
+   "title": "Complete",
+   "parts": 600,
+   "mass_kg": 159.7
+  },
+  {
+   "stage": 1,
+   "title": "Outer armour off",
+   "parts": 88,
+   "mass_kg": 8.73
+  },
+  {
+   "stage": 2,
+   "title": "Armour panels off",
+   "parts": 109,
+   "mass_kg": 14.91
+  },
+  {
+   "stage": 3,
+   "title": "Carriers and covers off",
+   "parts": 66,
+   "mass_kg": 1.06
+  },
+  {
+   "stage": 4,
+   "title": "Harness and boots off",
+   "parts": 64,
+   "mass_kg": 0.61
+  }
+ ],
  "design_notes": [
   {
    "title": "Static knee torque in a 90 degree squat",
@@ -1169,13 +1203,13 @@
   {
    "title": "Mass roll-up from part volumes",
    "working": [
-    "926 parts; mass = mesh volume x material density x class fill factor",
+    "927 parts; mass = mesh volume x material density x class fill factor",
     "Battery parts pinned to the pack target; all other classes share one scale factor",
     "Roll-up: 185.0 kg against 185 kg (+0.01%)"
    ],
    "result": {
     "total_kg": 185.01,
-    "common_scale": 0.6593
+    "common_scale": 0.6718
    },
    "verdict": "Fill factors are listed with the mass data; none is set per part."
   }

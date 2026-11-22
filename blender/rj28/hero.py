@@ -130,6 +130,10 @@ def hdri(path=None, width=2048):
         if ob.type == "MESH" and not ob.name.startswith("RJ28_Floor") and not ob.hide_render:
             ob.hide_render = True
             hidden.append(ob)
+    # lights are hidden from camera rays unless asked; a panorama without them lights nothing
+    lights = [o for o in bpy.data.objects if o.type == "LIGHT"]
+    for ob in lights:
+        ob.visible_camera = True
     s = RD.setup(128, width, width // 2)
     cam = RD.camera((0, 0, 1150), (0, -1000, 1150), 50, name="RJ28_Pano")
     cam.data.type = "PANO"
@@ -144,6 +148,8 @@ def hdri(path=None, width=2048):
     bpy.ops.render.render(write_still=True)
     for ob in hidden:
         ob.hide_render = False
+    for ob in lights:
+        ob.visible_camera = False
     bpy.data.objects.remove(cam)
     s.camera = bpy.data.objects.get("RJ28_Cam")
     print("HDRI", path)

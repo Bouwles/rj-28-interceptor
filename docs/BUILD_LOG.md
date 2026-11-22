@@ -154,3 +154,88 @@ Paul asked for three fixes and then to carry on: bundle the limb looms, seat the
 - *Social card.* Camera pulled back and lowered: the whole cap and muzzle are in frame, the robot sits in the right half, the left 40% is clear for a title.
 
 After the fixes: 926 parts, mount sweep 18.0 mm, mass 185.01 kg. The contact check still reports every lead that enters the shoulder yaw housing region as sunk; in the renders they lie on its surface, and the housing's overlapping fin shells defeat the inside test. The elbow loom ends 6 mm inside the forearm by intent (it passes through the grommet).
+
+## Phase 8: export
+
+**What is exported.** `blender/rj28/export.py` (build target `export`) writes the web model at two levels of detail, a line model of its feature edges, the studio panorama, the mount data and the tour stations. `tools/gltf/optimize.mjs` compresses the three GLBs and writes the manifest; `tools/gltf/verify.mjs` checks them against `parts.json`; `export check` imports the compressed files into an empty scene and renders them. The whole sequence is at the top of `export.py`. A fresh run takes about 160 s in Blender and 5 s in Node.
+
+| File | Size | Content |
+|---|---|---|
+| `site/public/models/rj28_lod0.glb` | 14.43 MB | 1,318,632 triangles, 1,169,170 vertices, 990 nodes |
+| `site/public/models/rj28_lod1.glb` | 3.40 MB | 192,719 triangles, 245,468 vertices, 990 nodes |
+| `site/public/models/rj28_edges.glb` | 2.74 MB | 450,441 line segments, 943 nodes |
+| `site/public/hdri/studio.hdr` | 1.20 MB | 2,048 x 1,024 equirectangular |
+
+990 nodes are 926 parts under 17 assembly nodes, plus `AXES` and its 46 joint axes. Both levels use the same fourteen materials and the same node names.
+
+**No bake (D-045).** The model goes out as geometry with shared stand-in materials. The exporter cannot read the procedural node trees, so each `RJ28_<key>` material is swapped for a plain one of the same name whose constants are read from the inputs `materials.py` set; glass becomes an opaque dark gloss, and aluminium and mesh are double-sided because they contain open parts.
+
+**LOD0 (D-046).** The triangle count came down from 1.43 M to 1.32 M and stopped there. The two suggestions that looked largest gave nothing: the 243 fastener sets and the harness are built without a bevel modifier, so there was no bevel to turn off. What remained was a coplanar merge (4.6%) and dropping bevels under 0.35 mm (3%). The fasteners are 226,000 triangles, about 190 a screw; they are the place to look if LOD0 has to shrink.
+
+**LOD1 (D-047).** The first version decimated everything, armour at 50%. It read as the robot from a distance, but in the check render a panel between the thighs lit up where LOD0 is dark. It went when armour was left alone, so armour is not decimated and the cut falls on mechanism and fasteners. Collapse decimation loses the sharp-edge marks, so hard edges are marked again by angle and the weighted normals recomputed in a second pass.
+
+**Masks in COLOR_0 (D-048).** The edge mask is taken from the bevel modifier itself, which can tag the faces it creates; parts without a modifier use a width test for modelled chamfers. The cavity mask took three attempts. Cast about vertex normals it painted whole pectoral plates dark, because a corner vertex's normal leans into the gap beside it. Cast about shading normals the open flats came clean, but a plate lapped along two edges still interpolated dark right across, so faces wider than about 70 mm are faded out. It takes 12 million rays and 50 s. It is a crevice mask, not an occlusion bake.
+
+**Compression (D-049).** Positions could not be quantised in the usual way without putting a transform in every part node, so they stay floats on a 0.03 mm grid. That is why LOD0 is 14.4 MB and not under 12: positions are 5.4 MB and normals 5.2 MB. Eight-bit normals would bring it to 11.7 MB; they were not used in LOD0 because their effect on gloss-black curved surfaces can only be judged in the web renderer.
+
+**Mount (D-050).** `mount.json` holds what `poses.py` does: trunnion and traverse pivots and axes, the rule `elev = V * E`, `trav = V`, the 34 and 15 node names, check matrices for both states, the travel lock parts and the energy chain morph. `verify.mjs` compares the node matrices in the GLB with the check matrices.
+
+**What went wrong.**
+
+- *Explode offsets of the cannon.* The first export disagreed with `parts.json` on all 34 elevating parts. `explode.apply()` measures parts in whatever pose the mount is in, against a spine drawn for the level pose; the batch that wrote `parts.json` ran the sweep check first, which leaves the mount level. The export now sets the mount level before it calls `explode.apply()`. `modelrun` still depends on the order of its options.
+- *Studio panorama.* `hero.hdri()` produced a file that passed "not black" and contained no lights (D-054).
+- *Blender cannot import meshopt.* The check renders use an uncompressed copy that `verify.mjs` writes from the compressed file, so they still show what the compression did.
+- *Leftover accessors.* The first compressed files were larger than the raw ones: reorder and quantise leave the accessors they replace in the document, and they were being written out.
+
+**Stations.** Ten cameras are authored in `blender/rj28/stations.py` and rendered with the hero rig at 960 px: `docs/review/phase8/station_NN.jpg`, with `_mid` and `_end` for the four that move. Six were reframed after the first proofs (thorax centred, the whole left arm in frame, knee and foot both in frame, shins and shoulder both in frame for the armour station).
+
+**Checks.** `verify.mjs` passes: 926 part nodes in each file, every `node` of `parts.json` present, extras equal to `parts.json`, COLOR_0 and a material on every primitive, 46 axes with local +Z on the joint axis, sizes inside the budgets. The re-import renders are `docs/review/phase8/check_*.jpg`, including two that show the masks.
+
+**Still weak, said plainly.** LOD0 is 10% over the triangle target and 20% over the size that was hoped for. The line model was checked by count and structure only; nobody has looked at it drawn. The cavity mask is zero on every wide flat, including ones that really are shadowed. The energy chain does not follow the traverse, in the build or in the export. The wire pattern of the `mesh` material and the transmission of the glass are not in the files; the site has to rebuild both from the material names. In the Cycles renders every marking sits in a faintly lighter rectangle, most likely because the dust mask's occlusion node sees the marking's own quad; the web model does not have this, so the two will not match there.
+
+## Phase 8: drawings
+
+Five A1 sheets, generated from the model by `blender/rj28/drawings.py`:
+
+```
+blender --background --python blender/build.py -- drawings [sheet=1,3] [cache] [nopng] [nopdf]
+```
+
+Output: `site/public/drawings/RJ28-GA-001.svg` to `-005.svg`, `RJ28-GA-set.pdf`, the viewer index `site/src/data/sheets.json`, and previews in `docs/review/phase8/`. A full run takes about 100 s, of which 40 s is building the model; `cache` keeps the built model in `blender/out/` between runs.
+
+**Method.** The line work is projected, not rendered (D-060).
+
+1. Each part gives up its un-bevelled mesh as arrays: vertices, edges, the normals of the two faces on each edge, triangles, and the loose island each edge belongs to.
+2. For a view the candidate edges are creases over 32°, open borders, and contour edges, where one face looks at the viewer and the other away. The contour edges are what draw the cap crown, the barrel and every housing.
+3. Each candidate is sampled every 0.25 to 0.3 mm on paper. A ray from the sample towards the viewer through a BVH of the scene decides whether it is hidden. The ends of each visible run are found by bisection.
+4. Two more rays, one either side of a visible contour sample and away from the viewer, measure how far the surface drops behind the edge. A large drop makes an outline, drawn thick; everything else is thin (D-061).
+5. Runs are joined into polylines at shared end points, simplified to 0.012 mm, and written as one SVG path per part and line class, inside one group per view. Coordinates are relative and in hundredths of a millimetre.
+
+Sections cut every mesh with `bisect_plane`, close the cut, and hide what is behind it with the same ray test. The cut loops themselves give the section outline and the lining: a scan line at 45° counts how many solids it is inside, so a part made of overlapping shells is lined once.
+
+Annotation is scripted. Dimensions, tables and notes read `spec.json`, `parts.json` and the mount sweep report; cap, slit and barrel sizes are measured from the parts in the scene; the knee and ankle geometry is computed from the same pivot definitions the model is built from. Text is real text in Archivo and IBM Plex Mono, embedded in each file. Stroke weights and colours are CSS classes in one style block, so the site can restyle a sheet.
+
+`sheets.json` lists, per sheet, the views and where every part and assembly appears: the centre and size of its visible line work in each view, and its balloon if it has one. Balloons carry `data-part` or `data-assembly`; every part's paths sit in a group with `data-part`.
+
+**Sizes.** 1.61, 0.55, 0.59, 0.56 and 0.80 MB; 3,051, 627, 541, 315 and 1,018 paths. Each file carries about 0.16 MB of embedded fonts. The PDF is 3.2 MB, five pages of 841 × 594 mm.
+
+**What went wrong.**
+
+- *Everything was an outline.* The first rule drew every contour edge thick. Each of 926 parts has a silhouette, so the sheet was thick lines throughout. Weight now comes from the depth step behind the edge.
+- *Edge-on faces.* A ray that starts on an edge and runs along a face touching it hits or misses by rounding error. Edge-on faces are left out of the occluders (D-062).
+- *The cannon came apart in the exploded view.* `explode.pose(0.5)` zeroes each part's location, which removes the translation in the stowed mount pose. The sheet moves the assembly roots itself (D-067). The preview renders made through `explode.pose` have the same fault.
+- *False slit dimensions.* The slit glass was first measured along the face rake from `params.py` and came out 11.6 × 6.3 mm. The glass does not lie at that angle. Its section axes are now found from its own vertices: 12 × 1.6 mm.
+- *Knee lines of action.* The detail drew the line of action at both ends of the travel. The crank is phased so that the two coincide within 0.3 mm, and the two dimensions landed on each other. One line is drawn and both values are stated.
+- *Layout.* The top view above the front view costs 155 mm of height on the head sheet and 128 mm on the general arrangement; both sheets are tight. The mount sheet needed 1:2.5 to keep plan, side and front views in projection (D-064).
+- *Diameter sign.* Neither font has U+2300; the PDF fell back to another face. Ø is used.
+
+**Still weak.**
+
+- Layout is set by hand per sheet. Nothing checks for text on text or a dimension over line work, so a change to the model's extents needs the sheets looked at again.
+- Text widths are estimated from average advances, not measured. Table columns and the paper masks behind text over line work are sized with margin to cover that.
+- Sheet 1: the shoulder armour span is in the data table only; no dimension line reaches it without crossing the mount. Landmark extension lines start at the outline, not at the axis.
+- Sheet 2: the section and the row of views share 10 mm of clearance. Balloon leaders cross the section. Where parts interpenetrate in the model their linings overlap. The list names the 30 ballooned parts of 97.
+- Sheet 3: the plan is crowded where three phantom positions lie over the thorax and backpack. Clearances are flags and a schedule (D-065). The depression limit is a centre line, not an outline.
+- Sheet 4: the view from behind is tilted by the abduction because it is square to the knee axis (D-066). The flexed shin is not drawn; only the crank pin at 110°. Ankle roll is not shown.
+- Sheet 5: the harness is displaced forwards and lies over the left leg and pelvis, as the explode data has it. Three leaders pass over the right arm. No trace lines join the assemblies.
+- Rebuilding the PNG and PDF needs Microsoft Edge at its usual path; without it the SVG files and the index are still written and a warning is printed.

@@ -18,3 +18,6 @@ site/dist/
 Thumbs.db
 .DS_Store
 .vscode/
+
+# site test captures
+site/tests/shots/

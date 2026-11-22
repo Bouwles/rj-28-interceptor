@@ -1,0 +1,281 @@
+/* Drawing sheets: the inline SVG treatment and the pan-and-zoom viewer. */
+
+/* ── Sheet line work on the dark page ────────────────────────────────────────
+   The exported sheets are black on white. Colours are remapped when a sheet is
+   inlined (black → currentColor, white → --sheet-paper); these rules then set
+   the ink per line class. Stroke widths are the sheet's own, so the weight
+   hierarchy is the one that was drawn. */
+.sheet-svg {
+  --sheet-paper: var(--panel);
+  --sheet-mid: var(--text-2);
+  --ink: var(--text);
+  --paper: var(--sheet-paper);
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--text);
+}
+svg.sheet-svg .paper {
+  fill: var(--sheet-paper);
+  stroke: none;
+}
+/* Outlines and cut edges carry the drawing; everything else steps back. */
+svg.sheet-svg .vis,
+svg.sheet-svg .cut {
+  stroke: var(--text);
+}
+svg.sheet-svg .det {
+  stroke: #9aa7b0;
+}
+svg.sheet-svg .ctx,
+svg.sheet-svg .hat,
+svg.sheet-svg .hid,
+svg.sheet-svg .pha,
+svg.sheet-svg .ctr,
+svg.sheet-svg .brk,
+svg.sheet-svg .fine {
+  stroke: var(--text-2);
+}
+svg.sheet-svg .dim,
+svg.sheet-svg .rule,
+svg.sheet-svg .frame {
+  stroke: #9aa7b0;
+}
+svg.sheet-svg text,
+svg.sheet-svg tspan {
+  stroke: none;
+}
+/* What is under the pointer, and what is selected. */
+svg.sheet-svg .is-hover path,
+svg.sheet-svg .is-hover circle:not(.ink) {
+  stroke: var(--text);
+}
+svg.sheet-svg .is-hover .det {
+  stroke: var(--text);
+}
+svg.sheet-svg .is-selected path,
+svg.sheet-svg .is-selected circle:not(.ink) {
+  stroke: var(--accent);
+}
+svg.sheet-svg .is-selected .ink,
+svg.sheet-svg .is-selected text {
+  fill: var(--accent);
+}
+svg.sheet-svg .sheet-marker {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1px;
+  stroke-dasharray: 5 4;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+/* ── Viewer ──────────────────────────────────────────────────────────────── */
+.sheets {
+  position: fixed;
+  inset: var(--top-h) 0 var(--bottom-h) 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  background: var(--bg);
+}
+.sheets[hidden] {
+  display: none;
+}
+.sheets-index {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 0 20px;
+  border-right: 1px solid var(--line);
+  background: var(--panel);
+  overflow-y: auto;
+}
+.sheets-index > * {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.sheets-index ol {
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+.sheet-index-item {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 20px 11px;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-small);
+  line-height: 1.3;
+  text-align: left;
+}
+.sheet-index-item .data {
+  font-size: 0.75rem;
+  color: var(--text-2);
+}
+.sheet-index-item:hover {
+  background: #121a1f;
+}
+.sheet-index-item[aria-current] {
+  color: var(--accent);
+  background: var(--accent-wash);
+}
+.sheet-index-item[aria-current]::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--accent);
+}
+.sheet-index-item[aria-current] .data {
+  color: var(--accent);
+}
+.sheet-index-item:focus-visible {
+  outline-offset: -2px;
+}
+.sheets-index .btn {
+  align-self: flex-start;
+}
+.sheets-index .advice {
+  margin-top: 0;
+}
+.sheets-main {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+}
+.sheets-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.sheets-bar .seg .btn {
+  min-width: 38px;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+}
+.sheets-bar-gap {
+  flex: 1;
+}
+.sheet-canvas {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.sheet-canvas.pickable {
+  cursor: pointer;
+}
+.sheet-canvas.dragging {
+  cursor: grabbing;
+}
+.sheet-canvas svg {
+  pointer-events: none;
+}
+.sheet-scale {
+  font-size: 0.6875rem !important;
+}
+.sheet-canvas:focus-visible {
+  outline-offset: -3px;
+}
+.sheet-message {
+  position: absolute;
+  inset: 50% 0 auto 0;
+  margin: 0;
+  padding: 0 24px;
+  text-align: center;
+  color: var(--text-2);
+}
+.sheet-message[hidden] {
+  display: none;
+}
+.sheet-callout {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: calc(100% - 40px);
+  padding: 8px 8px 8px 14px;
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  font-size: var(--fs-small);
+}
+.sheet-callout[hidden] {
+  display: none;
+}
+.callout-no {
+  color: var(--accent);
+}
+.callout-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 760px) {
+  .sheets {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .sheets-index {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    overflow-x: auto;
+  }
+  .sheets-index > * {
+    margin: 0;
+  }
+  .sheets-index h2,
+  .sheets-index .advice {
+    display: none;
+  }
+  .sheets-index ol {
+    display: flex;
+    border-top: 0;
+  }
+  .sheet-index-item {
+    width: max-content;
+    max-width: 62vw;
+    padding: 9px 14px 8px;
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .sheet-index-item[aria-current]::before {
+    inset: auto 0 0 0;
+    width: auto;
+    height: 2px;
+  }
+  .sheets-index .btn {
+    align-self: center;
+    margin: 0 12px;
+  }
+  .sheets-bar {
+    padding: 8px 12px;
+  }
+  .sheets-bar .btn kbd {
+    display: none;
+  }
+  .sheet-callout {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    max-width: none;
+  }
+  .callout-name {
+    flex: 1;
+  }
+}

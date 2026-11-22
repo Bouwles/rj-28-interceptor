@@ -1,0 +1,265 @@
+{
+ "axes": "glTF: +Y up, the robot faces +Z, its left is +X. Metres and degrees. Matrices are column-major.",
+ "glb_pose": "stowed",
+ "states": {
+  "deployed": {
+   "elevation": 0.0,
+   "traverse": 0.0
+  },
+  "stowed": {
+   "elevation": 90.0,
+   "traverse": 0.0
+  }
+ },
+ "limits": {
+  "elevation": [
+   -5.0,
+   90.0
+  ],
+  "traverse": [
+   -25.0,
+   25.0
+  ]
+ },
+ "elevation": {
+  "joint": "mount_elevation",
+  "axis_node": "AXIS_mount_elevation",
+  "pivot": [
+   -0.292,
+   1.515,
+   -0.16
+  ],
+  "axis": [
+   -1.0,
+   0.0,
+   0.0
+  ],
+  "zero": "barrel level, pointing the way the robot faces",
+  "positive": "muzzle up"
+ },
+ "traverse": {
+  "joint": "mount_traverse",
+  "axis_node": "AXIS_mount_traverse",
+  "pivot": [
+   -0.292,
+   1.355,
+   -0.16
+  ],
+  "axis": [
+   0.0,
+   1.0,
+   0.0
+  ],
+  "positive": "muzzle swings inboard, towards the robot's left"
+ },
+ "pose": {
+  "E": "T(elevation.pivot) * R(elevation.axis, elevation) * T(-elevation.pivot)",
+  "V": "T(traverse.pivot) * R(traverse.axis, traverse) * T(-traverse.pivot)",
+  "elev": "V * E",
+  "trav": "V",
+  "apply": "The mesh of every group node is drawn in the level pose (elevation 0, traverse 0) and the pose is the node's own matrix; parents are assembly nodes with no transform. Set node.matrix to the group's matrix.",
+  "explode": "explode_offset of a group node is measured in the level pose, so it is a vector in the cannon's own frame and goes inside the pose: node.matrix = matrix * T(explode_offset * amount). For every other part the two orders are the same thing.",
+  "rotation": "R(axis, angle) is the right-handed rotation about axis. The traverse turns the elevation axis with it, which V * E already does; the trunnion pivot lies on the traverse axis."
+ },
+ "groups": {
+  "elev": {
+   "matrix": "V * E",
+   "nodes": [
+    "RJ28-15-001_Breech_Housing",
+    "RJ28-15-002_Breech_Rear_Cover",
+    "RJ28-15-003_Breech_Rear_Cover_Screws",
+    "RJ28-15-004_Breech_Side_Cover",
+    "RJ28-15-005_Breech_Side_Cover_Screws",
+    "RJ28-15-006_Barrel",
+    "RJ28-15-007_Barrel_Lock_Collar",
+    "RJ28-15-008_Barrel_Reinforce",
+    "RJ28-15-009_Muzzle_Ring",
+    "RJ28-15-010_Guide_Rod_Inboard",
+    "RJ28-15-011_Guide_Rod_Outboard",
+    "RJ28-15-012_Recoil_Cylinder",
+    "RJ28-15-013_Recoil_Rod",
+    "RJ28-15-014_Cradle_Saddle",
+    "RJ28-15-015_Cradle_Saddle_Screws",
+    "RJ28-15-016_Cradle_Saddle_Strap",
+    "RJ28-15-017_Feed_Box",
+    "RJ28-15-018_Feed_Box_Door",
+    "RJ28-15-019_Feed_Box_Door_Hinge",
+    "RJ28-15-020_Feed_Box_Quarter_Turns",
+    "RJ28-15-021_Tracker_Bracket",
+    "RJ28-15-022_Tracker_Optic_Housing",
+    "RJ28-15-023_Tracker_Lens",
+    "RJ28-15-024_Tracker_Indicator",
+    "RJ28-15-025_Tracker_Radar_Frame",
+    "RJ28-15-026_Tracker_Radar_Panel",
+    "RJ28-15-027_Swing_Arm",
+    "RJ28-15-028_Swing_Arm_Bolts",
+    "RJ28-15-029_Elevation_Sector",
+    "RJ28-15-030_Elevation_Sector_Screws",
+    "RJ28-15-031_Trunnion_Pin",
+    "RJ28-15-059_Energy_Chain_Clamp",
+    "RJ28-16-082_Tracker_Plug",
+    "RJ28-16-083_Tracker_Lead"
+   ]
+  },
+  "trav": {
+   "matrix": "V",
+   "nodes": [
+    "RJ28-15-032_Yoke_Cheek",
+    "RJ28-15-033_Trunnion_Bearing",
+    "RJ28-15-034_Pivot_Housing",
+    "RJ28-15-035_Pivot_Housing_Screws",
+    "RJ28-15-036_Pivot_Retainer",
+    "RJ28-15-037_Elevation_Encoder",
+    "RJ28-15-038_Yoke_Base",
+    "RJ28-15-039_Yoke_Base_Screws",
+    "RJ28-15-040_Elevation_Drive_Cradle",
+    "RJ28-15-041_Elevation_Drive_Housing",
+    "RJ28-15-042_Elevation_Drive_Flange",
+    "RJ28-15-043_Elevation_Drive_Connector",
+    "RJ28-15-044_Elevation_Pinion",
+    "RJ28-15-045_Elevation_Drive_Shaft",
+    "RJ28-15-047_Traverse_Ring_Inner_Race"
+   ]
+  }
+ },
+ "riders": [
+  {
+   "node": "AXIS_tracker_tilt",
+   "group": "elev",
+   "matrix": "V * E * rest_matrix",
+   "rest_matrix": [
+    0.0,
+    0.707106769,
+    -0.707106769,
+    0.0,
+    -4.4e-08,
+    0.707106769,
+    0.707106769,
+    0.0,
+    1.0,
+    3.1e-08,
+    3.1e-08,
+    0.0,
+    -0.410000026,
+    1.646000028,
+    -0.026000001,
+    1.0
+   ],
+   "note": "Joint axis that travels with the cannon. In the GLB it is posed like the group."
+  }
+ ],
+ "check": {
+  "deployed": {
+   "elev": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "trav": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  "stowed": {
+   "elev": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -4.4e-08,
+    -1.0,
+    0.0,
+    0.0,
+    1.0,
+    -4.4e-08,
+    0.0,
+    0.0,
+    1.675000191,
+    1.355000019,
+    1.0
+   ],
+   "trav": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "travel_lock": {
+  "nodes": [
+   "RJ28-15-054_Travel_Lock_Base",
+   "RJ28-15-055_Travel_Lock_Latch",
+   "RJ28-15-056_Travel_Lock_Pin",
+   "RJ28-15-057_Travel_Lock_Spring"
+  ],
+  "engaged": "stowed",
+  "latch": "RJ28-15-055_Travel_Lock_Latch",
+  "pivot": [
+   -0.166,
+   1.491,
+   -0.236
+  ],
+  "axis": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "note": "Fixed to the backpack; the sprung latch captures the breech when the barrel is vertical. The latch is modelled closed and is not animated by the build."
+ },
+ "energy_chain": {
+  "node": "RJ28-15-060_Energy_Chain",
+  "method": "morph_target",
+  "target": "stowed",
+  "target_index": 0,
+  "basis": "shape at elevation 0",
+  "weight": "clamp(elevation / 90, 0, 1)",
+  "glb_weight": 1.0,
+  "files": [
+   "rj28_lod0.glb",
+   "rj28_lod1.glb",
+   "rj28_edges.glb"
+  ],
+  "note": "One mesh joining the fixed backpack to the elevating breech; it does not follow either group. A linear blend between its two end shapes, as in the build. It does not follow the traverse."
+ }
+}

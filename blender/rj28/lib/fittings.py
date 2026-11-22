@@ -211,17 +211,24 @@ def text_size(text):
 
 
 def label(name, text, height=8.0, matrix=None, color="white", target=None, collection=None,
-          offset=0.12):
+          offset=0.12, aspect=None):
     """Decal quad carrying `text` with cap height `height` mm, centred on the
     local origin, text reading along +X, facing +Z. With a target it is draped
-    onto the surface. Texture comes from the decal atlas (markings.build_atlas)."""
+    onto the surface. Texture comes from the decal atlas (markings.build_atlas).
+    With `aspect` (width / height) the quad is a picture `height` mm tall and
+    `text` names the drawing in markings.PICTURES."""
     matrix = matrix or Matrix.Identity(4)
-    tw, th = text_size(text)
-    k = height / th
-    pad = height * 0.25
-    w, h = tw * k + 2 * pad, height + 2 * pad
+    if aspect:
+        pad, w, h = 0.0, height * aspect, height
+    else:
+        tw, th = text_size(text)
+        k = height / th
+        pad = height * 0.25
+        w, h = tw * k + 2 * pad, height + 2 * pad
     nx = max(1, round(w / 10.0)) if target is not None else 1
     ny = 2 if target is not None else 1
+    if aspect and target is not None:                # a picture is tall: follow the surface in both directions
+        nx, ny = max(1, round(w / 3.0)), max(1, round(h / 3.0))
     bm = bmesh.new()
     uv = bm.loops.layers.uv.new("UVMap")
     grid = [[bm.verts.new((-w / 2 + w * i / nx, -h / 2 + h * j / ny, offset)) for i in range(nx + 1)]
